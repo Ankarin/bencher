@@ -70,7 +70,7 @@ const testimonials = [
     ],
 ]
 
-function QuoteIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function QuoteIcon(props) {
     return (
         <svg aria-hidden="true" width={105} height={78} {...props}>
             <path
@@ -83,7 +83,7 @@ export function Testimonials() {
     return (
         <section
             id="testimonials"
-            aria-label="What our customers are saying"
+            aria-label="What our customers are saying="
             className="bg-slate-50 py-20 sm:py-32"
         >
             <Container>
@@ -91,9 +91,6 @@ export function Testimonials() {
                     <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
                         See what our partners say.
                     </h2>
-                    <p className="mt-4 text-lg tracking-tight text-slate-700">
-                       
-                    </p>
                 </div>
                 <ul
                     role="list"

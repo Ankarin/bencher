@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import {Button} from '@/components/Button'
 import {Container} from '@/components/Container'
 
-function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
+function SwirlyDoodle(props) {
     return (
         <svg
             aria-hidden="true"
@@ -20,10 +20,7 @@ function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
     )
 }
 
-function CheckIcon({
-                       className,
-                       ...props
-                   }: React.ComponentPropsWithoutRef<'svg'>) {
+function CheckIcon({className, ...props}) {
     return (
         <svg
             aria-hidden="true"
@@ -50,21 +47,7 @@ function CheckIcon({
     )
 }
 
-function Plan({
-                  name,
-                  price,
-                  description,
-                  href,
-                  features,
-                  featured = false,
-              }: {
-    name: string
-    price: string
-    description: string
-    href: string
-    features: Array<string>
-    featured?: boolean
-}) {
+function Plan({name, price, description, href, features, featured = false}) {
     return (
         <section
             className={clsx(

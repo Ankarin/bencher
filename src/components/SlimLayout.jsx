@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import backgroundImage from '@/images/background-auth.jpg'
 
-export function SlimLayout({ children }: { children: React.ReactNode }) {
+export function SlimLayout({ children }) {
   return (
     <>
       <div className="relative flex min-h-full justify-center md:px-12 lg:px-0">

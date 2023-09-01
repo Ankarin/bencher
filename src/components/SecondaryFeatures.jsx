@@ -1,7 +1,7 @@
 'use client'
 
 import {useId} from 'react'
-import Image, {type ImageProps} from 'next/image'
+import Image from 'next/image'
 import {Tab} from '@headlessui/react'
 import clsx from 'clsx'
 
@@ -10,15 +10,7 @@ import screenshotContacts from '@/images/screenshots/contacts.png'
 import screenshotInventory from '@/images/screenshots/inventory.png'
 import screenshotProfitLoss from '@/images/screenshots/profit-loss.png'
 
-interface Feature {
-    name: React.ReactNode
-    summary: string
-    description: string
-    image: ImageProps['src']
-    icon: React.ComponentType
-}
-
-const features: Array<Feature> = [
+const features = [
     {
         name: 'Apply',
         summary: 'Create your free account and get verified.',
@@ -26,7 +18,7 @@ const features: Array<Feature> = [
             'We want to make sure that only companies with flawless record are getting on board. After verification process, complete you company profile to highlight your expertise.',
         image: screenshotProfitLoss,
         icon: function ReportingIcon() {
-            const id = useId()
+            let id = useId()
             return (
                 <>
                     <defs>
@@ -106,15 +98,7 @@ const features: Array<Feature> = [
     },
 ]
 
-function Feature({
-                     feature,
-                     isActive,
-                     className,
-                     ...props
-                 }: React.ComponentPropsWithoutRef<'div'> & {
-    feature: Feature
-    isActive: boolean
-}) {
+function Feature({feature, isActive, className, ...props}) {
     return (
         <div
             className={clsx(className, !isActive && 'opacity-75 hover:opacity-100')}

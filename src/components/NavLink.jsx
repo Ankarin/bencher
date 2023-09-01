@@ -1,12 +1,6 @@
 import Link from 'next/link'
 
-export function NavLink({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
+export function NavLink({ href, children }) {
   return (
     <Link
       href={href}

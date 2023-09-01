@@ -40,14 +40,12 @@ const features = [
 ]
 
 export function PrimaryFeatures() {
-    const [tabOrientation, setTabOrientation] = useState<'horizontal' | 'vertical'>(
-        'horizontal',
-    )
+    let [tabOrientation, setTabOrientation] = useState('horizontal')
 
     useEffect(() => {
-        const lgMediaQuery = window.matchMedia('(min-width: 1024px)')
+        let lgMediaQuery = window.matchMedia('(min-width: 1024px)')
 
-        function onMediaQueryChange({matches}: { matches: boolean }) {
+        function onMediaQueryChange({matches}) {
             setTabOrientation(matches ? 'vertical' : 'horizontal')
         }
 
@@ -62,7 +60,7 @@ export function PrimaryFeatures() {
     return (
         <section
             id="features"
-            aria-label="Hiring developers"
+            aria-label="Features for running your books"
             className="relative overflow-hidden bg-blue-600 pb-28 pt-20 sm:py-32"
         >
             <Image
