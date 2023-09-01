@@ -4,9 +4,9 @@ import {Button} from '@/components/Button'
 import {TextField} from '@/components/Fields'
 import {Logo} from '@/components/Logo'
 import {SlimLayout} from '@/components/SlimLayout'
-import {type Metadata} from 'next'
 
-export const metadata: Metadata = {
+
+export const metadata = {
     title: 'Sign In',
 }
 
