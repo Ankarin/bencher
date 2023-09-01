@@ -166,7 +166,7 @@ function FeaturesDesktop() {
                                 feature={{
                                     ...feature,
                                     name: (
-                                        <Tab className="ui-not-focus-visible:outline-none">
+                                        <Tab className="ui-not-focus-visible:outline-none outline-none">
                                             <span className="absolute inset-0"/>
                                             {feature.name}
                                         </Tab>
