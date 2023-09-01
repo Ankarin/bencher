@@ -24,29 +24,9 @@ const variantStyles = {
   },
 }
 
-type VariantKey = keyof typeof variantStyles
-type ColorKey<Variant extends VariantKey> =
-  keyof (typeof variantStyles)[Variant]
-
-type ButtonProps<
-  Variant extends VariantKey,
-  Color extends ColorKey<Variant>,
-> = {
-  variant?: Variant
-  color?: Color
-} & (
-  | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
-  | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
-      href?: undefined
-    })
-)
-
-export function Button<
-  Color extends ColorKey<Variant>,
-  Variant extends VariantKey = 'solid',
->({ variant, color, className, ...props }: ButtonProps<Variant, Color>) {
-  variant = variant ?? ('solid' as Variant)
-  color = color ?? ('slate' as Color)
+export function Button({ variant, color, className, ...props }) {
+  variant = variant ?? 'solid'
+  color = color ?? 'slate'
 
   className = clsx(
     baseStyles[variant],
