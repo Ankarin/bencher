@@ -1,4 +1,4 @@
-export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
+export function Logo() {
     return (
         <svg width="219" height="46" viewBox="0 0 219 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1.51733" y="1.51733" width="44" height="44" rx="4.55172" fill="#010101"/>
