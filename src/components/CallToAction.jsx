@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import {Button} from '@/components/Button'
-import {Container} from '@/components/Container'
+import {Button} from './Button'
+import {Container} from './Container'
 import backgroundImage from '@/images/background-call-to-action.jpg'
 
 export function CallToAction() {
@@ -24,8 +24,8 @@ export function CallToAction() {
                         Get started today for free
                     </h2>
                     <p className="mt-4 text-lg tracking-tight text-white">
-                        Looking for extra hands to help with your project or want to find new work for
-                        your team? <br/> Lumysoft is your solution.
+                        Looking for assistance with your project or want to find new opportunities for
+                        your team?
                     </p>
                     <Button href="/register" color="white" className="mt-10">
                         Get started

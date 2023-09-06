@@ -33,8 +33,14 @@ const config: Config = {
             maxWidth: {
                 '2xl': '40rem',
             },
+            colors: {
+                'anchor-blue': '#2563eb',
+            },
         },
     },
-    plugins: [],
+    plugins: [
+        // ...
+        require('@tailwindcss/forms'),
+    ],
 }
 export default config

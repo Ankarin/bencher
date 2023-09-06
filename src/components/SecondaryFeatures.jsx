@@ -12,10 +12,10 @@ import screenshotProfitLoss from '@/images/screenshots/profit-loss.png'
 
 const features = [
     {
-        name: 'Apply',
+        name: 'Join',
         summary: 'Create your free account and get verified.',
         description:
-            'We want to make sure that only companies with flawless record are getting on board. After verification process, complete you company profile to highlight your expertise.',
+            'We want to make sure that only companies with flawless record are getting on board. After verification process, complete you edit-company profile to highlight your expertise.',
         image: screenshotProfitLoss,
         icon: function ReportingIcon() {
             let id = useId()
@@ -50,7 +50,7 @@ const features = [
         summary:
             'Add profiles of your developers available for hire.',
         description:
-            'Share who you have available for others to get in touch in case they will need your experts. See current requests by other companies and apply your developers.',
+            'Make your experts accessible to others who may need their skills. View current requests from other companies and match them with your engineers.',
         image: screenshotInventory,
         icon: function InventoryIcon() {
             return (
@@ -76,9 +76,9 @@ const features = [
     {
         name: 'Start',
         summary:
-            'Get in touch with your matches and start cooperation.',
+            'Connect and Collaborate, Commission-Free.',
         description:
-            'Directly contact and work with companies who want to hire your engineers. No fees, no third party contracts from our side.',
+            'Connect and work directly with companies seeking to hire your engineers – Zero fees and no third-party contracts from our side.',
         image: screenshotContacts,
         icon: function ContactsIcon() {
             return (
@@ -222,10 +222,10 @@ export function SecondaryFeatures() {
             <Container>
                 <div className="mx-auto max-w-2xl md:text-center">
                     <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-                        Join to provide your resources.
+                        Join Us To Provide Your Resources.
                     </h2>
                     <p className="mt-4 text-lg tracking-tight text-slate-700">
-                        Have available engineers ? With Lumysoft you can find projects for them.
+                        Have available engineers? Find projects for them on Bencher.
                     </p>
                 </div>
                 <FeaturesMobile/>

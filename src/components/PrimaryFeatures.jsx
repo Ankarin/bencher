@@ -14,27 +14,27 @@ import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
 
 const features = [
     {
-        title: 'Review Available',
+        title: 'Search With Precision',
         description:
-            "Check available developers from hundreds of software development companies.",
+            "Browse available professionals from hundreds of rated software development companies.",
         image: screenshotPayroll,
     },
     {
-        title: 'Share Requirements',
+        title: 'Or Share Your Requirements',
         description:
-            "Or leave a new request for companies to apply their engineers.",
+            "Submit a new request for companies to showcase their experts.",
         image: screenshotExpenses,
     },
     {
         title: 'Meet Candidates',
         description:
-            "Pick who you like an schedule interviews to find the best match.",
+            "Discuss your project's specifications and meet with shortlisted developers.",
         image: screenshotVatReturns,
     },
     {
-        title: 'Work Directly',
+        title: 'Connect and Collaborate, Commission-Free',
         description:
-            'Work directly with the provider you have chosen without fee on our side.',
+            'Work directly with your chosen provider with no fees on our side.',
         image: screenshotReporting,
     },
 ]
@@ -74,15 +74,15 @@ export function PrimaryFeatures() {
             <Container className="relative">
                 <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
                     <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
-                        Everything you need to easily hire developers.
+                        Unlock Top Talent For Your Projects.
                     </h2>
                     <p className="mt-6 text-lg tracking-tight text-blue-100">
-                        Pick your partner from our network of verified companies with flawless record.
+                        Pick your perfect partner from our network of verified companies with flawless track record.
                     </p>
                 </div>
                 <Tab.Group
                     as="div"
-                    className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
+                    className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0 hidden md:grid"
                     vertical={tabOrientation === 'vertical'}
                 >
                     {({selectedIndex}) => (
@@ -129,6 +129,8 @@ export function PrimaryFeatures() {
                                     ))}
                                 </Tab.List>
                             </div>
+
+
                             <Tab.Panels className="lg:col-span-7">
                                 {features.map((feature) => (
                                     <Tab.Panel key={feature.title} unmount={false}>
@@ -155,6 +157,27 @@ export function PrimaryFeatures() {
                         </>
                     )}
                 </Tab.Group>
+
+                {features.map((feature, featureIndex) => (
+                    <div
+                        className={'md:hidden mt-10 text-white'}
+                        key={feature.title}
+                    >
+                        <h3>
+                                                    <span
+                                                        className="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"/>
+                            {feature.title}
+
+                        </h3>
+                        <p
+                            className={
+                                'mt-2  text-sm lg:block'
+                            }
+                        >
+                            {feature.description}
+                        </p>
+                    </div>
+                ))}
             </Container>
         </section>
     )

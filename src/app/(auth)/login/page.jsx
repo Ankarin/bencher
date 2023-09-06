@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+
 import {Button} from '@/components/Button'
 import {TextField} from '@/components/Fields'
 import {Logo} from '@/components/Logo'
@@ -10,13 +11,12 @@ export const metadata = {
     title: 'Sign In',
 }
 
-export default function Login() {
+export default function Login({searchParams}) {
     return (
         <SlimLayout>
             <div className="flex">
-                <Link href="/" aria-label="Home">
-                    <Logo/>
-                </Link>
+
+                <Logo/>
             </div>
             <h2 className="mt-20 text-lg font-semibold text-gray-900">
                 Sign in to your account
@@ -29,11 +29,12 @@ export default function Login() {
                 >
                     Sign up
                 </Link>{' '}
-                for a free trial.
+                for a free.
             </p>
-            <form action="#" className="mt-10 grid grid-cols-1 gap-y-8">
+            <form method="post"
+                  action="/auth/sign-in" className="mt-10 grid grid-cols-1 gap-y-8">
                 <TextField
-                    label="Email address"
+                    label="Work email"
                     name="email"
                     type="email"
                     autoComplete="email"
@@ -47,12 +48,17 @@ export default function Login() {
                     required
                 />
                 <div>
+
+
                     <Button type="submit" variant="solid" color="blue" className="w-full">
             <span>
               Sign in <span aria-hidden="true">&rarr;</span>
             </span>
                     </Button>
                 </div>
+                <p className="text-red-600">
+                    {searchParams.error}
+                </p>
             </form>
         </SlimLayout>
     )

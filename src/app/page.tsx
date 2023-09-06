@@ -5,18 +5,19 @@ import {Header} from '@/components/Header'
 import {Hero} from '@/components/Hero'
 import {PrimaryFeatures} from '@/components/PrimaryFeatures'
 import {SecondaryFeatures} from '@/components/SecondaryFeatures'
-import {Testimonials} from '@/components/Testimonials'
 
-export default function Home() {
+
+export default async function Home() {
+
+
     return (
         <>
-            <Header/>
+            {/*<Header user={user ? user.user_metadata.first_name : ''}/>*/}
             <main>
                 <Hero/>
                 <PrimaryFeatures/>
                 <SecondaryFeatures/>
                 <CallToAction/>
-                <Testimonials/>
                 <Faqs/>
             </main>
             <Footer/>

@@ -14,11 +14,9 @@ export default function Register() {
     return (
         <SlimLayout>
             <div className="flex">
-                <Link href="/" aria-label="Home">
-                    <Logo/>
-                </Link>
+                <Logo/>
             </div>
-            <h2 className="mt-20 text-lg font-semibold text-gray-900">
+            <h2 className="mt-10 text-lg font-semibold text-gray-900">
                 Get started for free
             </h2>
             <p className="mt-2 text-sm text-gray-700">
@@ -32,21 +30,31 @@ export default function Register() {
                 to your account.
             </p>
             <form
-                action="#"
+                action="/auth/sign-up"
+                method="post"
+
                 className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2"
             >
                 <TextField
                     label="First name"
-                    name="first_name"
+                    name="firstName"
                     type="text"
                     autoComplete="given-name"
                     required
                 />
                 <TextField
                     label="Last name"
-                    name="last_name"
+                    name="lastName"
                     type="text"
                     autoComplete="family-name"
+                    required
+                />
+                <TextField
+                    className="col-span-full"
+                    label="Company name"
+                    name="company"
+                    type="text"
+                    autoComplete="company"
                     required
                 />
                 <TextField
@@ -62,20 +70,48 @@ export default function Register() {
                     label="Password"
                     name="password"
                     type="password"
+                    minLength="6"
                     autoComplete="new-password"
                     required
                 />
                 <SelectField
                     className="col-span-full"
-                    label="How did you hear about us?"
-                    name="referral_source"
+                    label="How are you going to use Bencher?"
+                    name="type"
                 >
-                    <option>AltaVista search</option>
-                    <option>Super Bowl commercial</option>
-                    <option>Our route 34 city bus ad</option>
-                    <option>The “Never Use This” podcast</option>
+                    <option>I want to find developers.</option>
+                    <option>I want to find and offer developers.</option>
                 </SelectField>
+
+
                 <div className="col-span-full">
+                    <div className="relative flex items-start">
+                        <div className="flex h-6 items-center">
+                            <input
+                                required
+                                id="comments"
+                                aria-describedby="comments-description"
+                                name="comments"
+                                type="checkbox"
+                                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            />
+                        </div>
+                        <div className="ml-3 text-sm leading-6">
+                            <label htmlFor="comments" className="font-medium text-gray-900">
+                                I agree
+                            </label>{' '}
+                            <span id="comments-description" className="text-gray-500">
+                                <span className="sr-only"> </span> to Bencher's <Link href={'/terms'} target={'_blank'}><span
+                                className={'text-blue'}>Terms & Conditions</span></Link>, <Link href={'/privacy'}
+                                                                                                target={'_blank'}><span
+                                className={'text-anchor-blue'}>Privacy</span></Link> and <Link href={'/cookies'}
+                                                                                               target={'_blank'}><span
+                                className={'text-blue'}>Cookies</span></Link> policies.
+            </span>
+                        </div>
+                    </div>
+                    <br/>
+
                     <Button type="submit" variant="solid" color="blue" className="w-full">
             <span>
               Sign up <span aria-hidden="true">&rarr;</span>

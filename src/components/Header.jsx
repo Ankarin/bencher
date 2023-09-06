@@ -5,10 +5,10 @@ import Link from 'next/link'
 import {Popover, Transition} from '@headlessui/react'
 import clsx from 'clsx'
 
-import {Button} from '@/components/Button'
-import {Container} from '@/components/Container'
-import {Logo} from '@/components/Logo'
-import {NavLink} from '@/components/NavLink'
+import {Button} from './Button'
+import {Container} from './Container'
+import {Logo} from './Logo'
+import {NavLink} from './NavLink'
 
 function MobileNavLink({href, children}) {
     return (
@@ -45,7 +45,7 @@ function MobileNavIcon({open}) {
     )
 }
 
-function MobileNavigation() {
+function MobileNavigation({user}) {
     return (
         <Popover>
             <Popover.Button
@@ -79,11 +79,15 @@ function MobileNavigation() {
                         as="div"
                         className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
                     >
-                        <MobileNavLink href="#features">Features</MobileNavLink>
-                        <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
-                        <MobileNavLink href="#pricing">Pricing</MobileNavLink>
-                        <hr className="m-2 border-slate-300/40"/>
-                        <MobileNavLink href="/login">Sign in</MobileNavLink>
+                        {user ? <div>
+                                Welcome back, {user}!
+                            </div>
+
+                            : <div>
+                                <MobileNavLink href="/login">Sign In</MobileNavLink>
+                                <MobileNavLink href="/register">Sign Up</MobileNavLink>
+                            </div>}
+
                     </Popover.Panel>
                 </Transition.Child>
             </Transition.Root>
@@ -91,32 +95,27 @@ function MobileNavigation() {
     )
 }
 
-export function Header() {
+export function Header({user}) {
     return (
         <header className="py-10">
             <Container>
                 <nav className="relative z-50 flex justify-between">
                     <div className="flex items-center md:gap-x-12">
-                        <Link href="src/components/Header#" aria-label="Home">
-                            <Logo className="h-10 w-auto"/>
-                        </Link>
-                        <div className="hidden md:flex md:gap-x-6">
-                            <NavLink href="#features">Features</NavLink>
-                            <NavLink href="#testimonials">Testimonials</NavLink>
-                            <NavLink href="#pricing">Pricing</NavLink>
-                        </div>
+
+                        <Logo className="h-10 w-auto"/>
+                        {user}
                     </div>
                     <div className="flex items-center gap-x-5 md:gap-x-8">
                         <div className="hidden md:block">
-                            <NavLink href="/login">Sign in</NavLink>
+                            <NavLink href="/login">Sign In</NavLink>
                         </div>
-                        <Button href="/register" color="blue">
+                        <Button href="/register" className={'invisible md:visible'} color="blue">
               <span>
-                Get started <span className="hidden lg:inline">today</span>
+                Sign Up<span className="hidden lg:inline"></span>
               </span>
                         </Button>
                         <div className="-mr-1 md:hidden">
-                            <MobileNavigation/>
+                            <MobileNavigation user={user}/>
                         </div>
                     </div>
                 </nav>
