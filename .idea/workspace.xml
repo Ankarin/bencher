@@ -5,40 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43eb57e7-5261-4064-a63e-73ef83be5f20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(agreement)/cookies/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(agreement)/privacy/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(agreement)/terms/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(auth)/signup/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/auth/callback/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/auth/sign-in/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/auth/sign-out/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/auth/sign-up/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/edit-company/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/my-company/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/app/AppHeader.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/profile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CallToAction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CallToAction.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Container.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Container.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Logo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Logo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PrimaryFeatures.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PrimaryFeatures.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SecondaryFeatures.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SecondaryFeatures.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SlimLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SlimLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +92,7 @@
       <workItem from="1693907630219" duration="8189000" />
       <workItem from="1693922129334" duration="6319000" />
       <workItem from="1693932357235" duration="4040000" />
-      <workItem from="1694003741498" duration="6287000" />
+      <workItem from="1694003741498" duration="7583000" />
     </task>
     <servers />
   </component>
