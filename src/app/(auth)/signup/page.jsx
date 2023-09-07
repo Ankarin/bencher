@@ -10,12 +10,14 @@ export const metadata = {
 
 export default function SignupRedirect({searchParams}) {
     return (
-        <SlimLayout>
-            <div className="flex">
-                <Logo/>
-            </div>
-            <Content type={searchParams.res}></Content>
-        </SlimLayout>
+        <div className={"-mt-20"}>
+            <SlimLayout>
+                <div className="flex">
+                    <Logo/>
+                </div>
+                <Content type={searchParams.res}></Content>
+            </SlimLayout>
+        </div>
     )
 }
 
