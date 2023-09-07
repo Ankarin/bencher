@@ -42,14 +42,13 @@ export default async function RootLayout({children}: {
             className={clsx('h-full antialiased', inter.variable, lexend.variable)}
             suppressHydrationWarning
         >
-        <body className="relative min-h-full bg-white dark:bg-slate-900">
+        <body className="relative min-h-full bg-white ">
         <div className="fixed z-50 top:0 w-screen right:0 left:0">
             <AppHeader user={user}></AppHeader>
         </div>
 
-        <div className="pt-20">
 
-
+        <div className={"pt-20"}>
             {children}
         </div>
         </body>

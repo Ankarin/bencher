@@ -7,15 +7,24 @@ import Image from 'next/image';
 import {Button} from '@/components/Button';
 import {usePathname} from 'next/navigation'
 import Link from 'next/link';
+import {createClientComponentClient} from '@supabase/auth-helpers-nextjs'
+
+import {useRouter} from 'next/navigation'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function AppHeader({user}) {
+    const router = useRouter()
+    const supabase = createClientComponentClient()
     const pathname = usePathname()
     const userEmail = user ? user.email : ''
-    console.log(pathname)
+    const signOut = async () => {
+        await supabase.auth.signOut()
+        router.refresh()
+    }
+
     if (pathname !== "/login" && pathname !== "/register" && pathname !== "/signup") {
         return (
             <Disclosure as="nav" className="bg-gray-800">
@@ -68,14 +77,14 @@ export default function AppHeader({user}) {
                                 </div>
                                 <div className="hidden lg:ml-4 lg:block">
                                     <div className="flex items-center">
-                                        <Menu as="div" className="relative ml-4 flex-shrink-0">
+                                        <Menu as="div" className="relative outline-none ml-4 flex-shrink-0">
                                             <div>
                                                 {user ? <Menu.Button
-                                                        className="relative flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                                        <span className="absolute -inset-1.5"/>
+                                                        className="relative flex rounded-full bg-gray-800 text-sm text-white focus:outline-none outline-none border-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                                        <span className="absolute outline-none -inset-1.5"/>
                                                         <span className="sr-only">Open user menu</span>
                                                         <span
-                                                            className={"pt-1 pr-3"}>         {userEmail}</span>
+                                                            className={"outline-none pt-1 pr-3"}>         {userEmail}</span>
 
                                                         <Image
                                                             className="h-8 w-8 rounded-full"
@@ -132,15 +141,15 @@ export default function AppHeader({user}) {
                                                     </Menu.Item>
                                                     <Menu.Item>
                                                         {({active}) => (
-                                                            <Link
-                                                                href="#"
+                                                            <p
+                                                                onClick={signOut}
                                                                 className={classNames(
                                                                     active ? 'bg-gray-100' : '',
-                                                                    'block px-4 py-2 text-sm text-gray-700'
+                                                                    'cursor-pointer block px-4 py-2 text-sm text-gray-700'
                                                                 )}
                                                             >
                                                                 Sign out
-                                                            </Link>
+                                                            </p>
                                                         )}
                                                     </Menu.Item>
                                                 </Menu.Items>
@@ -199,8 +208,7 @@ export default function AppHeader({user}) {
                                         Settings
                                     </Disclosure.Button>
                                     <Disclosure.Button
-                                        as="a"
-                                        href="#"
+                                        onClick={signOut}
                                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                                     >
                                         Sign out
