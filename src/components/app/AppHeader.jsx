@@ -4,7 +4,7 @@ import {Disclosure, Menu, Transition} from '@headlessui/react'
 import {Bars3Icon, BellIcon, XMarkIcon} from '@heroicons/react/24/outline'
 import ProfilePic from '@/images/profile.png'
 import Image from 'next/image';
-import {Button} from '@/components/Button';
+import {Button} from '@/components/landing/Button';
 import {usePathname} from 'next/navigation'
 import Link from 'next/link';
 import {createClientComponentClient} from '@supabase/auth-helpers-nextjs'

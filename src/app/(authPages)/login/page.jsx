@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
 
-import {Button} from '@/components/Button'
-import {TextField} from '@/components/Fields'
-import {Logo} from '@/components/Logo'
-import {SlimLayout} from '@/components/SlimLayout'
+import {Button} from '@/components/landing/Button'
+import {TextField} from '@/components/landing/Fields'
+import {Logo} from '@/components/landing/Logo'
+import {SlimLayout} from '@/components/landing/SlimLayout'
 
 
 export const metadata = {

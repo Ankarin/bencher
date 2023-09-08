@@ -6,6 +6,7 @@ import {cookies} from 'next/headers'
 import '@/styles/tailwind.css'
 import {type Metadata} from 'next'
 
+
 export const metadata: Metadata = {
     title: {
         template: '%s - Bencher',
@@ -31,6 +32,8 @@ export default async function RootLayout({children}: {
     children: React.ReactNode
 }) {
     const supabase = createServerComponentClient({cookies})
+
+
 
     const {
         data: {user},
