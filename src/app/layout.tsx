@@ -6,6 +6,7 @@ import {cookies} from 'next/headers'
 import '@/styles/tailwind.css'
 import {type Metadata} from 'next'
 
+import {ReduxProvider} from "@/components/ReduxProvider";
 
 export const metadata: Metadata = {
     title: {
@@ -34,7 +35,6 @@ export default async function RootLayout({children}: {
     const supabase = createServerComponentClient({cookies})
 
 
-
     const {
         data: {user},
     } = await supabase.auth.getUser()
@@ -52,7 +52,10 @@ export default async function RootLayout({children}: {
 
 
         <div className={"pt-20"}>
-            {children}
+            <ReduxProvider>
+                {children}
+            </ReduxProvider>
+
         </div>
         </body>
 

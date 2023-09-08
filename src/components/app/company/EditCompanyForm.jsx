@@ -1,8 +1,15 @@
 'use client'
-import {useCallback, useEffect, useState} from 'react'
+import {useState} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {logout, login} from 'src/store/slices/auth/authSlice'
 
 export default function CompanyEdit({companyData}) {
-console.log(companyData)
+    const email = useSelector((state) => state.auth.email)
+    console.log(email)
+    const dispatch = useDispatch()
+    dispatch(
+        login({email: 'dmitry@lumysoft.com', uid: '1232'}))
+    console.log(email)
 
     const [loading, setLoading] = useState(true)
     //
