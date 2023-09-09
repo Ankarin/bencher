@@ -1,16 +1,8 @@
 'use client'
 import {useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {logout, login} from 'src/store/slices/auth/authSlice'
-
-export default function CompanyEdit({companyData}) {
-    const email = useSelector((state) => state.auth.email)
-    console.log(email)
-    const dispatch = useDispatch()
-    dispatch(
-        login({email: 'dmitry@lumysoft.com', uid: '1232'}))
-    console.log(email)
-
+import {api} from "src/api";
+import { v4 as uuidv4 } from 'uuid';
+export default function CompanyEdit({company}) {
     const [loading, setLoading] = useState(true)
     //
     const [name, setName] = useState('')
@@ -23,42 +15,53 @@ export default function CompanyEdit({companyData}) {
     const [logo_url, setLogoUrl] = useState('')
     const [description, setDescription] = useState('')
 
-    // async function getProfile() {
-    //     setLoading(true)
-    //
-    //     let {data, error} = await supabase
-    //         .from('profiles')
-    //         .select()
-    //         .eq('id', user.id)
-    //         .single()
-    //
-    //     if (error) {
-    //         console.warn(error)
-    //     } else if (data) {
-    //         console.log(data)
-    //     }
-    //
-    //     setLoading(false)
-    // }
-    //
-    // getProfile()
 
+    if (company !== 0) {
+        setName(company.name)
+        setWebsite(company.name)
+        setSize(company.size)
+        setLocation(company.location)
+        setFoundingYear(company.foundingYear)
+        setAverageRate(company.averageRate)
+        setLogoUrl(company.logoUrl)
+        setDescription(company.description)
+
+    }
+
+    async function saveCompanyData(e) {
+        e.preventDefault()
+
+        try {
+            setLoading(true)
+            await api.addCompany({name: 'asd'})
+        } catch (error) {
+            alert('Error updating the data!')
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    async function patchUser(e) {
+        e.preventDefault()
+        try {
+            setLoading(true)
+            await fetch('/api/updateUser', {
+                method:'patch',
+                body:{company_id:uuidv4()}
+            })
+        } catch (error) {
+            alert('Error updating the data!')
+        } finally {
+            setLoading(false)
+        }
+    }
+    // async function getUser(e) {
+    //     e.preventDefault()
     //
-    // async function updateProfile({username, website, avatar_url}) {
     //     try {
     //         setLoading(true)
-    //         let {error} = await supabase.from('companies').upsert({
-    //             name,
-    //             website,
-    //             size,
-    //             location,
-    //             averageRate,
-    //             description,
-    //             foundingYear,
-    //             updated_at: new Date().toISOString(),
-    //         })
-    //         if (error) throw error
-    //         alert('Profile updated!')
+    //        const res =  await api.getUser()
+    //         console.log(res)
     //     } catch (error) {
     //         alert('Error updating the data!')
     //     } finally {
@@ -66,14 +69,13 @@ export default function CompanyEdit({companyData}) {
     //     }
     // }
 
-
     return (
 
-        <div className='p-10 max-w-6xl mx-auto'>
+        <div>
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 My Company
             </h2>
-            <form>
+            <form onSubmit={patchUser}>
                 <div className="space-y-12">
                     <div className=" border-gray-900/10 pb-12">
                         <h2 className="text-base font-semibold leading-7 text-gray-900">Profile</h2>

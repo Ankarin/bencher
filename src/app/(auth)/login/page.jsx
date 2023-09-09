@@ -34,7 +34,7 @@ export default function Login({searchParams}) {
                     for a free.
                 </p>
                 <form method="post"
-                      action="/auth/sign-in" className="mt-10 grid grid-cols-1 gap-y-8">
+                      action="/api/auth/sign-in" className="mt-10 grid grid-cols-1 gap-y-8">
                     <TextField
                         label="Work email"
                         name="email"

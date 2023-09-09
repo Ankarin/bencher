@@ -12,10 +12,8 @@ export async function POST(request: Request) {
     const supabase = createRouteHandlerClient({cookies})
     const first_name = String(formData.get('firstName'))
     const last_name = String(formData.get('lastName'))
-    const company_name = String(formData.get('edit-company'))
     const user_type = String(formData.get('type'))
 
-    console.log(user_type)
     const type = user_type === 'I want to find developers.' ? 'basic' : user_type === 'I want to find and offer developers.' ? 'provider' : 'basic'
 
 
@@ -26,11 +24,10 @@ export async function POST(request: Request) {
             data: {
                 first_name,
                 last_name,
-                company_name,
                 type,
                 email
             },
-            emailRedirectTo: `${requestUrl.origin}/auth/callback`,
+            emailRedirectTo: `${requestUrl.origin}/api/auth/callback`,
         },
     })
 

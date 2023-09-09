@@ -6,8 +6,6 @@ import {cookies} from 'next/headers'
 import '@/styles/tailwind.css'
 import {type Metadata} from 'next'
 
-import {ReduxProvider} from "@/components/ReduxProvider";
-
 export const metadata: Metadata = {
     title: {
         template: '%s - Bencher',
@@ -52,10 +50,7 @@ export default async function RootLayout({children}: {
 
 
         <div className={"pt-20"}>
-            <ReduxProvider>
-                {children}
-            </ReduxProvider>
-
+            {children}
         </div>
         </body>
 

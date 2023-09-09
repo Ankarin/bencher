@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-import {Button} from '@/components/Button'
-import {SelectField, TextField} from '@/components/Fields'
-import {Logo} from '@/components/Logo'
-import {SlimLayout} from '@/components/SlimLayout'
+import {Button} from '@/components/landing/Button'
+import {SelectField, TextField} from '@/components/landing/Fields'
+import {Logo} from '@/components/landing/Logo'
+import {SlimLayout} from '@/components/landing/SlimLayout'
 
 
 export const metadata = {
@@ -31,7 +31,7 @@ export default function Register() {
                     to your account.
                 </p>
                 <form
-                    action="/auth/sign-up"
+                    action="/api/auth/sign-up"
                     method="post"
 
                     className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2"
@@ -50,14 +50,14 @@ export default function Register() {
                         autoComplete="family-name"
                         required
                     />
-                    <TextField
-                        className="col-span-full"
-                        label="Company name"
-                        name="company"
-                        type="text"
-                        autoComplete="company"
-                        required
-                    />
+                    {/*<TextField*/}
+                    {/*    className="col-span-full"*/}
+                    {/*    label="Company name"*/}
+                    {/*    name="company"*/}
+                    {/*    type="text"*/}
+                    {/*    autoComplete="company"*/}
+                    {/*    required*/}
+                    {/*/>*/}
                     <TextField
                         className="col-span-full"
                         label="Email address"

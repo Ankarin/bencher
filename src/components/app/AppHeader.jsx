@@ -34,11 +34,13 @@ export default function AppHeader({user}) {
                             <div className="relative flex h-16 items-center justify-between">
                                 <div className="flex items-center px-2 lg:px-0">
                                     <div className="flex-shrink-0">
-                                        <img
-                                            className="h-8 w-auto"
-                                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                                            alt="Your Company"
-                                        />
+                                        <Link href={'/'}>
+                                            <img
+                                                className="h-8 w-auto"
+                                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                                                alt="Your Company"
+                                            />
+                                        </Link>
                                     </div>
                                     <div className="hidden lg:ml-6 lg:block">
                                         <div className="flex space-x-4">
