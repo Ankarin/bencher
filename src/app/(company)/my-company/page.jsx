@@ -1,4 +1,4 @@
-import NoCompany from 'src/components/app/company/NoCompany'
+import NoCompany from './NoCompany'
 
 // import {getCompanyData} from 'src/utils/supabase'
 // import EditCompanyForm from "src/components/app/company/EditCompanyForm";

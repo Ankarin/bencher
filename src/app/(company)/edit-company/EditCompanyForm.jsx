@@ -1,8 +1,8 @@
 'use client'
 import {useState} from 'react'
-import {api} from "src/api";
 import { v4 as uuidv4 } from 'uuid';
-export default function CompanyEdit({company}) {
+import {createCompany} from "src/utils/supabaseClient";
+export default function CompanyEdit({company, user}) {
     const [loading, setLoading] = useState(true)
     //
     const [name, setName] = useState('')
@@ -10,8 +10,8 @@ export default function CompanyEdit({company}) {
 
     const [size, setSize] = useState('')
     const [location, setLocation] = useState('')
-    const [foundingYear, setFoundingYear] = useState('')
-    const [averageRate, setAverageRate] = useState('')
+    const [founding_year, setFoundingYear] = useState('')
+    const [average_rate, setAverageRate] = useState('')
     const [logo_url, setLogoUrl] = useState('')
     const [description, setDescription] = useState('')
 
@@ -21,53 +21,22 @@ export default function CompanyEdit({company}) {
         setWebsite(company.name)
         setSize(company.size)
         setLocation(company.location)
-        setFoundingYear(company.foundingYear)
-        setAverageRate(company.averageRate)
-        setLogoUrl(company.logoUrl)
+        setFoundingYear(company.founding_year)
+        setAverageRate(company.average_rate)
+        setLogoUrl(company.logo_url)
         setDescription(company.description)
 
     }
-
-    async function saveCompanyData(e) {
+const updateCompany = async (e) => {
+        const newCompany = {name, website, size, location, founding_year, average_rate, description}
         e.preventDefault()
-
-        try {
-            setLoading(true)
-            await api.addCompany({name: 'asd'})
-        } catch (error) {
-            alert('Error updating the data!')
-        } finally {
-            setLoading(false)
+    if(company ===0) {
+      const res = await createCompany(newCompany)
+        if(res.error) {
+            alert(res.error.message)
         }
     }
-
-    async function patchUser(e) {
-        e.preventDefault()
-        try {
-            setLoading(true)
-            await fetch('/api/updateUser', {
-                method:'patch',
-                body:{company_id:uuidv4()}
-            })
-        } catch (error) {
-            alert('Error updating the data!')
-        } finally {
-            setLoading(false)
-        }
-    }
-    // async function getUser(e) {
-    //     e.preventDefault()
-    //
-    //     try {
-    //         setLoading(true)
-    //        const res =  await api.getUser()
-    //         console.log(res)
-    //     } catch (error) {
-    //         alert('Error updating the data!')
-    //     } finally {
-    //         setLoading(false)
-    //     }
-    // }
+}
 
     return (
 
@@ -75,7 +44,7 @@ export default function CompanyEdit({company}) {
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 My Company
             </h2>
-            <form onSubmit={patchUser}>
+            <form onSubmit={updateCompany}>
                 <div className="space-y-12">
                     <div className=" border-gray-900/10 pb-12">
                         <h2 className="text-base font-semibold leading-7 text-gray-900">Profile</h2>
@@ -91,6 +60,7 @@ export default function CompanyEdit({company}) {
                                 </label>
                                 <div className="mt-2">
                                     <input
+                                        required
                                         type="text"
                                         name="name"
                                         id="name"
@@ -104,11 +74,12 @@ export default function CompanyEdit({company}) {
                             <div className="sm:col-span-3">
                                 <label htmlFor="last-name"
                                        className="block text-sm font-medium leading-6 text-gray-900">
-                                    Company Website
+                                    Company Website (https://website.example)
                                 </label>
                                 <div className="mt-2">
                                     <input
-                                        type="text"
+                                        required
+                                        type="url"
                                         name="website"
                                         id="website"
                                         value={website}
@@ -128,6 +99,7 @@ export default function CompanyEdit({company}) {
                                         Company Size
                                     </label>
                                     <select
+                                        required
                                         id="size"
                                         name="size"
                                         className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -150,6 +122,7 @@ export default function CompanyEdit({company}) {
                                         Primary Location
                                     </label>
                                     <select
+                                        required
                                         id="location"
                                         name="location"
                                         value={location}
@@ -172,9 +145,10 @@ export default function CompanyEdit({company}) {
                                         Average Hourly Rate
                                     </label>
                                     <select
+                                        required
                                         id="avergaeRate"
                                         name="averageRate"
-                                        value={averageRate}
+                                        value={average_rate}
                                         onChange={(e) => setAverageRate(e.target.value)}
                                         className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     >
@@ -195,9 +169,10 @@ export default function CompanyEdit({company}) {
                                         Founding Year
                                     </label>
                                     <select
+                                        required
                                         id="foundingYear"
                                         name="foundingYear"
-                                        value={foundingYear}
+                                        value={founding_year}
                                         onChange={(e) => setFoundingYear(e.target.value)}
                                         className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     >
@@ -215,13 +190,15 @@ export default function CompanyEdit({company}) {
                             </label>
                             <div className="mt-2">
                 <textarea
+                    required
                     id="description"
                     name="description"
                     rows={3}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    maxLength="150"
+                    maxLength="200"
+                    minLength="30"
                 />
                             </div>
                             <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about
