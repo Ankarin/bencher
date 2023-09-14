@@ -55,7 +55,10 @@ export default function CompanyEdit({ company, user }): React.ReactNode {
         alert(res.error.message);
       }
     } else {
-      newCompany.id = id;
+      const updatedCompany = {
+        id: company.id,
+        ...newCompany,
+      };
       console.log(newCompany);
       const res = await updateCompany(newCompany);
       if (res.error) {
@@ -148,7 +151,8 @@ export default function CompanyEdit({ company, user }): React.ReactNode {
                   >
                     Company Logo (100 x 100 recommended)
                   </label>
-                  <div className='mt-2 flex h-44 w-44 justify-center rounded-lg border border-dashed border-gray-900/25  py-5'>
+                  <div
+                    className='mt-2 flex h-44 w-44 justify-center rounded-lg border border-dashed border-gray-900/25  py-5'>
                     <div className='text-center'>
                       <PhotoIcon
                         className='mx-auto h-12 w-12 text-gray-300'
@@ -451,7 +455,7 @@ const countries = [
   'Congo, Democratic Republic of the Congo',
   'Cook Islands',
   'Costa Rica',
-  "Cote D'Ivoire",
+  'Cote D\'Ivoire',
   'Croatia',
   'Cuba',
   'Curacao',
@@ -517,7 +521,7 @@ const countries = [
   'Kosovo',
   'Kuwait',
   'Kyrgyzstan',
-  "Lao People's Democratic Republic",
+  'Lao People\'s Democratic Republic',
   'Latvia',
   'Lebanon',
   'Lesotho',
