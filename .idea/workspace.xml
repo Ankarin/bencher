@@ -4,23 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43eb57e7-5261-4064-a63e-73ef83be5f20" name="Changes" comment="">
-<<<<<<< HEAD
+    <list default="true" id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(agreement)/cookies/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(agreement)/terms/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(auth)/resetpassword/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(company)/edit-company/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(company)/my-company/Company.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(company)/my-company/MyCompanyHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(company)/my-company/NotVerified.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(company)/my-company/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/companies/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/signup/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/signup/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/edit-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/edit-company/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prettier.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/prettier.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(agreement)/cookies/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(agreement)/privacy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(agreement)/privacy/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(agreement)/terms/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/signup/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/signup/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/page.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/NoCompany.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/my-company/NoCompany.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/page.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/callback/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-in/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-in/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-out/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-out/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-up/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-up/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/developers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/developers/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SlimLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SlimLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.jsx" afterDir="false" />
->>>>>>> a533dd50e789c30a272be8ac0589b1b6200e3cde
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/CallToAction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/CallToAction.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Hero.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/screenshots/contacts.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/screenshots/expenses.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/screenshots/inventory.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/screenshots/payroll.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/screenshots/profit-loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/screenshots/reporting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/screenshots/vat-returns.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/supabase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,25 +70,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2Uv7v271AIHIV0JgZZABtcAg4Dx" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2VEgZLxmUNOulmcCbMk9hINwx7k" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
@@ -59,71 +100,67 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "main",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/Users/ankarin/Desktop/bencher/src/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "C:/Users/ankar/Desktop/bencha/bencher/node_modules/eslint",
+    "node.js.selected.package.eslint": "C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint",
     "node.js.selected.package.standard": "",
     "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/ankarin/Desktop/bencher/node_modules/typescript/lib",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\my-company" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\create-company" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\_supabase" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(auth)\confirm-signup" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\components" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\images" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\components\landing" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\app" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app" />
-    </key>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="43eb57e7-5261-4064-a63e-73ef83be5f20" name="Changes" comment="" />
-      <created>1693808430266</created>
+      <changelist id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="" />
+      <created>1694406714432</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1693808430266</updated>
-      <workItem from="1693808432470" duration="5356000" />
-      <workItem from="1693821104426" duration="16231000" />
-      <workItem from="1693907630219" duration="8189000" />
-      <workItem from="1693922129334" duration="6319000" />
-      <workItem from="1693932357235" duration="4040000" />
-<<<<<<< HEAD
-      <workItem from="1694003741498" duration="7583000" />
-      <workItem from="1694085638586" duration="1210000" />
-=======
-      <workItem from="1694003741498" duration="6287000" />
-      <workItem from="1694012234410" duration="357000" />
-      <workItem from="1694085766068" duration="5810000" />
->>>>>>> a533dd50e789c30a272be8ac0589b1b6200e3cde
+      <updated>1694406714432</updated>
+      <workItem from="1694406716773" duration="917000" />
+      <workItem from="1694511777528" duration="15362000" />
+      <workItem from="1694545662033" duration="655000" />
+      <workItem from="1694619946027" duration="8389000" />
+      <workItem from="1694676269366" duration="3551000" />
+      <workItem from="1694680517448" duration="1031000" />
+      <workItem from="1694681576162" duration="205000" />
+      <workItem from="1694681795174" duration="542000" />
+      <workItem from="1694682353549" duration="221000" />
+      <workItem from="1694682596775" duration="55000" />
+      <workItem from="1694682666218" duration="5490000" />
+      <workItem from="1694688220620" duration="167000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/(company)/my-company/Company.tsx</url>
+          <line>2</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

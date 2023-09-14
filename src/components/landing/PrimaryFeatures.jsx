@@ -7,35 +7,31 @@ import clsx from 'clsx'
 
 import {Container} from '@/components/landing/Container'
 import backgroundImage from '@/images/background-features.jpg'
-import screenshotExpenses from '@/images/screenshots/expenses.png'
-import screenshotPayroll from '@/images/screenshots/payroll.png'
-import screenshotReporting from '@/images/screenshots/reporting.png'
-import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
 
 const features = [
     {
         title: 'Search With Precision',
         description:
             "Browse available professionals from hundreds of rated software development companies.",
-        image: screenshotPayroll,
+        image: 'landing/payroll.png',
     },
     {
         title: 'Or Share Your Requirements',
         description:
             "Submit a new request for companies to showcase their experts.",
-        image: screenshotExpenses,
+        image: 'landing/expenses.png',
     },
     {
         title: 'Meet Candidates',
         description:
             "Discuss your project's specifications and meet with shortlisted developers.",
-        image: screenshotVatReturns,
+        image: 'landing/reporting.png',
     },
     {
         title: 'Connect and Collaborate, Commission-Free',
         description:
             'Work directly with your chosen provider with no fees on our side.',
-        image: screenshotReporting,
+        image: 'landing/vat-returns.png',
     },
 ]
 
@@ -67,8 +63,8 @@ export function PrimaryFeatures() {
                 className="absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]"
                 src={backgroundImage}
                 alt=""
-                width={2245}
-                height={1636}
+                width='2245'
+                height='1636'
                 unoptimized
             />
             <Container className="relative">
@@ -148,6 +144,8 @@ export function PrimaryFeatures() {
                                                 src={feature.image}
                                                 alt=""
                                                 priority
+                                                width="1024"
+                                                height="700"
                                                 sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
                                             />
                                         </div>

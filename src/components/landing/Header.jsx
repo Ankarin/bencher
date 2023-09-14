@@ -5,10 +5,10 @@ import Link from 'next/link'
 import {Popover, Transition} from '@headlessui/react'
 import clsx from 'clsx'
 
-import {Button} from './Button'
-import {Container} from './Container'
-import {Logo} from './Logo'
-import {NavLink} from './NavLink'
+import {Button} from '@/components/landing/Button'
+import {Container} from '@/components/landing/Container'
+import {Logo} from 'src/components/landing/Logo'
+import {NavLink} from 'src/components/landing/NavLink'
 
 function MobileNavLink({href, children}) {
     return (

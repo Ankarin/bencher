@@ -16,6 +16,15 @@ const getUserData = async (uid) => {
     const {data} = await supabase.from('users').select().eq('id', uid)
     return data[0]
 }
-const getCompanyData = async (company_id) => await supabase.from('companies').select().eq('id', company_id)
+const getCompanyData = async (company_id) => {
+    const res = await supabase.from('companies').select().eq('id', company_id)
+    return res.data[0]
+}
 
-export {getUser, getUserData, getCompanyData}
+const getCompanies = async () => {
+    const res = await supabase.from('companies').select()
+    return res.data
+}
+
+
+export {getUser, getUserData, getCompanyData, getCompanies}

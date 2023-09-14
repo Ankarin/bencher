@@ -1,5 +1,3 @@
 export default function Developers() {
-    return (<main>
-        asdasd
-    </main>)
+  return <main>asdasd</main>;
 }

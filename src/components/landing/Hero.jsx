@@ -28,7 +28,7 @@ export function Hero() {
         </span>{' '}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
-                Bencher marketplace is your gateway to a pool of vetted talent from established European IT
+                BitBencher marketplace is your gateway to a pool of vetted talent from established European IT
                 companies. <br/> Work directly with your chosen provider with no extra fees.
             </p>
             <div className="mt-10 flex justify-center gap-x-6">

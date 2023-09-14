@@ -6,9 +6,6 @@ import {Tab} from '@headlessui/react'
 import clsx from 'clsx'
 
 import {Container} from '@/components/landing/Container'
-import screenshotContacts from '@/images/screenshots/contacts.png'
-import screenshotInventory from '@/images/screenshots/inventory.png'
-import screenshotProfitLoss from '@/images/screenshots/profit-loss.png'
 
 const features = [
     {
@@ -16,9 +13,9 @@ const features = [
         summary: 'Create your free account and get verified.',
         description:
             'We want to make sure that only companies with flawless record are getting on board. After verification process, complete you edit-company profile to highlight your expertise.',
-        image: screenshotProfitLoss,
+        image: 'landing/profit-loss.png',
         icon: function ReportingIcon() {
-            let id = useId()
+            const id = useId()
             return (
                 <>
                     <defs>
@@ -51,7 +48,7 @@ const features = [
             'Add profiles of your developers available for hire.',
         description:
             'Make your experts accessible to others who may need their skills. View current requests from other companies and match them with your engineers.',
-        image: screenshotInventory,
+        image: 'landing/inventory.png',
         icon: function InventoryIcon() {
             return (
                 <>
@@ -79,7 +76,7 @@ const features = [
             'Connect and Collaborate, Commission-Free.',
         description:
             'Connect and work directly with companies seeking to hire your engineers – Zero fees and no third-party contracts from our side.',
-        image: screenshotContacts,
+        image: 'landing/contacts.png',
         icon: function ContactsIcon() {
             return (
                 <>
@@ -145,6 +142,8 @@ function FeaturesMobile() {
                                 src={feature.image}
                                 alt=""
                                 sizes="52.75rem"
+                                width="700"
+                                height="500"
                             />
                         </div>
                     </div>
@@ -198,6 +197,8 @@ function FeaturesDesktop() {
                                             src={feature.image}
                                             alt=""
                                             sizes="52.75rem"
+                                            width="900"
+                                            height="500"
                                         />
                                     </div>
                                 </Tab.Panel>
@@ -225,7 +226,7 @@ export function SecondaryFeatures() {
                         Join Us To Provide Your Resources.
                     </h2>
                     <p className="mt-4 text-lg tracking-tight text-slate-700">
-                        Have available engineers? Find projects for them on Bencher.
+                        Have available engineers? Find projects for them on BitBencher.
                     </p>
                 </div>
                 <FeaturesMobile/>
