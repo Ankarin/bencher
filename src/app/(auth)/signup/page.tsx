@@ -58,6 +58,18 @@ function Content({ type }): React.ReactNode {
         </span>
       </Button>
     </div>
+  ) : type === 'forgot' ? (
+    <div>
+      <h2 className='mt-10 text-lg font-semibold text-gray-900'>
+        Check your email, we've sent you a link to reset your password.
+      </h2>
+      <br />
+      <Button href='/' variant='solid' color='blue' className='w-full'>
+        <span>
+          Go Back <span aria-hidden='true'></span>
+        </span>
+      </Button>
+    </div>
   ) : (
     <div>
       <h2 className='mt-10 text-lg font-semibold text-gray-900'>

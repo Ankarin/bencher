@@ -1,15 +1,12 @@
-'use client';
 import Link from 'next/link';
 
 import { Button } from '@/components/landing/Button';
 import { TextField } from '@/components/landing/Fields';
 import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Forgotpass({ searchParams }): React.ReactNode {
-  const [email, setEmail] = useState('');
-
   return (
     <div className='-mt-20'>
       <SlimLayout>
@@ -22,7 +19,7 @@ export default function Forgotpass({ searchParams }): React.ReactNode {
 
         <form
           method='post'
-          action='/api/auth/sign-in'
+          action='/api/auth/forgot'
           className='mt-10 grid grid-cols-1 gap-y-8'
         >
           <TextField
@@ -30,10 +27,6 @@ export default function Forgotpass({ searchParams }): React.ReactNode {
             name='email'
             type='email'
             autoComplete='email'
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            value={email}
             required
           />
           <div>

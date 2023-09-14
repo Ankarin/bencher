@@ -26,17 +26,10 @@ export default function Login({ searchParams }): React.ReactNode {
           className='mt-10 grid grid-cols-1 gap-y-8'
         >
           <TextField
-            label='Password'
+            label='New Password'
             name='password'
             type='password'
             autoComplete='current-password'
-            required
-          />
-          <TextField
-            label='Confirm password'
-            name='email'
-            type='email'
-            autoComplete='email'
             required
           />
           <div>

@@ -8,12 +8,15 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const email = String(formData.get('email'));
-  const password = String(formData.get('password'));
   const supabase = createRouteHandlerClient({ cookies });
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
+  console.log(email);
+
+  // const code = url.searchParams.get('code');
+  // await supabase.auth.exchangeCodeForSession(code);
+
+  const { error } = supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${requestUrl.origin}/resetpassword`,
   });
 
   if (error) {
@@ -24,5 +27,5 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.redirect(requestUrl.origin, 301);
+  return NextResponse.redirect(`${requestUrl.origin}/signup?res=forgot`, 301);
 }
