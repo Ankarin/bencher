@@ -27,6 +27,7 @@ export default function Forgotpass({ searchParams }): React.ReactNode {
           className='mt-10 grid grid-cols-1 gap-y-8'
         >
           <TextField
+            className={''}
             label='Email'
             name='email'
             type='email'
