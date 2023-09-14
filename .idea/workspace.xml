@@ -6,7 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/CallToAction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/CallToAction.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Container.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Faqs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Faqs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Fields.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Fields.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Header.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Logo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/NavLink.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/NavLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Pricing.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/SlimLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/SlimLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Testimonials.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +114,7 @@
       <workItem from="1694682353549" duration="221000" />
       <workItem from="1694682596775" duration="55000" />
       <workItem from="1694682666218" duration="5490000" />
-      <workItem from="1694688220620" duration="9241000" />
+      <workItem from="1694688220620" duration="10520000" />
     </task>
     <servers />
   </component>

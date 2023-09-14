@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import clsx from 'clsx'
+import Link from 'next/link';
+import clsx from 'clsx';
 
 const baseStyles = {
   solid:
     'group inline-flex items-center justify-center rounded-md py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2',
   outline:
     'group inline-flex ring-1 items-center justify-center rounded-md py-2 px-4 text-sm focus:outline-none',
-}
+};
 
 const variantStyles = {
   solid: {
@@ -22,32 +22,58 @@ const variantStyles = {
     white:
       'ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white',
   },
-}
+};
 
-export function Button({ variant, color, className, loading, ...props }) {
-  variant = variant ?? 'solid'
-  color = color ?? 'slate'
+type VariantKey = keyof typeof variantStyles;
+type ColorKey<Variant extends VariantKey> =
+  keyof (typeof variantStyles)[Variant];
+
+type ButtonProps<
+  Variant extends VariantKey,
+  Color extends ColorKey<Variant>,
+> = {
+  variant?: Variant;
+  color?: Color;
+} & (
+  | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
+  | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
+      href?: undefined;
+    })
+);
+
+export function Button<
+  Color extends ColorKey<Variant>,
+  Variant extends VariantKey = 'solid',
+>({
+  variant,
+  color,
+  className,
+  loading,
+  ...props
+}: ButtonProps<Variant, Color>) {
+  variant = variant ?? ('solid' as Variant);
+  color = color ?? ('slate' as Color);
 
   className = clsx(
     baseStyles[variant],
     variantStyles[variant][color],
     className
-  )
+  );
   if (loading) {
     return (
       <div
         className={`text-primary inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`}
-        role="status"
+        role='status'
       >
-        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+        <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
           Loading...
         </span>
       </div>
-    )
+    );
   } else
     return typeof props.href === 'undefined' ? (
       <button className={className} {...props} />
     ) : (
       <Link className={className} {...props} />
-    )
+    );
 }
