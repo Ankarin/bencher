@@ -354,8 +354,8 @@ export default function CompanyEdit({ company, user }): React.ReactNode {
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
-                  maxLength='400'
-                  minLength='30'
+                  maxLength={400}
+                  minLength={30}
                 />
               </div>
               <p className='mt-3 text-sm leading-6 text-gray-600'>

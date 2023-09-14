@@ -62,7 +62,7 @@ export default function Register(): React.ReactNode {
             label='Password'
             name='password'
             type='password'
-            minLength='6'
+            minLength={6}
             autoComplete='new-password'
             required
           />
