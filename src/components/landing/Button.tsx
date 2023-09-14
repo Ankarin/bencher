@@ -42,7 +42,7 @@ type ButtonProps<
 );
 
 export function Button<
-  Color extends ColorKey<Variant>,
+       Color extends ColorKey<Variant>,
   Variant extends VariantKey = 'solid',
 >({
   variant,
