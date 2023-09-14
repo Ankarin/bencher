@@ -6,6 +6,10 @@ import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
 
+export const metadata = {
+  title: 'Forgot Password',
+};
+
 export default function Forgotpass({ searchParams }): React.ReactNode {
   return (
     <div className='-mt-20'>

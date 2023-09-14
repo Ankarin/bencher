@@ -10,13 +10,8 @@ export async function POST(request: Request) {
   const email = String(formData.get('email'));
   const supabase = createRouteHandlerClient({ cookies });
 
-  console.log(email);
-
-  // const code = url.searchParams.get('code');
-  // await supabase.auth.exchangeCodeForSession(code);
-
   const { error } = supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${requestUrl.origin}/resetpassword`,
+    redirectTo: `${requestUrl.origin}/api/auth/reset-callback`,
   });
 
   if (error) {

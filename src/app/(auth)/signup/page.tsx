@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Button } from '@/components/landing/Button';
 import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';

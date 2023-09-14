@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/api/auth/forgot/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/auth/reset/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/auth/reset-callback/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(auth)/resetpassword/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/resetpassword/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(auth)/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/signup/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/callback/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-in/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-in/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-out/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-out/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-up/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-up/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/forgot/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/forgot/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/reset/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/reset/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/companies/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/companies/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/supabase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +26,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -57,6 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "C:/Users/ankar/Desktop/bencha/bencher/src/app/api/auth/reset-callback",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.stylelint": "true",
@@ -81,6 +81,11 @@
       </map>
     </option>
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\api\auth\reset-callback" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -100,7 +105,7 @@
       <workItem from="1694682353549" duration="221000" />
       <workItem from="1694682596775" duration="55000" />
       <workItem from="1694682666218" duration="5490000" />
-      <workItem from="1694688220620" duration="2524000" />
+      <workItem from="1694688220620" duration="8654000" />
     </task>
     <servers />
   </component>

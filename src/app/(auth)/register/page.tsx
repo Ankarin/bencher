@@ -49,14 +49,6 @@ export default function Register(): React.ReactNode {
             autoComplete='family-name'
             required
           />
-          {/* <TextField */}
-          {/*    className="col-span-full" */}
-          {/*    label="Company name" */}
-          {/*    name="company" */}
-          {/*    type="text" */}
-          {/*    autoComplete="company" */}
-          {/*    required */}
-          {/* /> */}
           <TextField
             className='col-span-full'
             label='Email address'

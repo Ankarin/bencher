@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { Button } from '@/components/landing/Button';
 import { TextField } from '@/components/landing/Fields';
 import { Logo } from '@/components/landing/Logo';
@@ -7,7 +5,7 @@ import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
 
 export const metadata = {
-  title: 'Sign In',
+  title: 'Reset Password',
 };
 
 export default function Login({ searchParams }): React.ReactNode {
@@ -22,7 +20,7 @@ export default function Login({ searchParams }): React.ReactNode {
         </h2>
         <form
           method='post'
-          action='/api/auth/sign-in'
+          action='/api/auth/reset'
           className='mt-10 grid grid-cols-1 gap-y-8'
         >
           <TextField
