@@ -59,8 +59,7 @@ export default function CompanyEdit({ company, user }): React.ReactNode {
         id: company.id,
         ...newCompany,
       };
-      console.log(newCompany);
-      const res = await updateCompany(newCompany);
+      const res = await updateCompany(updatedCompany);
       if (res.error) {
         alert(res.error.message);
       }
