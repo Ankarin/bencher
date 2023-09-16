@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/callback/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/reset-callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/reset-callback/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/reset/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/reset/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-in/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-in/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-out/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-out/route.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +116,7 @@
       <workItem from="1694867308011" duration="256000" />
       <workItem from="1694867588360" duration="164000" />
       <workItem from="1694867756697" duration="405000" />
-      <workItem from="1694868573493" duration="1079000" />
+      <workItem from="1694868573493" duration="1278000" />
     </task>
     <servers />
   </component>
