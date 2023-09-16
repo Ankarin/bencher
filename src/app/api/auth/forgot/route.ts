@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     console.log(error);
     return NextResponse.redirect(
       `${requestUrl.origin}/login?error=${error}`,
-      301
+      301,
     );
   }
 

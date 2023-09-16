@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/edit-company/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/my-company/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/companies/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/companies/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/companies/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/landing/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Button.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/landing/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/forgot/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/forgot/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-up/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-up/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Fields.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Fields.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/NavLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/NavLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +49,10 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2VEgZLxmUNOulmcCbMk9hINwx7k" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -63,7 +64,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "main",
     "js.linters.configure.manually.selectedeslint": "true",
     "last_opened_file_path": "C:/Users/ankar/Desktop/bencha/bencher",
     "node.js.detected.package.eslint": "true",

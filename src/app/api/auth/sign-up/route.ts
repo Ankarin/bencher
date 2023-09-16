@@ -1,11 +1,10 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import type React from 'react';
 
 export const dynamic = 'force-dynamic';
 
-export async function POST(request: Request): Promise<React.ReactNode> {
+export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const email = String(formData.get('email'));
@@ -19,8 +18,8 @@ export async function POST(request: Request): Promise<React.ReactNode> {
     user_type === 'I want to find developers.'
       ? 'basic'
       : user_type === 'I want to find and offer developers.'
-      ? 'provider'
-      : 'basic';
+        ? 'provider'
+        : 'basic';
 
   const { data, error } = await supabase.auth.signUp({
     email,

@@ -5,8 +5,7 @@ import { getCompanyData, getUser, getUserData } from 'src/utils/supabase';
 import MyCompanyHeader from 'src/app/(company)/my-company/MyCompanyHeader';
 import React from 'react';
 
-// @ts-ignore
-export default async function MyCompany(): Promise<React.ReactNode> {
+export default async function MyCompany() {
   const user = await getUser();
   const userData = await getUserData(user.id);
 

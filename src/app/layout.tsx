@@ -5,6 +5,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import '@/styles/tailwind.css';
 import { type Metadata } from 'next';
+import React from 'react';
 
 export const metadata: Metadata = {
   title: {
@@ -28,8 +29,8 @@ const lexend = Lexend({
 });
 
 export default async function RootLayout({
-  children,
-}: {
+                                           children,
+                                         }: {
   children: React.ReactNode;
 }) {
   const supabase = createServerComponentClient({ cookies });
@@ -43,13 +44,13 @@ export default async function RootLayout({
       className={clsx('h-full antialiased', inter.variable, lexend.variable)}
       suppressHydrationWarning
     >
-      <body className='relative min-h-full bg-white '>
-        <div className='top:0 right:0 left:0 fixed z-50 w-screen'>
-          <AppHeader user={user}></AppHeader>
-        </div>
+    <body className='relative min-h-full bg-white '>
+    <div className='top:0 right:0 left:0 fixed z-50 w-screen'>
+      <AppHeader user={user}></AppHeader>
+    </div>
 
-        <div className={'pt-20'}>{children}</div>
-      </body>
+    <div className={'pt-20'}>{children}</div>
+    </body>
     </html>
   );
 }
