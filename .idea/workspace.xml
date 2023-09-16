@@ -6,8 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/resetpassword/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/resetpassword/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/signup/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/Company.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/my-company/Company.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/MyCompanyHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/my-company/MyCompanyHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/NoCompany.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/my-company/NoCompany.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/landing/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/CallToAction.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/CallToAction.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/landing/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Hero.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,12 +67,12 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "C:/Users/ankar/Desktop/bencha/bencher",
+    "last_opened_file_path": "/Users/ankarin/Desktop/bencher/src/components/landing",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint",
+    "node.js.selected.package.eslint": "C:/Users/ankar/AppData/Roaming/npm/node_modules/eslint",
     "node.js.selected.package.standard": "",
     "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -85,6 +94,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/landing" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\api\auth\reset-callback" />
     </key>
@@ -110,6 +120,7 @@
       <workItem from="1694682666218" duration="5490000" />
       <workItem from="1694688220620" duration="13420000" />
       <workItem from="1694784404584" duration="643000" />
+      <workItem from="1694866848418" duration="435000" />
     </task>
     <servers />
   </component>

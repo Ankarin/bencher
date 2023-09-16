@@ -27,7 +27,7 @@ export function CallToAction() {
             Looking for assistance with your project or want to find new
             opportunities for your team?
           </p>
-          <Button href='/register' color='white' className='mt-10'>
+          <Button href='/register' loading={false} color='white' className='mt-10'>
             Get started
           </Button>
         </div>

@@ -18,7 +18,7 @@ export default function MyCompanyHeader({ verified }): React.ReactNode {
       </h2>
 
       <div className=' flex md:ml-4 '>
-        <Button href='/edit-company' color='blue'>
+        <Button href='/edit-company' loading={false} color='blue'>
           {' '}
           Edit{' '}
         </Button>

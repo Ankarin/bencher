@@ -20,7 +20,7 @@ export default function Company(): React.ReactNode {
             </p>
           </div>
           <div className='mt-5 sm:ml-6 sm:mt-0 sm:flex sm:flex-shrink-0 sm:items-center'>
-            <Button href='/edit-company' color='blue'>
+            <Button href='/edit-company' loading={false} color='blue'>
               Create new company
             </Button>
           </div>

@@ -110,6 +110,7 @@ export default function AppHeader({ user }) {
                         ) : (
                           <div className='flex'>
                             <Button
+                              loading={false}
                               href='/login'
                               className='mr-2'
                               color='white'
@@ -118,7 +119,7 @@ export default function AppHeader({ user }) {
                               <span>Sign In</span>
                             </Button>
 
-                            <Button href='/register' color='blue'>
+                            <Button loading={false} href='/register' color='blue'>
                               <span>Sign Up</span>
                             </Button>
                           </div>
