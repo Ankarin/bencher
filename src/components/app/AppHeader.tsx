@@ -119,7 +119,7 @@ export default function AppHeader({ user }) {
                               <span>Sign In</span>
                             </Button>
 
-                            <Button loading={false} variant='solid' href='/register' color='blue'>
+                            <Button className='' loading={false} variant='solid' href='/register' color='blue'>
                               <span>Sign Up</span>
                             </Button>
                           </div>

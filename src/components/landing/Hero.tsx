@@ -34,9 +34,9 @@ export function Hero() {
         provider with no extra fees.
       </p>
       <div className='mt-10 flex justify-center gap-x-6'>
-        <Button loading={false} variant='solid' href='/register'>Hire Developers</Button>
+        <Button className='' loading={false} variant='solid' color='vlue' href='/register'>Hire Developers</Button>
 
-        <Button loading={false} href='/register' variant='outline'>
+        <Button className='' loading={false} href='/register' color='slate' variant='outline'>
           Join as a provider
         </Button>
       </div>
