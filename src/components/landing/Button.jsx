@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import clsx from 'clsx';
-import React from 'react';
 
 const baseStyles = {
   solid:
@@ -25,18 +24,13 @@ const variantStyles = {
   },
 };
 
-
-export function Button(
-  variant,
-  color,
-  className,
-  loading,
-  ...props) {
-
+export function Button({ variant, color, className, loading, ...props }) {
+  variant = variant ?? 'solid';
+  color = color ?? 'slate';
 
   className = clsx(
-    baseStyles,
-    variantStyles,
+    baseStyles[variant],
+    variantStyles[variant][color],
     className,
   );
   if (loading) {
