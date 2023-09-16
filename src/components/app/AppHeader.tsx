@@ -22,12 +22,18 @@ export default function AppHeader() {
   useEffect(() => {
     const getUser = async () => {
       const res = await supabase.auth.getUser();
-      if (res) {
+      console.log(res);
+      if (res.data.user) {
         setUser(res.data.user.email);
+      } else {
+        setUser('');
       }
     };
     getUser();
-  }, [supabase.auth]);
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setUser('');
+    });
+  }, []);
 
   const signOut = async () => {
     await supabase.auth.signOut();
