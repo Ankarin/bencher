@@ -1,5 +1,5 @@
 'use client';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
@@ -8,15 +8,27 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
+
 function classNames(...classes): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function AppHeader({ user }) {
+export default function AppHeader() {
   const router = useRouter();
   const supabase = createClientComponentClient();
   const pathname = usePathname();
-  const userEmail = user ? user.email : '';
+  const [userEmail, setUser] = useState('');
+
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await supabase.auth.getUser();
+      if (res) {
+        setUser(res.data.user.email);
+      }
+    };
+    getUser();
+  }, [supabase.auth]);
+
   const signOut = async () => {
     await supabase.auth.signOut();
     router.refresh();
@@ -89,7 +101,7 @@ export default function AppHeader({ user }) {
                       className='relative ml-4 flex-shrink-0 outline-none'
                     >
                       <div>
-                        {user ? (
+                        {userEmail ? (
                           <Menu.Button
                             className='relative flex rounded-full border-none bg-gray-800 text-sm text-white outline-none focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                             <span className='absolute -inset-1.5 outline-none' />
