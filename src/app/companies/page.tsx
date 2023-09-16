@@ -1,6 +1,7 @@
 import { getCompanies } from 'src/utils/supabase';
 import Company from 'src/app/(company)/my-company/Company';
 
+export const dynamic = 'force-dynamic';
 export default async function Companies() {
   const companies = await getCompanies();
 
