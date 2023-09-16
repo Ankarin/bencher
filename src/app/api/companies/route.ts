@@ -10,7 +10,7 @@ export async function PUT(request) {
     .insert({ name: body.name });
   if (error) {
     console.log(error);
-    return NextResponse.json({ error: error.message }, { status: '500' });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   } else {
     return NextResponse.json({ res: data }, { status: 200 });
   }

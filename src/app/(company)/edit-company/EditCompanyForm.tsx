@@ -7,7 +7,7 @@ import { PhotoIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 
 const supabase = createClientComponentClient();
-export default function CompanyEdit({ company, user }): React.ReactNode {
+export default function CompanyEdit({ company }): React.ReactNode {
   const id = company ? company.id : null;
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);

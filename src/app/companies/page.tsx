@@ -7,7 +7,7 @@ export default async function Companies() {
   return (
     <div className='mx-auto grid max-w-6xl grid-cols-1 gap-10 p-5 md:p-10'>
       {companies.map((item) => (
-        <Company key={item.id} company={item}></Company>
+        <Company key={item.id} company={item} myCompany={false}></Company>
       ))}
     </div>
   );
