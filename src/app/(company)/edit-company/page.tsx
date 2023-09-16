@@ -1,4 +1,3 @@
-'use server';
 import EditCompanyForm from 'src/app/(company)/edit-company/EditCompanyForm';
 import { getCompanyData, getUser, getUserData } from 'src/utils/supabase';
 import React from 'react';
