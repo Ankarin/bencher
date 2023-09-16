@@ -30,7 +30,7 @@ export default function AppHeader() {
       }
     };
     getUser();
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabase.auth.onAuthStateChange(() => {
       setUser('');
     });
   }, []);
