@@ -66,12 +66,21 @@ export default function AppHeader({ user }): React.ReactNode {
                       >
                         Companies
                       </Link>
+
+                      <Link
+                        href='/mydevs'
+                        className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                      >
+                        My Devs
+                      </Link>
+                      
                     </div>
                   </div>
                 </div>
                 <div className='flex lg:hidden'>
                   {/* Mobile menu button */}
-                  <Disclosure.Button className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+                  <Disclosure.Button
+                    className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
                     <span className='absolute -inset-0.5' />
                     <span className='sr-only'>Open main menu</span>
                     {open ? (
@@ -89,7 +98,8 @@ export default function AppHeader({ user }): React.ReactNode {
                     >
                       <div>
                         {user ? (
-                          <Menu.Button className='relative flex rounded-full border-none bg-gray-800 text-sm text-white outline-none focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                          <Menu.Button
+                            className='relative flex rounded-full border-none bg-gray-800 text-sm text-white outline-none focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                             <span className='absolute -inset-1.5 outline-none' />
                             <span className='sr-only'>Open user menu</span>
                             <span className={'pr-3 pt-1 outline-none'}>
@@ -131,14 +141,15 @@ export default function AppHeader({ user }): React.ReactNode {
                         leaveFrom='transform opacity-100 scale-100'
                         leaveTo='transform opacity-0 scale-95'
                       >
-                        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                        <Menu.Items
+                          className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                           <Menu.Item>
                             {({ active }) => (
                               <Link
                                 href='#'
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
+                                  'block px-4 py-2 text-sm text-gray-700',
                                 )}
                               >
                                 My Profile
@@ -151,7 +162,7 @@ export default function AppHeader({ user }): React.ReactNode {
                                 href='/my-company'
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
+                                  'block px-4 py-2 text-sm text-gray-700',
                                 )}
                               >
                                 My Company
@@ -164,7 +175,7 @@ export default function AppHeader({ user }): React.ReactNode {
                                 onClick={signOut}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block cursor-pointer px-4 py-2 text-sm text-gray-700'
+                                  'block cursor-pointer px-4 py-2 text-sm text-gray-700',
                                 )}
                               >
                                 Sign out
