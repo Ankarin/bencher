@@ -27,7 +27,7 @@ function Content({ type }): React.ReactNode {
         User with email you provided is already exists.
       </h2>
       <br />
-      <Button href='/login' variant='solid' color='blue' className='w-full'>
+      <Button loading={false} href='/login' variant='solid' color='blue' className='w-full'>
         <span>
           Sign In <span aria-hidden='true'></span>
         </span>
@@ -39,7 +39,7 @@ function Content({ type }): React.ReactNode {
         Check your email to confirm registration.
       </h2>
       <br />
-      <Button href='/' variant='solid' color='blue' className='w-full'>
+      <Button loading={false} href='/' variant='solid' color='blue' className='w-full'>
         <span>
           Go Back <span aria-hidden='true'></span>
         </span>
@@ -51,7 +51,7 @@ function Content({ type }): React.ReactNode {
         Thank you for completing registration, you can sign in now!
       </h2>
       <br />
-      <Button href='/login' variant='solid' color='blue' className='w-full'>
+      <Button href='/login' loading={false} variant='solid' color='blue' className='w-full'>
         <span>
           Sign In<span aria-hidden='true'></span>
         </span>
@@ -63,7 +63,7 @@ function Content({ type }): React.ReactNode {
         Check your email, we've sent you a link to reset your password.
       </h2>
       <br />
-      <Button href='/' variant='solid' color='blue' className='w-full'>
+      <Button href='/' loading={false} variant='solid' color='blue' className='w-full'>
         <span>
           Go Back <span aria-hidden='true'></span>
         </span>
@@ -75,7 +75,7 @@ function Content({ type }): React.ReactNode {
         Sorry, something went wrong
       </h2>
       <br />
-      <Button href='/' variant='solid' color='blue' className='w-full'>
+      <Button href='/' loading={false} variant='solid' color='blue' className='w-full'>
         <span>
           Go Back <span aria-hidden='true'></span>
         </span>

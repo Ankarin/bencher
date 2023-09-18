@@ -1,5 +1,5 @@
 'use client';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
@@ -8,15 +8,33 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
+
 function classNames(...classes): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function AppHeader({ user }): React.ReactNode {
+export default function AppHeader() {
   const router = useRouter();
   const supabase = createClientComponentClient();
   const pathname = usePathname();
-  const userEmail = user ? user.email : '';
+  const [userEmail, setUser] = useState('');
+
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await supabase.auth.getUser();
+      console.log(res);
+      if (res.data.user) {
+        setUser(res.data.user.email);
+      } else {
+        setUser('');
+      }
+    };
+    getUser();
+    supabase.auth.onAuthStateChange(() => {
+      setUser('');
+    });
+  }, []);
+
   const signOut = async () => {
     await supabase.auth.signOut();
     router.refresh();
@@ -66,14 +84,6 @@ export default function AppHeader({ user }): React.ReactNode {
                       >
                         Companies
                       </Link>
-
-                      <Link
-                        href='/my-devs'
-                        className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-                      >
-                        My Devs
-                      </Link>
-
                     </div>
                   </div>
                 </div>
@@ -97,7 +107,7 @@ export default function AppHeader({ user }): React.ReactNode {
                       className='relative ml-4 flex-shrink-0 outline-none'
                     >
                       <div>
-                        {user ? (
+                        {userEmail ? (
                           <Menu.Button
                             className='relative flex rounded-full border-none bg-gray-800 text-sm text-white outline-none focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                             <span className='absolute -inset-1.5 outline-none' />
@@ -118,6 +128,7 @@ export default function AppHeader({ user }): React.ReactNode {
                         ) : (
                           <div className='flex'>
                             <Button
+                              loading={false}
                               href='/login'
                               className='mr-2'
                               color='white'
@@ -126,7 +137,7 @@ export default function AppHeader({ user }): React.ReactNode {
                               <span>Sign In</span>
                             </Button>
 
-                            <Button href='/register' color='blue'>
+                            <Button className='' loading={false} variant='solid' href='/register' color='blue'>
                               <span>Sign Up</span>
                             </Button>
                           </div>

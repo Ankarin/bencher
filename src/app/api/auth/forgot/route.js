@@ -1,10 +1,11 @@
+// 'use server';
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
-export async function POST(request: Request) {
+export async function POST(request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const email = String(formData.get('email'));
@@ -18,7 +19,7 @@ export async function POST(request: Request) {
     console.log(error);
     return NextResponse.redirect(
       `${requestUrl.origin}/login?error=${error}`,
-      301
+      301,
     );
   }
 

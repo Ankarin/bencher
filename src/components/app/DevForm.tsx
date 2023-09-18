@@ -99,7 +99,7 @@ export default function DevForm({ isNew = false }: devFormProps) {
                   required
                   id='available'
                   name='available'
-                  value={location}
+                  value={available}
                   onChange={(e) => {
                     setAvailable(e.target.value);
                   }}

@@ -9,7 +9,7 @@ import { countries } from '@/utils/utils';
 
 
 const supabase = createClientComponentClient();
-export default function CompanyEdit({ company, user }): React.ReactNode {
+export default function CompanyEdit({ company }): React.ReactNode {
   const id = company ? company.id : null;
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -61,10 +61,7 @@ export default function CompanyEdit({ company, user }): React.ReactNode {
         id: id,
         ...newCompany,
       };
-      const res = await updateCompany(updatedCompany);
-      if (res.error) {
-        alert(res.error.message);
-      }
+      await updateCompany(updatedCompany);
     }
     setLoading(false);
   };
@@ -379,6 +376,7 @@ export default function CompanyEdit({ company, user }): React.ReactNode {
             Cancel
           </button>
           <Button
+            variant='solid'
             type='submit'
             className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             loading={loading}

@@ -32,6 +32,7 @@ export default function Login({ searchParams }): React.ReactNode {
           />
           <div>
             <Button
+              loading={false}
               type='submit'
               variant='solid'
               color='blue'

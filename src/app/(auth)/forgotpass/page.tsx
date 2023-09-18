@@ -36,6 +36,7 @@ export default function Forgotpass({ searchParams }): React.ReactNode {
           />
           <div>
             <Button
+              loading={false}
               type='submit'
               variant='solid'
               color='blue'

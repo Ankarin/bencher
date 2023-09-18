@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 const baseStyles = {
   solid:
@@ -24,40 +24,14 @@ const variantStyles = {
   },
 };
 
-type VariantKey = keyof typeof variantStyles;
-type ColorKey<Variant extends VariantKey> =
-  keyof (typeof variantStyles)[Variant];
-
-type ButtonProps<
-  Variant extends VariantKey,
-  Color extends ColorKey<Variant>,
-> = {
-  variant?: Variant;
-  color?: Color;
-} & (
-  | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
-  | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
-      href?: undefined;
-    })
-);
-
-export function Button<
-       Color extends ColorKey<Variant>,
-  Variant extends VariantKey = 'solid',
->({
-  variant,
-  color,
-  className,
-  loading,
-  ...props
-}: ButtonProps<Variant, Color>) {
-  variant = variant ?? ('solid' as Variant);
-  color = color ?? ('slate' as Color);
+export function Button({ variant, color, className, loading, ...props }) {
+  variant = variant ?? 'solid';
+  color = color ?? 'slate';
 
   className = clsx(
     baseStyles[variant],
     variantStyles[variant][color],
-    className
+    className,
   );
   if (loading) {
     return (
@@ -65,7 +39,8 @@ export function Button<
         className={`text-primary inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`}
         role='status'
       >
-        <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+        <span
+          className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
           Loading...
         </span>
       </div>

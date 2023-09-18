@@ -96,7 +96,7 @@ export default function Company({ company, myCompany }): React.ReactNode {
         >
           Details
         </Link>
-        {myCompany ? '' : <Button color={'blue'}>Message</Button>}
+        {myCompany ? '' : <Button variant='solid' className='' loading={false} color='blue'>Message</Button>}
       </div>
     </div>
   );

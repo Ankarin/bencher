@@ -111,6 +111,7 @@ export default function Register(): React.ReactNode {
             <br />
 
             <Button
+              loading={false}
               type='submit'
               variant='solid'
               color='blue'
