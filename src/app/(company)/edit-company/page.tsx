@@ -10,7 +10,7 @@ export default async function MyCompany(): Promise<React.ReactNode> {
     : null;
 
   return (
-    <div className='mx-auto max-w-6xl p-5 md:p-10'>
+    <div className='mx-auto max-w-5xl p-5 md:p-10'>
       <EditCompanyForm company={company} user={user.data}></EditCompanyForm>
     </div>
   );

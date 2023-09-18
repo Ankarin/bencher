@@ -68,12 +68,12 @@ export default function AppHeader({ user }): React.ReactNode {
                       </Link>
 
                       <Link
-                        href='/mydevs'
+                        href='/my-devs'
                         className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
                       >
                         My Devs
                       </Link>
-                      
+
                     </div>
                   </div>
                 </div>
