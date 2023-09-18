@@ -84,6 +84,12 @@ export default function AppHeader() {
                       >
                         Companies
                       </Link>
+                      <Link
+                        href='/my-devs'
+                        className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                      >
+                        My Developers
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -1,13 +1,13 @@
 'use client';
-import { Button } from '@/components/landing/Button';
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid';
+// import { Button } from '@/components/landing/Button';
+import { PhotoIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
-
-import { countries, availableOptions } from '@/utils/utils';
+import Select from 'react-tailwindcss-select';
+import { countries, availableOptions, englishLevels, languages } from '@/utils/utils';
 
 
 interface devFormProps {
-  new?: boolean; // 👈️ marked optional
+  isNew?: boolean; // 👈️ marked optional
 }
 
 
@@ -15,7 +15,20 @@ export default function DevForm({ isNew = false }: devFormProps) {
   const [experience, setExperience] = useState('3');
   const [location, setLocation] = useState('');
   const [available, setAvailable] = useState('');
+  const [english, setEnglish] = useState('');
+  const [otherLanguages, setOtherLanguages] = useState(null);
 
+
+  const languagesOptions = languages().map(item => {
+    return { value: item, label: item };
+  });
+
+  const handleSelect = (val) => {
+    setOtherLanguages(val);
+  };
+
+
+  console.log(isNew);
   return (
     <form>
       <div className='space-y-12'>
@@ -44,22 +57,7 @@ export default function DevForm({ isNew = false }: devFormProps) {
                 </div>
               </div>
             </div>
-            <div className='sm:col-span-3'>
-              <label htmlFor='about' className='block text-sm font-medium leading-6 text-gray-900'>
-                {experience} +
-                years of experience
-              </label>
-              <div className='mt-2'>
 
-
-                <input id='experience' name='experience' type='range' min='1' max='10' value={experience}
-                       onChange={(e) => {
-                         setExperience(e.target.value);
-                       }}
-                       list='markers'
-                       className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700' />
-              </div>
-            </div>
             <div className='sm:col-span-3'>
               <div className='mt-2 '>
                 <label
@@ -110,6 +108,76 @@ export default function DevForm({ isNew = false }: devFormProps) {
                     <option key={country}>{country}</option>
                   ))}
                 </select>
+              </div>
+            </div>
+            <div className='sm:col-span-3'>
+              <div className='mt-2 '>
+                <label
+                  htmlFor='location'
+                  className='block text-sm font-medium leading-6 text-gray-900'
+                >
+
+                  English Level
+                </label>
+                <select
+                  required
+                  id='english'
+                  name='english'
+                  value={english}
+                  onChange={(e) => {
+                    setEnglish(e.target.value);
+                  }}
+                  className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                >
+                  <option></option>
+                  {englishLevels().map((item) => (
+                    <option key={item.level}>{item.text}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className='sm:col-span-3'>
+              <label htmlFor='about' className='block text-sm font-medium leading-6 text-gray-900'>
+                {experience} +
+                years of experience
+              </label>
+              <div className='mt-2'>
+
+
+                <input id='experience' name='experience' type='range' min='1' max='10' value={experience}
+                       onChange={(e) => {
+                         setExperience(e.target.value);
+                       }}
+                       list='markers'
+                       className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700' />
+              </div>
+            </div>
+            <div className='sm:col-span-3'>
+              <div className='mt-2 '>
+                <label
+                  htmlFor='location'
+                  className='block text-sm font-medium leading-6 text-gray-900'
+                >
+
+                  Other Languages
+                </label>
+                <div className={'mt-2'}>
+
+
+                  <Select
+                    value={otherLanguages}
+                    onChange={handleSelect}
+                    options={languagesOptions}
+                    primaryColor='blue'
+                    isMultiple={true}
+                    isSearchable={true}
+                    isClearable={true}
+                    classNames={{
+                      menuButton: () => 'rounded-md border-0  flex border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6',
+                    }}
+                  />
+                </div>
+
               </div>
             </div>
             <div className='col-span-full'>
