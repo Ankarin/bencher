@@ -1,4 +1,4 @@
-const countries = () => [
+const countries = (): Array<string> => [
   'Afghanistan',
   'Aland Islands',
   'Albania',
@@ -249,19 +249,25 @@ const countries = () => [
   'Zimbabwe',
 ];
 
-const availableOptions = () => [
+const availableOptions = (): Array<string> => [
   'ASAP', '1 week', '2 weeks', '3 weeks', 'Month+',
 ];
 
-const englishLevels = () =>
+interface englishLevel {
+  text: string,
+  level: number
+}
+
+const englishLevels = (): Array<englishLevel> =>
   [{ text: 'Basic (A0-A2)', level: 0 },
     { text: 'Intermediate (B1)', level: 1 },
     { text: 'Upper Intermediate (B2)', level: 2 },
     { text: 'Fluent (C1-C2)', level: 3 },
     { text: 'Native / Bilingual', level: 4 }];
 
-const languages = () => [
+const languages = (): Array<string> => [
   'Afrikaans',
+  'Albanian',
   'Albanian',
   'Amharic',
   'Arabic',

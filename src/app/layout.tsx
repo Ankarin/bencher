@@ -4,6 +4,7 @@ import AppHeader from '@/components/app/AppHeader';
 import '@/styles/tailwind.css';
 import { type Metadata } from 'next';
 import React from 'react';
+import 'react-tooltip/dist/react-tooltip.css';
 
 export const metadata: Metadata = {
   title: {
