@@ -1,35 +1,44 @@
 'use client';
 // import { Button } from '@/components/landing/Button';
-import { PhotoIcon, InformationCircleIcon } from '@heroicons/react/24/solid';
+import { PhotoIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
 import Select from 'react-tailwindcss-select';
-import { countries, availableOptions, englishLevels, languages } from '@/utils/options';
-import { disableArrowsNumber } from '@/utils/tailwindDefaults';
-import { Tooltip } from 'react-tooltip';
+import {
+  countriesForReactSelect,
+  availableOptions,
+  englishLevels,
+  languagesForReactSelect,
+  rolesForReactSelect,
+} from '@/utils/options';
 
-interface devFormProps {
-  isNew?: boolean; // 👈️ marked optional
-}
 
-
-export default function DevForm({ isNew = false }: devFormProps) {
+export default function DevForm() {
+  const [title, setTitle] = useState('');
+  const [role, setRole] = useState(null);
   const [experience, setExperience] = useState('3');
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState(null);
   const [available, setAvailable] = useState('');
   const [english, setEnglish] = useState('');
-  const [otherLanguages, setOtherLanguages] = useState(null);
+  const [otherLanguages, setOtherLanguages] = useState([]);
 
 
-  const languagesOptions = languages().map(item => {
-    return { value: item, label: item };
-  });
-
-  const handleSelect = (val) => {
+  const handleLangSelect = (val) => {
     setOtherLanguages(val);
   };
 
+  const handleSetRole = (val) => {
+    setRole(val);
+  };
 
-  console.log(isNew);
+  const handleSetLocation = (val) => {
+    setLocation(val);
+  };
+
+
+  const conc = (e) => {
+    e.preventDefault();
+    console.log(title, role, experience, location, available, english, otherLanguages);
+  };
   return (
     <form>
       <div className='space-y-12'>
@@ -48,11 +57,12 @@ export default function DevForm({ isNew = false }: devFormProps) {
               <div
                 className='flex mt-2 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600'>
                 <input
+                  onChange={(e) => setTitle(e.target.value)}
                   type='text'
                   name='name'
                   id='name'
                   autoComplete='name'
-                  className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                  className='block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                 />
               </div>
             </div>
@@ -63,23 +73,21 @@ export default function DevForm({ isNew = false }: devFormProps) {
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
 
-                Location *
+                Role*
               </label>
-              <select
-                required
-                id='location'
-                name='location'
-                value={location}
-                onChange={(e) => {
-                  setLocation(e.target.value);
-                }}
-                className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
-              >
-                <option></option>
-                {countries().map((country) => (
-                  <option key={country}>{country}</option>
-                ))}
-              </select>
+              <div className={'mt-2'}>
+                <Select
+                  value={role}
+                  onChange={handleSetRole}
+                  options={rolesForReactSelect()}
+                  primaryColor='blue'
+                  isSearchable={true}
+                  isClearable={true}
+                  classNames={{
+                    menuButton: () => 'rounded-md border-0 h-9  flex border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6',
+                  }}
+                />
+              </div>
             </div>
             <div className='sm:col-span-3'>
               <div className='mt-2'>
@@ -101,8 +109,8 @@ export default function DevForm({ isNew = false }: devFormProps) {
                   className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
                 >
                   <option></option>
-                  {availableOptions().map((country) => (
-                    <option key={country}>{country}</option>
+                  {availableOptions().map((option) => (
+                    <option key={option}> {option}</option>
                   ))}
                 </select>
               </div>
@@ -128,9 +136,32 @@ export default function DevForm({ isNew = false }: devFormProps) {
                 >
                   <option></option>
                   {englishLevels().map((item) => (
-                    <option key={item.level}>{item.text}</option>
+                    <option key={item}>{item}</option>
                   ))}
                 </select>
+              </div>
+            </div>
+            <div className='sm:col-span-3'>
+              <label
+                htmlFor='location'
+                className='block text-sm font-medium leading-6 text-gray-900'
+              >
+
+                Location
+              </label>
+              <div className={'mt-2'}>
+                <Select
+                  value={location}
+                  onChange={handleSetLocation}
+                  options={countriesForReactSelect()}
+                  primaryColor='blue'
+                  isMultiple={true}
+                  isSearchable={true}
+                  isClearable={true}
+                  classNames={{
+                    menuButton: () => 'rounded-md border-0  flex border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6',
+                  }}
+                />
               </div>
             </div>
             <div className='sm:col-span-3'>
@@ -144,8 +175,8 @@ export default function DevForm({ isNew = false }: devFormProps) {
               <div className={'mt-2'}>
                 <Select
                   value={otherLanguages}
-                  onChange={handleSelect}
-                  options={languagesOptions}
+                  onChange={handleLangSelect}
+                  options={languagesForReactSelect()}
                   primaryColor='blue'
                   isMultiple={true}
                   isSearchable={true}
@@ -156,6 +187,7 @@ export default function DevForm({ isNew = false }: devFormProps) {
                 />
               </div>
             </div>
+
             <div className='sm:col-span-3'>
               <label htmlFor='about' className='block text-sm font-medium leading-6 text-gray-900'>
                 {experience} +
@@ -186,7 +218,7 @@ export default function DevForm({ isNew = false }: devFormProps) {
                   type='number'
                   name='rate'
                   id='rate'
-                  className={`${disableArrowsNumber()}  block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
+                  className={`[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
                   placeholder='0.00'
                   aria-describedby='price-currency'
                 />
@@ -254,7 +286,8 @@ export default function DevForm({ isNew = false }: devFormProps) {
           Cancel
         </button>
         <button
-          type='submit'
+          onClick={conc}
+
           className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
           Save

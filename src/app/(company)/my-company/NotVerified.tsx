@@ -14,7 +14,6 @@ export default function NotVerified(): React.ReactNode {
               We want to make sure that only trustworthy companies are on our
               platform.
             </p>
-
             <p>Usually, it takes less than 24 hours.</p>
           </div>
         </div>

@@ -22,7 +22,6 @@ export default function AppHeader() {
   useEffect(() => {
     const getUser = async () => {
       const res = await supabase.auth.getUser();
-      console.log(res);
       if (res.data.user) {
         setUser(res.data.user.email);
       } else {
