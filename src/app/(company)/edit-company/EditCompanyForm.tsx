@@ -5,7 +5,7 @@ import { Button } from '@/components/landing/Button';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import { countries } from '@/utils/utils';
+import { countries } from '@/utils/options';
 
 
 const supabase = createClientComponentClient();
