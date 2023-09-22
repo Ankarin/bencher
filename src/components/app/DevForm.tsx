@@ -3,7 +3,7 @@
 import { PhotoIcon, InformationCircleIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
 import Select from 'react-tailwindcss-select';
-import { countries, availableOptions, englishLevels, languages } from '@/utils/utils';
+import { countries, availableOptions, englishLevels, languages } from '@/utils/options';
 import { disableArrowsNumber } from '@/utils/tailwindDefaults';
 import { Tooltip } from 'react-tooltip';
 
