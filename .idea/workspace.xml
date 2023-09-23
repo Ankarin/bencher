@@ -4,14 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18036aee-fa6c-468e-9283-dc792c97c3c7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
+    <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/(developers)/developer/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(developers)/developers/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(requests)/add-request/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(requests)/my-requests/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(requests)/request/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(requests)/requests/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/cards/CompanyCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/cards/DevCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/DevForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/options.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/edit-company/EditCompanyForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/edit-company/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/Company.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/Company.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/MyCompanyHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/MyCompanyHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/NoCompany.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/NoCompany.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/NotVerified.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/NotVerified.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/add-dev/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/add-dev/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/developers/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/my-devs/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +42,6 @@
       <list>
         <option value="JavaScript File" />
         <option value="TypeScript JSX File" />
-        <option value="CSS File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -65,21 +83,19 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "js.linters.configure.manually.selectedeslint": "true",
     "last_opened_file_path": "/Users/ankarin/bencher",
-    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
     "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -102,7 +118,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="18036aee-fa6c-468e-9283-dc792c97c3c7" name="Changes" comment="" />
+      <changelist id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="" />
       <created>1694406714432</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -126,7 +142,6 @@
       <workItem from="1694867756697" duration="405000" />
       <workItem from="1694868573493" duration="4934000" />
       <workItem from="1695041604288" duration="10663000" />
-      <workItem from="1695387432216" duration="13379000" />
     </task>
     <servers />
   </component>

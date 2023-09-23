@@ -27,11 +27,6 @@ export default function Company({ company, myCompany }): React.ReactNode {
       data: company.location,
       icon: MapPinIcon,
     },
-
-    // {
-    //     data: `${company.founding_year} `,
-    //     icon: FlagIcon
-    // },
   ];
 
   return (

@@ -25,4 +25,9 @@ const createCompany = async (params) => {
 };
 
 
-export { updateUserData, updateCompany, createCompany };
+const getCompanyData = async (company_id) => {
+  const res = await supabase.from('companies').select().eq('id', company_id);
+  return res.data[0];
+};
+
+export { updateUserData, updateCompany, createCompany, getCompanyData };
