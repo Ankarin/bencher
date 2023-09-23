@@ -35,7 +35,6 @@ const languages = () => [
   'Danish',
   'Dutch',
   'Dzongkha',
-  'English',
   'Esperanto',
   'Estonian',
   'Ewe',
@@ -177,7 +176,7 @@ const languages = () => [
   'Zhuang',
   'Zulu',
 ];
-const availableOptions = () => ['ASAP', '1 week', '2 weeks', '3 weeks'];
+const availableOptions = () => ['ASAP', '1 week', '2 weeks', '3 weeks', 'Month+'];
 const skills = () => [
   'JavaScript',
   'Python',
@@ -642,10 +641,6 @@ const rolesArray = () => [
     description: 'Provides technical support to customers, addressing their issues and inquiries.',
   },
   {
-    role: 'Release Manager',
-    description: 'Oversees the release process, ensuring smooth deployments and version control.',
-  },
-  {
     role: 'Project Manager',
     description: 'Manages software development projects, including scheduling, budgeting, and resource allocation.',
   },
@@ -662,10 +657,23 @@ const rolesArray = () => [
     description: 'Focuses on the reliability, availability, and performance of software and systems in production.',
   },
   {
+    role: 'Blockchain Developer',
+    description: 'Specializes in developing decentralized applications (DApps), smart contracts, and blockchain-based solutions.',
+  },
+  {
+    role: 'Data Analyst',
+    description: 'Analyzes data to provide insights and support data-driven decision-making within the organization.',
+  },
+  {
+    role: 'BI Developer',
+    description: 'Focuses on designing, developing, and maintaining business intelligence solutions, including data modeling, reporting, and dashboard development.',
+  },
+  {
     role: 'Other Role',
     description: '',
   },
 ];
+
 
 const countriesArray = () => [
   {
@@ -1081,10 +1089,6 @@ const countriesArray = () => [
     'region': 'Asia',
   },
   {
-    'country': 'Iran',
-    'region': 'Asia',
-  },
-  {
     'country': 'Iraq',
     'region': 'Asia',
   },
@@ -1321,10 +1325,6 @@ const countriesArray = () => [
     'region': 'Oceania',
   },
   {
-    'country': 'North Korea',
-    'region': 'Asia',
-  },
-  {
     'country': 'Northern Mariana Islands',
     'region': 'Oceania',
   },
@@ -1398,10 +1398,6 @@ const countriesArray = () => [
   },
   {
     'country': 'Romania',
-    'region': 'Europe',
-  },
-  {
-    'country': 'Russia',
     'region': 'Europe',
   },
   {
@@ -1671,33 +1667,34 @@ const countriesArray = () => [
 ];
 
 const countries = () => countriesArray().map(item => item.country);
-
-const countriesForReactSelect = () => countries().map((item) => ({ value: item, label: item }));
-
-
 const roles = () => rolesArray().map(item => item.role);
-
-const rolesForReactSelect = () => roles().map((item) => ({ value: item, label: item }));
+const skillList = () => skills().map(item => ({ value: item, label: item }));
 
 
 const languagesForReactSelect = () => languages().map((item) => ({ value: item, label: item }));
 
-const getRegion = (country) => countriesArray().find(item => item.country === country);
+const getRegion = (country) => {
+  const res = countriesArray().find(item => item.country === country);
+  return res ? res.region : '';
+
+};
 
 
-const getRoleDescription = (roleName) => rolesArray().find(item => item.role === roleName);
+const getRoleDescription = (roleName) => {
+  const role = rolesArray().find(item => item.role === roleName);
+  return role ? role.description : '';
+};
 
 
 export {
   countries,
   skills,
+  skillList,
   availableOptions,
   englishLevels,
   languages,
   roles,
   getRegion,
   getRoleDescription,
-  countriesForReactSelect,
-  rolesForReactSelect,
   languagesForReactSelect,
 };

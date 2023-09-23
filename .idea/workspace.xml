@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18036aee-fa6c-468e-9283-dc792c97c3c7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(company)/my-company/NotVerified.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/my-company/NotVerified.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/DevForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(company)/edit-company/EditCompanyForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/DevForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/options.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +23,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="TypeScript JSX File" />
+        <option value="CSS File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -65,6 +67,7 @@
     "git-widget-placeholder": "main",
     "js.linters.configure.manually.selectedeslint": "true",
     "last_opened_file_path": "/Users/ankarin/bencher",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.stylelint": "true",
@@ -99,7 +102,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bb485e7a-1e42-4aa2-8e21-6110a9f188a0" name="Changes" comment="" />
+      <changelist id="18036aee-fa6c-468e-9283-dc792c97c3c7" name="Changes" comment="" />
       <created>1694406714432</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -123,6 +126,7 @@
       <workItem from="1694867756697" duration="405000" />
       <workItem from="1694868573493" duration="4934000" />
       <workItem from="1695041604288" duration="10663000" />
+      <workItem from="1695387432216" duration="13379000" />
     </task>
     <servers />
   </component>

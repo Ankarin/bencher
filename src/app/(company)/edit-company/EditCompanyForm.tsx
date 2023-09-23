@@ -26,7 +26,6 @@ export default function CompanyEdit({ company }): React.ReactNode {
 
   useEffect(() => {
     if (company) {
-      console.log(company);
       setName(company.name);
       setWebsite(company.website);
       setSize(company.size);
@@ -356,9 +355,10 @@ export default function CompanyEdit({ company }): React.ReactNode {
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
-                  maxLength={400}
+                  maxLength={300}
                   minLength={30}
                 />
+
               </div>
               <p className='mt-3 text-sm leading-6 text-gray-600'>
                 Write a few sentences about your company to highlight your
