@@ -28,7 +28,8 @@
     "react-dom": "18.2.0",
     "react-tailwindcss-select": "^1.8.5",
     "react-tooltip": "^5.21.3",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.4.19",

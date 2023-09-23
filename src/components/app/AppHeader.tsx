@@ -5,9 +5,11 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { Button } from '@/components/landing/Button';
 import { usePathname, useRouter } from 'next/navigation';
+import { getCompanyData } from '@/utils/supabaseClient';
 import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
+import { zust } from '@/store';
 
 function classNames(...classes): string {
   return classes.filter(Boolean).join(' ');
@@ -17,21 +19,31 @@ export default function AppHeader() {
   const router = useRouter();
   const supabase = createClientComponentClient();
   const pathname = usePathname();
-  const [userEmail, setUser] = useState('');
+
+
+  const zustSetUser = zust(state => state.setUser);
+  const zustSetCompany = zust(state => state.setCompany);
+  const zustUser = zust(state => state.user);
+  const zustCompany = zust(state => state.myCompany);
 
   useEffect(() => {
     const getUser = async () => {
       const res = await supabase.auth.getUser();
-      console.log(res);
       if (res.data.user) {
-        setUser(res.data.user.email);
+        const userData = await supabase.from('users').select().eq('id', res.data.user.id);
+        const user = userData.data[0];
+        zustSetUser(user);
+        if (user.company_id) {
+          const res = await getCompanyData(user.company_id);
+          zustSetCompany(res);
+        }
       } else {
-        setUser('');
+        zustSetUser(null);
       }
     };
     getUser();
     supabase.auth.onAuthStateChange(() => {
-      setUser('');
+      zustSetUser(null);
     });
   }, []);
 
@@ -67,10 +79,10 @@ export default function AppHeader() {
                     <div className='flex space-x-4'>
                       {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                       <Link
-                        href='/hire'
+                        href='/developers'
                         className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white '
                       >
-                        Hire
+                        Developers
                       </Link>
                       <Link
                         href='/requests'
@@ -84,12 +96,26 @@ export default function AppHeader() {
                       >
                         Companies
                       </Link>
-                      <Link
-                        href='/my-devs'
-                        className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-                      >
-                        My Developers
-                      </Link>
+                      {<div className='flex w-full just space-x-4'>
+                        <Link
+                          href='/my-devs'
+                          className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                        >
+                          My Developers
+                        </Link>
+                        <Link
+                          href='/my-requests'
+                          className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                        >
+                          My Requets
+                        </Link>
+                        <Link
+                          href='/my-company'
+                          className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                        >
+                          My Company
+                        </Link>
+                      </div>}
                     </div>
                   </div>
                 </div>
@@ -113,14 +139,14 @@ export default function AppHeader() {
                       className='relative ml-4 flex-shrink-0 outline-none'
                     >
                       <div>
-                        {userEmail ? (
+                        {zustUser ? (
                           <Menu.Button
                             className='relative flex rounded-full border-none bg-gray-800 text-sm text-white outline-none focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                             <span className='absolute -inset-1.5 outline-none' />
                             <span className='sr-only'>Open user menu</span>
                             <span className={'pr-3 pt-1 outline-none'}>
                               {' '}
-                              {userEmail}
+                              {zustUser.first_name} {zustCompany ? `@${zustCompany.name}` : ''}
                             </span>
 
                             <Image
@@ -175,19 +201,6 @@ export default function AppHeader() {
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <Link
-                                href='/my-company'
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700',
-                                )}
-                              >
-                                My Company
-                              </Link>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
                               <p
                                 onClick={signOut}
                                 className={classNames(
@@ -212,61 +225,104 @@ export default function AppHeader() {
                 {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                 <Disclosure.Button
                   as='a'
-                  href='#'
-                  className='block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white'
+                  href='/developers'
+                  className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
                 >
-                  Dashboard
+                  Developers
                 </Disclosure.Button>
                 <Disclosure.Button
                   as='a'
-                  href='#'
+                  href='/requests'
                   className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
                 >
-                  Team
+                  Requests
                 </Disclosure.Button>
                 <Disclosure.Button
                   as='a'
-                  href='#'
+                  href='/companies'
                   className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
                 >
-                  Projects
+                  Companies
                 </Disclosure.Button>
               </div>
               <div className='border-t border-gray-700 pb-3 pt-4'>
-                <div className='flex items-center px-5'>
-                  <div className='ml-3'>
-                    <div className='text-base font-medium text-white'>
-                      Tom Cook
+                {/*<div className='flex items-center px-5'>*/}
+                {/*  <div className='ml-3'>*/}
+                {/*    <div className='text-base font-medium text-white'>*/}
+                {/*      Tom Cook*/}
+                {/*    </div>*/}
+                {/*    <div className='text-sm font-medium text-gray-400'>*/}
+                {/*      tom@example.com*/}
+                {/*    </div>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
+                {!zustUser ?
+                  <div className='mt-3 space-y-1 px-2'>
+                    <Disclosure.Button
+                      as='a'
+                      href='/login'
+                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                    >
+                      Sign In
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      as='a'
+                      href='/register'
+                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                    >
+                      Sign Up
+                    </Disclosure.Button>
+                  </div> : <div className='mt-3 space-y-1 px-2'>
+                    <div className='ml-3'>
+                      <div className='text-base text-lg mb-5 font-medium text-white'>
+                        {zustUser.first_name}
+                      </div>
                     </div>
-                    <div className='text-sm font-medium text-gray-400'>
-                      tom@example.com
+
+                    <Disclosure.Button
+                      as='a'
+                      href='/my-profile'
+                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                    >
+                      My Profile
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      as='a'
+                      href='/my-company'
+                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                    >
+                      My Company
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      as='a'
+                      href='/my-devs'
+                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                    >
+                      My Developers
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      as='a'
+                      href='/my-requests'
+                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                    >
+                      My Requests
+                    </Disclosure.Button>
+
+                    <div className={'pt-5'}>
+
+
+                      <Disclosure.Button
+                        onClick={signOut}
+                        className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                      >
+                        Sign Out
+                      </Disclosure.Button>
                     </div>
                   </div>
-                </div>
-                <div className='mt-3 space-y-1 px-2'>
-                  <Disclosure.Button
-                    as='a'
-                    href='#'
-                    className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
-                  >
-                    Your Profile
-                  </Disclosure.Button>
-                  <Disclosure.Button
-                    as='a'
-                    href='#'
-                    className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
-                  >
-                    Settings
-                  </Disclosure.Button>
-                  <Disclosure.Button
-                    onClick={signOut}
-                    className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
-                  >
-                    Sign out
-                  </Disclosure.Button>
-                </div>
+                }
               </div>
             </Disclosure.Panel>
+
           </>
         )}
       </Disclosure>
