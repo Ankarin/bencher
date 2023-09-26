@@ -5,52 +5,36 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { Button } from '@/components/landing/Button';
 import { usePathname, useRouter } from 'next/navigation';
-import { getCompanyData } from '@/utils/supabaseClient';
 import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-
 import { zust } from '@/store';
 import { SmallLogo } from '@/components/SmallLogo';
+
+import { User, Company } from '@/utils/types';
+
+interface AppHeaderProps {
+  user: User;
+  company: Company;
+}
+
 
 function classNames(...classes): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function AppHeader() {
+export default function AppHeader({ user, company }: AppHeaderProps) {
   const router = useRouter();
   const supabase = createClientComponentClient();
   const pathname = usePathname();
-
-
-  const zustSetUser = zust(state => state.setUser);
   const zustSetCompany = zust(state => state.setCompany);
-  const zustUser = zust(state => state.user);
-  const zustCompany = zust(state => state.myCompany);
+  const zustSetUser = zust(state => state.setUser);
 
   useEffect(() => {
-    const getUser = async () => {
-      const res = await supabase.auth.getUser();
-      if (res.data.user) {
-        const userData = await supabase.from('users').select().eq('id', res.data.user.id);
-        const user = userData.data[0];
-        zustSetUser(user);
-        if (user.company_id) {
-          const res = await getCompanyData(user.company_id);
-          zustSetCompany(res);
-        }
-      } else {
-        zustSetUser(null);
-      }
-    };
-    getUser();
-    supabase.auth.onAuthStateChange((state) => {
-      if (state === 'SIGNED_OUT') {
-        zustSetUser(null);
-        zustSetCompany(null);
-      }
+    zustSetCompany(company);
+    zustSetUser(user);
 
-    });
-  }, []);
+  }, [user, company]);
+
 
   const signOut = async () => {
     await supabase.auth.signOut();
@@ -95,7 +79,7 @@ export default function AppHeader() {
                       >
                         Companies
                       </Link>
-                      {zustUser ? <div className='flex w-full just space-x-4'>
+                      {user ? <div className='flex w-full just space-x-4'>
                         <Link
                           href='/my-devs'
                           className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
@@ -138,14 +122,14 @@ export default function AppHeader() {
                       className='relative ml-4 flex-shrink-0 outline-none'
                     >
                       <div>
-                        {zustUser ? (
+                        {user ? (
                           <Menu.Button
                             className='relative flex rounded-full border-none  text-sm  font-medium outline-none focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                             <span className='absolute -inset-1.5 outline-none' />
                             <span className='sr-only'>Open user menu</span>
                             <span className={'pr-3 pt-1 outline-none'}>
                               {' '}
-                              {zustUser.first_name} {zustCompany ? `@${zustCompany.name}` : ''}
+                              {user.first_name} {company ? `@${company.name}` : ''}
                             </span>
 
                             <Image
@@ -245,7 +229,7 @@ export default function AppHeader() {
                 </Disclosure.Button>
               </div>
               <div className='border-t border-gray-700 pb-3 pt-4'>
-                {!zustUser ?
+                {!user ?
                   <div className='mt-3 space-y-1 px-2'>
                     <Disclosure.Button
                       as='a'
@@ -264,7 +248,7 @@ export default function AppHeader() {
                   </div> : <div className='mt-3 space-y-1 px-2'>
                     <div className='ml-3'>
                       <div className='text-base text-lg mb-5 font-medium text-white'>
-                        {zustUser.first_name}
+                        {user.first_name}
                       </div>
                     </div>
 

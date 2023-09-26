@@ -5,6 +5,8 @@ import '@/styles/tailwind.css';
 import { type Metadata } from 'next';
 import React from 'react';
 import 'react-tooltip/dist/react-tooltip.css';
+import { getUserData, getCompanyData } from '@/utils/supabase';
+import { zust } from '@/store';
 
 export const metadata: Metadata = {
   title: {
@@ -32,6 +34,14 @@ export default async function RootLayout({
                                          }: {
   children: React.ReactNode;
 }) {
+
+
+  const userData = await getUserData();
+  const companyData = await getCompanyData();
+
+  zust.setState({ user: userData, company: companyData });
+
+
   return (
     <html
       lang='en'
@@ -40,7 +50,7 @@ export default async function RootLayout({
     >
     <body className='relative min-h-full bg-white '>
     <div className='top:0 right:0 left:0 fixed z-50 w-screen'>
-      <AppHeader></AppHeader>
+      <AppHeader user={userData} company={companyData}></AppHeader>
     </div>
 
     <div className={'pt-20'}>{children}</div>

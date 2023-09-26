@@ -1,13 +1,12 @@
 import EditCompanyForm from '@/app/(companies)/edit-company/EditCompanyForm';
-import { getCompanyData, getUser, getUserData } from 'src/utils/supabase';
+import { getCompanyData, getUserData } from 'src/utils/supabase';
 import React from 'react';
 
 export const dynamic = 'force-dynamic';
 export default async function MyCompany() {
-  const user = await getUser();
-  const userData = await getUserData(user.id);
+  const userData = await getUserData();
   const company = userData.company_id
-    ? await getCompanyData(userData.company_id)
+    ? await getCompanyData()
     : null;
 
   return (
