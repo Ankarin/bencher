@@ -7,7 +7,7 @@ const supabase = createClientComponentClient();
 const updateUserData = async (params) => {
   const { data, error } = await supabase.from('users').update(params).eq('id', params.id);
   if (error) {
-    return error;
+    throw error;
   } else {
     return data;
   }

@@ -13,29 +13,42 @@ const getUser = async () => {
   'use server';
   const supabase = await supa();
   const { data } = await supabase.auth.getUser();
-  return data.user;
+  if (data.user) {
+    return data.user;
+  } else {
+    return null;
+  }
 };
 
-const getUserData = async (uid) => {
-  'use server';
+const getUserData = async () => {
   const supabase = await supa();
-
-  const { data } = await supabase.from('users').select().eq('id', uid);
-  return data[0];
+  const user = await getUser();
+  if (user) {
+    const { data, error } = await supabase.from('users').select().eq('id', user.id);
+    if (error) throw error.message;
+    return data[0];
+  } else {
+    return null;
+  }
 };
-const getCompanyData = async (company_id) => {
-  'use server';
+const getCompanyData = async () => {
   const supabase = await supa();
-  const res = await supabase.from('companies').select().eq('id', company_id);
-  return res.data[0];
+  const userData = await getUserData();
+  if (userData) {
+    const { data, error } = await supabase.from('companies').select().eq('id', userData.company_id);
+    if (error) throw error.message;
+    return data[0];
+  } else {
+    return null;
+  }
+
 };
 
 const getCompanies = async () => {
-
-  'use server';
   const supabase = await supa();
-  const res = await supabase.from('companies').select();
-  return res.data;
+  const { data, error } = await supabase.from('companies').select();
+  if (error) throw error.message;
+  return data;
 };
 
 

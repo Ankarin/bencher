@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function MyCompanyHeader({ verified }): React.ReactNode {
   return (
-    <div className='mb-10 flex min-w-0 items-center justify-between'>
+    <div className='mt-2 mb-10 flex min-w-0 items-center justify-between'>
       <h2 className='flex  text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight'>
         My Company
         {verified ? (
