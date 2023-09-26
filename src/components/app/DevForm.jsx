@@ -152,7 +152,7 @@ export default function DevForm({ isNew = false }) {
     <form onSubmit={save}>
       <div className='space-y-12'>
         <div className='border-b border-gray-900/10 pb-12'>
-          <h2 className='text-base font-semibold leading-7 text-gray-900'>Developer Profile</h2>
+          <h2 className='text-base font-medium leading-7 text-gray-900'>Developer Profile</h2>
           <p className='mt-2 text-sm leading-6 text-gray-600'>
             This profile is linked to your company, it will be public when you allow, make sure to keep private
             information that would let others
@@ -398,9 +398,11 @@ export default function DevForm({ isNew = false }) {
                   onChange={(e) => setDescription(e.target.value)}
                   value={description}
                   maxLength={250}
+                  minLength={50}
                 />
                 <span className={'text-sm'}>
-                     {description.length} / 250
+                    {description.length < 50 ? <span>{description.length} / 50 (min) </span> :
+                      <span> {description.length} / 250 (Max)</span>}
                 </span>
 
               </div>
@@ -418,7 +420,7 @@ export default function DevForm({ isNew = false }) {
 
                   <label
                     htmlFor='file-upload'
-                    className='relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'
+                    className='relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'
                   >
                     <span>Upload </span>
                     <input
@@ -449,12 +451,12 @@ export default function DevForm({ isNew = false }) {
 
 
       <div className='mt-6 flex items-center justify-end gap-x-6'>
-        <button type='button' className='text-sm font-semibold leading-6 text-gray-900'>
+        <button type='button' className='text-sm font-medium leading-6 text-gray-900'>
           Cancel
         </button>
         <button
           onClick={save}
-          className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+          className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
           Save
         </button>

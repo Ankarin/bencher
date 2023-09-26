@@ -7,9 +7,9 @@ const config = {
   ],
   theme: {
     fontSize: {
-      xs: ['0.75rem', { lineHeight: '1rem' }],
-      sm: ['0.875rem', { lineHeight: '1.5rem' }],
-      base: ['1rem', { lineHeight: '1.75rem' }],
+      // xs: ['0.75rem', { lineHeight: '1rem' }],
+      sm: ['0.900rem', { lineHeight: '1.5rem' }],
+      // base: ['1rem', { lineHeight: '1.75rem' }],
       lg: ['1.125rem', { lineHeight: '2rem' }],
       xl: ['1.25rem', { lineHeight: '2rem' }],
       '2xl': ['1.5rem', { lineHeight: '2rem' }],
@@ -26,8 +26,8 @@ const config = {
         '4xl': '2rem',
       },
       fontFamily: {
-        sans: 'var(--font-inter)',
-        display: 'var(--font-lexend)',
+        // sans: 'ui-sans-serif, system-ui',
+        // display: 'ui-sans-serif, system-ui',
       },
       maxWidth: {
         '2xl': '40rem',

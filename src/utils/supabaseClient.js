@@ -19,9 +19,13 @@ const updateCompany = async (params) => {
 const createCompany = async (params) => {
   const { data: { user } } = await supabase.auth.getUser();
   params.admin = user.id;
-  const res = await supabase.from('companies').insert(params).select();
-  await supabase.from('users').update({ company_id: res.data[0].id }).eq('id', user.id);
-  return res;
+  const { data, error } = await supabase.from('companies').insert(params).select();
+  if (error) {
+    throw error;
+  } else {
+    await supabase.from('users').update({ company_id: data[0].id }).eq('id', user.id);
+  }
+
 };
 
 

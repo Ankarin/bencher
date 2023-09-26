@@ -17,7 +17,7 @@ export default function Forgotpass({ searchParams }): React.ReactNode {
         <div className='flex'>
           <Logo />
         </div>
-        <h2 className='mt-20 text-lg font-semibold text-gray-900'>
+        <h2 className='mt-20 text-lg font-medium text-gray-900'>
           Forgot your password ?
         </h2>
 

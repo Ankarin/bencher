@@ -23,7 +23,7 @@ export default function SignupRedirect({ searchParams }): React.ReactNode {
 function Content({ type }): React.ReactNode {
   return type === 'exists' ? (
     <div>
-      <h2 className='mt-10 text-lg font-semibold text-gray-900'>
+      <h2 className='mt-10 text-lg font-medium text-gray-900'>
         User with email you provided is already exists.
       </h2>
       <br />
@@ -35,7 +35,7 @@ function Content({ type }): React.ReactNode {
     </div>
   ) : type === 'confirm' ? (
     <div>
-      <h2 className='mt-10 text-lg font-semibold text-gray-900'>
+      <h2 className='mt-10 text-lg font-medium text-gray-900'>
         Check your email to confirm registration.
       </h2>
       <br />
@@ -47,7 +47,7 @@ function Content({ type }): React.ReactNode {
     </div>
   ) : type === 'verified' ? (
     <div>
-      <h2 className='mt-10 text-lg font-semibold text-gray-900'>
+      <h2 className='mt-10 text-lg font-medium text-gray-900'>
         Thank you for completing registration, you can sign in now!
       </h2>
       <br />
@@ -59,7 +59,7 @@ function Content({ type }): React.ReactNode {
     </div>
   ) : type === 'forgot' ? (
     <div>
-      <h2 className='mt-10 text-lg font-semibold text-gray-900'>
+      <h2 className='mt-10 text-lg font-medium text-gray-900'>
         Check your email, we've sent you a link to reset your password.
       </h2>
       <br />
@@ -71,7 +71,7 @@ function Content({ type }): React.ReactNode {
     </div>
   ) : (
     <div>
-      <h2 className='mt-10 text-lg font-semibold text-gray-900'>
+      <h2 className='mt-10 text-lg font-medium text-gray-900'>
         Sorry, something went wrong
       </h2>
       <br />

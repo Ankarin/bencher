@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import { zust } from '@/store';
+import { SmallLogo } from '@/components/SmallLogo';
 
 function classNames(...classes): string {
   return classes.filter(Boolean).join(' ');
@@ -45,7 +46,7 @@ export default function AppHeader() {
     supabase.auth.onAuthStateChange((state) => {
       if (state === 'SIGNED_OUT') {
         zustSetUser(null);
-        zustSetCompany(null)
+        zustSetCompany(null);
       }
 
     });
@@ -64,64 +65,56 @@ export default function AppHeader() {
     pathname !== '/resetpass'
   ) {
     return (
-      <Disclosure as='nav' className='bg-gray-800'>
+      <Disclosure as='nav' className='bg-white/90 border-b border-slate-900/10  '>
         {({ open }) => (
           <>
             <div className='mx-auto max-w-7xl px-2 sm:px-4 lg:px-8'>
               <div className='relative flex h-16 items-center justify-between'>
                 <div className='flex items-center px-2 lg:px-0'>
                   <div className='flex-shrink-0'>
-                    <Link href={'/'}>
-                      <Image
-                        className='h-8 w-auto'
-                        src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
-                        alt='Your Company'
-                        width='50'
-                        height='50'
-                      />
-                    </Link>
+                    <SmallLogo></SmallLogo>
                   </div>
                   <div className='hidden lg:ml-6 lg:block'>
                     <div className='flex space-x-4'>
                       {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                       <Link
                         href='/developers'
-                        className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white '
+                        className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900 '
                       >
                         Developers
                       </Link>
                       <Link
                         href='/requests'
-                        className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                        className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
                       >
                         Requests
                       </Link>
                       <Link
                         href='/companies'
-                        className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                        className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
                       >
                         Companies
                       </Link>
-                      {<div className='flex w-full just space-x-4'>
+                      {zustUser ? <div className='flex w-full just space-x-4'>
                         <Link
                           href='/my-devs'
-                          className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                          className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
                         >
                           My Developers
                         </Link>
                         <Link
                           href='/my-requests'
-                          className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                          className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
                         >
                           My Requets
                         </Link>
                         <Link
                           href='/my-company'
-                          className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                          className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
                         >
                           My Company
                         </Link>
-                      </div>}
+                      </div> : ''}
                     </div>
                   </div>
                 </div>
@@ -147,7 +140,7 @@ export default function AppHeader() {
                       <div>
                         {zustUser ? (
                           <Menu.Button
-                            className='relative flex rounded-full border-none bg-gray-800 text-sm text-white outline-none focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                            className='relative flex rounded-full border-none  text-sm  font-medium outline-none focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                             <span className='absolute -inset-1.5 outline-none' />
                             <span className='sr-only'>Open user menu</span>
                             <span className={'pr-3 pt-1 outline-none'}>
@@ -169,8 +162,8 @@ export default function AppHeader() {
                               loading={false}
                               href='/login'
                               className='mr-2'
-                              color='white'
-                              variant='outline'
+                              color='slate'
+                              variant='solid'
                             >
                               <span>Sign In</span>
                             </Button>
@@ -252,16 +245,6 @@ export default function AppHeader() {
                 </Disclosure.Button>
               </div>
               <div className='border-t border-gray-700 pb-3 pt-4'>
-                {/*<div className='flex items-center px-5'>*/}
-                {/*  <div className='ml-3'>*/}
-                {/*    <div className='text-base font-medium text-white'>*/}
-                {/*      Tom Cook*/}
-                {/*    </div>*/}
-                {/*    <div className='text-sm font-medium text-gray-400'>*/}
-                {/*      tom@example.com*/}
-                {/*    </div>*/}
-                {/*  </div>*/}
-                {/*</div>*/}
                 {!zustUser ?
                   <div className='mt-3 space-y-1 px-2'>
                     <Disclosure.Button

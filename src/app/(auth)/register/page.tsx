@@ -17,7 +17,7 @@ export default function Register(): React.ReactNode {
         <div className='flex'>
           <Logo />
         </div>
-        <h2 className='mt-10 text-lg font-semibold text-gray-900'>
+        <h2 className='mt-10 text-lg font-medium text-gray-900'>
           Get started for free
         </h2>
         <p className='mt-2 text-sm text-gray-700'>

@@ -5,7 +5,7 @@ import { Button } from '@/components/landing/Button';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import { countries } from '@/utils/options';
+import { countries, getRegion } from '@/utils/options';
 
 
 const supabase = createClientComponentClient();
@@ -14,15 +14,15 @@ export default function CompanyEdit({ company }): React.ReactNode {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   //
-  const [name, setName] = useState('');
-  const [website, setWebsite] = useState('');
+  const [name, setName] = useState('test');
+  const [website, setWebsite] = useState('https://website.example');
 
-  const [size, setSize] = useState('');
-  const [location, setLocation] = useState('');
-  const [founding_year, setFoundingYear] = useState('');
-  const [average_rate, setAverageRate] = useState('');
+  const [size, setSize] = useState('25');
+  const [location, setLocation] = useState('test');
+  const [founding_year, setFoundingYear] = useState('test');
+  const [average_rate, setAverageRate] = useState('test');
   const [logo_url, setLogoUrl] = useState('');
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState('asdasd');
 
   useEffect(() => {
     if (company) {
@@ -43,7 +43,8 @@ export default function CompanyEdit({ company }): React.ReactNode {
       name,
       website,
       size,
-      location,
+      country: location,
+      region: getRegion(location),
       founding_year,
       average_rate,
       description,
@@ -51,10 +52,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
     };
     e.preventDefault();
     if (!company) {
-      const res = await createCompany(newCompany);
-      if (res.error) {
-        alert(res.error.message);
-      }
+      await createCompany(newCompany);
     } else {
       const updatedCompany = {
         id: id,
@@ -103,7 +101,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
       <form onSubmit={saveForm}>
         <div className='space-y-12'>
           <div className=' border-gray-900/10 pb-12'>
-            <h2 className='text-base font-semibold leading-7 text-gray-900'>
+            <h2 className='text-base font-medium leading-7 text-gray-900'>
               Profile
             </h2>
             <p className='mt-1 text-sm leading-6 text-gray-600'>
@@ -126,7 +124,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                   ></Image>
                   <label
                     htmlFor='file-upload'
-                    className='relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'
+                    className='relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'
                   >
                     <span>Change</span>
                     <input
@@ -158,7 +156,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                       <div className='mt-4 flex justify-center text-sm leading-6 text-gray-600'>
                         <label
                           htmlFor='file-upload'
-                          className='relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'
+                          className='relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'
                         >
                           <span>Upload a file</span>
                           <input
@@ -190,7 +188,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                   htmlFor='first-name'
                   className='block text-sm font-medium leading-6 text-gray-900'
                 >
-                  Company Name
+                  Company Name *
                 </label>
                 <div className='mt-2'>
                   <input
@@ -211,7 +209,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                   htmlFor='last-name'
                   className='block text-sm font-medium leading-6 text-gray-900'
                 >
-                  Company Website (https://website.example)
+                  Company Website (https://website.example) *
                 </label>
                 <div className='mt-2'>
                   <input
@@ -235,7 +233,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                     htmlFor='location'
                     className='block text-sm font-medium leading-6 text-gray-900'
                   >
-                    Company Size
+                    Company Size *
                   </label>
                   <select
                     required
@@ -262,7 +260,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                     htmlFor='location'
                     className='block text-sm font-medium leading-6 text-gray-900'
                   >
-                    Primary Location
+                    Primary Location *
                   </label>
                   <select
                     required
@@ -289,7 +287,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                     htmlFor='location'
                     className='block text-sm font-medium leading-6 text-gray-900'
                   >
-                    Average Hourly Rate
+                    Average Hourly Rate *
                   </label>
                   <select
                     required
@@ -317,7 +315,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                     htmlFor='location'
                     className='block text-sm font-medium leading-6 text-gray-900'
                   >
-                    Founding Year
+                    Founding Year *
                   </label>
                   <select
                     required
@@ -342,7 +340,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                 htmlFor='about'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                Description
+                Description *
               </label>
               <div className='mt-2'>
                 <textarea
@@ -355,10 +353,13 @@ export default function CompanyEdit({ company }): React.ReactNode {
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
+                  minLength={50}
                   maxLength={300}
-                  minLength={30}
                 />
-
+                <span className={'text-sm'}>
+                {description.length < 50 ? <span>{description.length} / 50 (min) </span> :
+                  <span> {description.length} / 300 (Max)</span>}
+                  </span>
               </div>
               <p className='mt-3 text-sm leading-6 text-gray-600'>
                 Write a few sentences about your company to highlight your
@@ -371,14 +372,14 @@ export default function CompanyEdit({ company }): React.ReactNode {
         <div className='mt-6 flex items-center justify-end gap-x-6'>
           <button
             type='button'
-            className='text-sm font-semibold leading-6 text-gray-900'
+            className='text-sm font-medium leading-6 text-gray-900'
           >
             Cancel
           </button>
           <Button
             variant='solid'
             type='submit'
-            className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             loading={loading}
             color='blue'
           >

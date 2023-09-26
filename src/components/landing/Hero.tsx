@@ -30,13 +30,13 @@ export function Hero() {
       </h1>
       <p className='mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700'>
         BitBencher marketplace is your gateway to a pool of vetted talent from
-        established European IT companies. <br /> Work directly with your chosen
+        established software development companies. <br /> Work directly with your chosen
         provider with no extra fees.
       </p>
       <div className='mt-10 flex justify-center gap-x-6'>
         <Button className='' loading={false} variant='solid' color='blue' href='/register'>Hire Developers</Button>
 
-        <Button className='' loading={false} href='/register' color='slate' variant='outline'>
+        <Button className='' loading={false} href='/register' color='slate' variant='solid'>
           Join as a provider
         </Button>
       </div>
