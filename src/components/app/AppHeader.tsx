@@ -42,8 +42,12 @@ export default function AppHeader() {
       }
     };
     getUser();
-    supabase.auth.onAuthStateChange(() => {
-      zustSetUser(null);
+    supabase.auth.onAuthStateChange((state) => {
+      if (state === 'SIGNED_OUT') {
+        zustSetUser(null);
+        zustSetCompany(null)
+      }
+
     });
   }, []);
 
