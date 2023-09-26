@@ -1,5 +1,5 @@
 'use client';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
@@ -68,10 +68,12 @@ export default function AppHeader() {
                 <div className='flex items-center px-2 lg:px-0'>
                   <div className='flex-shrink-0'>
                     <Link href={'/'}>
-                      <img
+                      <Image
                         className='h-8 w-auto'
                         src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
                         alt='Your Company'
+                        width='50'
+                        height='50'
                       />
                     </Link>
                   </div>

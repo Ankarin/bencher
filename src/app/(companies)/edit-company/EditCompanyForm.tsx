@@ -35,7 +35,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
       setLogoUrl(company.logo_url);
       setDescription(company.description);
     }
-  }, []);
+  }, [company]);
 
   const saveForm = async (e) => {
     setLoading(true);

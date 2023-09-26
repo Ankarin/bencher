@@ -16,6 +16,7 @@ import {
 } from '@/utils/options';
 
 import { selectStyleObject } from '@/utils/utils';
+import { zust } from '@/store';
 
 
 const supabase = createClientComponentClient();
@@ -34,6 +35,11 @@ export default function DevForm({ isNew = false }) {
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
   const [cv, setCv] = useState({ url: '', filename: '' });
+
+
+  console.log(isNew);
+
+  const zustMyCompany = zust(state => state.myCompany);
 
 
   const languagesOptions = languages().map(item => {
@@ -68,11 +74,39 @@ export default function DevForm({ isNew = false }) {
   }
 
 
+  const addDeveloper = async () => {
+    try {
+      const developer = {
+        company: zustMyCompany.id,
+        title,
+        role,
+        experience,
+        country: location,
+        region: getRegion(location),
+        available,
+        english,
+        skills: mainSkills.map(item => item.value),
+        other_skills: otherSkills.map(item => item.value),
+        other_languages: otherLanguages.map(item => item.value),
+        hourly_rate: rate,
+        description,
+        cv: cv.url,
+      };
+
+      const { error } = await supabase.from('developers').insert(developer);
+      console.log(error);
+    } catch (e) {
+      console.log(e);
+      throw new Error(e.message);
+    }
+  };
+
+
   async function uploadCv() {
     try {
       setUploading(true);
 
-
+      console.log(file);
       const path = uuid();
 
       const { error: uploadError } = await supabase.storage
@@ -87,7 +121,6 @@ export default function DevForm({ isNew = false }) {
         url: `cv/${path}`,
         filename: file.name,
       });
-      console.log(cv);
     } catch (error) {
       alert(error.message);
     } finally {
@@ -100,6 +133,9 @@ export default function DevForm({ isNew = false }) {
       .storage
       .from('bitbencher')
       .getPublicUrl(cv.url);
+    if (error) {
+      throw new Error(error.message);
+    }
     console.log(data);
     window.open(data.publicUrl);
   };
@@ -107,6 +143,7 @@ export default function DevForm({ isNew = false }) {
 
   const save = async (e) => {
     e.preventDefault();
+    await addDeveloper();
     await uploadCv();
   };
 

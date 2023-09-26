@@ -12,8 +12,8 @@ export async function PUT(request) {
     .insert({ name: body.name });
   if (error) {
     console.log(error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error.message });
   } else {
-    return NextResponse.json({ res: data }, { status: 200 });
+    return NextResponse.json({ res: data });
   }
 }

@@ -6,6 +6,7 @@ import { PrimaryFeatures } from '@/components/landing/PrimaryFeatures';
 import { SecondaryFeatures } from '@/components/landing/SecondaryFeatures';
 import React from 'react';
 
+
 export default async function Home() {
   return (
     <>
