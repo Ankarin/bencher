@@ -51,7 +51,7 @@ export default function Register(): React.ReactNode {
           />
           <TextField
             className='col-span-full'
-            label='Email address'
+            label='Email'
             name='email'
             type='email'
             autoComplete='email'
@@ -94,7 +94,7 @@ export default function Register(): React.ReactNode {
                 <span id='comments-description' className='text-gray-500'>
                   <span className='sr-only'> </span> to BitBencher's{' '}
                   <Link href={'/terms'} target={'_blank'}>
-                    <span className={'text-blue'}>Terms & Conditions</span>
+                    <span className={'text-anchor-blue'}>Terms & Conditions</span>
                   </Link>
                   ,{' '}
                   <Link href={'/privacy'} target={'_blank'}>
@@ -102,7 +102,7 @@ export default function Register(): React.ReactNode {
                   </Link>{' '}
                   and{' '}
                   <Link href={'/cookies'} target={'_blank'}>
-                    <span className={'text-blue'}>Cookies</span>
+                    <span className={'text-anchor-blue'}>Cookies</span>
                   </Link>{' '}
                   policies.
                 </span>

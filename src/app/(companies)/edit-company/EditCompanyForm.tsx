@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { createCompany, updateCompany } from 'src/utils/supabaseClient';
+import { createCompany, updateCompany } from '@/utils/supabaseClient';
 import { Button } from '@/components/landing/Button';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { PhotoIcon } from '@heroicons/react/24/solid';
@@ -29,7 +29,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
       setName(company.name);
       setWebsite(company.website);
       setSize(company.size);
-      setLocation(company.location);
+      setLocation(company.country);
       setFoundingYear(company.founding_year);
       setAverageRate(company.average_rate);
       setLogoUrl(company.logo_url);

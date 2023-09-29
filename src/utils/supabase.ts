@@ -2,6 +2,7 @@
 
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import { Company, Developer, User } from '@/utils/types';
 
 const supa = async () => {
   'use server';
@@ -13,6 +14,7 @@ const getUser = async () => {
   'use server';
   const supabase = await supa();
   const { data } = await supabase.auth.getUser();
+  console.log(data);
   if (data.user) {
     return data.user;
   } else {
@@ -20,7 +22,7 @@ const getUser = async () => {
   }
 };
 
-const getUserData = async () => {
+const getUserData = async (): Promise<User> => {
   const supabase = await supa();
   const user = await getUser();
   if (user) {
@@ -31,10 +33,10 @@ const getUserData = async () => {
     return null;
   }
 };
-const getCompanyData = async () => {
+const getCompanyData = async (): Promise<Company> => {
   const supabase = await supa();
   const userData = await getUserData();
-  if (userData) {
+  if (userData && userData.company_id) {
     const { data, error } = await supabase.from('companies').select().eq('id', userData.company_id);
     if (error) throw error.message;
     return data[0];
@@ -44,12 +46,26 @@ const getCompanyData = async () => {
 
 };
 
-const getCompanies = async () => {
+const getCompanies = async (): Promise<Company[]> => {
   const supabase = await supa();
   const { data, error } = await supabase.from('companies').select();
   if (error) throw error.message;
   return data;
 };
 
+const getMyDevs = async (): Promise<Developer[]> => {
+  const supabase = await supa();
+  const userData = await getUserData();
+  const { data, error } = await supabase.from('developers').select().eq('company', userData.company_id);
+  if (error) throw error.message;
+  return data;
+};
+const getDevs = async (): Promise<Developer[]> => {
+  const supabase = await supa();
+  const { data, error } = await supabase.from('developers').select();
+  if (error) throw error.message;
+  return data;
+};
 
-export { getUser, getUserData, getCompanyData, getCompanies };
+
+export { getUser, getUserData, getCompanyData, getCompanies, getMyDevs, getDevs };

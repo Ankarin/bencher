@@ -12,7 +12,7 @@ interface User {
 }
 
 interface Company {
-  id?: string; // UUID
+  id?: string;
   created_at?: string; // Timestamp with time zone
   name: string | null;
   description: string | null;
@@ -21,7 +21,7 @@ interface Company {
   average_rate: string | null;
   founding_year: string | null;
   website: string | null;
-  admin: string | null; // UUID
+  admin: string | null;
   team: string[] | null; // Array of UUIDs
   logo_url: string | null;
   region: string | null;

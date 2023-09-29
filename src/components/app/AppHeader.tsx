@@ -49,7 +49,7 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
     pathname !== '/resetpass'
   ) {
     return (
-      <Disclosure as='nav' className='bg-white/90 border-b border-slate-900/10  '>
+      <Disclosure as='nav' className='bg-white border-b border-slate-900/10  '>
         {({ open }) => (
           <>
             <div className='mx-auto max-w-7xl px-2 sm:px-4 lg:px-8'>
@@ -169,19 +169,7 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                       >
                         <Menu.Items
                           className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <Link
-                                href='#'
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700',
-                                )}
-                              >
-                                My Profile
-                              </Link>
-                            )}
-                          </Menu.Item>
+
                           <Menu.Item>
                             {({ active }) => (
                               <p
@@ -252,13 +240,7 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                       </div>
                     </div>
 
-                    <Disclosure.Button
-                      as='a'
-                      href='/my-profile'
-                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-                    >
-                      My Profile
-                    </Disclosure.Button>
+
                     <Disclosure.Button
                       as='a'
                       href='/my-company'

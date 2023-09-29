@@ -24,13 +24,13 @@ export default function Company({ company, myCompany }): React.ReactNode {
       icon: UserGroupIcon,
     },
     {
-      data: company.location,
+      data: company.country + `, ${company.region}`,
       icon: MapPinIcon,
     },
   ];
 
   return (
-    <div className='bg-white p-4 shadow  sm:rounded-lg md:p-5 '>
+    <div className='bg-white p-4 shadow rounded-lg md:p-5 '>
       <div className='flex'>
         <Image
           className={'h-12 w-12 md:h-16 md:w-16'}

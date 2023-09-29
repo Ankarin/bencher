@@ -35,7 +35,7 @@ export default function Login({ searchParams }): React.ReactNode {
           className='mt-10 grid grid-cols-1 gap-y-8'
         >
           <TextField
-            label='Work email'
+            label='Email'
             name='email'
             type='email'
             autoComplete='email'

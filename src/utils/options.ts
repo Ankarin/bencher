@@ -561,31 +561,31 @@ const englishLevels = () => [
 
 const rolesArray = () => [
   {
-    role: 'Frontend Developer',
+    role: 'Frontend',
     description: 'Specializes in creating user interfaces and client-side development using technologies like HTML, CSS, and JavaScript.',
   },
   {
-    role: 'Backend Developer',
+    role: 'Backend',
     description: 'Focuses on server-side development, database management, and server operations.',
   },
   {
-    role: 'Full-Stack Developer',
+    role: 'Full-Stack',
     description: 'Proficient in both frontend and backend development, capable of working on the entire software stack.',
   },
   {
-    role: 'Mobile App Developer',
+    role: 'Mobile',
     description: 'Specializes in creating applications for mobile platforms such as iOS and Android.',
   },
   {
-    role: 'DevOps Engineer',
+    role: 'DevOps',
     description: 'Manages the development, deployment, and maintenance of software, focusing on automation, continuous integration, and continuous deployment (CI/CD).',
   },
   {
-    role: 'Manual QA Engineer',
+    role: 'Manual QA',
     description: 'Ensures the quality and functionality of software through testing and quality control processes.',
   },
   {
-    role: 'QA Automation Engineer',
+    role: 'Automation QA ',
     description: 'Develops automated scripts and tools to streamline development and testing processes.',
   },
   {
@@ -593,71 +593,47 @@ const rolesArray = () => [
     description: 'Designs the high-level structure of software systems, defining key components and their interactions.',
   },
   {
-    role: 'UI/UX Designer',
+    role: 'UI/UX',
     description: 'Focuses on creating intuitive and visually appealing user interfaces and user experiences.',
   },
   {
-    role: 'Product Manager',
+    role: 'Management',
     description: 'Oversees the development process, defines product goals, and prioritizes features based on customer and business needs.',
-  },
-  {
-    role: 'Scrum Master',
-    description: 'Facilitates agile development processes, ensuring the team follows Scrum practices and removing obstacles.',
   },
   {
     role: 'Business Analyst',
     description: 'Analyzes business requirements and translates them into software requirements and features.',
   },
   {
-    role: 'Database Administrator (DBA)',
+    role: 'Admin',
     description: 'Manages and maintains the company\'s databases, ensuring data integrity and availability.',
   },
   {
-    role: 'Systems Administrator',
-    description: 'Handles server infrastructure, network configurations, and system maintenance.',
-  },
-  {
-    role: 'Security Engineer',
+    role: 'Security',
     description: 'Focuses on the security of software and infrastructure, implementing security measures and conducting security audits.',
   },
   {
-    role: 'Cloud Engineer',
+    role: 'Cloud',
     description: 'Manages cloud infrastructure and services, such as AWS, Azure, or Google Cloud.',
   },
   {
-    role: 'Data Scientist',
+    role: 'Data Science',
     description: 'Analyzes and interprets complex data to provide insights and make data-driven decisions.',
   },
   {
-    role: 'Machine Learning Engineer',
+    role: 'Machine Learning',
     description: 'Develops machine learning models and algorithms for data analysis and predictive purposes.',
   },
   {
-    role: 'Technical Writer',
-    description: 'Creates documentation, user guides, and manuals for software products.',
-  },
-  {
-    role: 'Support Engineer',
+    role: 'Support',
     description: 'Provides technical support to customers, addressing their issues and inquiries.',
-  },
-  {
-    role: 'Project Manager',
-    description: 'Manages software development projects, including scheduling, budgeting, and resource allocation.',
   },
   {
     role: 'Data Engineer',
     description: 'Focuses on the design and management of data pipelines and ETL processes.',
   },
   {
-    role: 'Release Engineer',
-    description: 'Manages the release process, including build, packaging, and deployment of software.',
-  },
-  {
-    role: 'Site Reliability Engineer (SRE)',
-    description: 'Focuses on the reliability, availability, and performance of software and systems in production.',
-  },
-  {
-    role: 'Blockchain Developer',
+    role: 'Blockchain',
     description: 'Specializes in developing decentralized applications (DApps), smart contracts, and blockchain-based solutions.',
   },
   {
@@ -665,11 +641,11 @@ const rolesArray = () => [
     description: 'Analyzes data to provide insights and support data-driven decision-making within the organization.',
   },
   {
-    role: 'BI Developer',
+    role: 'Business Intelligence',
     description: 'Focuses on designing, developing, and maintaining business intelligence solutions, including data modeling, reporting, and dashboard development.',
   },
   {
-    role: 'Other Role',
+    role: 'Other',
     description: '',
   },
 ];

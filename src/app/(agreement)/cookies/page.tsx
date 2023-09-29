@@ -41,7 +41,7 @@ export default function Cookies() {
           promotional and marketing partners, and others who provide our content
           or whose products or services we think may interest you.
         </li>
-        <li>Website: site, which can be accessed via this URL: bencher.co</li>
+        <li>Website: site, which can be accessed via this URL: bitbencher.com</li>
       </ul>
       <p>
         This Cookie Policy was created with{' '}
@@ -56,7 +56,7 @@ export default function Cookies() {
         This Cookie Policy explains how BitBencher and its affiliates
         (collectively "BitBencher", "we", "us", and "ours"), use cookies and
         similar technologies to recognize you when you visit our website,
-        including without limitation bencher.co and any related URLs, mobile or
+        including without limitation bitbencher.com and any related URLs, mobile or
         localized versions and related domains / sub-domains ("Websites"). It
         explains what these technologies are and why we use them, as well as the
         choices for how to control them.
@@ -249,7 +249,7 @@ export default function Cookies() {
             className='__cf_email__'
             data-cfemail='97f3fafee3e5eed7fbe2faeee4f8f1e3b9f4f8fa'
           >
-            help@bencher.co
+            help@bitbencher.com
           </a>
         </li>
         <li>Via Phone Number: +380997453583</li>

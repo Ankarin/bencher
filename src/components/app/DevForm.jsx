@@ -28,7 +28,7 @@ export default function DevForm({ isNew = false }) {
   const [location, setLocation] = useState('');
   const [available, setAvailable] = useState('');
   const [english, setEnglish] = useState('');
-  const [rate, setRate] = useState('');
+  const [rate, setRate] = useState(null);
   const [otherLanguages, setOtherLanguages] = useState([]);
   const [mainSkills, setMainSkills] = useState([]);
   const [otherSkills, setOtherSkills] = useState([]);
@@ -70,7 +70,13 @@ export default function DevForm({ isNew = false }) {
     if (!e.target.files || e.target.files.length === 0) {
       throw new Error('You must select pdf to upload.');
     }
-    setFile(e.target.files[0]);
+    const file = e.target.files[0];
+    setFile(file);
+    const path = uuid();
+    setCv({
+      url: `cv/${path}`,
+      filename: file.name,
+    });
   }
 
 
@@ -106,21 +112,15 @@ export default function DevForm({ isNew = false }) {
     try {
       setUploading(true);
 
-      console.log(file);
-      const path = uuid();
 
       const { error: uploadError } = await supabase.storage
-        .from('bitbencher/cv')
-        .upload(path, file);
+        .from('bitbencher/')
+        .upload(cv.url, file);
 
       if (uploadError) {
         alert(uploadError);
         return;
       }
-      setCv({
-        url: `cv/${path}`,
-        filename: file.name,
-      });
     } catch (error) {
       alert(error.message);
     } finally {
@@ -136,15 +136,16 @@ export default function DevForm({ isNew = false }) {
     if (error) {
       throw new Error(error.message);
     }
-    console.log(data);
     window.open(data.publicUrl);
   };
 
 
   const save = async (e) => {
     e.preventDefault();
-    await addDeveloper();
     await uploadCv();
+    console.log(cv);
+    await addDeveloper();
+
   };
 
 
@@ -398,11 +399,9 @@ export default function DevForm({ isNew = false }) {
                   onChange={(e) => setDescription(e.target.value)}
                   value={description}
                   maxLength={250}
-                  minLength={50}
                 />
                 <span className={'text-sm'}>
-                    {description.length < 50 ? <span>{description.length} / 50 (min) </span> :
-                      <span> {description.length} / 250 (Max)</span>}
+               {description.length} / 250 (Max)
                 </span>
 
               </div>
@@ -424,6 +423,7 @@ export default function DevForm({ isNew = false }) {
                   >
                     <span>Upload </span>
                     <input
+                      required
                       id='file-upload'
                       name='file-upload'
                       type='file'
@@ -439,7 +439,11 @@ export default function DevForm({ isNew = false }) {
                 </div> :
                 <div className={'flex'}><span className={'text-indigo-600 cursor-pointer'}
                                               onClick={supaDownload}>{cv.filename} </span>
-                  <XMarkIcon className='text-red-500 h-6 w-6 cursor-pointer ml-5'></XMarkIcon>
+                  <XMarkIcon onClick={() => {
+                    setFile(null);
+                    setCv({ url: '', filename: '' });
+                  }}
+                             className='text-red-500 h-6 w-6 cursor-pointer ml-5'></XMarkIcon>
                 </div>}
             </div>
           </div>
@@ -455,7 +459,7 @@ export default function DevForm({ isNew = false }) {
           Cancel
         </button>
         <button
-          onClick={save}
+          type='submit'
           className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
           Save
