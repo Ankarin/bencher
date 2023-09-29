@@ -1,7 +1,7 @@
 import { Developer } from '@/utils/types';
 import { getRegion } from '@/utils/options';
 
-export default function DevCard({ developer }: Developer) {
+export default function DevCard({ developer }: { developer: Developer }) {
 
   return <div className='bg-white p-2 md:p4 shadow rounded-lg max-w-[100]'>
     <div className='flex justify-between'>
