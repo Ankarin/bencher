@@ -22,13 +22,11 @@ export default function DevCard({ developer }: { developer: Developer }) {
 
 
     <div className='hidden lg:flex mb-4 mt-2'>
-      <p className='max-w-2xl text-sm pr-3 '>Category: <span
-        className={'font-bold'}>{developer.role}</span></p>
       <p
-        className='max-w-2xl border-l px-3 border-slate-900/40  text-sm'> Experience: <span
-        className={'font-bold'}>{developer.experience}+{developer.experience === 1 ? ' year' : ' years'}</span>
+        className='max-w-2xl pr-3 border-slate-900/40  text-sm'><span
+        className={'font-bold'}>{developer.experience}+{developer.experience === 1 ? ' year' : ' years'} of exp</span>
       </p>
-      <p className='max-w-2xl  border-l px-3 border-slate-900/40 text-sm'>Location: <span
+      <p className='max-w-2xl  border-l px-3 border-slate-900/40 text-sm'><span
         className={'font-bold'}>{developer.country}, {getRegion(developer.country)}</span></p>
       <p className='max-w-2xl  border-l px-3 border-slate-900/40  text-sm'>English: <span
         className={'font-bold'}>{developer.english}</span></p>
