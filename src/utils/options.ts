@@ -1643,7 +1643,7 @@ const countriesArray = () => [
 ];
 
 const countries = () => countriesArray().map(item => item.country);
-const roles = () => rolesArray().map(item => item.role);
+const categorys = () => rolesArray().map(item => item.role);
 const skillList = () => skills().map(item => ({ value: item, label: item }));
 
 
@@ -1669,7 +1669,7 @@ export {
   availableOptions,
   englishLevels,
   languages,
-  roles,
+  categorys,
   getRegion,
   getRoleDescription,
   languagesForReactSelect,

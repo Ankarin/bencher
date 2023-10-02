@@ -8,30 +8,29 @@ import CreatableSelect from 'react-select/creatable';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import {
   countries,
-  availableOptions,
   englishLevels,
   languages,
-  roles,
+  categorys,
   getRegion, skillList,
 } from '@/utils/options';
 
 import { selectStyleObject } from '@/utils/utils';
 import { zust } from '@/store';
+import { Developer } from '@/utils/types';
 
 
 const supabase = createClientComponentClient();
 
 export default function DevForm({ isNew = false }) {
   const [title, setTitle] = useState('');
-  const [role, setRole] = useState('');
-  const [experience, setExperience] = useState('3');
+  const [category, setcategory] = useState('');
+  const [experience, setExperience] = useState(3);
   const [location, setLocation] = useState('');
-  const [available, setAvailable] = useState('');
+  const [asap, setAsap] = useState(false);
   const [english, setEnglish] = useState('');
   const [rate, setRate] = useState(null);
   const [otherLanguages, setOtherLanguages] = useState([]);
   const [mainSkills, setMainSkills] = useState([]);
-  const [otherSkills, setOtherSkills] = useState([]);
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
   const [cv, setCv] = useState({ url: '', filename: '' });
@@ -46,21 +45,15 @@ export default function DevForm({ isNew = false }) {
     return { value: item, label: item };
   }).filter(item => !otherLanguages.includes(item));
 
-  function testIfTaken(object, array) {
-    return array.some(item => item.value === object.value);
-  }
-
-
-  const skillListFiltered = skillList().filter(item => !testIfTaken(item, mainSkills) && !testIfTaken(item, otherSkills));
 
   const handleSelect = (val) => {
     setOtherLanguages(val);
   };
   const handleSelectSkills = (val) => {
+    if (mainSkills.length >= 10) {
+      return;
+    }
     setMainSkills(val);
-  };
-  const handleSelectOtherSkills = (val) => {
-    setOtherSkills(val);
   };
 
 
@@ -80,31 +73,36 @@ export default function DevForm({ isNew = false }) {
   }
 
 
-  const addDeveloper = async () => {
+  const supaAddDev = async (developer) => {
     try {
-      const developer = {
-        company: zustMyCompany.id,
-        title,
-        role,
-        experience,
-        country: location,
-        region: getRegion(location),
-        available,
-        english,
-        skills: mainSkills.map(item => item.value),
-        other_skills: otherSkills.map(item => item.value),
-        other_languages: otherLanguages.map(item => item.value),
-        hourly_rate: rate,
-        description,
-        cv: cv.url,
-      };
-
       const { error } = await supabase.from('developers').insert(developer);
       console.log(error);
     } catch (e) {
       console.log(e);
       throw new Error(e.message);
     }
+
+  };
+
+
+  const addDeveloper = async () => {
+    const developer = {
+      company: zustMyCompany.id,
+      title,
+      category,
+      experience: experience,
+      country: location,
+      region: getRegion(location),
+      asap,
+      english,
+      skills: mainSkills.map(item => item.value),
+      other_languages: otherLanguages.map(item => item.value),
+      hourly_rate: rate,
+      description,
+      cv: cv.url,
+    };
+    await supaAddDev(developer);
+
   };
 
 
@@ -143,7 +141,6 @@ export default function DevForm({ isNew = false }) {
   const save = async (e) => {
     e.preventDefault();
     await uploadCv();
-    console.log(cv);
     await addDeveloper();
 
   };
@@ -180,24 +177,24 @@ export default function DevForm({ isNew = false }) {
 
             <div className='sm:col-span-3'>
               <label
-                htmlFor='location'
+                htmlFor='category'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
 
-                Role *
+                Category *
               </label>
               <select
                 required
-                id='role'
-                name='role'
-                value={role}
+                id='category'
+                name='category'
+                value={category}
                 onChange={(e) => {
-                  setRole(e.target.value);
+                  setcategory(e.target.value);
                 }}
                 className='mt-2 block shadow-sm w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
               >
                 <option></option>
-                {roles().map((country) => (
+                {categorys().map((country) => (
                   <option key={country}>{country}</option>
                 ))}
               </select>
@@ -231,32 +228,6 @@ export default function DevForm({ isNew = false }) {
               </p>
             </div>
             <div className='sm:col-span-3 '>
-              <div className=''>
-                <label
-                  htmlFor='location'
-                  className='block text-sm font-medium leading-6 text-gray-900'
-                >
-
-                  Available in *
-                </label>
-                <select
-                  required
-                  id='available'
-                  name='available'
-                  value={available}
-                  onChange={(e) => {
-                    setAvailable(e.target.value);
-                  }}
-                  className='mt-2 shadow-sm block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
-                >
-                  <option></option>
-                  {availableOptions().map((country) => (
-                    <option key={country}>{country}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className='sm:col-span-3 mt-2'>
               <div>
                 <label
                   htmlFor='location'
@@ -288,7 +259,7 @@ export default function DevForm({ isNew = false }) {
               <label htmlFor='rate' className='block text-sm font-medium leading-6 text-gray-900'>
                 Rate
               </label>
-              <div className='relative mt-2 rounded-md shadow-sm'>
+              <div className='relative mt-2 rounded-md '>
                 <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
                   <span className='text-gray-500 sm:text-sm'>$</span>
                 </div>
@@ -315,24 +286,6 @@ export default function DevForm({ isNew = false }) {
 
             </div>
             <div className='sm:col-span-3 mt-2'>
-              <label
-                htmlFor='location'
-                className='block text-sm font-medium leading-6 text-gray-900'
-              >
-                Other Languages
-              </label>
-              <div>
-                <Select
-                  isMulti
-                  onChange={handleSelect}
-                  value={otherLanguages}
-                  options={languagesOptions}
-                  isSearchable={true}
-                  isClearable={true}
-                  styles={selectStyleObject} />
-              </div>
-            </div>
-            <div className='sm:col-span-3 mt-2'>
               <label htmlFor='about' className='block text-sm font-medium leading-6 text-gray-900'>
                 {experience} +
                 years of experience
@@ -353,31 +306,32 @@ export default function DevForm({ isNew = false }) {
                 htmlFor='location'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                Main Skills (Pick up to 5)
+                Other Languages
               </label>
               <div>
-                <CreatableSelect
-                  value={mainSkills}
-                  onChange={handleSelectSkills}
-                  options={skillListFiltered}
-                  primaryColor='blue'
+                <Select
                   isMulti
+                  onChange={handleSelect}
+                  value={otherLanguages}
+                  options={languagesOptions}
+                  isSearchable={true}
                   isClearable={true}
                   styles={selectStyleObject} />
               </div>
             </div>
+
             <div className='sm:col-span-3 mt-2'>
               <label
                 htmlFor='location'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                More Skills (Pick up to 20)
+                Main Skills (Pick up to 10)
               </label>
               <div>
                 <CreatableSelect
-                  value={otherSkills}
-                  onChange={handleSelectOtherSkills}
-                  options={skillListFiltered}
+                  value={mainSkills}
+                  onChange={handleSelectSkills}
+                  options={skillList()}
                   primaryColor='blue'
                   isMulti
                   isClearable={true}
@@ -409,7 +363,7 @@ export default function DevForm({ isNew = false }) {
 
             </div>
 
-            <div className='col-span-full'>
+            <div className='sm:col-span-3'>
               <label htmlFor='cover-photo' className='block text-sm font-medium leading-6 text-gray-900'>
                 Detailed CV
 
@@ -446,6 +400,38 @@ export default function DevForm({ isNew = false }) {
                              className='text-red-500 h-6 w-6 cursor-pointer ml-5'></XMarkIcon>
                 </div>}
             </div>
+
+            <div className={'sm:col-span-3'}>
+              <div className='flex items-center gap-x-3'>
+                <input
+                  id='available'
+                  name='available'
+                  type='radio'
+                  checked={asap}
+                  onChange={() => setAsap(true)}
+                  className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                />
+                <label htmlFor='push-everything' className='block text-sm leading-6 text-gray-900'>
+                  Able to start ASAP.
+                </label>
+              </div>
+              <div className='flex  items-center gap-x-3'>
+                <input
+                  id='push-email'
+                  name='available'
+                  type='radio'
+                  checked={!asap}
+                  onChange={() => setAsap(false)}
+                  className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600/60'
+                />
+                <label htmlFor='push-email' className='block text-sm  leading-6 text-gray-900'>
+                  Will be available soon.
+                </label>
+              </div>
+
+
+            </div>
+
           </div>
 
 

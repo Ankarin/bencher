@@ -1,53 +1,49 @@
 interface User {
   id?: string; // UUID
   created_at?: string; // Timestamp with time zone
-  first_name: string | null;
-  last_name: string | null;
+  first_name: string;
+  last_name: string;
   email: string;
-  company_name: string | null;
-  company_id: string | null; // UUID
-  verified: boolean | null;
-  email_confirmed: boolean | null;
-  type: string | null;
+  company_name: string;
+  company_id: string;
+  verified: boolean;
+  email_confirmed: boolean;
+  type: string;
 }
 
 interface Company {
-  id?: string;
-  created_at?: string; // Timestamp with time zone
-  name: string | null;
-  description: string | null;
+  id: string;
+  created_at: Date;
+  name: string;
+  description: string;
   verified: boolean | null;
-  size: string | null;
+  size: string;
   average_rate: string | null;
-  founding_year: string | null;
-  website: string | null;
-  admin: string | null;
-  team: string[] | null; // Array of UUIDs
+  founding_year: string;
+  website: string;
+  admin: string;
   logo_url: string | null;
-  region: string | null;
-  country: string | null;
+  region: string;
+  country: string;
 }
 
 interface Developer {
-  id?: number;
-  created_at?: string;
-  company: string | null;
-  title: string | null;
-  description: string | null;
-  hourly_rate: number | null;
-  experience: number | null;
-  status: string | null;
-  public: boolean | null;
+  id?: bigint;
+  created_at?: Date;
+  public?: boolean;
+  company: string; // Assuming UUID is represented as a string
+  title: string;
+  description?: string | null;
+  hourly_rate: bigint | null;
+  experience: bigint;
   skills: string[] | null;
   other_languages: string[] | null;
-  role: string | null;
-  english: string | null;
-  country: string | null;
-  region: string | null;
-  available: string | null;
-  other_skills: string[] | null;
-  cv: string | null;
+  english: string;
+  country: string;
+  region: string;
+  asap: boolean;
+  cv: string;
+  category: string;
 }
-
 
 export type { Company, User, Developer };
