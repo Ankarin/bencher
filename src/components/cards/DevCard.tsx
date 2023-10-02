@@ -1,5 +1,7 @@
+'use client';
 import { Developer } from '@/utils/types';
 import { getRegion } from '@/utils/options';
+
 
 export default function DevCard({ developer }: { developer: Developer }) {
 
@@ -10,16 +12,25 @@ export default function DevCard({ developer }: { developer: Developer }) {
       <p
         className='text-base font-bold text-xl text-indigo-600'> {developer.hourly_rate ? `$${developer.hourly_rate}/hr` : ''} </p>
     </div>
-    <div className='flex '>
-      <p className='max-w-2xl text-sm'>{developer.category}</p>
-      <p
-        className='max-w-2xl  ml-2  text-sm'>{developer.experience}+{developer.experience === 1 ? 'year' : 'years'} of
-        exp
-      </p>
-      <p className='max-w-2xl  ml-2 text-sm'>{developer.country}, {getRegion(developer.country)}</p>
-      <p className='max-w-2xl  ml-2 text-sm'>English: {developer.english}</p>
-    </div>
-    <p className='max-w-2xl   text-sm'>{developer.description}</p>
+
+    <p className={'leading-relaxed'}>
+      <span className='max-w-2xl inline-block text-sm  border-r pr-2 mr-2 border-slate-900/20'>
+       Category: <span className={'font-semibold'}>{developer.category}</span>
+      </span>
+      <span
+        className='max-w-2xl inline-block   border-r pr-2 mr-2  border-slate-900/20 text-sm'>
+        Experience: <span
+        className={'font-semibold'}>{developer.experience}+{developer.experience === 1 ? ' year' : ' years'}</span>
+
+
+      </span>
+      <span className='max-w-2xl inline-block   border-r pr-2 mr-2 border-slate-900/20  text-sm'>Location: <span
+        className={'font-semibold'}>{developer.country}, {getRegion(developer.country)}</span>
+      </span>
+      <span className='max-w-2xl inline-block text-sm'>English: <span
+        className={'font-semibold'}>{developer.english}</span></span>
+    </p>
+    <p className='max-w-2xl  text-sm'>{developer.description}</p>
 
     <p> и еще: другие языки, пара вариантов, основные скиллы до 5 , дополнительные скилы до 20, кнопка скачать
       резюме</p>
