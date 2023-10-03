@@ -16,19 +16,18 @@ import {
 
 import { selectStyleObject } from '@/utils/utils';
 import { zust } from '@/store';
-import { Developer } from '@/utils/types';
 
 
 const supabase = createClientComponentClient();
 
-export default function DevForm({ isNew = false }) {
+export default function DevForm({ isNew = false, devId }) {
   const [title, setTitle] = useState('');
   const [category, setcategory] = useState('');
-  const [experience, setExperience] = useState(3);
+  const [experience, setExperience] = useState('3');
   const [location, setLocation] = useState('');
   const [asap, setAsap] = useState(false);
   const [english, setEnglish] = useState('');
-  const [rate, setRate] = useState(null);
+  const [rate, setRate] = useState('');
   const [otherLanguages, setOtherLanguages] = useState([]);
   const [mainSkills, setMainSkills] = useState([]);
   const [description, setDescription] = useState('');
@@ -37,6 +36,8 @@ export default function DevForm({ isNew = false }) {
 
 
   console.log(isNew);
+
+  console.log(devId)
 
   const zustMyCompany = zust(state => state.myCompany);
 
@@ -314,7 +315,7 @@ export default function DevForm({ isNew = false }) {
                   isMulti
                   onChange={handleSelect}
                   value={otherLanguages}
-                  options={languagesOptions}
+                  options={languagesOptions()}
                   isSearchable={true}
                   isClearable={true}
                   styles={selectStyleObject} />
@@ -413,7 +414,7 @@ export default function DevForm({ isNew = false }) {
                   className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
                 />
                 <label htmlFor='push-everything' className='block text-sm leading-6 text-gray-900'>
-                  Able to start ASAP.
+                  Ready to start within 2 days.
                 </label>
               </div>
               <div className='flex  items-center gap-x-3'>
@@ -426,7 +427,7 @@ export default function DevForm({ isNew = false }) {
                   className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600/60'
                 />
                 <label htmlFor='push-email' className='block text-sm  leading-6 text-gray-900'>
-                  Will be available soon.
+                  Will be available later.
                 </label>
               </div>
 
