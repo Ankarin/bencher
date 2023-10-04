@@ -2,15 +2,17 @@
 import { Developer } from '@/utils/types';
 import { getRegion } from '@/utils/options';
 import { Tooltip } from 'react-tooltip';
+import { Button } from '@/components/landing/Button';
 
-
-export default function DevCard({ developer }: { developer: Developer }) {
+export default function DevCard({ developer }: {
+  developer: Developer
+}) {
 
   const features = [
     { title: '', value: developer.category },
     {
       title: '',
-      value: `${developer.experience}+${developer.experience === 1 ? ' year' : ' years'} of exp`,
+      value: `${developer.experience}+${Number(developer.experience) === 1 ? ' year' : ' years'} of exp`,
     },
     { title: '', value: `${developer.country}, ${getRegion(developer.country)}` },
     { title: 'English: ', value: `${developer.english} ` },
@@ -33,7 +35,6 @@ export default function DevCard({ developer }: { developer: Developer }) {
           </>
         }
       </p>
-
       <p
         className='text-base font-bold text-xl text-blue-600'> {developer.hourly_rate ? `$${developer.hourly_rate}/hr` : ''} </p>
     </div>
@@ -59,6 +60,9 @@ export default function DevCard({ developer }: { developer: Developer }) {
 
     </p>
 
+
     <p className='text-sm'>{developer.description}</p>
+    <Button className='' loading={false} variant='text' color='blue' href={`/edit-dev/${developer.id}`}>Edit </Button>
+
   </div>;
 }
