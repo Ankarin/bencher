@@ -3,13 +3,17 @@ import { Developer } from '@/utils/types';
 import { getRegion } from '@/utils/options';
 import { Tooltip } from 'react-tooltip';
 
+
 export default function DevCard({ developer }: { developer: Developer }) {
 
   const features = [
-    { title: 'Category: ', value: developer.category },
-    { title: 'Experience: ', value: `${developer.experience}+${developer.experience === 1 ? ' year' : ' years'}` },
-    { title: 'Location: ', value: `${developer.country}, ${getRegion(developer.country)}` },
-    { title: 'English: ', value: developer.english },
+    { title: '', value: developer.category },
+    {
+      title: '',
+      value: `${developer.experience}+${developer.experience === 1 ? ' year' : ' years'} of exp`,
+    },
+    { title: '', value: `${developer.country}, ${getRegion(developer.country)}` },
+    { title: 'English: ', value: `${developer.english} ` },
   ];
 
 

@@ -16,6 +16,8 @@ import {
 
 import { selectStyleObject } from '@/utils/utils';
 import { zust } from '@/store';
+import { toast } from 'react-toastify';
+import Toast from '@/components/Toast';
 
 
 const supabase = createClientComponentClient();
@@ -33,11 +35,12 @@ export default function DevForm({ isNew = false, devId }) {
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
   const [cv, setCv] = useState({ url: '', filename: '' });
+  const [disabledSave, setDisabledSave] = useState(false);
 
 
   console.log(isNew);
 
-  console.log(devId)
+  console.log(devId);
 
   const zustMyCompany = zust(state => state.myCompany);
 
@@ -76,13 +79,13 @@ export default function DevForm({ isNew = false, devId }) {
 
   const supaAddDev = async (developer) => {
     try {
-      const { error } = await supabase.from('developers').insert(developer);
-      console.log(error);
+      await supabase.from('developers').insert(developer);
+
     } catch (e) {
       console.log(e);
-      throw new Error(e.message);
+      toast.error('Error adding developer !', {});
     }
-
+    toast.success('Added new developer !', {});
   };
 
 
@@ -121,7 +124,8 @@ export default function DevForm({ isNew = false, devId }) {
         return;
       }
     } catch (error) {
-      alert(error.message);
+      toast.error('Error uploading CV !', {});
+      console.log(error);
     } finally {
       setUploading(false);
     }
@@ -133,6 +137,7 @@ export default function DevForm({ isNew = false, devId }) {
       .from('bitbencher')
       .getPublicUrl(cv.url);
     if (error) {
+      console.log(error);
       throw new Error(error.message);
     }
     window.open(data.publicUrl);
@@ -140,15 +145,19 @@ export default function DevForm({ isNew = false, devId }) {
 
 
   const save = async (e) => {
+    setDisabledSave(true);
     e.preventDefault();
     await uploadCv();
     await addDeveloper();
-
+    setDisabledSave(false);
   };
 
 
   return (
     <form onSubmit={save}>
+
+      <Toast />
+
       <div className='space-y-12'>
         <div className='border-b border-gray-900/10 pb-12'>
           <h2 className='text-base font-medium leading-7 text-gray-900'>Developer Profile</h2>
@@ -315,7 +324,7 @@ export default function DevForm({ isNew = false, devId }) {
                   isMulti
                   onChange={handleSelect}
                   value={otherLanguages}
-                  options={languagesOptions()}
+                  options={languagesOptions}
                   isSearchable={true}
                   isClearable={true}
                   styles={selectStyleObject} />
@@ -447,6 +456,7 @@ export default function DevForm({ isNew = false, devId }) {
           Cancel
         </button>
         <button
+          disabled={disabledSave}
           type='submit'
           className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
