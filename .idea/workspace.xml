@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

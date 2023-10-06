@@ -4,10 +4,12 @@ import { cookies } from 'next/headers'
 import { Company, Developer, User } from '@/utils/types'
 
 const supa = async () => {
+  'use server'
   return createServerComponentClient({ cookies })
 }
 
 const getUser = async () => {
+  'use server'
   const supabase = await supa()
   const { data } = await supabase.auth.getUser()
   console.log(data)
@@ -19,6 +21,7 @@ const getUser = async () => {
 }
 
 const getUserData = async (): Promise<User> => {
+  'use server'
   const supabase = await supa()
   const user = await getUser()
   if (user) {
@@ -33,6 +36,7 @@ const getUserData = async (): Promise<User> => {
   }
 }
 const getCompanyData = async (): Promise<Company> => {
+  'use server'
   const supabase = await supa()
   const userData = await getUserData()
   if (userData && userData.company_id) {
@@ -48,6 +52,7 @@ const getCompanyData = async (): Promise<Company> => {
 }
 
 const getCompanies = async (): Promise<Company[]> => {
+  'use server'
   const supabase = await supa()
   const { data, error } = await supabase.from('companies').select()
   if (error) throw error.message
@@ -55,6 +60,7 @@ const getCompanies = async (): Promise<Company[]> => {
 }
 
 const getMyDevs = async (): Promise<Developer[]> => {
+  'use server'
   const supabase = await supa()
   const userData = await getUserData()
   const { data, error } = await supabase
@@ -65,6 +71,7 @@ const getMyDevs = async (): Promise<Developer[]> => {
   return data
 }
 const getDevs = async (): Promise<Developer[]> => {
+  'use server'
   const supabase = await supa()
   const { data, error } = await supabase.from('developers').select()
   if (error) throw error.message
@@ -72,6 +79,7 @@ const getDevs = async (): Promise<Developer[]> => {
 }
 
 const getDev = async (devId): Promise<Developer | null> => {
+  'use server'
   const supabase = await supa()
   const { data, error } = await supabase
     .from('developers')
