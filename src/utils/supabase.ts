@@ -4,8 +4,7 @@ import { cookies } from 'next/headers'
 import { Company, Developer, User } from '@/utils/types'
 
 const supa = async () => {
-  const supa = await createServerComponentClient({ cookies })
-  return supa
+  return createServerComponentClient({ cookies })
 }
 
 const getUser = async () => {
