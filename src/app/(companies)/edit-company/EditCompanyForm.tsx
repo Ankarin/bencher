@@ -19,8 +19,6 @@ export default function CompanyEdit({ company }): React.ReactNode {
 
   const [size, setSize] = useState('25');
   const [location, setLocation] = useState('test');
-  const [founding_year, setFoundingYear] = useState('test');
-  const [average_rate, setAverageRate] = useState('test');
   const [logo_url, setLogoUrl] = useState('');
   const [description, setDescription] = useState('asdasd');
 
@@ -30,8 +28,6 @@ export default function CompanyEdit({ company }): React.ReactNode {
       setWebsite(company.website);
       setSize(company.size);
       setLocation(company.country);
-      setFoundingYear(company.founding_year);
-      setAverageRate(company.average_rate);
       setLogoUrl(company.logo_url);
       setDescription(company.description);
     }
@@ -45,8 +41,6 @@ export default function CompanyEdit({ company }): React.ReactNode {
       size,
       country: location,
       region: getRegion(location),
-      founding_year,
-      average_rate,
       description,
       logo_url,
     };
@@ -280,61 +274,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                 </div>
               </div>
             </div>
-            <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
-              <div className='sm:col-span-3'>
-                <div className='mt-2'>
-                  <label
-                    htmlFor='location'
-                    className='block text-sm font-medium leading-6 text-gray-900'
-                  >
-                    Average Hourly Rate *
-                  </label>
-                  <select
-                    required
-                    id='avergaeRate'
-                    name='averageRate'
-                    value={average_rate}
-                    onChange={(e) => {
-                      setAverageRate(e.target.value);
-                    }}
-                    className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
-                  >
-                    <option></option>
-                    <option>{`< $25`}</option>
-                    <option>$25 - $49</option>
-                    <option>$50 - $99</option>
-                    <option>$100 - $149</option>
-                    <option>$149-$200</option>
-                    <option>$200+</option>
-                  </select>
-                </div>
-              </div>
-              <div className='sm:col-span-3'>
-                <div className='mt-2'>
-                  <label
-                    htmlFor='location'
-                    className='block text-sm font-medium leading-6 text-gray-900'
-                  >
-                    Founding Year *
-                  </label>
-                  <select
-                    required
-                    id='foundingYear'
-                    name='foundingYear'
-                    value={founding_year}
-                    onChange={(e) => {
-                      setFoundingYear(e.target.value);
-                    }}
-                    className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
-                  >
-                    <option></option>
-                    {years().map((year) => (
-                      <option key={year}>{year}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>
+
             <div className='mt-10 sm:col-span-3'>
               <label
                 htmlFor='about'
@@ -390,13 +330,3 @@ export default function CompanyEdit({ company }): React.ReactNode {
     </div>
   );
 }
-const years = () => {
-  const max = new Date().getFullYear();
-  const min = max - 250;
-  const years = [];
-
-  for (let i = max; i >= min; i--) {
-    years.push(i);
-  }
-  return years;
-};

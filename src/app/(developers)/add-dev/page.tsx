@@ -1,5 +1,5 @@
 'use client';
-import DevForm from '@/components/app/DevForm';
+import DevForm from '@/app/(developers)/DevForm';
 
 export default function AddDev() {
   return (

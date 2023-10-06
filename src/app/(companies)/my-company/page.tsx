@@ -1,5 +1,5 @@
 import NoCompany from '@/app/(companies)/my-company/NoCompany';
-import Company from '@/app/(companies)/my-company/Company';
+import Company from '@/app/(companies)/Company';
 import NotVerified from '@/app/(companies)/my-company/NotVerified';
 import MyCompanyHeader from '@/app/(companies)/my-company/MyCompanyHeader';
 import React from 'react';

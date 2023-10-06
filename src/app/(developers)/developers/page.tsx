@@ -1,6 +1,6 @@
 import { getDevs } from '@/utils/supabase';
 import { Button } from '@/components/landing/Button';
-import DevList from '@/components/DevList';
+import DevList from '@/app/(developers)/DevList';
 
 export default async function Developers() {
   const developers = await getDevs();

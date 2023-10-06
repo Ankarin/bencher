@@ -1,6 +1,6 @@
 import { Button } from '@/components/landing/Button';
 import { getMyDevs } from '@/utils/supabase';
-import DevList from '@/components/DevList';
+import DevList from '@/app/(developers)/DevList';
 
 export default async function MyDevs() {
   const developers = await getMyDevs();
@@ -19,7 +19,7 @@ export default async function MyDevs() {
         </div>
 
       </div>
-      <DevList developers={developers}></DevList>
+      <DevList isMine={true} developers={developers}></DevList>
     </div>
   );
 

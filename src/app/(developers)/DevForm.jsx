@@ -2,7 +2,7 @@
 // import { Button } from '@/components/landing/Button';
 import { uuid } from '@supabase/supabase-js/dist/main/lib/helpers';
 import { XMarkIcon } from '@heroicons/react/24/solid';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
@@ -15,17 +15,18 @@ import {
 } from '@/utils/options';
 
 import { selectStyleObject } from '@/utils/utils';
-import { zust } from '@/store';
+import { zust } from 'src/store';
 import { toast } from 'react-toastify';
-import Toast from '@/components/Toast';
+import Toast from '@/components/app/Toast';
+import { useRouter } from 'next/navigation';
 
 
 const supabase = createClientComponentClient();
 
-export default function DevForm({ isNew = false, devId }) {
+export default function DevForm({ isNew = false, dev }) {
   const [title, setTitle] = useState('');
-  const [category, setcategory] = useState('');
-  const [experience, setExperience] = useState('3');
+  const [category, setCategory] = useState('');
+  const [experience, setExperience] = useState(3);
   const [location, setLocation] = useState('');
   const [asap, setAsap] = useState(false);
   const [english, setEnglish] = useState('');
@@ -36,11 +37,34 @@ export default function DevForm({ isNew = false, devId }) {
   const [uploading, setUploading] = useState(false);
   const [cv, setCv] = useState({ url: '', filename: '' });
   const [disabledSave, setDisabledSave] = useState(false);
+  const [isPublic, setPublic] = useState(false);
+  const [file, setFile] = useState(null);
+  const router = useRouter();
 
 
-  console.log(isNew);
+  useEffect(() => {
+    if (dev) {
+      setTitle(dev.title);
+      setCategory(dev.category);
+      setExperience(dev.experience);
+      setLocation(dev.country);
+      setAsap(dev.asap);
+      setEnglish(dev.english);
+      setRate(dev.hourly_rate);
+      setOtherLanguages(dev.other_languages.map(item => {
+        return { value: item, label: item };
+      }));
+      setMainSkills(dev.skills.map(item => {
+        return { value: item, label: item };
+      }));
+      setDescription(dev.description);
+      setCv({ url: dev.cv.url, filename: dev.cv.name });
+      console.log(mainSkills);
+    }
 
-  console.log(devId);
+
+  }, []);
+
 
   const zustMyCompany = zust(state => state.myCompany);
 
@@ -50,18 +74,19 @@ export default function DevForm({ isNew = false, devId }) {
   }).filter(item => !otherLanguages.includes(item));
 
 
-  const handleSelect = (val) => {
+  const handleSelectOtherLanguages = (val) => {
+    if (val.length > 5) {
+      return;
+    }
     setOtherLanguages(val);
   };
   const handleSelectSkills = (val) => {
-    if (mainSkills.length >= 10) {
+    if (val.length > 15) {
       return;
     }
     setMainSkills(val);
   };
 
-
-  const [file, setFile] = useState(null);
 
   async function loadCV(e) {
     if (!e.target.files || e.target.files.length === 0) {
@@ -78,18 +103,31 @@ export default function DevForm({ isNew = false, devId }) {
 
 
   const supaAddDev = async (developer) => {
-    try {
-      await supabase.from('developers').insert(developer);
-
-    } catch (e) {
-      console.log(e);
-      toast.error('Error adding developer !', {});
+    const { data, error } = await supabase.from('developers').insert(developer).select();
+    if (error) {
+      toast.error('Error adding developer !');
     }
-    toast.success('Added new developer !', {});
+    router.refresh();
+    if (data) {
+      router.push(`/edit-dev/${data[0].id}`);
+      toast.success('Added new developer !');
+    }
   };
 
 
-  const addDeveloper = async () => {
+  const supaEditDev = async (developer) => {
+    const { data, error } = await supabase.from('developers').update(developer).eq('id', dev.id).select();
+    console.log(data);
+    if (error) {
+      toast.error('Error updating developer !');
+    } else {
+      toast.success('Updated developer !');
+    }
+    router.refresh();
+  };
+
+
+  const saveDeveloper = async () => {
     const developer = {
       company: zustMyCompany.id,
       title,
@@ -103,53 +141,57 @@ export default function DevForm({ isNew = false, devId }) {
       other_languages: otherLanguages.map(item => item.value),
       hourly_rate: rate,
       description,
-      cv: cv.url,
+      cv: { url: cv.url, name: cv.filename },
+      public: isPublic,
     };
-    await supaAddDev(developer);
-
+    if (isNew) {
+      await supaAddDev(developer);
+    } else {
+      await supaEditDev(developer);
+    }
   };
 
 
   async function uploadCv() {
+    if (dev && dev.cv.url === cv.url) return;
+    if (!file) return;
+
+    if (!cv.url && dev.cv.url) {
+      await supabase.storage.from('bitbencher/').remove([dev.cv.url]);
+    }
+
     try {
       setUploading(true);
-
-
       const { error: uploadError } = await supabase.storage
         .from('bitbencher/')
         .upload(cv.url, file);
-
       if (uploadError) {
-        alert(uploadError);
-        return;
+        toast.error('Error uploading CV !');
       }
     } catch (error) {
-      toast.error('Error uploading CV !', {});
       console.log(error);
     } finally {
       setUploading(false);
     }
   }
 
-  const supaDownload = async () => {
-    const { data, error } = supabase
-      .storage
-      .from('bitbencher')
-      .getPublicUrl(cv.url);
-    if (error) {
-      console.log(error);
-      throw new Error(error.message);
-    }
-    window.open(data.publicUrl);
-  };
-
 
   const save = async (e) => {
     setDisabledSave(true);
     e.preventDefault();
     await uploadCv();
-    await addDeveloper();
+    await saveDeveloper();
     setDisabledSave(false);
+
+  };
+
+
+  const handlePublic = (state) => {
+    // if (state && zustMyCompany.verified) {
+    //   return;
+    // } else {
+    setPublic(state);
+    // }
   };
 
 
@@ -160,12 +202,41 @@ export default function DevForm({ isNew = false, devId }) {
 
       <div className='space-y-12'>
         <div className='border-b border-gray-900/10 pb-12'>
-          <h2 className='text-base font-medium leading-7 text-gray-900'>Developer Profile</h2>
-          <p className='mt-2 text-sm leading-6 text-gray-600'>
-            This profile is linked to your company, it will be public when you allow, make sure to keep private
-            information that would let others
-            contact your developer directly to avoid solicitation.
-          </p>
+          <div className={'sm:flex justify-between items-center'}>
+            <h2
+              className='text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:col-span-3 sm:tracking-tight pb-3 sm:p-0'>
+              {isNew ? `Add Developer` : `Edit Developer`}
+            </h2>
+            <div className={'sm:col-span-3'}>
+              <div className='flex items-center gap-x-3'>
+                <input
+                  id='public'
+                  name='public'
+                  type='radio'
+                  checked={isPublic}
+                  onChange={() => handlePublic(true)}
+                  className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                />
+                <label htmlFor='push-everything' className='block text-sm leading-6 text-gray-900'>
+                  <span className={'font-semibold'}>Public - </span> Visible to others and can be applied for
+                  requests.
+                </label>
+              </div>
+              <div className='flex items-center gap-x-3'>
+                <input
+                  id='public'
+                  name='public'
+                  type='radio'
+                  checked={!isPublic}
+                  onChange={() => handlePublic(false)}
+                  className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600/60'
+                />
+                <label htmlFor='push-email' className='block text-sm  leading-6 text-gray-900'>
+                  <span className={'font-semibold'}>Private - </span> Hidden and can't be applied for requests.
+                </label>
+              </div>
+            </div>
+          </div>
           <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
             <div className='sm:col-span-3'>
               <label htmlFor='username' className='block text-sm font-medium leading-6 text-gray-900'>
@@ -189,9 +260,7 @@ export default function DevForm({ isNew = false, devId }) {
             <div className='sm:col-span-3'>
               <label
                 htmlFor='category'
-                className='block text-sm font-medium leading-6 text-gray-900'
-              >
-
+                className='block text-sm font-medium leading-6 text-gray-900'>
                 Category *
               </label>
               <select
@@ -200,7 +269,7 @@ export default function DevForm({ isNew = false, devId }) {
                 name='category'
                 value={category}
                 onChange={(e) => {
-                  setcategory(e.target.value);
+                  setCategory(e.target.value);
                 }}
                 className='mt-2 block shadow-sm w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
               >
@@ -317,12 +386,12 @@ export default function DevForm({ isNew = false, devId }) {
                 htmlFor='location'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                Other Languages
+                Other Languages (Up to 5)
               </label>
               <div>
                 <Select
                   isMulti
-                  onChange={handleSelect}
+                  onChange={handleSelectOtherLanguages}
                   value={otherLanguages}
                   options={languagesOptions}
                   isSearchable={true}
@@ -336,7 +405,7 @@ export default function DevForm({ isNew = false, devId }) {
                 htmlFor='location'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                Main Skills (Pick up to 10)
+                Main Skills (Up to 15)
               </label>
               <div>
                 <CreatableSelect
@@ -388,7 +457,6 @@ export default function DevForm({ isNew = false, devId }) {
                   >
                     <span>Upload </span>
                     <input
-                      required
                       id='file-upload'
                       name='file-upload'
                       type='file'
@@ -403,7 +471,7 @@ export default function DevForm({ isNew = false, devId }) {
 
                 </div> :
                 <div className={'flex'}><span className={'text-indigo-600 cursor-pointer'}
-                                              onClick={supaDownload}>{cv.filename} </span>
+                                              onClick={() => supaDownload(cv.url)}>{cv.filename} </span>
                   <XMarkIcon onClick={() => {
                     setFile(null);
                     setCv({ url: '', filename: '' });
@@ -423,7 +491,7 @@ export default function DevForm({ isNew = false, devId }) {
                   className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
                 />
                 <label htmlFor='push-everything' className='block text-sm leading-6 text-gray-900'>
-                  Ready to start within 2 days.
+                  <span className={'font-semibold'}>ASAP - </span> Ready to start within 2 days.
                 </label>
               </div>
               <div className='flex  items-center gap-x-3'>
@@ -439,15 +507,9 @@ export default function DevForm({ isNew = false, devId }) {
                   Will be available later.
                 </label>
               </div>
-
-
             </div>
-
           </div>
-
-
         </div>
-
       </div>
 
 
@@ -458,7 +520,7 @@ export default function DevForm({ isNew = false, devId }) {
         <button
           disabled={disabledSave}
           type='submit'
-          className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+          className='cursor-pointer rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
           Save
         </button>

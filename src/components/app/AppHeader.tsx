@@ -193,25 +193,25 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
 
             <Disclosure.Panel className='lg:hidden'>
               <div className='space-y-1 px-2 pb-3 pt-2'>
-                {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
+          
                 <Disclosure.Button
                   as='a'
                   href='/developers'
-                  className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                  className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
                 >
                   Developers
                 </Disclosure.Button>
                 <Disclosure.Button
                   as='a'
                   href='/requests'
-                  className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                  className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
                 >
                   Requests
                 </Disclosure.Button>
                 <Disclosure.Button
                   as='a'
                   href='/companies'
-                  className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                  className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
                 >
                   Companies
                 </Disclosure.Button>
@@ -222,14 +222,14 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                     <Disclosure.Button
                       as='a'
                       href='/login'
-                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       Sign In
                     </Disclosure.Button>
                     <Disclosure.Button
                       as='a'
                       href='/register'
-                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       Sign Up
                     </Disclosure.Button>
@@ -244,21 +244,21 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                     <Disclosure.Button
                       as='a'
                       href='/my-company'
-                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       My Company
                     </Disclosure.Button>
                     <Disclosure.Button
                       as='a'
                       href='/my-devs'
-                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       My Developers
                     </Disclosure.Button>
                     <Disclosure.Button
                       as='a'
                       href='/my-requests'
-                      className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       My Requests
                     </Disclosure.Button>
@@ -266,7 +266,7 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                     <div className={'pt-5'}>
                       <Disclosure.Button
                         onClick={signOut}
-                        className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                        className='block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white'
                       >
                         Sign Out
                       </Disclosure.Button>

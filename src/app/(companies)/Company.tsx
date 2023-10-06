@@ -5,7 +5,6 @@ import React, { useEffect } from 'react';
 import {
   UserGroupIcon,
   MapPinIcon,
-  CurrencyDollarIcon,
 } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
@@ -15,10 +14,6 @@ export default function Company({ company, myCompany }): React.ReactNode {
   }, []);
 
   const features = [
-    {
-      data: `${company.average_rate} / h`,
-      icon: CurrencyDollarIcon,
-    },
     {
       data: company.size,
       icon: UserGroupIcon,
