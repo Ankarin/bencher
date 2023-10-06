@@ -3,10 +3,12 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { Company, Developer, User } from '@/utils/types';
 
-const supa = async () => {
-  'use server';
-  return createServerComponentClient({ cookies });
+
+const supa = () => {
+  const cookieStore = cookies();
+  return createServerComponentClient({ cookies: () => cookieStore });
 };
+
 
 const getUser = async () => {
   'use server';
