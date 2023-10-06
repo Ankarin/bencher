@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +93,7 @@
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\api\auth\reset-callback" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/(developers)/developer/[slug]" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\components\app" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(developers)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(companies)" />

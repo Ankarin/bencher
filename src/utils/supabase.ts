@@ -11,7 +11,6 @@ const supa = () => {
 
 
 const getUser = async () => {
-  'use server';
   const supabase = await supa();
   const { data } = await supabase.auth.getUser();
   console.log(data);
@@ -50,6 +49,17 @@ const getCompanyData = async (): Promise<Company> => {
     return null;
   }
 };
+
+const getCompanyById = async (id: string): Promise<Company> => {
+  const supabase = await supa();
+  const { data, error } = await supabase
+    .from('companies')
+    .select()
+    .eq('id', id);
+  if (error) throw error.message;
+  return data[0];
+};
+
 
 const getCompanies = async (): Promise<Company[]> => {
   const supabase = await supa();
@@ -97,4 +107,5 @@ export {
   getMyDevs,
   getDevs,
   getDev,
+  getCompanyById,
 };
