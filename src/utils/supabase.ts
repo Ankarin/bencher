@@ -70,17 +70,17 @@ const getDevs = async (): Promise<Developer[]> => {
   return data
 }
 
-const getDev = async (devId): Promise<Developer | boolean> => {
+const getDev = async (devId): Promise<Developer | null> => {
   const supabase = await supa()
   const { data, error } = await supabase
     .from('developers')
     .select()
     .eq('id', devId)
-  if (error) return false
+  if (error) return null
   if (data[0]) {
     return data[0]
   } else {
-    return false
+    return null
   }
 }
 

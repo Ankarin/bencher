@@ -6,27 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/edit-company/EditCompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/Company.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/Company.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(developers)/add-dev/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/add-dev/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developers/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(developers)/edit-dev/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/edit-dev/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/reset-callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/reset-callback/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DevList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/Toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/DevForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CompanyCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +153,7 @@
       <workItem from="1696529859024" duration="4930000" />
       <workItem from="1696539922446" duration="4000" />
       <workItem from="1696584817741" duration="87000" />
-      <workItem from="1696585154214" duration="3542000" />
+      <workItem from="1696585154214" duration="4248000" />
     </task>
     <servers />
   </component>
