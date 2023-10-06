@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/add-dev/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/add-dev/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/edit-dev/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/edit-dev/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +150,7 @@
       <workItem from="1696529859024" duration="4930000" />
       <workItem from="1696539922446" duration="4000" />
       <workItem from="1696584817741" duration="87000" />
-      <workItem from="1696585154214" duration="4248000" />
+      <workItem from="1696585154214" duration="4377000" />
     </task>
     <servers />
   </component>
