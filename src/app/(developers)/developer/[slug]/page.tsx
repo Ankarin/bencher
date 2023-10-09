@@ -1,15 +1,15 @@
-import DevCard from '@/app/(developers)/DevCard';
-import CompanyCard from '@/app/(companies)/Company';
-import { getCompanyById, getCompanyData, getDev } from '@/utils/supabase';
-import { Developer, Company } from '@/utils/types';
+import DevCard from '@/app/(developers)/DevCard'
+import CompanyCard from '@/app/(companies)/CompanyCard'
+import { getCompanyById, getCompanyData, getDev } from '@/utils/supabase'
+import { Developer, Company } from '@/utils/types'
 
 export default async function EditDev({ params }) {
-  const dev: Developer | null = await getDev(params.slug); // Provide a type annotation
-  const myCompany: Company = await getCompanyData();
+  const dev: Developer | null = await getDev(params.slug) // Provide a type annotation
+  const myCompany: Company = await getCompanyData()
 
-  const devCompany: Company = dev ? await getCompanyById(dev.company) : null;
+  const devCompany: Company = dev ? await getCompanyById(dev.company) : null
 
-  const isMine = (): boolean => dev?.company === myCompany?.id;
+  const isMine = (): boolean => dev?.company === myCompany?.id
 
   return (
     <div className={'mx-auto max-w-5xl p-5'}>
@@ -22,5 +22,5 @@ export default async function EditDev({ params }) {
         <p>Developer not found</p>
       )}
     </div>
-  );
+  )
 }

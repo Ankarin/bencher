@@ -1,18 +1,15 @@
 'use client'
-// import { Button } from '@/components/landing/Button';
-import { uuid } from '@supabase/supabase-js/dist/main/lib/helpers'
-import { XMarkIcon } from '@heroicons/react/24/solid'
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import {
-  countries,
   englishLevels,
   languages,
   categorys,
-  getRegion,
   skillList,
+  howManyHours,
+  scopeOptions,
 } from '@/utils/options'
 
 import { selectStyleObject } from '@/utils/utils'
@@ -20,50 +17,54 @@ import { zust } from 'src/store'
 import { toast } from 'react-toastify'
 import Toast from '@/components/app/Toast'
 import { useRouter } from 'next/navigation'
-import { supaDownload } from '@/utils/supabaseClient'
+import { Job } from '@/utils/types'
 
 const supabase = createClientComponentClient()
 
-export default function DevForm({ isNew = false, dev }) {
+export default function JobForm({
+  isNew = false,
+  job,
+}: {
+  isNew?: boolean
+  job?: Job | null
+}) {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
-  const [experience, setExperience] = useState(3)
-  const [location, setLocation] = useState('')
+  const [experience, setExperience] = useState('3')
   const [asap, setAsap] = useState(false)
   const [english, setEnglish] = useState('')
   const [rate, setRate] = useState('')
   const [otherLanguages, setOtherLanguages] = useState([])
   const [mainSkills, setMainSkills] = useState([])
   const [description, setDescription] = useState('')
-  const [uploading, setUploading] = useState(false)
-  const [cv, setCv] = useState({ url: '', filename: '' })
+  const [hours, setHours] = useState(null)
+  const [scope, setScope] = useState(null)
   const [disabledSave, setDisabledSave] = useState(false)
   const [isPublic, setPublic] = useState(false)
-  const [file, setFile] = useState(null)
   const router = useRouter()
 
   useEffect(() => {
-    if (dev) {
-      setTitle(dev.title)
-      setCategory(dev.category)
-      setExperience(dev.experience)
-      setLocation(dev.country)
-      setAsap(dev.asap)
-      setEnglish(dev.english)
-      setRate(dev.hourly_rate)
+    if (job) {
+      setTitle(job.title)
+      setCategory(job.category)
+      setExperience(job.experience)
+      setAsap(job.asap)
+      setEnglish(job.english)
+      setRate(job.rate)
       setOtherLanguages(
-        dev.other_languages.map((item) => {
+        job.other_languages.map((item) => {
           return { value: item, label: item }
         })
       )
       setMainSkills(
-        dev.skills.map((item) => {
+        job.skills.map((item) => {
           return { value: item, label: item }
         })
       )
-      setDescription(dev.description)
-      setCv({ url: dev.cv.url, filename: dev.cv.name })
-      console.log(mainSkills)
+      setDescription(job.description)
+      setPublic(job.public)
+      setScope(job.scope)
+      setHours(job.hours)
     }
   }, [])
 
@@ -88,101 +89,59 @@ export default function DevForm({ isNew = false, dev }) {
     setMainSkills(val)
   }
 
-  async function loadCV(e) {
-    if (!e.target.files || e.target.files.length === 0) {
-      throw new Error('You must select pdf to upload.')
-    }
-    const file = e.target.files[0]
-    setFile(file)
-    const path = uuid()
-    setCv({
-      url: `cv/${path}`,
-      filename: file.name,
-    })
-  }
-
-  const supaAddDev = async (developer) => {
-    const { data, error } = await supabase
-      .from('developers')
-      .insert(developer)
-      .select()
+  const supaAddJob = async (job: Job) => {
+    const { data, error } = await supabase.from('jobs').insert(job).select()
     if (error) {
-      toast.error('Error adding developer !')
+      toast.error('Error adding new job!')
     }
     router.refresh()
     if (data) {
       router.push(`/edit-dev/${data[0].id}`)
-      toast.success('Added new developer !')
+      toast.success('Added new job!')
     }
   }
 
-  const supaEditDev = async (developer) => {
-    const { data, error } = await supabase
-      .from('developers')
-      .update(developer)
-      .eq('id', dev.id)
+  const supaEditJob = async (job: Job) => {
+    const { error } = await supabase
+      .from('jobs')
+      .update(job)
+      .eq('id', job.id)
       .select()
-    console.log(data)
     if (error) {
-      toast.error('Error updating developer !')
+      toast.error('Error updating job!')
     } else {
-      toast.success('Updated developer !')
+      toast.success('Updated job!')
     }
     router.refresh()
   }
 
-  const saveDeveloper = async () => {
-    const developer = {
+  const saveJob = async () => {
+    const job: Job = {
+      hours,
+      scope,
       company: zustMyCompany.id,
       title,
       category,
       experience: experience,
-      country: location,
-      region: getRegion(location),
       asap,
       english,
       skills: mainSkills.map((item) => item.value),
       other_languages: otherLanguages.map((item) => item.value),
-      hourly_rate: rate,
+      rate: rate,
       description,
-      cv: { url: cv.url, name: cv.filename },
       public: isPublic,
     }
     if (isNew) {
-      await supaAddDev(developer)
+      await supaAddJob(job)
     } else {
-      await supaEditDev(developer)
-    }
-  }
-
-  async function uploadCv() {
-    if (dev && dev.cv.url === cv.url) return
-    if (!file) return
-
-    if (!cv.url && dev.cv.url) {
-      await supabase.storage.from('bitbencher/').remove([dev.cv.url])
-    }
-
-    try {
-      setUploading(true)
-      const { error: uploadError } = await supabase.storage
-        .from('bitbencher/')
-        .upload(cv.url, file)
-      if (uploadError) {
-        toast.error('Error uploading CV !')
-      }
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setUploading(false)
+      await supaEditJob(job)
     }
   }
 
   const save = async (e) => {
     setDisabledSave(true)
     e.preventDefault()
-    await uploadCv()
-    await saveDeveloper()
+    await saveJob()
     setDisabledSave(false)
   }
 
@@ -197,49 +156,12 @@ export default function DevForm({ isNew = false, dev }) {
   return (
     <form onSubmit={save}>
       <Toast />
-
       <div className='space-y-12'>
         <div className='border-b border-gray-900/10 pb-12'>
           <div className={'items-center justify-between sm:flex'}>
             <h2 className='pb-3 text-2xl font-bold leading-7 text-gray-900 sm:col-span-3 sm:truncate sm:p-0 sm:text-3xl sm:tracking-tight'>
-              {isNew ? `Add Developer` : `Edit Developer`}
+              {isNew ? `Add Job` : `Edit Job`}
             </h2>
-            <div className={'sm:col-span-3'}>
-              <div className='flex items-center gap-x-3'>
-                <input
-                  id='public'
-                  name='public'
-                  type='radio'
-                  checked={isPublic}
-                  onChange={() => handlePublic(true)}
-                  className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
-                />
-                <label
-                  htmlFor='push-everything'
-                  className='block text-sm leading-6 text-gray-900'
-                >
-                  <span className={'font-semibold'}>Public - </span> Visible to
-                  others and can be applied for requests.
-                </label>
-              </div>
-              <div className='flex items-center gap-x-3'>
-                <input
-                  id='public'
-                  name='public'
-                  type='radio'
-                  checked={!isPublic}
-                  onChange={() => handlePublic(false)}
-                  className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600/60'
-                />
-                <label
-                  htmlFor='push-email'
-                  className='block text-sm  leading-6 text-gray-900'
-                >
-                  <span className={'font-semibold'}>Private - </span> Hidden and
-                  can't be applied for requests.
-                </label>
-              </div>
-            </div>
           </div>
           <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
             <div className='sm:col-span-3'>
@@ -286,32 +208,30 @@ export default function DevForm({ isNew = false, dev }) {
                 ))}
               </select>
             </div>
-
-            <div className='sm:col-span-3'>
-              <label
-                htmlFor='location'
-                className='block text-sm font-medium leading-6 text-gray-900'
-              >
-                Location *
-              </label>
-              <select
-                required
-                id='location'
-                name='location'
-                value={`${location}`}
-                onChange={(e) => {
-                  setLocation(e.target.value)
-                }}
-                className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
-              >
-                <option></option>
-                {countries().map((country) => (
-                  <option key={country}>{country}</option>
-                ))}
-              </select>
-              <p className='absolute mt-1 text-sm leading-6 text-indigo-600'>
-                {getRegion(location)}
-              </p>
+            <div className='sm:col-span-3 '>
+              <div>
+                <label
+                  htmlFor='location'
+                  className='block text-sm font-medium leading-6 text-gray-900'
+                >
+                  Ho many hours per week *
+                </label>
+                <select
+                  required
+                  id='hours'
+                  name='hours'
+                  value={hours}
+                  onChange={(e) => {
+                    setHours(e.target.value)
+                  }}
+                  className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                >
+                  <option></option>
+                  {howManyHours().map((item) => (
+                    <option key={item.id}>{item.name}</option>
+                  ))}
+                </select>
+              </div>
             </div>
             <div className='sm:col-span-3 '>
               <div>
@@ -319,10 +239,34 @@ export default function DevForm({ isNew = false, dev }) {
                   htmlFor='location'
                   className='block text-sm font-medium leading-6 text-gray-900'
                 >
-                  English Level *
+                  How long *
                 </label>
                 <select
-                  required
+                  id='scope'
+                  name='scope'
+                  value={scope}
+                  onChange={(e) => {
+                    setScope(e.target.value)
+                  }}
+                  className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                >
+                  <option></option>
+                  {scopeOptions().map((item) => (
+                    <option key={item.id}>{item.name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className='sm:col-span-3 '>
+              <div>
+                <label
+                  htmlFor='location'
+                  className='block text-sm font-medium leading-6 text-gray-900'
+                >
+                  Minimum English Level
+                </label>
+                <select
                   id='english'
                   name='english'
                   value={english}
@@ -339,12 +283,12 @@ export default function DevForm({ isNew = false, dev }) {
               </div>
             </div>
 
-            <div className='mt-2 sm:col-span-3'>
+            <div className=' sm:col-span-3'>
               <label
                 htmlFor='rate'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                Rate
+                Maximum rate
               </label>
               <div className='relative mt-2 rounded-md '>
                 <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
@@ -370,33 +314,8 @@ export default function DevForm({ isNew = false, dev }) {
                   </span>
                 </div>
               </div>
-              <p className='absolute mt-1 text-sm leading-6 text-indigo-600'>
-                Recommended
-              </p>
             </div>
-            <div className='mt-2 sm:col-span-3'>
-              <label
-                htmlFor='about'
-                className='block text-sm font-medium leading-6 text-gray-900'
-              >
-                {experience} + years of experience
-              </label>
-              <div className='mt-2'>
-                <input
-                  id='experience'
-                  name='experience'
-                  type='range'
-                  min='1'
-                  max='10'
-                  value={experience}
-                  onChange={(e) => {
-                    setExperience(e.target.value)
-                  }}
-                  list='markers'
-                  className='light h-2  w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700'
-                />
-              </div>
-            </div>
+
             <div className='mt-2 sm:col-span-3'>
               <label
                 htmlFor='location'
@@ -429,10 +348,33 @@ export default function DevForm({ isNew = false, dev }) {
                   value={mainSkills}
                   onChange={handleSelectSkills}
                   options={skillList()}
-                  primaryColor='blue'
                   isMulti
                   isClearable={true}
                   styles={selectStyleObject}
+                />
+              </div>
+            </div>
+
+            <div className='mt-2 sm:col-span-3'>
+              <label
+                htmlFor='about'
+                className='block text-sm font-medium leading-6 text-gray-900'
+              >
+                Minimum {experience} + years of experience
+              </label>
+              <div className='mt-2'>
+                <input
+                  id='experience'
+                  name='experience'
+                  type='range'
+                  min='1'
+                  max='10'
+                  value={experience}
+                  onChange={(e) => {
+                    setExperience(e.target.value)
+                  }}
+                  list='markers'
+                  className='light h-2  w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700'
                 />
               </div>
             </div>
@@ -459,54 +401,8 @@ export default function DevForm({ isNew = false, dev }) {
                 </span>
               </div>
               <p className='mt-3 text-sm leading-6 text-gray-600'>
-                Write a few sentences about the candidate.
+                Write a few sentences about the job.
               </p>
-            </div>
-
-            <div className='sm:col-span-3'>
-              <label
-                htmlFor='cover-photo'
-                className='block text-sm font-medium leading-6 text-gray-900'
-              >
-                Detailed CV
-              </label>
-
-              {!cv.url ? (
-                <div>
-                  <label
-                    htmlFor='file-upload'
-                    className='relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'
-                  >
-                    <span>Upload </span>
-                    <input
-                      id='file-upload'
-                      name='file-upload'
-                      type='file'
-                      accept='.pdf'
-                      className='sr-only'
-                      onChange={loadCV}
-                      disabled={uploading}
-                    />
-                  </label>
-                  <span>{file ? file.name : ''}</span>
-                </div>
-              ) : (
-                <div className={'flex'}>
-                  <span
-                    className={'cursor-pointer text-indigo-600'}
-                    onClick={() => supaDownload(cv.url)}
-                  >
-                    {cv.filename}{' '}
-                  </span>
-                  <XMarkIcon
-                    onClick={() => {
-                      setFile(null)
-                      setCv({ url: '', filename: '' })
-                    }}
-                    className='ml-5 h-6 w-6 cursor-pointer text-red-500'
-                  ></XMarkIcon>
-                </div>
-              )}
             </div>
 
             <div className={'sm:col-span-3'}>
@@ -523,8 +419,8 @@ export default function DevForm({ isNew = false, dev }) {
                   htmlFor='push-everything'
                   className='block text-sm leading-6 text-gray-900'
                 >
-                  <span className={'font-semibold'}>ASAP - </span> Ready to
-                  start within 2 days.
+                  <span className={'font-semibold'}>ASAP - </span> Need to start
+                  within 2 days.
                 </label>
               </div>
               <div className='flex  items-center gap-x-3'>
@@ -540,7 +436,43 @@ export default function DevForm({ isNew = false, dev }) {
                   htmlFor='push-email'
                   className='block text-sm  leading-6 text-gray-900'
                 >
-                  Will be available later.
+                  Can start later.
+                </label>
+              </div>
+            </div>
+            <div className={'sm:col-span-3'}>
+              <div className='flex items-center gap-x-3'>
+                <input
+                  id='public'
+                  name='public'
+                  type='radio'
+                  checked={isPublic}
+                  onChange={() => handlePublic(true)}
+                  className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                />
+                <label
+                  htmlFor='push-everything'
+                  className='block text-sm leading-6 text-gray-900'
+                >
+                  <span className={'font-semibold'}>Public - </span> Visible,
+                  others can apply.
+                </label>
+              </div>
+              <div className='flex items-center gap-x-3'>
+                <input
+                  id='public'
+                  name='public'
+                  type='radio'
+                  checked={!isPublic}
+                  onChange={() => handlePublic(false)}
+                  className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600/60'
+                />
+                <label
+                  htmlFor='push-email'
+                  className='block text-sm  leading-6 text-gray-900'
+                >
+                  <span className={'font-semibold'}>Private - </span> Hidden,
+                  others can't apply.
                 </label>
               </div>
             </div>

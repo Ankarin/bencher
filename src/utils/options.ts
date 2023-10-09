@@ -175,8 +175,14 @@ const languages = () => [
   'Yoruba',
   'Zhuang',
   'Zulu',
-];
-const availableOptions = () => ['ASAP', '1 week', '2 weeks', '3 weeks', 'Month+'];
+]
+const availableOptions = () => [
+  'ASAP',
+  '1 week',
+  '2 weeks',
+  '3 weeks',
+  'Month+',
+]
 const skills = () => [
   'JavaScript',
   'Python',
@@ -551,1116 +557,1146 @@ const skills = () => [
   'Marmalade',
   'Monogame',
   'Cordova',
-];
+]
 const englishLevels = () => [
   'Basic (A0-A2)',
   'Intermediate (B1)',
   'Upper Intermediate (B2)',
   'Fluent (C1-C2)',
-  'Native / Bilingual'];
+  'Native / Bilingual',
+]
+
+const howManyHours = () => [
+  { id: 1, name: 'Less then 20 hours a week' },
+  { id: 2, name: '20-40 hours a week' },
+  { id: 3, name: 'Full time' },
+]
+const scopeOptions = () => [
+  { id: 1, name: 'Less then 1 month' },
+  { id: 2, name: '1-3 months' },
+  { id: 3, name: '3-6 months' },
+  { id: 3, name: 'More then 6 months' },
+]
 
 const rolesArray = () => [
   {
     role: 'Frontend',
-    description: 'Specializes in creating user interfaces and client-side development using technologies like HTML, CSS, and JavaScript.',
+    description:
+      'Specializes in creating user interfaces and client-side development using technologies like HTML, CSS, and JavaScript.',
   },
   {
     role: 'Backend',
-    description: 'Focuses on server-side development, database management, and server operations.',
+    description:
+      'Focuses on server-side development, database management, and server operations.',
   },
   {
     role: 'Full-Stack',
-    description: 'Proficient in both frontend and backend development, capable of working on the entire software stack.',
+    description:
+      'Proficient in both frontend and backend development, capable of working on the entire software stack.',
   },
   {
     role: 'Mobile',
-    description: 'Specializes in creating applications for mobile platforms such as iOS and Android.',
+    description:
+      'Specializes in creating applications for mobile platforms such as iOS and Android.',
   },
   {
     role: 'DevOps',
-    description: 'Manages the development, deployment, and maintenance of software, focusing on automation, continuous integration, and continuous deployment (CI/CD).',
+    description:
+      'Manages the development, deployment, and maintenance of software, focusing on automation, continuous integration, and continuous deployment (CI/CD).',
   },
   {
     role: 'Manual QA',
-    description: 'Ensures the quality and functionality of software through testing and quality control processes.',
+    description:
+      'Ensures the quality and functionality of software through testing and quality control processes.',
   },
   {
     role: 'Automation QA ',
-    description: 'Develops automated scripts and tools to streamline development and testing processes.',
+    description:
+      'Develops automated scripts and tools to streamline development and testing processes.',
   },
   {
     role: 'Software Architect',
-    description: 'Designs the high-level structure of software systems, defining key components and their interactions.',
+    description:
+      'Designs the high-level structure of software systems, defining key components and their interactions.',
   },
   {
     role: 'UI/UX',
-    description: 'Focuses on creating intuitive and visually appealing user interfaces and user experiences.',
+    description:
+      'Focuses on creating intuitive and visually appealing user interfaces and user experiences.',
   },
   {
     role: 'Management',
-    description: 'Oversees the development process, defines product goals, and prioritizes features based on customer and business needs.',
+    description:
+      'Oversees the development process, defines product goals, and prioritizes features based on customer and business needs.',
   },
   {
     role: 'Business Analyst',
-    description: 'Analyzes business requirements and translates them into software requirements and features.',
+    description:
+      'Analyzes business requirements and translates them into software requirements and features.',
   },
   {
     role: 'Admin',
-    description: 'Manages and maintains the company\'s databases, ensuring data integrity and availability.',
+    description:
+      "Manages and maintains the company's databases, ensuring data integrity and availability.",
   },
   {
     role: 'Security',
-    description: 'Focuses on the security of software and infrastructure, implementing security measures and conducting security audits.',
+    description:
+      'Focuses on the security of software and infrastructure, implementing security measures and conducting security audits.',
   },
   {
     role: 'Cloud',
-    description: 'Manages cloud infrastructure and services, such as AWS, Azure, or Google Cloud.',
+    description:
+      'Manages cloud infrastructure and services, such as AWS, Azure, or Google Cloud.',
   },
   {
     role: 'Data Science',
-    description: 'Analyzes and interprets complex data to provide insights and make data-driven decisions.',
+    description:
+      'Analyzes and interprets complex data to provide insights and make data-driven decisions.',
   },
   {
     role: 'Machine Learning',
-    description: 'Develops machine learning models and algorithms for data analysis and predictive purposes.',
+    description:
+      'Develops machine learning models and algorithms for data analysis and predictive purposes.',
   },
   {
     role: 'Support',
-    description: 'Provides technical support to customers, addressing their issues and inquiries.',
+    description:
+      'Provides technical support to customers, addressing their issues and inquiries.',
   },
   {
     role: 'Data Engineer',
-    description: 'Focuses on the design and management of data pipelines and ETL processes.',
+    description:
+      'Focuses on the design and management of data pipelines and ETL processes.',
   },
   {
     role: 'Blockchain',
-    description: 'Specializes in developing decentralized applications (DApps), smart contracts, and blockchain-based solutions.',
+    description:
+      'Specializes in developing decentralized applications (DApps), smart contracts, and blockchain-based solutions.',
   },
   {
     role: 'Data Analyst',
-    description: 'Analyzes data to provide insights and support data-driven decision-making within the organization.',
+    description:
+      'Analyzes data to provide insights and support data-driven decision-making within the organization.',
   },
   {
     role: 'Business Intelligence',
-    description: 'Focuses on designing, developing, and maintaining business intelligence solutions, including data modeling, reporting, and dashboard development.',
+    description:
+      'Focuses on designing, developing, and maintaining business intelligence solutions, including data modeling, reporting, and dashboard development.',
   },
   {
     role: 'Other',
     description: '',
   },
-];
-
+]
 
 const countriesArray = () => [
   {
-    'country': 'Afghanistan',
-    'region': 'Asia',
+    country: 'Afghanistan',
+    region: 'Asia',
   },
   {
-    'country': 'Åland',
-    'region': 'Europe',
+    country: 'Åland',
+    region: 'Europe',
   },
   {
-    'country': 'Albania',
-    'region': 'Europe',
+    country: 'Albania',
+    region: 'Europe',
   },
   {
-    'country': 'Algeria',
-    'region': 'Africa',
+    country: 'Algeria',
+    region: 'Africa',
   },
   {
-    'country': 'American Samoa',
-    'region': 'Oceania',
+    country: 'American Samoa',
+    region: 'Oceania',
   },
   {
-    'country': 'Andorra',
-    'region': 'Europe',
+    country: 'Andorra',
+    region: 'Europe',
   },
   {
-    'country': 'Angola',
-    'region': 'Africa',
+    country: 'Angola',
+    region: 'Africa',
   },
   {
-    'country': 'Anguilla',
-    'region': 'North America',
+    country: 'Anguilla',
+    region: 'North America',
   },
   {
-    'country': 'Antarctica',
-    'region': 'Antarctica',
+    country: 'Antarctica',
+    region: 'Antarctica',
   },
   {
-    'country': 'Antigua and Barbuda',
-    'region': 'North America',
+    country: 'Antigua and Barbuda',
+    region: 'North America',
   },
   {
-    'country': 'Argentina',
-    'region': 'South America',
+    country: 'Argentina',
+    region: 'South America',
   },
   {
-    'country': 'Armenia',
-    'region': 'Asia',
+    country: 'Armenia',
+    region: 'Asia',
   },
   {
-    'country': 'Aruba',
-    'region': 'North America',
+    country: 'Aruba',
+    region: 'North America',
   },
   {
-    'country': 'Australia',
-    'region': 'Oceania',
+    country: 'Australia',
+    region: 'Oceania',
   },
   {
-    'country': 'Austria',
-    'region': 'Europe',
+    country: 'Austria',
+    region: 'Europe',
   },
   {
-    'country': 'Azerbaijan',
-    'region': 'Asia',
+    country: 'Azerbaijan',
+    region: 'Asia',
   },
   {
-    'country': 'Bahamas',
-    'region': 'North America',
+    country: 'Bahamas',
+    region: 'North America',
   },
   {
-    'country': 'Bahrain',
-    'region': 'Asia',
+    country: 'Bahrain',
+    region: 'Asia',
   },
   {
-    'country': 'Bangladesh',
-    'region': 'Asia',
+    country: 'Bangladesh',
+    region: 'Asia',
   },
   {
-    'country': 'Barbados',
-    'region': 'North America',
+    country: 'Barbados',
+    region: 'North America',
   },
   {
-    'country': 'Belarus',
-    'region': 'Europe',
+    country: 'Belarus',
+    region: 'Europe',
   },
   {
-    'country': 'Belgium',
-    'region': 'Europe',
+    country: 'Belgium',
+    region: 'Europe',
   },
   {
-    'country': 'Belize',
-    'region': 'North America',
+    country: 'Belize',
+    region: 'North America',
   },
   {
-    'country': 'Benin',
-    'region': 'Africa',
+    country: 'Benin',
+    region: 'Africa',
   },
   {
-    'country': 'Bermuda',
-    'region': 'North America',
+    country: 'Bermuda',
+    region: 'North America',
   },
   {
-    'country': 'Bhutan',
-    'region': 'Asia',
+    country: 'Bhutan',
+    region: 'Asia',
   },
   {
-    'country': 'Bolivia',
-    'region': 'South America',
+    country: 'Bolivia',
+    region: 'South America',
   },
   {
-    'country': 'Bonaire',
-    'region': 'North America',
+    country: 'Bonaire',
+    region: 'North America',
   },
   {
-    'country': 'Bosnia and Herzegovina',
-    'region': 'Europe',
+    country: 'Bosnia and Herzegovina',
+    region: 'Europe',
   },
   {
-    'country': 'Botswana',
-    'region': 'Africa',
+    country: 'Botswana',
+    region: 'Africa',
   },
   {
-    'country': 'Bouvet Island',
-    'region': 'Antarctica',
+    country: 'Bouvet Island',
+    region: 'Antarctica',
   },
   {
-    'country': 'Brazil',
-    'region': 'South America',
+    country: 'Brazil',
+    region: 'South America',
   },
   {
-    'country': 'British Indian Ocean Territory',
-    'region': 'Asia',
+    country: 'British Indian Ocean Territory',
+    region: 'Asia',
   },
   {
-    'country': 'British Virgin Islands',
-    'region': 'North America',
+    country: 'British Virgin Islands',
+    region: 'North America',
   },
   {
-    'country': 'Brunei',
-    'region': 'Asia',
+    country: 'Brunei',
+    region: 'Asia',
   },
   {
-    'country': 'Bulgaria',
-    'region': 'Europe',
+    country: 'Bulgaria',
+    region: 'Europe',
   },
   {
-    'country': 'Burkina Faso',
-    'region': 'Africa',
+    country: 'Burkina Faso',
+    region: 'Africa',
   },
   {
-    'country': 'Burundi',
-    'region': 'Africa',
+    country: 'Burundi',
+    region: 'Africa',
   },
   {
-    'country': 'Cambodia',
-    'region': 'Asia',
+    country: 'Cambodia',
+    region: 'Asia',
   },
   {
-    'country': 'Cameroon',
-    'region': 'Africa',
+    country: 'Cameroon',
+    region: 'Africa',
   },
   {
-    'country': 'Canada',
-    'region': 'North America',
+    country: 'Canada',
+    region: 'North America',
   },
   {
-    'country': 'Cape Verde',
-    'region': 'Africa',
+    country: 'Cape Verde',
+    region: 'Africa',
   },
   {
-    'country': 'Cayman Islands',
-    'region': 'North America',
+    country: 'Cayman Islands',
+    region: 'North America',
   },
   {
-    'country': 'Central African Republic',
-    'region': 'Africa',
+    country: 'Central African Republic',
+    region: 'Africa',
   },
   {
-    'country': 'Chad',
-    'region': 'Africa',
+    country: 'Chad',
+    region: 'Africa',
   },
   {
-    'country': 'Chile',
-    'region': 'South America',
+    country: 'Chile',
+    region: 'South America',
   },
   {
-    'country': 'China',
-    'region': 'Asia',
+    country: 'China',
+    region: 'Asia',
   },
   {
-    'country': 'Christmas Island',
-    'region': 'Asia',
+    country: 'Christmas Island',
+    region: 'Asia',
   },
   {
-    'country': 'Cocos [Keeling] Islands',
-    'region': 'Asia',
+    country: 'Cocos [Keeling] Islands',
+    region: 'Asia',
   },
   {
-    'country': 'Colombia',
-    'region': 'South America',
+    country: 'Colombia',
+    region: 'South America',
   },
   {
-    'country': 'Comoros',
-    'region': 'Africa',
+    country: 'Comoros',
+    region: 'Africa',
   },
   {
-    'country': 'Cook Islands',
-    'region': 'Oceania',
+    country: 'Cook Islands',
+    region: 'Oceania',
   },
   {
-    'country': 'Costa Rica',
-    'region': 'North America',
+    country: 'Costa Rica',
+    region: 'North America',
   },
   {
-    'country': 'Croatia',
-    'region': 'Europe',
+    country: 'Croatia',
+    region: 'Europe',
   },
   {
-    'country': 'Cuba',
-    'region': 'North America',
+    country: 'Cuba',
+    region: 'North America',
   },
   {
-    'country': 'Curacao',
-    'region': 'North America',
+    country: 'Curacao',
+    region: 'North America',
   },
   {
-    'country': 'Cyprus',
-    'region': 'Europe',
+    country: 'Cyprus',
+    region: 'Europe',
   },
   {
-    'country': 'Czechia',
-    'region': 'Europe',
+    country: 'Czechia',
+    region: 'Europe',
   },
   {
-    'country': 'Democratic Republic of the Congo',
-    'region': 'Africa',
+    country: 'Democratic Republic of the Congo',
+    region: 'Africa',
   },
   {
-    'country': 'Denmark',
-    'region': 'Europe',
+    country: 'Denmark',
+    region: 'Europe',
   },
   {
-    'country': 'Djibouti',
-    'region': 'Africa',
+    country: 'Djibouti',
+    region: 'Africa',
   },
   {
-    'country': 'Dominica',
-    'region': 'North America',
+    country: 'Dominica',
+    region: 'North America',
   },
   {
-    'country': 'Dominican Republic',
-    'region': 'North America',
+    country: 'Dominican Republic',
+    region: 'North America',
   },
   {
-    'country': 'East Timor',
-    'region': 'Oceania',
+    country: 'East Timor',
+    region: 'Oceania',
   },
   {
-    'country': 'Ecuador',
-    'region': 'South America',
+    country: 'Ecuador',
+    region: 'South America',
   },
   {
-    'country': 'Egypt',
-    'region': 'Africa',
+    country: 'Egypt',
+    region: 'Africa',
   },
   {
-    'country': 'El Salvador',
-    'region': 'North America',
+    country: 'El Salvador',
+    region: 'North America',
   },
   {
-    'country': 'Equatorial Guinea',
-    'region': 'Africa',
+    country: 'Equatorial Guinea',
+    region: 'Africa',
   },
   {
-    'country': 'Eritrea',
-    'region': 'Africa',
+    country: 'Eritrea',
+    region: 'Africa',
   },
   {
-    'country': 'Estonia',
-    'region': 'Europe',
+    country: 'Estonia',
+    region: 'Europe',
   },
   {
-    'country': 'Ethiopia',
-    'region': 'Africa',
+    country: 'Ethiopia',
+    region: 'Africa',
   },
   {
-    'country': 'Falkland Islands',
-    'region': 'South America',
+    country: 'Falkland Islands',
+    region: 'South America',
   },
   {
-    'country': 'Faroe Islands',
-    'region': 'Europe',
+    country: 'Faroe Islands',
+    region: 'Europe',
   },
   {
-    'country': 'Fiji',
-    'region': 'Oceania',
+    country: 'Fiji',
+    region: 'Oceania',
   },
   {
-    'country': 'Finland',
-    'region': 'Europe',
+    country: 'Finland',
+    region: 'Europe',
   },
   {
-    'country': 'France',
-    'region': 'Europe',
+    country: 'France',
+    region: 'Europe',
   },
   {
-    'country': 'French Guiana',
-    'region': 'South America',
+    country: 'French Guiana',
+    region: 'South America',
   },
   {
-    'country': 'French Polynesia',
-    'region': 'Oceania',
+    country: 'French Polynesia',
+    region: 'Oceania',
   },
   {
-    'country': 'French Southern Territories',
-    'region': 'Antarctica',
+    country: 'French Southern Territories',
+    region: 'Antarctica',
   },
   {
-    'country': 'Gabon',
-    'region': 'Africa',
+    country: 'Gabon',
+    region: 'Africa',
   },
   {
-    'country': 'Gambia',
-    'region': 'Africa',
+    country: 'Gambia',
+    region: 'Africa',
   },
   {
-    'country': 'Georgia',
-    'region': 'Asia',
+    country: 'Georgia',
+    region: 'Asia',
   },
   {
-    'country': 'Germany',
-    'region': 'Europe',
+    country: 'Germany',
+    region: 'Europe',
   },
   {
-    'country': 'Ghana',
-    'region': 'Africa',
+    country: 'Ghana',
+    region: 'Africa',
   },
   {
-    'country': 'Gibraltar',
-    'region': 'Europe',
+    country: 'Gibraltar',
+    region: 'Europe',
   },
   {
-    'country': 'Greece',
-    'region': 'Europe',
+    country: 'Greece',
+    region: 'Europe',
   },
   {
-    'country': 'Greenland',
-    'region': 'North America',
+    country: 'Greenland',
+    region: 'North America',
   },
   {
-    'country': 'Grenada',
-    'region': 'North America',
+    country: 'Grenada',
+    region: 'North America',
   },
   {
-    'country': 'Guadeloupe',
-    'region': 'North America',
+    country: 'Guadeloupe',
+    region: 'North America',
   },
   {
-    'country': 'Guam',
-    'region': 'Oceania',
+    country: 'Guam',
+    region: 'Oceania',
   },
   {
-    'country': 'Guatemala',
-    'region': 'North America',
+    country: 'Guatemala',
+    region: 'North America',
   },
   {
-    'country': 'Guernsey',
-    'region': 'Europe',
+    country: 'Guernsey',
+    region: 'Europe',
   },
   {
-    'country': 'Guinea',
-    'region': 'Africa',
+    country: 'Guinea',
+    region: 'Africa',
   },
   {
-    'country': 'Guinea-Bissau',
-    'region': 'Africa',
+    country: 'Guinea-Bissau',
+    region: 'Africa',
   },
   {
-    'country': 'Guyana',
-    'region': 'South America',
+    country: 'Guyana',
+    region: 'South America',
   },
   {
-    'country': 'Haiti',
-    'region': 'North America',
+    country: 'Haiti',
+    region: 'North America',
   },
   {
-    'country': 'Heard Island and McDonald Islands',
-    'region': 'Antarctica',
+    country: 'Heard Island and McDonald Islands',
+    region: 'Antarctica',
   },
   {
-    'country': 'Honduras',
-    'region': 'North America',
+    country: 'Honduras',
+    region: 'North America',
   },
   {
-    'country': 'Hong Kong',
-    'region': 'Asia',
+    country: 'Hong Kong',
+    region: 'Asia',
   },
   {
-    'country': 'Hungary',
-    'region': 'Europe',
+    country: 'Hungary',
+    region: 'Europe',
   },
   {
-    'country': 'Iceland',
-    'region': 'Europe',
+    country: 'Iceland',
+    region: 'Europe',
   },
   {
-    'country': 'India',
-    'region': 'Asia',
+    country: 'India',
+    region: 'Asia',
   },
   {
-    'country': 'Indonesia',
-    'region': 'Asia',
+    country: 'Indonesia',
+    region: 'Asia',
   },
   {
-    'country': 'Iraq',
-    'region': 'Asia',
+    country: 'Iraq',
+    region: 'Asia',
   },
   {
-    'country': 'Ireland',
-    'region': 'Europe',
+    country: 'Ireland',
+    region: 'Europe',
   },
   {
-    'country': 'Isle of Man',
-    'region': 'Europe',
+    country: 'Isle of Man',
+    region: 'Europe',
   },
   {
-    'country': 'Israel',
-    'region': 'Asia',
+    country: 'Israel',
+    region: 'Asia',
   },
   {
-    'country': 'Italy',
-    'region': 'Europe',
+    country: 'Italy',
+    region: 'Europe',
   },
   {
-    'country': 'Ivory Coast',
-    'region': 'Africa',
+    country: 'Ivory Coast',
+    region: 'Africa',
   },
   {
-    'country': 'Jamaica',
-    'region': 'North America',
+    country: 'Jamaica',
+    region: 'North America',
   },
   {
-    'country': 'Japan',
-    'region': 'Asia',
+    country: 'Japan',
+    region: 'Asia',
   },
   {
-    'country': 'Jersey',
-    'region': 'Europe',
+    country: 'Jersey',
+    region: 'Europe',
   },
   {
-    'country': 'Jordan',
-    'region': 'Asia',
+    country: 'Jordan',
+    region: 'Asia',
   },
   {
-    'country': 'Kazakhstan',
-    'region': 'Asia',
+    country: 'Kazakhstan',
+    region: 'Asia',
   },
   {
-    'country': 'Kenya',
-    'region': 'Africa',
+    country: 'Kenya',
+    region: 'Africa',
   },
   {
-    'country': 'Kiribati',
-    'region': 'Oceania',
+    country: 'Kiribati',
+    region: 'Oceania',
   },
   {
-    'country': 'Kosovo',
-    'region': 'Europe',
+    country: 'Kosovo',
+    region: 'Europe',
   },
   {
-    'country': 'Kuwait',
-    'region': 'Asia',
+    country: 'Kuwait',
+    region: 'Asia',
   },
   {
-    'country': 'Kyrgyzstan',
-    'region': 'Asia',
+    country: 'Kyrgyzstan',
+    region: 'Asia',
   },
   {
-    'country': 'Laos',
-    'region': 'Asia',
+    country: 'Laos',
+    region: 'Asia',
   },
   {
-    'country': 'Latvia',
-    'region': 'Europe',
+    country: 'Latvia',
+    region: 'Europe',
   },
   {
-    'country': 'Lebanon',
-    'region': 'Asia',
+    country: 'Lebanon',
+    region: 'Asia',
   },
   {
-    'country': 'Lesotho',
-    'region': 'Africa',
+    country: 'Lesotho',
+    region: 'Africa',
   },
   {
-    'country': 'Liberia',
-    'region': 'Africa',
+    country: 'Liberia',
+    region: 'Africa',
   },
   {
-    'country': 'Libya',
-    'region': 'Africa',
+    country: 'Libya',
+    region: 'Africa',
   },
   {
-    'country': 'Liechtenstein',
-    'region': 'Europe',
+    country: 'Liechtenstein',
+    region: 'Europe',
   },
   {
-    'country': 'Lithuania',
-    'region': 'Europe',
+    country: 'Lithuania',
+    region: 'Europe',
   },
   {
-    'country': 'Luxembourg',
-    'region': 'Europe',
+    country: 'Luxembourg',
+    region: 'Europe',
   },
   {
-    'country': 'Macao',
-    'region': 'Asia',
+    country: 'Macao',
+    region: 'Asia',
   },
   {
-    'country': 'Macedonia',
-    'region': 'Europe',
+    country: 'Macedonia',
+    region: 'Europe',
   },
   {
-    'country': 'Madagascar',
-    'region': 'Africa',
+    country: 'Madagascar',
+    region: 'Africa',
   },
   {
-    'country': 'Malawi',
-    'region': 'Africa',
+    country: 'Malawi',
+    region: 'Africa',
   },
   {
-    'country': 'Malaysia',
-    'region': 'Asia',
+    country: 'Malaysia',
+    region: 'Asia',
   },
   {
-    'country': 'Maldives',
-    'region': 'Asia',
+    country: 'Maldives',
+    region: 'Asia',
   },
   {
-    'country': 'Mali',
-    'region': 'Africa',
+    country: 'Mali',
+    region: 'Africa',
   },
   {
-    'country': 'Malta',
-    'region': 'Europe',
+    country: 'Malta',
+    region: 'Europe',
   },
   {
-    'country': 'Marshall Islands',
-    'region': 'Oceania',
+    country: 'Marshall Islands',
+    region: 'Oceania',
   },
   {
-    'country': 'Martinique',
-    'region': 'North America',
+    country: 'Martinique',
+    region: 'North America',
   },
   {
-    'country': 'Mauritania',
-    'region': 'Africa',
+    country: 'Mauritania',
+    region: 'Africa',
   },
   {
-    'country': 'Mauritius',
-    'region': 'Africa',
+    country: 'Mauritius',
+    region: 'Africa',
   },
   {
-    'country': 'Mayotte',
-    'region': 'Africa',
+    country: 'Mayotte',
+    region: 'Africa',
   },
   {
-    'country': 'Mexico',
-    'region': 'North America',
+    country: 'Mexico',
+    region: 'North America',
   },
   {
-    'country': 'Micronesia',
-    'region': 'Oceania',
+    country: 'Micronesia',
+    region: 'Oceania',
   },
   {
-    'country': 'Moldova',
-    'region': 'Europe',
+    country: 'Moldova',
+    region: 'Europe',
   },
   {
-    'country': 'Monaco',
-    'region': 'Europe',
+    country: 'Monaco',
+    region: 'Europe',
   },
   {
-    'country': 'Mongolia',
-    'region': 'Asia',
+    country: 'Mongolia',
+    region: 'Asia',
   },
   {
-    'country': 'Montenegro',
-    'region': 'Europe',
+    country: 'Montenegro',
+    region: 'Europe',
   },
   {
-    'country': 'Montserrat',
-    'region': 'North America',
+    country: 'Montserrat',
+    region: 'North America',
   },
   {
-    'country': 'Morocco',
-    'region': 'Africa',
+    country: 'Morocco',
+    region: 'Africa',
   },
   {
-    'country': 'Mozambique',
-    'region': 'Africa',
+    country: 'Mozambique',
+    region: 'Africa',
   },
   {
-    'country': 'Myanmar [Burma]',
-    'region': 'Asia',
+    country: 'Myanmar [Burma]',
+    region: 'Asia',
   },
   {
-    'country': 'Namibia',
-    'region': 'Africa',
+    country: 'Namibia',
+    region: 'Africa',
   },
   {
-    'country': 'Nauru',
-    'region': 'Oceania',
+    country: 'Nauru',
+    region: 'Oceania',
   },
   {
-    'country': 'Nepal',
-    'region': 'Asia',
+    country: 'Nepal',
+    region: 'Asia',
   },
   {
-    'country': 'Netherlands',
-    'region': 'Europe',
+    country: 'Netherlands',
+    region: 'Europe',
   },
   {
-    'country': 'New Caledonia',
-    'region': 'Oceania',
+    country: 'New Caledonia',
+    region: 'Oceania',
   },
   {
-    'country': 'New Zealand',
-    'region': 'Oceania',
+    country: 'New Zealand',
+    region: 'Oceania',
   },
   {
-    'country': 'Nicaragua',
-    'region': 'North America',
+    country: 'Nicaragua',
+    region: 'North America',
   },
   {
-    'country': 'Niger',
-    'region': 'Africa',
+    country: 'Niger',
+    region: 'Africa',
   },
   {
-    'country': 'Nigeria',
-    'region': 'Africa',
+    country: 'Nigeria',
+    region: 'Africa',
   },
   {
-    'country': 'Niue',
-    'region': 'Oceania',
+    country: 'Niue',
+    region: 'Oceania',
   },
   {
-    'country': 'Norfolk Island',
-    'region': 'Oceania',
+    country: 'Norfolk Island',
+    region: 'Oceania',
   },
   {
-    'country': 'Northern Mariana Islands',
-    'region': 'Oceania',
+    country: 'Northern Mariana Islands',
+    region: 'Oceania',
   },
   {
-    'country': 'Norway',
-    'region': 'Europe',
+    country: 'Norway',
+    region: 'Europe',
   },
   {
-    'country': 'Oman',
-    'region': 'Asia',
+    country: 'Oman',
+    region: 'Asia',
   },
   {
-    'country': 'Pakistan',
-    'region': 'Asia',
+    country: 'Pakistan',
+    region: 'Asia',
   },
   {
-    'country': 'Palau',
-    'region': 'Oceania',
+    country: 'Palau',
+    region: 'Oceania',
   },
   {
-    'country': 'Palestine',
-    'region': 'Asia',
+    country: 'Palestine',
+    region: 'Asia',
   },
   {
-    'country': 'Panama',
-    'region': 'North America',
+    country: 'Panama',
+    region: 'North America',
   },
   {
-    'country': 'Papua New Guinea',
-    'region': 'Oceania',
+    country: 'Papua New Guinea',
+    region: 'Oceania',
   },
   {
-    'country': 'Paraguay',
-    'region': 'South America',
+    country: 'Paraguay',
+    region: 'South America',
   },
   {
-    'country': 'Peru',
-    'region': 'South America',
+    country: 'Peru',
+    region: 'South America',
   },
   {
-    'country': 'Philippines',
-    'region': 'Asia',
+    country: 'Philippines',
+    region: 'Asia',
   },
   {
-    'country': 'Pitcairn Islands',
-    'region': 'Oceania',
+    country: 'Pitcairn Islands',
+    region: 'Oceania',
   },
   {
-    'country': 'Poland',
-    'region': 'Europe',
+    country: 'Poland',
+    region: 'Europe',
   },
   {
-    'country': 'Portugal',
-    'region': 'Europe',
+    country: 'Portugal',
+    region: 'Europe',
   },
   {
-    'country': 'Puerto Rico',
-    'region': 'North America',
+    country: 'Puerto Rico',
+    region: 'North America',
   },
   {
-    'country': 'Qatar',
-    'region': 'Asia',
+    country: 'Qatar',
+    region: 'Asia',
   },
   {
-    'country': 'Republic of the Congo',
-    'region': 'Africa',
+    country: 'Republic of the Congo',
+    region: 'Africa',
   },
   {
-    'country': 'Réunion',
-    'region': 'Africa',
+    country: 'Réunion',
+    region: 'Africa',
   },
   {
-    'country': 'Romania',
-    'region': 'Europe',
+    country: 'Romania',
+    region: 'Europe',
   },
   {
-    'country': 'Rwanda',
-    'region': 'Africa',
+    country: 'Rwanda',
+    region: 'Africa',
   },
   {
-    'country': 'Saint Barthélemy',
-    'region': 'North America',
+    country: 'Saint Barthélemy',
+    region: 'North America',
   },
   {
-    'country': 'Saint Helena',
-    'region': 'Africa',
+    country: 'Saint Helena',
+    region: 'Africa',
   },
   {
-    'country': 'Saint Kitts and Nevis',
-    'region': 'North America',
+    country: 'Saint Kitts and Nevis',
+    region: 'North America',
   },
   {
-    'country': 'Saint Lucia',
-    'region': 'North America',
+    country: 'Saint Lucia',
+    region: 'North America',
   },
   {
-    'country': 'Saint Martin',
-    'region': 'North America',
+    country: 'Saint Martin',
+    region: 'North America',
   },
   {
-    'country': 'Saint Pierre and Miquelon',
-    'region': 'North America',
+    country: 'Saint Pierre and Miquelon',
+    region: 'North America',
   },
   {
-    'country': 'Saint Vincent and the Grenadines',
-    'region': 'North America',
+    country: 'Saint Vincent and the Grenadines',
+    region: 'North America',
   },
   {
-    'country': 'Samoa',
-    'region': 'Oceania',
+    country: 'Samoa',
+    region: 'Oceania',
   },
   {
-    'country': 'San Marino',
-    'region': 'Europe',
+    country: 'San Marino',
+    region: 'Europe',
   },
   {
-    'country': 'São Tomé and Príncipe',
-    'region': 'Africa',
+    country: 'São Tomé and Príncipe',
+    region: 'Africa',
   },
   {
-    'country': 'Saudi Arabia',
-    'region': 'Asia',
+    country: 'Saudi Arabia',
+    region: 'Asia',
   },
   {
-    'country': 'Senegal',
-    'region': 'Africa',
+    country: 'Senegal',
+    region: 'Africa',
   },
   {
-    'country': 'Serbia',
-    'region': 'Europe',
+    country: 'Serbia',
+    region: 'Europe',
   },
   {
-    'country': 'Seychelles',
-    'region': 'Africa',
+    country: 'Seychelles',
+    region: 'Africa',
   },
   {
-    'country': 'Sierra Leone',
-    'region': 'Africa',
+    country: 'Sierra Leone',
+    region: 'Africa',
   },
   {
-    'country': 'Singapore',
-    'region': 'Asia',
+    country: 'Singapore',
+    region: 'Asia',
   },
   {
-    'country': 'Sint Maarten',
-    'region': 'North America',
+    country: 'Sint Maarten',
+    region: 'North America',
   },
   {
-    'country': 'Slovakia',
-    'region': 'Europe',
+    country: 'Slovakia',
+    region: 'Europe',
   },
   {
-    'country': 'Slovenia',
-    'region': 'Europe',
+    country: 'Slovenia',
+    region: 'Europe',
   },
   {
-    'country': 'Solomon Islands',
-    'region': 'Oceania',
+    country: 'Solomon Islands',
+    region: 'Oceania',
   },
   {
-    'country': 'Somalia',
-    'region': 'Africa',
+    country: 'Somalia',
+    region: 'Africa',
   },
   {
-    'country': 'South Africa',
-    'region': 'Africa',
+    country: 'South Africa',
+    region: 'Africa',
   },
   {
-    'country': 'South Georgia and the South Sandwich Islands',
-    'region': 'Antarctica',
+    country: 'South Georgia and the South Sandwich Islands',
+    region: 'Antarctica',
   },
   {
-    'country': 'South Korea',
-    'region': 'Asia',
+    country: 'South Korea',
+    region: 'Asia',
   },
   {
-    'country': 'South Sudan',
-    'region': 'Africa',
+    country: 'South Sudan',
+    region: 'Africa',
   },
   {
-    'country': 'Spain',
-    'region': 'Europe',
+    country: 'Spain',
+    region: 'Europe',
   },
   {
-    'country': 'Sri Lanka',
-    'region': 'Asia',
+    country: 'Sri Lanka',
+    region: 'Asia',
   },
   {
-    'country': 'Sudan',
-    'region': 'Africa',
+    country: 'Sudan',
+    region: 'Africa',
   },
   {
-    'country': 'Suriname',
-    'region': 'South America',
+    country: 'Suriname',
+    region: 'South America',
   },
   {
-    'country': 'Svalbard and Jan Mayen',
-    'region': 'Europe',
+    country: 'Svalbard and Jan Mayen',
+    region: 'Europe',
   },
   {
-    'country': 'Swaziland',
-    'region': 'Africa',
+    country: 'Swaziland',
+    region: 'Africa',
   },
   {
-    'country': 'Sweden',
-    'region': 'Europe',
+    country: 'Sweden',
+    region: 'Europe',
   },
   {
-    'country': 'Switzerland',
-    'region': 'Europe',
+    country: 'Switzerland',
+    region: 'Europe',
   },
   {
-    'country': 'Syria',
-    'region': 'Asia',
+    country: 'Syria',
+    region: 'Asia',
   },
   {
-    'country': 'Taiwan',
-    'region': 'Asia',
+    country: 'Taiwan',
+    region: 'Asia',
   },
   {
-    'country': 'Tajikistan',
-    'region': 'Asia',
+    country: 'Tajikistan',
+    region: 'Asia',
   },
   {
-    'country': 'Tanzania',
-    'region': 'Africa',
+    country: 'Tanzania',
+    region: 'Africa',
   },
   {
-    'country': 'Thailand',
-    'region': 'Asia',
+    country: 'Thailand',
+    region: 'Asia',
   },
   {
-    'country': 'Togo',
-    'region': 'Africa',
+    country: 'Togo',
+    region: 'Africa',
   },
   {
-    'country': 'Tokelau',
-    'region': 'Oceania',
+    country: 'Tokelau',
+    region: 'Oceania',
   },
   {
-    'country': 'Tonga',
-    'region': 'Oceania',
+    country: 'Tonga',
+    region: 'Oceania',
   },
   {
-    'country': 'Trinidad and Tobago',
-    'region': 'North America',
+    country: 'Trinidad and Tobago',
+    region: 'North America',
   },
   {
-    'country': 'Tunisia',
-    'region': 'Africa',
+    country: 'Tunisia',
+    region: 'Africa',
   },
   {
-    'country': 'Turkey',
-    'region': 'Asia',
+    country: 'Turkey',
+    region: 'Asia',
   },
   {
-    'country': 'Turkmenistan',
-    'region': 'Asia',
+    country: 'Turkmenistan',
+    region: 'Asia',
   },
   {
-    'country': 'Turks and Caicos Islands',
-    'region': 'North America',
+    country: 'Turks and Caicos Islands',
+    region: 'North America',
   },
   {
-    'country': 'Tuvalu',
-    'region': 'Oceania',
+    country: 'Tuvalu',
+    region: 'Oceania',
   },
   {
-    'country': 'U.S. Minor Outlying Islands',
-    'region': 'Oceania',
+    country: 'U.S. Minor Outlying Islands',
+    region: 'Oceania',
   },
   {
-    'country': 'U.S. Virgin Islands',
-    'region': 'North America',
+    country: 'U.S. Virgin Islands',
+    region: 'North America',
   },
   {
-    'country': 'Uganda',
-    'region': 'Africa',
+    country: 'Uganda',
+    region: 'Africa',
   },
   {
-    'country': 'Ukraine',
-    'region': 'Europe',
+    country: 'Ukraine',
+    region: 'Europe',
   },
   {
-    'country': 'United Arab Emirates',
-    'region': 'Asia',
+    country: 'United Arab Emirates',
+    region: 'Asia',
   },
   {
-    'country': 'United Kingdom',
-    'region': 'Europe',
+    country: 'United Kingdom',
+    region: 'Europe',
   },
   {
-    'country': 'United States',
-    'region': 'North America',
+    country: 'United States',
+    region: 'North America',
   },
   {
-    'country': 'Uruguay',
-    'region': 'South America',
+    country: 'Uruguay',
+    region: 'South America',
   },
   {
-    'country': 'Uzbekistan',
-    'region': 'Asia',
+    country: 'Uzbekistan',
+    region: 'Asia',
   },
   {
-    'country': 'Vanuatu',
-    'region': 'Oceania',
+    country: 'Vanuatu',
+    region: 'Oceania',
   },
   {
-    'country': 'Vatican City',
-    'region': 'Europe',
+    country: 'Vatican City',
+    region: 'Europe',
   },
   {
-    'country': 'Venezuela',
-    'region': 'South America',
+    country: 'Venezuela',
+    region: 'South America',
   },
   {
-    'country': 'Vietnam',
-    'region': 'Asia',
+    country: 'Vietnam',
+    region: 'Asia',
   },
   {
-    'country': 'Wallis and Futuna',
-    'region': 'Oceania',
+    country: 'Wallis and Futuna',
+    region: 'Oceania',
   },
   {
-    'country': 'Western Sahara',
-    'region': 'Africa',
+    country: 'Western Sahara',
+    region: 'Africa',
   },
   {
-    'country': 'Yemen',
-    'region': 'Asia',
+    country: 'Yemen',
+    region: 'Asia',
   },
   {
-    'country': 'Zambia',
-    'region': 'Africa',
+    country: 'Zambia',
+    region: 'Africa',
   },
   {
-    'country': 'Zimbabwe',
-    'region': 'Africa',
+    country: 'Zimbabwe',
+    region: 'Africa',
   },
-];
+]
 
-const countries = () => countriesArray().map(item => item.country);
-const categorys = () => rolesArray().map(item => item.role);
-const skillList = () => skills().map(item => ({ value: item, label: item }));
+const countries = () => countriesArray().map((item) => item.country)
+const categorys = () => rolesArray().map((item) => item.role)
+const skillList = () => skills().map((item) => ({ value: item, label: item }))
 
-
-const languagesForReactSelect = () => languages().map((item) => ({ value: item, label: item }));
+const languagesForReactSelect = () =>
+  languages().map((item) => ({ value: item, label: item }))
 
 const getRegion = (country) => {
-  const res = countriesArray().find(item => item.country === country);
-  return res ? res.region : '';
-
-};
-
+  const res = countriesArray().find((item) => item.country === country)
+  return res ? res.region : ''
+}
 
 const getRoleDescription = (roleName) => {
-  const role = rolesArray().find(item => item.role === roleName);
-  return role ? role.description : '';
-};
-
+  const role = rolesArray().find((item) => item.role === roleName)
+  return role ? role.description : ''
+}
 
 export {
   countries,
@@ -1673,4 +1709,6 @@ export {
   getRegion,
   getRoleDescription,
   languagesForReactSelect,
-};
+  scopeOptions,
+  howManyHours,
+}

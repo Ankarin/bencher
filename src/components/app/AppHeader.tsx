@@ -1,45 +1,42 @@
-'use client';
-import { Fragment, useEffect } from 'react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
-import { Button } from '@/components/landing/Button';
-import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { zust } from '@/store';
-import { SmallLogo } from '@/components/SmallLogo';
+'use client'
+import { Fragment, useEffect } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
+import { Button } from '@/components/landing/Button'
+import { usePathname, useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { zust } from '@/store'
+import { SmallLogo } from '@/components/SmallLogo'
 
-import { User, Company } from '@/utils/types';
+import { User, Company } from '@/utils/types'
 
 interface AppHeaderProps {
-  user: User;
-  company: Company;
+  user: User
+  company: Company
 }
 
-
 function classNames(...classes): string {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(' ')
 }
 
 export default function AppHeader({ user, company }: AppHeaderProps) {
-  const router = useRouter();
-  const supabase = createClientComponentClient();
-  const pathname = usePathname();
-  const zustSetCompany = zust(state => state.setCompany);
-  const zustSetUser = zust(state => state.setUser);
+  const router = useRouter()
+  const supabase = createClientComponentClient()
+  const pathname = usePathname()
+  const zustSetCompany = zust((state) => state.setCompany)
+  const zustSetUser = zust((state) => state.setUser)
 
   useEffect(() => {
-    zustSetCompany(company);
-    zustSetUser(user);
-
-  }, [user, company]);
-
+    zustSetCompany(company)
+    zustSetUser(user)
+  }, [user, company])
 
   const signOut = async () => {
-    await supabase.auth.signOut();
-    router.refresh();
-  };
+    await supabase.auth.signOut()
+    router.refresh()
+  }
 
   if (
     pathname !== '/login' &&
@@ -49,7 +46,7 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
     pathname !== '/resetpass'
   ) {
     return (
-      <Disclosure as='nav' className='bg-white border-b border-slate-900/10  '>
+      <Disclosure as='nav' className='border-b border-slate-900/10 bg-white  '>
         {({ open }) => (
           <>
             <div className='mx-auto max-w-7xl px-2 sm:px-4 lg:px-8'>
@@ -68,10 +65,10 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                         Developers
                       </Link>
                       <Link
-                        href='/requests'
+                        href='/jobs'
                         className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
                       >
-                        Requests
+                        Jobs
                       </Link>
                       <Link
                         href='/companies'
@@ -79,33 +76,36 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                       >
                         Companies
                       </Link>
-                      {user ? <div className='flex w-full just space-x-4'>
-                        <Link
-                          href='/my-devs'
-                          className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
-                        >
-                          My Developers
-                        </Link>
-                        <Link
-                          href='/my-requests'
-                          className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
-                        >
-                          My Requets
-                        </Link>
-                        <Link
-                          href='/my-company'
-                          className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
-                        >
-                          My Company
-                        </Link>
-                      </div> : ''}
+                      {user ? (
+                        <div className='just flex w-full space-x-4'>
+                          <Link
+                            href='/my-devs'
+                            className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
+                          >
+                            My Developers
+                          </Link>
+                          <Link
+                            href='/my-jobs'
+                            className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
+                          >
+                            My Jobs
+                          </Link>
+                          <Link
+                            href='/my-company'
+                            className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
+                          >
+                            My Company
+                          </Link>
+                        </div>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </div>
                 </div>
                 <div className='flex lg:hidden'>
                   {/* Mobile menu button */}
-                  <Disclosure.Button
-                    className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+                  <Disclosure.Button className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
                     <span className='absolute -inset-0.5' />
                     <span className='sr-only'>Open main menu</span>
                     {open ? (
@@ -123,13 +123,13 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                     >
                       <div>
                         {user ? (
-                          <Menu.Button
-                            className='relative flex rounded-full border-none  text-sm  font-medium outline-none focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                          <Menu.Button className='relative flex rounded-full border-none  text-sm  font-medium outline-none focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                             <span className='absolute -inset-1.5 outline-none' />
                             <span className='sr-only'>Open user menu</span>
                             <span className={'pr-3 pt-1 outline-none'}>
                               {' '}
-                              {user.first_name} {company ? `@${company.name}` : ''}
+                              {user.first_name}{' '}
+                              {company ? `@${company.name}` : ''}
                             </span>
 
                             <Image
@@ -152,7 +152,13 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                               <span>Sign In</span>
                             </Button>
 
-                            <Button className='' loading={false} variant='solid' href='/register' color='blue'>
+                            <Button
+                              className=''
+                              loading={false}
+                              variant='solid'
+                              href='/register'
+                              color='blue'
+                            >
                               <span>Sign Up</span>
                             </Button>
                           </div>
@@ -167,16 +173,14 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                         leaveFrom='transform opacity-100 scale-100'
                         leaveTo='transform opacity-0 scale-95'
                       >
-                        <Menu.Items
-                          className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-
+                        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                           <Menu.Item>
                             {({ active }) => (
                               <p
                                 onClick={signOut}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block cursor-pointer px-4 py-2 text-sm text-gray-700',
+                                  'block cursor-pointer px-4 py-2 text-sm text-gray-700'
                                 )}
                               >
                                 Sign out
@@ -193,72 +197,72 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
 
             <Disclosure.Panel className='lg:hidden'>
               <div className='space-y-1 px-2 pb-3 pt-2'>
-          
                 <Disclosure.Button
                   as='a'
                   href='/developers'
-                  className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
+                  className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                 >
                   Developers
                 </Disclosure.Button>
                 <Disclosure.Button
                   as='a'
-                  href='/requests'
-                  className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
+                  href='/jobs'
+                  className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                 >
                   Requests
                 </Disclosure.Button>
                 <Disclosure.Button
                   as='a'
                   href='/companies'
-                  className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
+                  className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                 >
                   Companies
                 </Disclosure.Button>
               </div>
               <div className='border-t border-gray-700 pb-3 pt-4'>
-                {!user ?
+                {!user ? (
                   <div className='mt-3 space-y-1 px-2'>
                     <Disclosure.Button
                       as='a'
                       href='/login'
-                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
+                      className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       Sign In
                     </Disclosure.Button>
                     <Disclosure.Button
                       as='a'
                       href='/register'
-                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
+                      className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       Sign Up
                     </Disclosure.Button>
-                  </div> : <div className='mt-3 space-y-1 px-2'>
+                  </div>
+                ) : (
+                  <div className='mt-3 space-y-1 px-2'>
                     <div className='ml-3'>
-                      <div className='text-base text-lg mb-5 font-medium text-white'>
+                      <div className='text-base mb-5 text-lg font-medium text-white'>
                         {user.first_name}
                       </div>
                     </div>
 
-
                     <Disclosure.Button
                       as='a'
                       href='/my-company'
-                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
+                      className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       My Company
                     </Disclosure.Button>
                     <Disclosure.Button
                       as='a'
                       href='/my-devs'
-                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
+                      className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       My Developers
                     </Disclosure.Button>
                     <Disclosure.Button
                       as='a'
-                      href='/my-requests'
-                      className='block rounded-md px-3 py-2 text-base font-medium  hover:bg-gray-700 hover:text-white'
+                      href='/my-jobs'
+                      className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                     >
                       My Requests
                     </Disclosure.Button>
@@ -266,19 +270,18 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                     <div className={'pt-5'}>
                       <Disclosure.Button
                         onClick={signOut}
-                        className='block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white'
+                        className='text-base block rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white'
                       >
                         Sign Out
                       </Disclosure.Button>
                     </div>
                   </div>
-                }
+                )}
               </div>
             </Disclosure.Panel>
-
           </>
         )}
       </Disclosure>
-    );
+    )
   }
 }

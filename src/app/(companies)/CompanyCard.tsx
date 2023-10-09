@@ -1,17 +1,14 @@
-'use client';
-import { Button } from '@/components/landing/Button';
-import Image from 'next/image';
-import React, { useEffect } from 'react';
-import {
-  UserGroupIcon,
-  MapPinIcon,
-} from '@heroicons/react/24/solid';
-import Link from 'next/link';
+'use client'
+import { Button } from '@/components/landing/Button'
+import Image from 'next/image'
+import React, { useEffect } from 'react'
+import { UserGroupIcon, MapPinIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
 
-export default function Company({ company, myCompany }): React.ReactNode {
+export default function CompanyCard({ company, myCompany }): React.ReactNode {
   useEffect(() => {
-    console.log(company);
-  }, []);
+    console.log(company)
+  }, [])
 
   const features = [
     {
@@ -22,10 +19,10 @@ export default function Company({ company, myCompany }): React.ReactNode {
       data: company.country + `, ${company.region}`,
       icon: MapPinIcon,
     },
-  ];
+  ]
 
   return (
-    <div className='bg-white p-4 shadow rounded-lg md:p-5 '>
+    <div className='rounded-lg bg-white p-4 shadow md:p-5 '>
       <div className='flex'>
         <Image
           className={'h-12 w-12 md:h-16 md:w-16'}
@@ -36,7 +33,12 @@ export default function Company({ company, myCompany }): React.ReactNode {
         ></Image>
 
         <div className={'flex w-full items-center justify-between pl-4'}>
-          <p className='text-2xl font-bold '>{company.name}</p>
+          <Link
+            className='text-2xl font-bold text-blue-600 hover:text-blue-800'
+            href={`/company/${company.id}`}
+          >
+            {company.name}
+          </Link>
           <div className={' hidden md:flex '}>
             {features.map((item) => (
               <div className={'flex font-bold md:mr-8 '} key={item.data}>
@@ -74,20 +76,20 @@ export default function Company({ company, myCompany }): React.ReactNode {
         </div>
       </div>
 
-      <p className='mt-3 w-full border-t border-gray-200 pt-3 text-base'>
+      <p className='text-base mt-3 w-full border-t border-gray-200 pt-3'>
         {company.description}
       </p>
 
       <div className={'mt-1 flex items-center justify-between'}>
-        <Link
-          href={'/'}
-          target={'_blank'}
-          className='whitespace-nowrap font-bold text-indigo-600 hover:text-blue-600'
-        >
-          Details
-        </Link>
-        {myCompany ? '' : <Button variant='solid' className='' loading={false} color='blue'>Message</Button>}
+        <div></div>
+        {myCompany ? (
+          ''
+        ) : (
+          <Button variant='solid' className='' loading={false} color='blue'>
+            Message
+          </Button>
+        )}
       </div>
     </div>
-  );
+  )
 }

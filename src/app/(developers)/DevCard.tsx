@@ -1,15 +1,15 @@
-'use client';
-import { Developer } from '@/utils/types';
-import { getRegion } from '@/utils/options';
-import { Tooltip } from 'react-tooltip';
-import { Button } from '@/components/landing/Button';
-import { supaDownload } from '@/utils/supabaseClient';
-import Link from 'next/link';
+'use client'
+import { Developer } from '@/utils/types'
+import { getRegion } from '@/utils/options'
+import { Tooltip } from 'react-tooltip'
+import { Button } from '@/components/landing/Button'
+import { supaDownload } from '@/utils/supabaseClient'
+import Link from 'next/link'
 
 export default function DevCard({
-                                  developer,
-                                  isMine = false,
-                                }: {
+  developer,
+  isMine = false,
+}: {
   developer: Developer
   isMine?: boolean
 }) {
@@ -26,7 +26,7 @@ export default function DevCard({
       value: `${developer.country}, ${getRegion(developer.country)}`,
     },
     { title: 'English: ', value: `${developer.english} ` },
-  ];
+  ]
 
   return (
     <div className='max-w-[100] rounded-lg bg-white p-2 shadow md:p-4'>
@@ -48,8 +48,7 @@ export default function DevCard({
                 data-tooltip-id='my-tooltip'
                 data-tooltip-content='Ready to start within 2 days.'
               >
-                <span
-                  className='mr-3 inline-flex items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xxs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
+                <span className='mr-3 inline-flex items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xxs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
                   ASAP
                 </span>
               </a>
@@ -60,10 +59,9 @@ export default function DevCard({
             <>
               <a
                 data-tooltip-id='my-tooltip'
-                data-tooltip-content="Hidden and can't be applied for requests."
+                data-tooltip-content="Hidden and can't be applied for jobs"
               >
-                <span
-                  className='inline-flex items-center rounded-full bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20'>
+                <span className='inline-flex items-center rounded-full bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20'>
                   {' '}
                   Private
                 </span>
@@ -74,7 +72,7 @@ export default function DevCard({
             ''
           )}
         </p>
-        <p className='text-base text-xl font-bold text-green-800'>
+        <p className='text-base text-xl font-bold text-green-700'>
           {' '}
           {developer.hourly_rate ? `$${developer.hourly_rate}/hr` : ''}{' '}
         </p>
@@ -121,7 +119,9 @@ export default function DevCard({
         <div className={'pt-2'}>
           {developer.cv.url && (
             <span
-              className={'cursor-pointer font-semibold text-blue-600 hover:text-blue-800'}
+              className={
+                'cursor-pointer font-semibold text-blue-600 hover:text-blue-800'
+              }
               onClick={() => supaDownload(developer.cv.url)}
             >
               Download CV{' '}
@@ -142,5 +142,5 @@ export default function DevCard({
         )}
       </div>
     </div>
-  );
+  )
 }

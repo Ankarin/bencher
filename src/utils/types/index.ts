@@ -33,17 +33,40 @@ interface Developer {
   public?: boolean
   company: string // Assuming UUID is represented as a string
   title: string
-  description?: string | null
-  hourly_rate: string | null
-  experience: string | null
-  skills: string[] | null
-  other_languages: string[] | null
+  description?: string
+  hourly_rate: string
+  experience: string
+  skills: string[]
+  other_languages: string[]
   english: string
   country: string
   region: string
   asap: boolean
-  cv: { url: string; name: string }
+  cv: {
+    url: string
+    name: string
+  }
   category: string
 }
 
-export type { Company, User, Developer }
+interface Job {
+  id?: string
+  created_at?: Date
+  public: boolean
+  company: string
+  title: string
+  skills: string[]
+  client_country?: string
+  rate: string
+  hours: string
+  scope: string
+  description: string
+  bids?: string[] | null
+  category: string
+  english: string
+  asap: boolean
+  other_languages: string[]
+  experience: string
+}
+
+export type { Company, User, Developer, Job }

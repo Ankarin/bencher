@@ -5,10 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(requests)/add-job/JobForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(requests)/add-job/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/Company.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(requests)/add-request/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(requests)/my-requests/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(requests)/my-jobs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(requests)/request/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(requests)/job/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(requests)/requests/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(requests)/jobs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/forgot/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/forgot/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/options.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/skills.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/tailwindDefaults.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +39,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -71,8 +91,8 @@
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "/Users/ankarin/bencher/node_modules/typescript/lib",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -93,11 +113,11 @@
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\api\auth\reset-callback" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(companies)\company\[slug]" />
       <recent name="$PROJECT_DIR$/src/app/(developers)/developer/[slug]" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\components\app" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(developers)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(companies)" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(developers)\edit-dev\[slug]" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -153,6 +173,7 @@
       <workItem from="1696539922446" duration="4000" />
       <workItem from="1696584817741" duration="87000" />
       <workItem from="1696585154214" duration="4377000" />
+      <workItem from="1696851752922" duration="6783000" />
     </task>
     <servers />
   </component>
@@ -179,7 +200,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/api/auth/forgot/route.js</url>
+          <url>file://$PROJECT_DIR$/src/app/api/auth/forgot/route.ts</url>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
