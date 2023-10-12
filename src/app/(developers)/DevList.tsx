@@ -10,7 +10,7 @@ export default function DevList({
 }) {
   return (
     <div className='mx-auto my-5 grid  max-w-3xl gap-3 md:my-10  '>
-      {developers.map((dev, key) => (
+      {developers?.map((dev, key) => (
         <DevCard key={key} isMine={isMine} developer={dev}></DevCard>
       ))}
     </div>

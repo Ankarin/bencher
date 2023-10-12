@@ -1,7 +1,7 @@
 'use server'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { Company, Developer, User } from '@/utils/types'
+import { Company, Developer, User, Job } from '@/utils/types'
 
 const supa = () => {
   const cookieStore = cookies()
@@ -9,9 +9,7 @@ const supa = () => {
 }
 
 const getUser = async () => {
-  const supabase = await supa()
-  const { data } = await supabase.auth.getUser()
-  console.log(data)
+  const { data } = await supa().auth.getUser()
   if (data.user) {
     return data.user
   } else {
@@ -20,10 +18,9 @@ const getUser = async () => {
 }
 
 const getUserData = async (): Promise<User> => {
-  const supabase = await supa()
   const user = await getUser()
   if (user) {
-    const { data, error } = await supabase
+    const { data, error } = await supa()
       .from('users')
       .select()
       .eq('id', user.id)
@@ -34,10 +31,9 @@ const getUserData = async (): Promise<User> => {
   }
 }
 const getCompanyData = async (): Promise<Company> => {
-  const supabase = await supa()
   const userData = await getUserData()
   if (userData && userData.company_id) {
-    const { data, error } = await supabase
+    const { data, error } = await supa()
       .from('companies')
       .select()
       .eq('id', userData.company_id)
@@ -49,23 +45,20 @@ const getCompanyData = async (): Promise<Company> => {
 }
 
 const getCompanyById = async (id: string): Promise<Company> => {
-  const supabase = await supa()
-  const { data, error } = await supabase.from('companies').select().eq('id', id)
+  const { data, error } = await supa().from('companies').select().eq('id', id)
   if (error) throw error.message
   return data[0]
 }
 
 const getCompanies = async (): Promise<Company[]> => {
-  const supabase = await supa()
-  const { data, error } = await supabase.from('companies').select()
+  const { data, error } = await supa().from('companies').select()
   if (error) throw error.message
   return data
 }
 
 const getMyDevs = async (): Promise<Developer[]> => {
-  const supabase = await supa()
   const userData = await getUserData()
-  const { data, error } = await supabase
+  const { data, error } = await supa()
     .from('developers')
     .select()
     .eq('company', userData.company_id)
@@ -73,15 +66,13 @@ const getMyDevs = async (): Promise<Developer[]> => {
   return data
 }
 const getDevs = async (): Promise<Developer[]> => {
-  const supabase = await supa()
-  const { data, error } = await supabase.from('developers').select()
+  const { data, error } = await supa().from('developers').select()
   if (error) throw error.message
   return data
 }
 
 const getDev = async (devId): Promise<Developer | null> => {
-  const supabase = await supa()
-  const { data, error } = await supabase
+  const { data, error } = await supa()
     .from('developers')
     .select()
     .eq('id', devId)
@@ -94,11 +85,35 @@ const getDev = async (devId): Promise<Developer | null> => {
 }
 
 const getDevsByCompany = async (id): Promise<Developer[]> => {
-  const supabase = await supa()
-  const { data, error } = await supabase
+  const { data, error } = await supa()
     .from('developers')
     .select()
     .eq('company', id)
+  if (error) throw error.message
+  return data
+}
+
+const getJob = async (id): Promise<Job> => {
+  const { data, error } = await supa().from('jobs').select().eq('id', id)
+  if (error) return null
+  if (data[0]) {
+    return data[0]
+  } else {
+    return null
+  }
+}
+const getJobs = async (): Promise<Job[]> => {
+  const { data, error } = await supa().from('jobs').select()
+  if (error) throw error.message
+  return data
+}
+
+const getMyJobs = async (): Promise<Job[]> => {
+  const userData = await getUserData()
+  const { data, error } = await supa()
+    .from('jobs')
+    .select()
+    .eq('company', userData.company_id)
   if (error) throw error.message
   return data
 }
@@ -113,4 +128,7 @@ export {
   getDev,
   getCompanyById,
   getDevsByCompany,
+  getJob,
+  getJobs,
+  getMyJobs,
 }

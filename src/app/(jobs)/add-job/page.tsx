@@ -1,9 +1,9 @@
 'use client'
-import JobForm from '@/app/(requests)/add-job/JobForm'
+import JobForm from '@/app/(jobs)/JobForm'
 
 export default function AddRequest() {
   return (
-    <div className={'mx-auto max-w-5xl p-5'}>
+    <div className={'mx-auto max-w-3xl p-5'}>
       <JobForm isNew={true} job={null}></JobForm>
     </div>
   )

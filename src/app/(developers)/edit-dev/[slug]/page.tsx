@@ -14,7 +14,7 @@ export default async function EditDev({ params }) {
   }
 
   return (
-    <div className={'mx-auto max-w-5xl p-5'}>
+    <div className={'mx-auto max-w-3xl p-5'}>
       {dev ? (
         <DevForm isNew={false} dev={dev}></DevForm>
       ) : (

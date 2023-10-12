@@ -56,7 +56,6 @@ interface Job {
   company: string
   title: string
   skills: string[]
-  client_country?: string
   rate: string
   hours: string
   scope: string

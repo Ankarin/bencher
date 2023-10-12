@@ -209,7 +209,7 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                   href='/jobs'
                   className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                 >
-                  Requests
+                  Jobs
                 </Disclosure.Button>
                 <Disclosure.Button
                   as='a'
@@ -240,8 +240,8 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                 ) : (
                   <div className='mt-3 space-y-1 px-2'>
                     <div className='ml-3'>
-                      <div className='text-base mb-5 text-lg font-medium text-white'>
-                        {user.first_name}
+                      <div className='text-base mb-2 text-lg font-medium '>
+                        {user.first_name} {company ? `@${company.name}` : ''}
                       </div>
                     </div>
 
@@ -264,7 +264,7 @@ export default function AppHeader({ user, company }: AppHeaderProps) {
                       href='/my-jobs'
                       className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
                     >
-                      My Requests
+                      My Jobs
                     </Disclosure.Button>
 
                     <div className={'pt-5'}>

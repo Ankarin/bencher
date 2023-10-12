@@ -1,7 +1,7 @@
 'use client'
 // import { Button } from '@/components/landing/Button';
 import { uuid } from '@supabase/supabase-js/dist/main/lib/helpers'
-import { XMarkIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon, TrashIcon } from '@heroicons/react/24/solid'
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
@@ -22,6 +22,7 @@ import Toast from '@/components/app/Toast'
 import { useRouter } from 'next/navigation'
 import { supaDownload } from '@/utils/supabaseClient'
 import { Developer } from '@/utils/types'
+import ConfirmDelete from '@/components/app/Confirm'
 
 const supabase = createClientComponentClient()
 
@@ -39,9 +40,11 @@ export default function DevForm({ isNew = false, dev }) {
   const [uploading, setUploading] = useState(false)
   const [cv, setCv] = useState({ url: '', filename: '' })
   const [disabledSave, setDisabledSave] = useState(false)
-  const [isPublic, setPublic] = useState(false)
+  const [isPublic, setPublic] = useState(true)
   const [file, setFile] = useState(null)
   const router = useRouter()
+
+  const [openConfirm, setOpenConfirm] = useState(false)
 
   useEffect(() => {
     if (dev) {
@@ -125,6 +128,7 @@ export default function DevForm({ isNew = false, dev }) {
       .select()
     if (error) {
       toast.error('Error updating developer!')
+      return
     } else {
       toast.success('Updated developer!')
     }
@@ -173,6 +177,7 @@ export default function DevForm({ isNew = false, dev }) {
       }
     } catch (error) {
       console.log(error)
+      return
     } finally {
       setUploading(false)
     }
@@ -192,6 +197,21 @@ export default function DevForm({ isNew = false, dev }) {
     // } else {
     setPublic(state)
     // }
+  }
+
+  const confirmDelete = async () => {
+    setOpenConfirm(false)
+    const { error } = await supabase
+      .from('developers')
+      .delete()
+      .eq('id', dev.id)
+    if (error) {
+      toast.error('Error deleting developer!')
+      console.log(error)
+      return
+    }
+    toast.success('Developer deleted!')
+    router.push('/my-devs')
   }
 
   return (
@@ -546,21 +566,41 @@ export default function DevForm({ isNew = false, dev }) {
           </div>
         </div>
       </div>
+      <ConfirmDelete
+        open={openConfirm}
+        setOpen={setOpenConfirm}
+        confirmDelete={confirmDelete}
+      />
 
-      <div className='mt-6 flex items-center justify-end gap-x-6'>
-        <button
-          type='button'
-          className='text-sm font-medium leading-6 text-gray-900'
-        >
-          Cancel
-        </button>
-        <button
-          disabled={disabledSave}
-          type='submit'
-          className='cursor-pointer rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-        >
-          Save
-        </button>
+      <div className='mt-6 flex items-center justify-between '>
+        <div>
+          {!isNew && (
+            <button
+              onClick={() => setOpenConfirm(true)}
+              type='button'
+              className='inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            >
+              <TrashIcon className=' h-5 w-5' aria-hidden='true' />
+              Delete
+            </button>
+          )}
+        </div>
+        <div className={'flex  items-center justify-end gap-x-6'}>
+          <button
+            onClick={() => router.push('/my-devs')}
+            type='button'
+            className='text-sm font-medium leading-6 text-gray-900'
+          >
+            Cancel
+          </button>
+          <button
+            disabled={disabledSave}
+            type='submit'
+            className='cursor-pointer rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+          >
+            Save
+          </button>
+        </div>
       </div>
     </form>
   )

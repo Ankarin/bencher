@@ -1,8 +1,13 @@
 import { Button } from '@/components/landing/Button'
+import JobList from '@/app/(jobs)/JobList'
+import { getMyJobs } from '@/utils/supabase'
+import { Job } from '@/utils/types'
 
-export default function MyRequests() {
+export default async function MyRequests() {
+  const jobs: Job[] | null = await getMyJobs()
+
   return (
-    <main className={'mx-auto max-w-5xl px-5'}>
+    <main className={'mx-auto max-w-3xl px-5'}>
       <div className='mt-2 md:flex md:items-center md:justify-between'>
         <div className='min-w-0 flex-1'>
           <h2 className='text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight'>
@@ -21,6 +26,7 @@ export default function MyRequests() {
           </Button>
         </div>
       </div>
+      <JobList jobs={jobs} isMine={true}></JobList>
     </main>
   )
 }

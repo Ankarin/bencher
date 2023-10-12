@@ -16,7 +16,7 @@ export default async function CompanyPage({ params }) {
   const isMine = (): boolean => company?.id === myCompany?.id
 
   return (
-    <div className={'mx-auto max-w-5xl px-2 md:px-5'}>
+    <div className={'mx-auto max-w-3xl px-2 md:px-5'}>
       <CompanyCard company={company} myCompany={isMine()}></CompanyCard>
       <DevList developers={devs} isMine={isMine()}></DevList>
     </div>

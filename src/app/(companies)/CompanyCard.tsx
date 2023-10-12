@@ -1,15 +1,11 @@
 'use client'
 import { Button } from '@/components/landing/Button'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { UserGroupIcon, MapPinIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 
 export default function CompanyCard({ company, myCompany }): React.ReactNode {
-  useEffect(() => {
-    console.log(company)
-  }, [])
-
   const features = [
     {
       data: company.size,

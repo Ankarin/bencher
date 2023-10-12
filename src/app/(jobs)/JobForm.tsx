@@ -1,11 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import {
   englishLevels,
-  languages,
   categorys,
   skillList,
   howManyHours,
@@ -13,11 +11,13 @@ import {
 } from '@/utils/options'
 
 import { selectStyleObject } from '@/utils/utils'
-import { zust } from 'src/store'
+import { zust } from '@/store'
 import { toast } from 'react-toastify'
 import Toast from '@/components/app/Toast'
 import { useRouter } from 'next/navigation'
 import { Job } from '@/utils/types'
+import { TrashIcon } from '@heroicons/react/24/solid'
+import ConfirmDelete from '@/components/app/Confirm'
 
 const supabase = createClientComponentClient()
 
@@ -42,6 +42,8 @@ export default function JobForm({
   const [disabledSave, setDisabledSave] = useState(false)
   const [isPublic, setPublic] = useState(false)
   const router = useRouter()
+
+  const [openConfirm, setOpenConfirm] = useState(false)
 
   useEffect(() => {
     if (job) {
@@ -70,18 +72,6 @@ export default function JobForm({
 
   const zustMyCompany = zust((state) => state.myCompany)
 
-  const languagesOptions = languages()
-    .map((item) => {
-      return { value: item, label: item }
-    })
-    .filter((item) => !otherLanguages.includes(item))
-
-  const handleSelectOtherLanguages = (val) => {
-    if (val.length > 5) {
-      return
-    }
-    setOtherLanguages(val)
-  }
   const handleSelectSkills = (val) => {
     if (val.length > 15) {
       return
@@ -89,22 +79,22 @@ export default function JobForm({
     setMainSkills(val)
   }
 
-  const supaAddJob = async (job: Job) => {
-    const { data, error } = await supabase.from('jobs').insert(job).select()
+  const supaAddJob = async (newJob: Job) => {
+    const { data, error } = await supabase.from('jobs').insert(newJob).select()
     if (error) {
       toast.error('Error adding new job!')
     }
     router.refresh()
     if (data) {
-      router.push(`/edit-dev/${data[0].id}`)
+      router.push(`/edit-job/${data[0].id}`)
       toast.success('Added new job!')
     }
   }
 
-  const supaEditJob = async (job: Job) => {
+  const supaEditJob = async (newJob: Job) => {
     const { error } = await supabase
       .from('jobs')
-      .update(job)
+      .update(newJob)
       .eq('id', job.id)
       .select()
     if (error) {
@@ -151,6 +141,18 @@ export default function JobForm({
     // } else {
     setPublic(state)
     // }
+  }
+
+  const confirmDelete = async () => {
+    setOpenConfirm(false)
+    const { error } = await supabase.from('jobs').delete().eq('id', job.id)
+    if (error) {
+      toast.error('Error deleting job!')
+      console.log(error)
+      return
+    }
+    toast.success('Job deleted!')
+    router.push('/my-devs')
   }
 
   return (
@@ -316,35 +318,36 @@ export default function JobForm({
               </div>
             </div>
 
-            <div className='mt-2 sm:col-span-3'>
-              <label
-                htmlFor='location'
-                className='block text-sm font-medium leading-6 text-gray-900'
-              >
-                Other Languages (Up to 5)
-              </label>
-              <div>
-                <Select
-                  isMulti
-                  onChange={handleSelectOtherLanguages}
-                  value={otherLanguages}
-                  options={languagesOptions}
-                  isSearchable={true}
-                  isClearable={true}
-                  styles={selectStyleObject}
-                />
-              </div>
-            </div>
+            {/*<div className='mt-2 sm:col-span-3'>*/}
+            {/*  <label*/}
+            {/*    htmlFor='location'*/}
+            {/*    className='block text-sm font-medium leading-6 text-gray-900'*/}
+            {/*  >*/}
+            {/*    Other Languages (Up to 5)*/}
+            {/*  </label>*/}
+            {/*  <div>*/}
+            {/*    <Select*/}
+            {/*      isMulti*/}
+            {/*      onChange={handleSelectOtherLanguages}*/}
+            {/*      value={otherLanguages}*/}
+            {/*      options={languagesOptions}*/}
+            {/*      isSearchable={true}*/}
+            {/*      isClearable={true}*/}
+            {/*      styles={selectStyleObject}*/}
+            {/*    />*/}
+            {/*  </div>*/}
+            {/*</div>*/}
 
             <div className='mt-2 sm:col-span-3'>
               <label
                 htmlFor='location'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                Main Skills (Up to 15)
+                Main Skills (Recommended 5, Up to 15) *
               </label>
               <div>
                 <CreatableSelect
+                  required
                   value={mainSkills}
                   onChange={handleSelectSkills}
                   options={skillList()}
@@ -480,20 +483,40 @@ export default function JobForm({
         </div>
       </div>
 
-      <div className='mt-6 flex items-center justify-end gap-x-6'>
-        <button
-          type='button'
-          className='text-sm font-medium leading-6 text-gray-900'
-        >
-          Cancel
-        </button>
-        <button
-          disabled={disabledSave}
-          type='submit'
-          className='cursor-pointer rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-        >
-          Save
-        </button>
+      <div className='mt-6 flex items-center justify-between '>
+        <ConfirmDelete
+          open={openConfirm}
+          setOpen={setOpenConfirm}
+          confirmDelete={confirmDelete}
+        />
+        <div>
+          {!isNew && (
+            <button
+              onClick={() => setOpenConfirm(true)}
+              type='button'
+              className='inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            >
+              <TrashIcon className=' h-5 w-5' aria-hidden='true' />
+              Delete
+            </button>
+          )}
+        </div>
+        <div className={'flex  items-center justify-end gap-x-6'}>
+          <button
+            onClick={() => router.push('/my-jobs')}
+            type='button'
+            className='text-sm font-medium leading-6 text-gray-900'
+          >
+            Cancel
+          </button>
+          <button
+            disabled={disabledSave}
+            type='submit'
+            className='cursor-pointer rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+          >
+            Save
+          </button>
+        </div>
       </div>
     </form>
   )

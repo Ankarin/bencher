@@ -12,7 +12,7 @@ export default async function MyCompany() {
   return (
     <div>
       {company && !company.verified ? <NotVerified></NotVerified> : ''}
-      <div className='mx-auto mx-auto max-w-5xl px-5'>
+      <div className='mx-auto mx-auto max-w-3xl px-5'>
         {!company ? (
           <NoCompany></NoCompany>
         ) : (

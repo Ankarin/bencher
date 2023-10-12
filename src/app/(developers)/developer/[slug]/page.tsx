@@ -12,7 +12,7 @@ export default async function EditDev({ params }) {
   const isMine = (): boolean => dev?.company === myCompany?.id
 
   return (
-    <div className={'mx-auto max-w-5xl p-5'}>
+    <div className={'mx-auto max-w-3xl p-5'}>
       {dev && devCompany ? (
         <div className={'grid grid-cols-1 gap-5'}>
           <CompanyCard company={devCompany} myCompany={isMine()}></CompanyCard>
