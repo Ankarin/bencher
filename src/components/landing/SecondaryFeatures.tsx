@@ -4,6 +4,9 @@ import { useId } from 'react'
 import Image from 'next/image'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
+import profit_loss from '@/images/screenshots/profit-loss.png'
+import inventory from '@/images/screenshots/inventory.png'
+import contacts from '@/images/screenshots/contacts.png'
 
 import { Container } from '@/components/landing/Container'
 
@@ -13,7 +16,7 @@ const features = [
     summary: 'Create your free account and get verified.',
     description:
       'We want to make sure that only companies with flawless record are getting on board. After verification process, complete you edit-company profile to highlight your expertise.',
-    image: 'landing/profit-loss.png',
+    image: profit_loss,
     icon: function ReportingIcon() {
       const id = useId()
       return (
@@ -47,7 +50,7 @@ const features = [
     summary: 'Add profiles of your developers available for hire.',
     description:
       'Make your experts accessible to others who may need their skills. View current jobs from other companies and match them with your engineers.',
-    image: 'landing/inventory.png',
+    image: inventory,
     icon: function InventoryIcon() {
       return (
         <>
@@ -74,7 +77,7 @@ const features = [
     summary: 'Connect and Collaborate, Commission-Free.',
     description:
       'Connect and work directly with companies seeking to hire your engineers – Zero fees and no third-party contracts from our side.',
-    image: 'landing/contacts.png',
+    image: contacts,
     icon: function ContactsIcon() {
       return (
         <>
@@ -137,6 +140,7 @@ function FeaturesMobile() {
               <Image
                 className='w-full'
                 src={feature.image}
+                unoptimized
                 alt=''
                 sizes='52.75rem'
                 width='700'
@@ -189,6 +193,7 @@ function FeaturesDesktop() {
                   <div className='w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10'>
                     <Image
                       className='w-full'
+                      unoptimized
                       src={feature.image}
                       alt=''
                       sizes='52.75rem'

@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/images/screenshots/contacts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/screenshots/expenses.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/screenshots/inventory.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/screenshots/payroll.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/screenshots/profit-loss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/screenshots/reporting.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/screenshots/vat-returns.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,30 +60,30 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ankar/Desktop/bencha/bencher/src/app&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "C:/Users/ankar/Desktop/bencha/bencher/src/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -85,11 +95,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\images" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app" />
       <recent name="$PROJECT_DIR$/src/components/landing" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(developers)\edit-dev" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\api\auth\reset-callback" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(jobs)\job\[slug]" />
@@ -165,7 +175,7 @@
       <workItem from="1697110803354" duration="11691000" />
       <workItem from="1697187312276" duration="6273000" />
       <workItem from="1697199514224" duration="496000" />
-      <workItem from="1697200508571" duration="3101000" />
+      <workItem from="1697200508571" duration="4800000" />
     </task>
     <servers />
   </component>

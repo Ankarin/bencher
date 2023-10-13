@@ -7,30 +7,34 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/landing/Container'
 import backgroundImage from '@/images/background-features.jpg'
+import payrollImage from '@/images/screenshots/payroll.png'
+import expenses from '@/images/screenshots/expenses.png'
+import reporting from '@/images/screenshots/reporting.png'
+import vat_returns from '@/images/screenshots/vat-returns.png'
 
 const features = [
   {
     title: 'Search With Precision',
     description:
       'Browse available professionals from hundreds of rated software development companies.',
-    image: 'landing/payroll.png',
+    image: payrollImage,
   },
   {
     title: 'Or Share Your Requirements',
     description: 'Submit a new job for companies to showcase their experts.',
-    image: 'landing/expenses.png',
+    image: expenses,
   },
   {
     title: 'Meet Candidates',
     description:
       "Discuss your project's specifications and meet with shortlisted developers.",
-    image: 'landing/reporting.png',
+    image: reporting,
   },
   {
     title: 'Connect and Collaborate, Commission-Free',
     description:
       'Work directly with your chosen provider with no fees on our side.',
-    image: 'landing/vat-returns.png',
+    image: vat_returns,
   },
 ]
 
@@ -134,6 +138,7 @@ export function PrimaryFeatures() {
                     <div className='mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]'>
                       <Image
                         className='w-full'
+                        unoptimized
                         src={feature.image}
                         alt=''
                         priority

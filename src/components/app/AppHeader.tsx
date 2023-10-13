@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { zust } from '@/store'
 import { SmallLogo } from '@/components/SmallLogo'
+import profilePic from '@/images/profile.png'
 
 import { User, Company, Developer } from '@/utils/types'
 
@@ -137,7 +138,8 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
 
                             <Image
                               className='h-8 w-8 rounded-full'
-                              src='landing/profile.png'
+                              unoptimized
+                              src={profilePic}
                               alt=''
                               width='30'
                               height='30'
