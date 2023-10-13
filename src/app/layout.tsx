@@ -7,6 +7,7 @@ import React from 'react'
 import 'react-tooltip/dist/react-tooltip.css'
 import { getUserData, getCompanyData, getDevsByCompany } from '@/utils/supabase'
 import { Developer, User, Company } from '@/utils/types'
+import { Analytics } from '@vercel/analytics/react'
 
 export const metadata: Metadata = {
   title: {
@@ -54,8 +55,8 @@ export default async function RootLayout({
             myDevs={myDevs}
           ></AppHeader>
         </div>
-
         <div className={'pt-20'}>{children}</div>
+        <Analytics />
       </body>
     </html>
   )
