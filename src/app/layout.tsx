@@ -48,7 +48,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className='relative min-h-full bg-white '>
-        <div className='top:0 right:0 left:0 fixed z-10 w-screen'>
+        <div className='top:0 right:0 left:0 fixed z-20 w-screen'>
           <AppHeader
             user={userData}
             company={companyData}
