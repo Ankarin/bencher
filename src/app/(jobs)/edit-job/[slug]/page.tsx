@@ -1,3 +1,4 @@
+status
 import JobForm from '@/app/(jobs)/JobForm'
 import { getCompanyData, getJob } from '@/utils/supabase'
 import { Job } from '@/utils/types'
