@@ -1,5 +1,6 @@
 'use client'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { Developer } from '@/utils/types'
 
 const supabase = createClientComponentClient()
 
@@ -47,10 +48,20 @@ const supaDownload = async (url) => {
   window.open(data.publicUrl)
 }
 
+const getDevsByCompanyId = async (id): Promise<Developer[]> => {
+  const { data, error } = await supabase
+    .from('developers')
+    .select()
+    .eq('company', id)
+  if (error) throw error.message
+  return data
+}
+
 export {
   updateUserData,
   updateCompany,
   createCompany,
   getCompanyData,
   supaDownload,
+  getDevsByCompanyId,
 }

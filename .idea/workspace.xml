@@ -5,35 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/ApplyList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/JobList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplySelectModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/app/Confirm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplyModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/SelectToApply.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/icon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/next.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/next.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/edit-company/EditCompanyForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/add-dev/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/add-dev/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developers/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/edit-dev/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/edit-dev/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(requests)/add-job/JobForm.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(requests)/add-job/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(requests)/job/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(requests)/jobs/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(requests)/my-jobs/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/sign-up/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/sign-up/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/ApplyList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplyList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplySelectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/Apply.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/Confirm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/Confirm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -77,30 +66,30 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/Users/ankarin/bencher/src/components/landing",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ankar/Desktop/bencha/bencher/src/app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -112,15 +101,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app" />
       <recent name="$PROJECT_DIR$/src/components/landing" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(developers)\edit-dev" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\api\auth\reset-callback" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(jobs)\job\[slug]" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\public" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(jobs)\job\[slug]" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(requests)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(companies)\company\[slug]" />
     </key>
@@ -187,7 +177,9 @@
       <workItem from="1697014851788" duration="522000" />
       <workItem from="1697040657299" duration="8179000" />
       <workItem from="1697100828043" duration="133000" />
-      <workItem from="1697101603553" duration="2867000" />
+      <workItem from="1697101603553" duration="7489000" />
+      <workItem from="1697110803354" duration="11691000" />
+      <workItem from="1697187312276" duration="2623000" />
     </task>
     <servers />
   </component>

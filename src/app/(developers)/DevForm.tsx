@@ -591,7 +591,7 @@ export default function DevForm({ isNew = false, dev }) {
             type='button'
             className='text-sm font-medium leading-6 text-gray-900'
           >
-            Cancel
+            Go Back
           </button>
           <button
             disabled={disabledSave}

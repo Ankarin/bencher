@@ -5,6 +5,9 @@ import { Tooltip } from 'react-tooltip'
 import { Button } from '@/components/landing/Button'
 import { supaDownload } from '@/utils/supabaseClient'
 import Link from 'next/link'
+import { useContext } from 'react'
+import { ApplyContext } from '@/app/(jobs)/job/[slug]/Apply'
+import SelectToApply from '@/app/(jobs)/job/[slug]/SelectToApply'
 
 export default function DevCard({
   developer,
@@ -28,14 +31,16 @@ export default function DevCard({
     { title: 'English: ', value: `${developer.english} ` },
   ]
 
+  const isApply = useContext(ApplyContext)
+
   return (
     <div className='max-w-[100] rounded-lg bg-white p-2 shadow md:p-4'>
       <div className='flex justify-between'>
-        <p className='break-words text-lg  font-semibold '>
+        <p className='break-words   font-semibold '>
           <Link href={`/developer/${developer.id}`}>
             <span
               className={
-                'mr-3 cursor-pointer text-blue-600 hover:text-blue-800'
+                ' text-base cursor-pointer text-blue-600 hover:text-blue-800 sm:text-lg'
               }
             >
               {developer.title}{' '}
@@ -48,7 +53,7 @@ export default function DevCard({
                 data-tooltip-id='my-tooltip'
                 data-tooltip-content='Ready to start within 2 days.'
               >
-                <span className='mr-3 inline-flex items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xxs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
+                <span className='mr-1 inline-flex items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xxs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
                   ASAP
                 </span>
               </a>
@@ -59,7 +64,7 @@ export default function DevCard({
             <>
               <a
                 data-tooltip-id='my-tooltip'
-                data-tooltip-content="Hidden and can't be applied for jobs"
+                data-tooltip-content="Hidden and can't be applied for jobs."
               >
                 <span className='inline-flex items-center rounded-full bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20'>
                   {' '}
@@ -72,8 +77,7 @@ export default function DevCard({
             ''
           )}
         </p>
-        <p className='text-base text-xl font-bold text-green-700'>
-          {' '}
+        <p className='text-base font-bold text-green-700 sm:text-xl'>
           {developer.hourly_rate ? `$${developer.hourly_rate}/hr` : ''}{' '}
         </p>
       </div>
@@ -129,7 +133,7 @@ export default function DevCard({
           )}
         </div>
 
-        {isMine && (
+        {isMine && !isApply ? (
           <Button
             className='h-10'
             loading={false}
@@ -139,6 +143,10 @@ export default function DevCard({
           >
             Edit
           </Button>
+        ) : isMine && isApply ? (
+          <SelectToApply developer={developer}></SelectToApply>
+        ) : (
+          ''
         )}
       </div>
     </div>

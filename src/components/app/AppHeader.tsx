@@ -10,28 +10,31 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { zust } from '@/store'
 import { SmallLogo } from '@/components/SmallLogo'
 
-import { User, Company } from '@/utils/types'
+import { User, Company, Developer } from '@/utils/types'
 
 interface AppHeaderProps {
   user: User
-  company: Company
+  company: Company | null
+  myDevs: Developer[] | null
 }
 
 function classNames(...classes): string {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function AppHeader({ user, company }: AppHeaderProps) {
+export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
   const router = useRouter()
   const supabase = createClientComponentClient()
   const pathname = usePathname()
   const zustSetCompany = zust((state) => state.setCompany)
   const zustSetUser = zust((state) => state.setUser)
+  const zustSetDevelopers = zust((state) => state.setMyDevelopers)
 
   useEffect(() => {
     zustSetCompany(company)
     zustSetUser(user)
-  }, [user, company])
+    zustSetDevelopers(myDevs)
+  }, [user, company, myDevs])
 
   const signOut = async () => {
     await supabase.auth.signOut()

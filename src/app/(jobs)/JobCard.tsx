@@ -7,9 +7,11 @@ import { Button } from '@/components/landing/Button'
 export default function JobCard({
   job,
   isMine = false,
+  isApply = true,
 }: {
   job: Job
   isMine?: boolean
+  isApply?: boolean
 }) {
   const features = [
     { title: '', value: job.category },
@@ -26,11 +28,11 @@ export default function JobCard({
   return (
     <div className='max-w-[100] rounded-lg bg-white p-2 shadow md:p-4'>
       <div className='flex justify-between'>
-        <p className='break-words text-lg  font-semibold '>
+        <p className='break-words   font-semibold '>
           <Link href={`/job/${job.id}`}>
             <span
               className={
-                'mr-2 cursor-pointer text-blue-600 hover:text-blue-800'
+                'text-base  cursor-pointer text-blue-600 hover:text-blue-800 sm:text-lg'
               }
             >
               {job.title}{' '}
@@ -67,8 +69,7 @@ export default function JobCard({
             ''
           )}
         </p>
-        <p className='text-base text-xl font-bold text-green-700'>
-          {' '}
+        <p className='text-base font-bold text-green-700 sm:text-xl'>
           {job.rate ? `Up to $${job.rate}/hr` : ''}{' '}
         </p>
       </div>
@@ -111,7 +112,7 @@ export default function JobCard({
           >
             Edit
           </Button>
-        ) : (
+        ) : isApply ? (
           <Button
             className='h-10'
             loading={false}
@@ -121,6 +122,8 @@ export default function JobCard({
           >
             Apply
           </Button>
+        ) : (
+          ''
         )}
       </div>
     </div>

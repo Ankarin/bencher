@@ -507,7 +507,7 @@ export default function JobForm({
             type='button'
             className='text-sm font-medium leading-6 text-gray-900'
           >
-            Cancel
+            Go Back
           </button>
           <button
             disabled={disabledSave}
