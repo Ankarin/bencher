@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplyModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/SelectToApply.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/icon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/edit-company/EditCompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/ApplyList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplyList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplySelectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/Apply.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/Confirm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/Confirm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/forgot/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/forgot/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/reset-callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/reset-callback/route.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +164,7 @@
       <workItem from="1697100828043" duration="133000" />
       <workItem from="1697101603553" duration="7489000" />
       <workItem from="1697110803354" duration="11691000" />
-      <workItem from="1697187312276" duration="2623000" />
+      <workItem from="1697187312276" duration="3645000" />
     </task>
     <servers />
   </component>
