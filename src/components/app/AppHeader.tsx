@@ -16,10 +16,10 @@ import { User, Company, Developer } from '@/utils/types'
 interface AppHeaderProps {
   user: User
   company: Company | null
-  myDevs: Developer[] | null
+  myDevs: Developer[]
 }
 
-function classNames(...classes): string {
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
 }
 

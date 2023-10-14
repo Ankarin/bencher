@@ -22,7 +22,7 @@ interface Company {
   founding_year: string
   website: string
   admin: string
-  logo_url: string | null
+  logo_url: string
   region: string
   country: string
 }
@@ -30,10 +30,10 @@ interface Company {
 interface Developer {
   id?: bigint
   created_at?: Date
-  public?: boolean
+  public: boolean
   company: string // Assuming UUID is represented as a string
   title: string
-  description?: string
+  description: string
   hourly_rate: string
   experience: string
   skills: string[]
@@ -66,6 +66,11 @@ interface Job {
   asap: boolean
   other_languages: string[]
   experience: string
+}
+
+type selecter = {
+  value: string
+  label: string
 }
 
 export type { Company, User, Developer, Job }

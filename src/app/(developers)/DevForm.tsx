@@ -26,7 +26,13 @@ import ConfirmDelete from '@/components/app/Confirm'
 
 const supabase = createClientComponentClient()
 
-export default function DevForm({ isNew = false, dev }) {
+export default function DevForm({
+  isNew = false,
+  dev,
+}: {
+  isNew: boolean
+  dev: Developer
+}) {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [experience, setExperience] = useState('3')
@@ -34,8 +40,18 @@ export default function DevForm({ isNew = false, dev }) {
   const [asap, setAsap] = useState(false)
   const [english, setEnglish] = useState('')
   const [rate, setRate] = useState('')
-  const [otherLanguages, setOtherLanguages] = useState([])
-  const [mainSkills, setMainSkills] = useState([])
+  const [otherLanguages, setOtherLanguages] = useState<
+    {
+      value: string
+      label: string
+    }[]
+  >([])
+  const [mainSkills, setMainSkills] = useState<
+    {
+      value: string
+      label: string
+    }[]
+  >([])
   const [description, setDescription] = useState('')
   const [uploading, setUploading] = useState(false)
   const [cv, setCv] = useState({ url: '', filename: '' })
@@ -60,6 +76,7 @@ export default function DevForm({ isNew = false, dev }) {
           return { value: item, label: item }
         })
       )
+
       setMainSkills(
         dev.skills.map((item) => {
           return { value: item, label: item }
@@ -79,7 +96,7 @@ export default function DevForm({ isNew = false, dev }) {
     })
     .filter((item) => !otherLanguages.includes(item))
 
-  const handleSelectOtherLanguages = (val) => {
+  const handleSelectOtherLanguages = (val: never[]) => {
     if (val.length > 5) {
       return
     }

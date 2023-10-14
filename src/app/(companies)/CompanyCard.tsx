@@ -4,8 +4,15 @@ import Image from 'next/image'
 import React from 'react'
 import { UserGroupIcon, MapPinIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
+import { Company } from '@/utils/types'
 
-export default function CompanyCard({ company, myCompany }): React.ReactNode {
+export default function CompanyCard({
+  company,
+  myCompany,
+}: {
+  company: Company
+  myCompany: Company
+}): React.ReactNode {
   const features = [
     {
       data: company.size,

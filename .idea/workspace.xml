@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/screenshots/contacts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/screenshots/expenses.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/screenshots/inventory.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/screenshots/payroll.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/screenshots/profit-loss.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/screenshots/reporting.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/screenshots/vat-returns.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/Apply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/Apply.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/SecondaryFeatures.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +73,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
+    "run.code.analysis.last.selected.profile": "aDefault",
     "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
     "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
@@ -176,6 +171,8 @@
       <workItem from="1697187312276" duration="6273000" />
       <workItem from="1697199514224" duration="496000" />
       <workItem from="1697200508571" duration="4800000" />
+      <workItem from="1697250923543" duration="138000" />
+      <workItem from="1697251081053" duration="1989000" />
     </task>
     <servers />
   </component>
@@ -207,7 +204,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/(developers)/DevForm.tsx</url>
-          <line>180</line>
+          <line>197</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

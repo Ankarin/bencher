@@ -7,7 +7,7 @@ import { Developer } from '@/utils/types'
 
 export const ApplyContext = createContext(false)
 
-export const SelectDevContext = createContext(null)
+export const SelectDevContext = createContext(function (_dev: Developer) {})
 
 export default function Apply() {
   const [open, setOpen] = useState(false)
