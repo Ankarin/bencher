@@ -2,7 +2,7 @@
 import { Fragment, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
+import Image, { ImageLoaderProps } from 'next/image';
 import { Button } from '@/components/landing/Button';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -139,8 +139,8 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                             </span>
 
                             <Image
+                              loader={({ src }: ImageLoaderProps) => src}
                               className='h-8 w-8 rounded-full'
-                              unoptimized
                               src={profilePic}
                               alt=''
                               width='30'

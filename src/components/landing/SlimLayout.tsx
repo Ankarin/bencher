@@ -1,10 +1,11 @@
-import Image from 'next/image';
+'use client';
+import Image, { ImageLoaderProps } from 'next/image';
 
 import backgroundImage from '@/images/background-auth.jpg';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-export function SlimLayout({ children }) {
+export async function SlimLayout({ children }) {
   return (
     <>
       <div className='relative flex sm:min-h-screen  justify-center md:px-12 lg:px-0'>
@@ -16,10 +17,10 @@ export function SlimLayout({ children }) {
         </div>
         <div className='hidden  lg:relative lg:block lg:flex-1'>
           <Image
+            loader={({ src }: ImageLoaderProps) => src}
             className='absolute inset-0 h-full w-full object-cover'
             src={backgroundImage}
             alt=''
-            unoptimized
           />
         </div>
       </div>

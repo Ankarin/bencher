@@ -144,7 +144,7 @@ function FeaturesMobile() {
               <Image
                 className='w-full'
                 src={feature.image}
-                unoptimized
+                loader={({ src }) => src}
                 alt=''
                 sizes='52.75rem'
                 width='700'
@@ -198,7 +198,7 @@ function FeaturesDesktop() {
                     className='w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10'>
                     <Image
                       className='w-full'
-                      unoptimized
+                      loader={({ src }) => src}
                       src={feature.image}
                       alt=''
                       sizes='52.75rem'

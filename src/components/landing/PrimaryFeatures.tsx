@@ -63,11 +63,11 @@ export function PrimaryFeatures() {
     >
       <Image
         className='absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]'
+        loader={({ src }) => src}
         src={backgroundImage}
         alt=''
         width='2245'
         height='1636'
-        unoptimized
       />
       <Container className='relative'>
         <div className='max-w-2xl md:mx-auto md:text-center xl:max-w-none'>
@@ -141,7 +141,7 @@ export function PrimaryFeatures() {
                       className='mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]'>
                       <Image
                         className='w-full'
-                        unoptimized
+                        loader={({ src }) => src}
                         src={feature.image}
                         alt=''
                         priority

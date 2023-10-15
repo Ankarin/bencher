@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 
 import { Button } from '@/components/landing/Button';
@@ -16,7 +17,7 @@ export function CallToAction() {
         alt=''
         width={2347}
         height={1244}
-        unoptimized
+        loader={({ src }) => src}
       />
       <Container className='relative'>
         <div className='mx-auto max-w-lg text-center'>
