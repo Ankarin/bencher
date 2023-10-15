@@ -1,17 +1,17 @@
-'use client'
-import { Button } from '@/components/landing/Button'
-import Image from 'next/image'
-import React from 'react'
-import { UserGroupIcon, MapPinIcon } from '@heroicons/react/24/solid'
-import Link from 'next/link'
-import { Company } from '@/utils/types'
+'use client';
+import { Button } from '@/components/landing/Button';
+import Image from 'next/image';
+import React from 'react';
+import { UserGroupIcon, MapPinIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
+import { Company } from '@/utils/types';
 
 export default function CompanyCard({
-  company,
-  myCompany,
-}: {
+                                      company,
+                                      myCompany,
+                                    }: {
   company: Company
-  myCompany: Company
+  myCompany: boolean
 }): React.ReactNode {
   const features = [
     {
@@ -22,7 +22,7 @@ export default function CompanyCard({
       data: company.country + `, ${company.region}`,
       icon: MapPinIcon,
     },
-  ]
+  ];
 
   return (
     <div className='rounded-lg bg-white p-4 shadow md:p-5 '>
@@ -94,5 +94,5 @@ export default function CompanyCard({
         )}
       </div>
     </div>
-  )
+  );
 }

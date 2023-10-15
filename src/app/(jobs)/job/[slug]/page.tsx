@@ -1,13 +1,13 @@
-import { Job, Company } from '@/utils/types'
-import { getJob, getCompanyData } from '@/utils/supabase'
-import JobCard from '@/app/(jobs)/JobCard'
-import Apply from '@/app/(jobs)/job/[slug]/Apply'
+import { Job, Company, ParamsType } from '@/utils/types';
+import { getJob, getCompanyData } from '@/utils/supabase';
+import JobCard from '@/app/(jobs)/JobCard';
+import Apply from '@/app/(jobs)/job/[slug]/Apply';
 
-export default async function JobPage({ params }) {
-  const job: Job = await getJob(params.slug)
-  const myCompany: Company = await getCompanyData()
+export default async function JobPage(params: ParamsType) {
+  const job: Job | null = await getJob(params.slug);
+  const myCompany: Company | null = await getCompanyData();
 
-  const isMine = (): boolean => job?.company === myCompany?.id
+  const isMine = (): boolean => job?.company === myCompany?.id;
 
   return (
     <div className={'mx-auto max-w-3xl p-5'}>
@@ -21,5 +21,5 @@ export default async function JobPage({ params }) {
         <p>Job not found</p>
       )}
     </div>
-  )
+  );
 }

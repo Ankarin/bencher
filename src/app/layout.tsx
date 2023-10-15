@@ -1,13 +1,13 @@
-import { Inter, Lexend } from 'next/font/google'
-import clsx from 'clsx'
-import AppHeader from '@/components/app/AppHeader'
-import '@/styles/tailwind.css'
-import { type Metadata } from 'next'
-import React from 'react'
-import 'react-tooltip/dist/react-tooltip.css'
-import { getUserData, getCompanyData, getDevsByCompany } from '@/utils/supabase'
-import { Developer, User, Company } from '@/utils/types'
-import { Analytics } from '@vercel/analytics/react'
+import { Inter, Lexend } from 'next/font/google';
+import clsx from 'clsx';
+import AppHeader from '@/components/app/AppHeader';
+import '@/styles/tailwind.css';
+import { type Metadata } from 'next';
+import React from 'react';
+import 'react-tooltip/dist/react-tooltip.css';
+import { getUserData, getCompanyData, getDevsByCompany } from '@/utils/supabase';
+import { Developer, User, Company } from '@/utils/types';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: {
@@ -16,30 +16,31 @@ export const metadata: Metadata = {
   },
   description:
     'BitBencher is a marketplace with thousands of vetted developers from European software companies. Work directly wit no fees.',
-}
+};
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-})
+});
 
 const lexend = Lexend({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-lexend',
-})
+});
 
 export default async function RootLayout({
-  children,
-}: {
+                                           children,
+                                         }: {
   children: React.ReactNode
 }) {
-  const userData: User = await getUserData()
-  const companyData: Company = await getCompanyData()
+  const userData: User | null = await getUserData();
+  const companyData: Company | null = await getCompanyData();
+  const id = companyData?.id ?? '';
   const myDevs: Developer[] = companyData
-    ? await getDevsByCompany(companyData.id)
-    : []
+    ? await getDevsByCompany(id)
+    : [];
 
   return (
     <html
@@ -47,17 +48,17 @@ export default async function RootLayout({
       className={clsx('h-full antialiased', inter.variable, lexend.variable)}
       suppressHydrationWarning
     >
-      <body className='relative min-h-full bg-white '>
-        <div className='top:0 right:0 left:0 fixed z-20 w-screen'>
-          <AppHeader
-            user={userData}
-            company={companyData}
-            myDevs={myDevs}
-          ></AppHeader>
-        </div>
-        <div className={'pt-20'}>{children}</div>
-        <Analytics />
-      </body>
+    <body className='relative min-h-full bg-white '>
+    <div className='top:0 right:0 left:0 fixed z-20 w-screen'>
+      <AppHeader
+        user={userData}
+        company={companyData}
+        myDevs={myDevs}
+      ></AppHeader>
+    </div>
+    <div className={'pt-20'}>{children}</div>
+    <Analytics />
+    </body>
     </html>
-  )
+  );
 }

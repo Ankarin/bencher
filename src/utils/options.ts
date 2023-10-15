@@ -175,14 +175,14 @@ const languages = () => [
   'Yoruba',
   'Zhuang',
   'Zulu',
-]
+];
 const availableOptions = () => [
   'ASAP',
   '1 week',
   '2 weeks',
   '3 weeks',
   'Month+',
-]
+];
 const skills = () => [
   'JavaScript',
   'Python',
@@ -557,26 +557,26 @@ const skills = () => [
   'Marmalade',
   'Monogame',
   'Cordova',
-]
+];
 const englishLevels = () => [
   'Basic (A0-A2)',
   'Intermediate (B1)',
   'Upper Intermediate (B2)',
   'Fluent (C1-C2)',
   'Native / Bilingual',
-]
+];
 
 const howManyHours = () => [
   { id: 1, name: 'Less then 20 hours a week' },
   { id: 2, name: '20-40 hours a week' },
   { id: 3, name: 'Full time' },
-]
+];
 const scopeOptions = () => [
   { id: 1, name: 'Less then 1 month' },
   { id: 2, name: '1-3 months' },
   { id: 3, name: '3-6 months' },
   { id: 3, name: 'More then 6 months' },
-]
+];
 
 const rolesArray = () => [
   {
@@ -637,7 +637,7 @@ const rolesArray = () => [
   {
     role: 'Admin',
     description:
-      "Manages and maintains the company's databases, ensuring data integrity and availability.",
+      'Manages and maintains the company\'s databases, ensuring data integrity and availability.',
   },
   {
     role: 'Security',
@@ -688,7 +688,7 @@ const rolesArray = () => [
     role: 'Other',
     description: '',
   },
-]
+];
 
 const countriesArray = () => [
   {
@@ -1679,24 +1679,24 @@ const countriesArray = () => [
     country: 'Zimbabwe',
     region: 'Africa',
   },
-]
+];
 
-const countries = () => countriesArray().map((item) => item.country)
-const categorys = () => rolesArray().map((item) => item.role)
-const skillList = () => skills().map((item) => ({ value: item, label: item }))
+const countries = () => countriesArray().map((item) => item.country);
+const categorys = () => rolesArray().map((item) => item.role);
+const skillList = () => skills().map((item) => ({ value: item, label: item }));
 
 const languagesForReactSelect = () =>
-  languages().map((item) => ({ value: item, label: item }))
+  languages().map((item) => ({ value: item, label: item }));
 
-const getRegion = (country) => {
-  const res = countriesArray().find((item) => item.country === country)
-  return res ? res.region : ''
-}
+const getRegion = (country: string): string => {
+  const res = countriesArray().find((item) => item.country === country);
+  return res ? res.region : '';
+};
 
-const getRoleDescription = (roleName) => {
-  const role = rolesArray().find((item) => item.role === roleName)
-  return role ? role.description : ''
-}
+const getRoleDescription = (roleName: string): string => {
+  const role = rolesArray().find((item) => item.role === roleName);
+  return role ? role.description : '';
+};
 
 export {
   countries,
@@ -1711,4 +1711,4 @@ export {
   languagesForReactSelect,
   scopeOptions,
   howManyHours,
-}
+};

@@ -1,15 +1,15 @@
-import JobForm from '@/app/(jobs)/JobForm'
-import { getCompanyData, getJob } from '@/utils/supabase'
-import { Job } from '@/utils/types'
+import JobForm from '@/app/(jobs)/JobForm';
+import { getCompanyData, getJob } from '@/utils/supabase';
+import { Job, ParamsType } from '@/utils/types';
 
-export default async function EditJob({ params }) {
-  let job: Job | null = await getJob(params.slug) // Provide a type annotation
+export default async function EditJob(params: ParamsType) {
+  let job: Job | null = await getJob(params.slug); // Provide a type annotation
 
   if (job) {
-    const myCompany = await getCompanyData()
+    const myCompany = await getCompanyData();
 
-    if (job.company !== myCompany.id) {
-      job = null
+    if (job.company !== myCompany?.id) {
+      job = null;
     }
   }
 
@@ -17,5 +17,5 @@ export default async function EditJob({ params }) {
     <div className={'mx-auto max-w-3xl p-5'}>
       {job ? <JobForm isNew={false} job={job}></JobForm> : <p>Job not found</p>}
     </div>
-  )
+  );
 }

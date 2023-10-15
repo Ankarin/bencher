@@ -2,28 +2,29 @@ import { Button } from '@/components/landing/Button';
 import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
+import { SearchParams } from '@/utils/types';
 
 export const metadata = {
   title: 'Confirm Registration',
 };
 
-export default function SignupRedirect({ searchParams }): React.ReactNode {
+export default function SignupRedirect({ searchParams }: { searchParams: SearchParams }): React.ReactNode {
   return (
     <div className={'-mt-20'}>
       <SlimLayout>
         <div className='flex'>
           <Logo />
         </div>
-        <Content type={searchParams.res}></Content>
+        {searchParams.res ? <Content type={searchParams.res}></Content> : ''}
       </SlimLayout>
     </div>
   );
 }
 
-function Content({ type }): React.ReactNode {
+function Content({ type }: { type: string | string[] }): React.ReactNode {
   return type === 'exists' ? (
     <div>
-      <h2 className='mt-10 text-lg font-medium text-gray-900'>
+      <h2 className='mt-10 te xt-lg font-medium text-gray-900'>
         User with email you provided is already exists.
       </h2>
       <br />

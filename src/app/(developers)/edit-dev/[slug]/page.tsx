@@ -1,15 +1,15 @@
-import DevForm from '@/app/(developers)/DevForm'
-import { getCompanyData, getDev } from '@/utils/supabase'
-import { Developer } from '@/utils/types'
+import DevForm from '@/app/(developers)/DevForm';
+import { getCompanyData, getDev } from '@/utils/supabase';
+import { Developer, ParamsType } from '@/utils/types';
 
-export default async function EditDev({ params }) {
-  let dev: Developer | null = await getDev(params.slug) // Provide a type annotation
+export default async function EditDev(params: ParamsType) {
+  let dev: Developer | null = await getDev(params.slug); // Provide a type annotation
 
   if (dev) {
-    const myCompany = await getCompanyData()
+    const myCompany = await getCompanyData();
 
-    if (dev.company !== myCompany.id) {
-      dev = null
+    if (dev.company !== myCompany?.id) {
+      dev = null;
     }
   }
 
@@ -21,5 +21,5 @@ export default async function EditDev({ params }) {
         <p>Developer not found</p>
       )}
     </div>
-  )
+  );
 }

@@ -1,40 +1,49 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import { createCompany, updateCompany } from '@/utils/supabaseClient'
-import { Button } from '@/components/landing/Button'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { PhotoIcon } from '@heroicons/react/24/solid'
-import Image from 'next/image'
-import { countries, getRegion } from '@/utils/options'
+'use client';
+import React, { useEffect, useState } from 'react';
+import { createCompany, updateCompany } from '@/utils/supabaseClient';
+import { Button } from '@/components/landing/Button';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { PhotoIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
+import { countries, getRegion } from '@/utils/options';
+import { Company } from '@/utils/types';
+import Toast from '@/components/app/Toast';
+import { toast } from 'react-toastify';
 
-const supabase = createClientComponentClient()
-export default function CompanyEdit({ company }): React.ReactNode {
-  const id = company ? company.id : null
-  const [uploading, setUploading] = useState(false)
-  const [loading, setLoading] = useState(false)
+
+const supabase = createClientComponentClient();
+export default function CompanyEdit({ company }: {
+  company: Company | null
+}): React.ReactNode {
+
+  const [uploading, setUploading] = useState(false);
+  const [loading, setLoading] = useState(false);
   //
-  const [name, setName] = useState('test')
-  const [website, setWebsite] = useState('https://website.example')
+  const [name, setName] = useState('test');
+  const [website, setWebsite] = useState('https://website.example');
 
-  const [size, setSize] = useState('25')
-  const [location, setLocation] = useState('test')
-  const [logo_url, setLogoUrl] = useState('')
-  const [description, setDescription] = useState('asdasd')
+  const [size, setSize] = useState('25');
+  const [location, setLocation] = useState('test');
+  const [logo_url, setLogoUrl] = useState('');
+  const [description, setDescription] = useState('asdasd');
 
   useEffect(() => {
     if (company) {
-      setName(company.name)
-      setWebsite(company.website)
-      setSize(company.size)
-      setLocation(company.country)
-      setLogoUrl(company.logo_url)
-      setDescription(company.description)
+      setName(company.name);
+      setWebsite(company.website);
+      setSize(company.size);
+      setLocation(company.country);
+      setLogoUrl(company.logo_url);
+      setDescription(company.description);
     }
-  }, [company])
+  }, [company]);
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const saveForm = async (e) => {
-    setLoading(true)
-    const newCompany = {
+    e.preventDefault();
+    setLoading(true);
+    const newCompany: Company = {
       name,
       website,
       size,
@@ -42,52 +51,55 @@ export default function CompanyEdit({ company }): React.ReactNode {
       region: getRegion(location),
       description,
       logo_url,
-    }
-    e.preventDefault()
+      verified: true,
+    };
     if (!company) {
-      await createCompany(newCompany)
+      await createCompany(newCompany);
     } else {
+      if (!company) {
+        return;
+      }
+      const id = company.id;
       const updatedCompany = {
         id: id,
         ...newCompany,
-      }
-      await updateCompany(updatedCompany)
+      };
+      await updateCompany(updatedCompany);
+      toast.success('Your company updated !');
     }
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
-  async function uploadLogo(event) {
+  async function uploadLogo(event: React.ChangeEvent<HTMLInputElement>) {
     try {
-      setUploading(true)
+      setUploading(true);
 
       if (!event.target.files || event.target.files.length === 0) {
-        throw new Error('You must select an image to upload.')
+        throw new Error('You must select an image to upload.');
       }
 
-      const file = event.target.files[0]
-      const fileExt = file.name.split('.').pop()
-      const fileName = `${Math.random()}.${fileExt}`
-      const filePath = `${fileName}`
+      const file = event.target.files[0];
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
 
       const { error: uploadError } = await supabase.storage
         .from('bitbencher/logos')
-        .upload(filePath, file)
+        .upload(filePath, file);
 
       if (uploadError) {
-        alert(uploadError)
-        return
+        alert(uploadError);
+        return;
       }
-
-      setLogoUrl(`logos/${fileName}`)
-    } catch (error) {
-      alert(error.message)
+      setLogoUrl(`logos/${fileName}`);
     } finally {
-      setUploading(false)
+      setUploading(false);
     }
   }
 
   return (
     <div>
+      <Toast />
       <h2 className='text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight'>
         My Company
       </h2>
@@ -139,7 +151,8 @@ export default function CompanyEdit({ company }): React.ReactNode {
                   >
                     Company Logo (100 x 100 recommended)
                   </label>
-                  <div className='mt-2 flex h-44 w-44 justify-center rounded-lg border border-dashed border-gray-900/25  py-5'>
+                  <div
+                    className='mt-2 flex h-44 w-44 justify-center rounded-lg border border-dashed border-gray-900/25  py-5'>
                     <div className='text-center'>
                       <PhotoIcon
                         className='mx-auto h-12 w-12 text-gray-300'
@@ -190,7 +203,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                     id='name'
                     value={name}
                     onChange={(e) => {
-                      setName(e.target.value)
+                      setName(e.target.value);
                     }}
                     className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   />
@@ -211,7 +224,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                     id='website'
                     value={website}
                     onChange={(e) => {
-                      setWebsite(e.target.value)
+                      setWebsite(e.target.value);
                     }}
                     className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   />
@@ -234,7 +247,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                     className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
                     value={size}
                     onChange={(e) => {
-                      setSize(e.target.value)
+                      setSize(e.target.value);
                     }}
                   >
                     <option></option>
@@ -260,7 +273,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                     name='location'
                     value={location}
                     onChange={(e) => {
-                      setLocation(e.target.value)
+                      setLocation(e.target.value);
                     }}
                     className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   >
@@ -289,7 +302,7 @@ export default function CompanyEdit({ company }): React.ReactNode {
                   className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   value={description}
                   onChange={(e) => {
-                    setDescription(e.target.value)
+                    setDescription(e.target.value);
                   }}
                   minLength={50}
                   maxLength={300}
@@ -329,5 +342,5 @@ export default function CompanyEdit({ company }): React.ReactNode {
         </div>
       </form>
     </div>
-  )
+  );
 }

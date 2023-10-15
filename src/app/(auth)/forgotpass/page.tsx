@@ -5,12 +5,13 @@ import { TextField } from '@/components/landing/Fields';
 import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
+import { SearchParams } from '@/utils/types';
 
 export const metadata = {
   title: 'Forgot Password',
 };
 
-export default function Forgotpass({ searchParams }): React.ReactNode {
+export default function Forgotpass(searchParams: SearchParams): React.ReactNode {
   return (
     <div className='-mt-20'>
       <SlimLayout>

@@ -1,21 +1,22 @@
-'use client'
-import ApplyModal from '@/app/(jobs)/job/[slug]/ApplyModal'
+'use client';
+import ApplyModal from '@/app/(jobs)/job/[slug]/ApplyModal';
 
-import { useState, createContext } from 'react'
-import { Button } from '@/components/landing/Button'
-import { Developer } from '@/utils/types'
+import { useState, createContext } from 'react';
+import { Button } from '@/components/landing/Button';
+import { Developer } from '@/utils/types';
 
-export const ApplyContext = createContext(false)
+export const ApplyContext = createContext(false);
 
-export const SelectDevContext = createContext(function (_dev: Developer) {})
+export const SelectDevContext = createContext(function(_dev: Developer, _rate: string) {
+});
 
 export default function Apply() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const selectDev = (dev: Developer): void => {
-    console.log(dev)
-    setOpen(false)
-  }
+    console.log(dev);
+    setOpen(false);
+  };
 
   return (
     <ApplyContext.Provider value={true}>
@@ -35,5 +36,5 @@ export default function Apply() {
         </>
       </SelectDevContext.Provider>
     </ApplyContext.Provider>
-  )
+  );
 }

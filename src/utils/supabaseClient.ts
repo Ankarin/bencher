@@ -1,61 +1,62 @@
-'use client'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { Developer } from '@/utils/types'
+'use client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { Company, Developer, User } from '@/utils/types';
 
-const supabase = createClientComponentClient()
+const supabase = createClientComponentClient();
 
-const updateUserData = async (params) => {
+const updateUserData = async (params: User) => {
   const { data, error } = await supabase
     .from('users')
     .update(params)
-    .eq('id', params.id)
+    .eq('id', params.id);
   if (error) {
-    throw error
+    throw error;
   } else {
-    return data
+    return data;
   }
-}
-const updateCompany = async (params) => {
-  await supabase.from('companies').update(params).eq('id', params.id)
-}
-const createCompany = async (params) => {
+};
+const updateCompany = async (params: Company) => {
+  await supabase.from('companies').update(params).eq('id', params.id);
+};
+const createCompany = async (params: Company) => {
   const {
     data: { user },
-  } = await supabase.auth.getUser()
-  params.admin = user.id
+  } = await supabase.auth.getUser();
+  if (!user) return;
+  params.admin = user.id;
   const { data, error } = await supabase
     .from('companies')
     .insert(params)
-    .select()
+    .select();
   if (error) {
-    throw error
+    throw error;
   } else {
     await supabase
       .from('users')
       .update({ company_id: data[0].id })
-      .eq('id', user.id)
+      .eq('id', user.id);
   }
-}
+};
 
-const getCompanyData = async (company_id) => {
-  const res = await supabase.from('companies').select().eq('id', company_id)
-  return res.data[0]
-}
+const getCompanyData = async (company_id: string) => {
+  const res = await supabase.from('companies').select().eq('id', company_id);
+  return res.data ? res.data[0] : null;
+};
 
-const supaDownload = async (url) => {
-  const { data } = supabase.storage.from('bitbencher').getPublicUrl(url)
+const supaDownload = async (url: string) => {
+  const { data } = supabase.storage.from('bitbencher').getPublicUrl(url);
 
-  window.open(data.publicUrl)
-}
+  window.open(data.publicUrl);
+};
 
-const getDevsByCompanyId = async (id): Promise<Developer[]> => {
+const getDevsByCompanyId = async (id: string): Promise<Developer[]> => {
   const { data, error } = await supabase
     .from('developers')
     .select()
-    .eq('company', id)
-  if (error) throw error.message
-  return data
-}
+    .eq('company', id);
+  if (error) throw error.message;
+  return data;
+};
 
 export {
   updateUserData,
@@ -64,4 +65,4 @@ export {
   getCompanyData,
   supaDownload,
   getDevsByCompanyId,
-}
+};

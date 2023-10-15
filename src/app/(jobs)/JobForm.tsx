@@ -1,115 +1,117 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import CreatableSelect from 'react-select/creatable'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+'use client';
+import React, { useEffect, useState } from 'react';
+import CreatableSelect from 'react-select/creatable';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import {
   englishLevels,
   categorys,
   skillList,
   howManyHours,
   scopeOptions,
-} from '@/utils/options'
+} from '@/utils/options';
 
-import { selectStyleObject } from '@/utils/utils'
-import { zust } from '@/store'
-import { toast } from 'react-toastify'
-import Toast from '@/components/app/Toast'
-import { useRouter } from 'next/navigation'
-import { Job } from '@/utils/types'
-import { TrashIcon } from '@heroicons/react/24/solid'
-import ConfirmDelete from '@/components/app/Confirm'
+import { selectStyleObject } from '@/utils/utils';
+import { zust } from '@/store';
+import { toast } from 'react-toastify';
+import Toast from '@/components/app/Toast';
+import { useRouter } from 'next/navigation';
+import { Job, Selecter } from '@/utils/types';
+import { TrashIcon } from '@heroicons/react/24/solid';
+import ConfirmDelete from '@/components/app/Confirm';
 
-const supabase = createClientComponentClient()
+const supabase = createClientComponentClient();
 
 export default function JobForm({
-  isNew = false,
-  job,
-}: {
+                                  isNew = false,
+                                  job,
+                                }: {
   isNew?: boolean
-  job?: Job | null
+  job?: Job
 }) {
-  const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('')
-  const [experience, setExperience] = useState('3')
-  const [asap, setAsap] = useState(false)
-  const [english, setEnglish] = useState('')
-  const [rate, setRate] = useState('')
-  const [otherLanguages, setOtherLanguages] = useState([])
-  const [mainSkills, setMainSkills] = useState([])
-  const [description, setDescription] = useState('')
-  const [hours, setHours] = useState(null)
-  const [scope, setScope] = useState(null)
-  const [disabledSave, setDisabledSave] = useState(false)
-  const [isPublic, setPublic] = useState(false)
-  const router = useRouter()
+  const [title, setTitle] = useState<string>('');
+  const [category, setCategory] = useState<string>('');
+  const [experience, setExperience] = useState<string>('3');
+  const [asap, setAsap] = useState<boolean>(false);
+  const [english, setEnglish] = useState<string>('');
+  const [rate, setRate] = useState<string>('');
+  const [otherLanguages, setOtherLanguages] = useState<Selecter[]>([]);
+  const [mainSkills, setMainSkills] = useState<Selecter[]>([]);
+  const [description, setDescription] = useState<string>('');
+  const [hours, setHours] = useState<string>('');
+  const [scope, setScope] = useState<string>('');
+  const [disabledSave, setDisabledSave] = useState<boolean>(false);
+  const [isPublic, setPublic] = useState<boolean>(false);
+  const router = useRouter();
 
-  const [openConfirm, setOpenConfirm] = useState(false)
+  const [openConfirm, setOpenConfirm] = useState<boolean>(false);
 
   useEffect(() => {
     if (job) {
-      setTitle(job.title)
-      setCategory(job.category)
-      setExperience(job.experience)
-      setAsap(job.asap)
-      setEnglish(job.english)
-      setRate(job.rate)
+      setTitle(job.title);
+      setCategory(job.category);
+      setExperience(job.experience);
+      setAsap(job.asap);
+      setEnglish(job.english);
+      setRate(job.rate);
       setOtherLanguages(
         job.other_languages.map((item) => {
-          return { value: item, label: item }
-        })
-      )
+          return { value: item, label: item };
+        }),
+      );
       setMainSkills(
         job.skills.map((item) => {
-          return { value: item, label: item }
-        })
-      )
-      setDescription(job.description)
-      setPublic(job.public)
-      setScope(job.scope)
-      setHours(job.hours)
+          return { value: item, label: item };
+        }),
+      );
+      setDescription(job.description);
+      setPublic(job.public);
+      setScope(job.scope);
+      setHours(job.hours);
     }
-  }, [])
+  }, []);
 
-  const zustMyCompany = zust((state) => state.myCompany)
+  const zustMyCompany = zust((state) => state.myCompany);
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const handleSelectSkills = (val) => {
     if (val.length > 15) {
-      return
+      return;
     }
-    setMainSkills(val)
-  }
+    setMainSkills(val);
+  };
 
   const supaAddJob = async (newJob: Job) => {
-    const { data, error } = await supabase.from('jobs').insert(newJob).select()
+    const { data, error } = await supabase.from('jobs').insert(newJob).select();
     if (error) {
-      toast.error('Error adding new job!')
+      toast.error('Error adding new job!');
     }
-    router.refresh()
+    router.refresh();
     if (data) {
-      router.push(`/edit-job/${data[0].id}`)
-      toast.success('Added new job!')
+      router.push(`/edit-job/${data[0].id}`);
+      toast.success('Added new job!');
     }
-  }
+  };
 
   const supaEditJob = async (newJob: Job) => {
     const { error } = await supabase
       .from('jobs')
       .update(newJob)
-      .eq('id', job.id)
-      .select()
+      .eq('id', job?.id)
+      .select();
     if (error) {
-      toast.error('Error updating job!')
+      toast.error('Error updating job!');
     } else {
-      toast.success('Updated job!')
+      toast.success('Updated job!');
     }
-    router.refresh()
-  }
+    router.refresh();
+  };
 
   const saveJob = async () => {
     const job: Job = {
       hours,
       scope,
-      company: zustMyCompany.id,
+      company: zustMyCompany?.id ?? '',
       title,
       category,
       experience: experience,
@@ -120,40 +122,41 @@ export default function JobForm({
       rate: rate,
       description,
       public: isPublic,
-    }
+    };
     if (isNew) {
-      await supaAddJob(job)
+      await supaAddJob(job);
     } else {
-      await supaEditJob(job)
+      await supaEditJob(job);
     }
-  }
+  };
 
-  const save = async (e) => {
-    setDisabledSave(true)
-    e.preventDefault()
-    await saveJob()
-    setDisabledSave(false)
-  }
+  const save = async (e: React.FormEvent<HTMLFormElement>) => {
+    setDisabledSave(true);
+    e.preventDefault();
+    await saveJob();
+    setDisabledSave(false);
+  };
 
-  const handlePublic = (state) => {
+  const handlePublic = (state: boolean) => {
     // if (state && zustMyCompany.verified) {
     //   return;
     // } else {
-    setPublic(state)
+    setPublic(state);
     // }
-  }
+  };
 
   const confirmDelete = async () => {
-    setOpenConfirm(false)
-    const { error } = await supabase.from('jobs').delete().eq('id', job.id)
+    setOpenConfirm(false);
+    if (!job) return;
+    const { error } = await supabase.from('jobs').delete().eq('id', job.id);
     if (error) {
-      toast.error('Error deleting job!')
-      console.log(error)
-      return
+      toast.error('Error deleting job!');
+      console.log(error);
+      return;
     }
-    toast.success('Job deleted!')
-    router.push('/my-devs')
-  }
+    toast.success('Job deleted!');
+    router.push('/my-devs');
+  };
 
   return (
     <form onSubmit={save}>
@@ -161,7 +164,8 @@ export default function JobForm({
       <div className='space-y-12'>
         <div className='border-b border-gray-900/10 pb-12'>
           <div className={'items-center justify-between sm:flex'}>
-            <h2 className='pb-3 text-2xl font-bold leading-7 text-gray-900 sm:col-span-3 sm:truncate sm:p-0 sm:text-3xl sm:tracking-tight'>
+            <h2
+              className='pb-3 text-2xl font-bold leading-7 text-gray-900 sm:col-span-3 sm:truncate sm:p-0 sm:text-3xl sm:tracking-tight'>
               {isNew ? `Add Job` : `Edit Job`}
             </h2>
           </div>
@@ -173,7 +177,8 @@ export default function JobForm({
               >
                 Title *
               </label>
-              <div className='mt-2 flex rounded-md  ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600'>
+              <div
+                className='mt-2 flex rounded-md  ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600'>
                 <input
                   required
                   maxLength={40}
@@ -200,7 +205,7 @@ export default function JobForm({
                 name='category'
                 value={category}
                 onChange={(e) => {
-                  setCategory(e.target.value)
+                  setCategory(e.target.value);
                 }}
                 className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
               >
@@ -224,7 +229,7 @@ export default function JobForm({
                   name='hours'
                   value={hours}
                   onChange={(e) => {
-                    setHours(e.target.value)
+                    setHours(e.target.value);
                   }}
                   className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
                 >
@@ -248,7 +253,7 @@ export default function JobForm({
                   name='scope'
                   value={scope}
                   onChange={(e) => {
-                    setScope(e.target.value)
+                    setScope(e.target.value);
                   }}
                   className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
                 >
@@ -273,7 +278,7 @@ export default function JobForm({
                   name='english'
                   value={english}
                   onChange={(e) => {
-                    setEnglish(e.target.value)
+                    setEnglish(e.target.value);
                   }}
                   className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
                 >
@@ -374,7 +379,7 @@ export default function JobForm({
                   max='10'
                   value={experience}
                   onChange={(e) => {
-                    setExperience(e.target.value)
+                    setExperience(e.target.value);
                   }}
                   list='markers'
                   className='light h-2  w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700'
@@ -519,5 +524,5 @@ export default function JobForm({
         </div>
       </div>
     </form>
-  )
+  );
 }

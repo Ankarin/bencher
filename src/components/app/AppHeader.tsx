@@ -1,46 +1,46 @@
-'use client'
-import { Fragment, useEffect } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
-import { Button } from '@/components/landing/Button'
-import { usePathname, useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { zust } from '@/store'
-import { SmallLogo } from '@/components/SmallLogo'
-import profilePic from '@/images/profile.png'
+'use client';
+import { Fragment, useEffect } from 'react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
+import { Button } from '@/components/landing/Button';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { zust } from '@/store';
+import { SmallLogo } from '@/components/SmallLogo';
+import profilePic from '@/images/profile.png';
 
-import { User, Company, Developer } from '@/utils/types'
+import { User, Company, Developer } from '@/utils/types';
 
 interface AppHeaderProps {
-  user: User
-  company: Company | null
-  myDevs: Developer[]
+  user: User | null;
+  company: Company | null;
+  myDevs: Developer[];
 }
 
 function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
-  const router = useRouter()
-  const supabase = createClientComponentClient()
-  const pathname = usePathname()
-  const zustSetCompany = zust((state) => state.setCompany)
-  const zustSetUser = zust((state) => state.setUser)
-  const zustSetDevelopers = zust((state) => state.setMyDevelopers)
+  const router = useRouter();
+  const supabase = createClientComponentClient();
+  const pathname = usePathname();
+  const zustSetCompany = zust((state) => state.setCompany);
+  const zustSetUser = zust((state) => state.setUser);
+  const zustSetDevelopers = zust((state) => state.setMyDevelopers);
 
   useEffect(() => {
-    zustSetCompany(company)
-    zustSetUser(user)
-    zustSetDevelopers(myDevs)
-  }, [user, company, myDevs])
+    zustSetCompany(company);
+    if (user) zustSetUser(user);
+    zustSetDevelopers(myDevs);
+  }, [user, company, myDevs]);
 
   const signOut = async () => {
-    await supabase.auth.signOut()
-    router.refresh()
-  }
+    await supabase.auth.signOut();
+    router.refresh();
+  };
 
   if (
     pathname !== '/login' &&
@@ -109,7 +109,8 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                 </div>
                 <div className='flex lg:hidden'>
                   {/* Mobile menu button */}
-                  <Disclosure.Button className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+                  <Disclosure.Button
+                    className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
                     <span className='absolute -inset-0.5' />
                     <span className='sr-only'>Open main menu</span>
                     {open ? (
@@ -127,7 +128,8 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                     >
                       <div>
                         {user ? (
-                          <Menu.Button className='relative flex rounded-full border-none  text-sm  font-medium outline-none focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                          <Menu.Button
+                            className='relative flex rounded-full border-none  text-sm  font-medium outline-none focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                             <span className='absolute -inset-1.5 outline-none' />
                             <span className='sr-only'>Open user menu</span>
                             <span className={'pr-3 pt-1 outline-none'}>
@@ -178,14 +180,15 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                         leaveFrom='transform opacity-100 scale-100'
                         leaveTo='transform opacity-0 scale-95'
                       >
-                        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                        <Menu.Items
+                          className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                           <Menu.Item>
                             {({ active }) => (
                               <p
                                 onClick={signOut}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block cursor-pointer px-4 py-2 text-sm text-gray-700'
+                                  'block cursor-pointer px-4 py-2 text-sm text-gray-700',
                                 )}
                               >
                                 Sign out
@@ -287,6 +290,6 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
           </>
         )}
       </Disclosure>
-    )
+    );
   }
 }
