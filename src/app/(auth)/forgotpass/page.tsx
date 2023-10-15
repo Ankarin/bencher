@@ -6,10 +6,7 @@ import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
 
-interface PageProps {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
+import { PageProps } from '@/utils/types';
 
 export const dynamic = 'force-dynamic';
 export const metadata = {

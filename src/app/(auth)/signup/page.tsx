@@ -2,13 +2,13 @@ import { Button } from '@/components/landing/Button';
 import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
-import { SearchParams } from '@/utils/types';
+import { PageProps } from '@/utils/types';
 
 export const metadata = {
   title: 'Confirm Registration',
 };
 
-export default function SignupRedirect({ searchParams }: { searchParams: SearchParams }): React.ReactNode {
+export default function SignupRedirect({ searchParams }: PageProps): React.ReactNode {
   return (
     <div className={'-mt-20'}>
       <SlimLayout>

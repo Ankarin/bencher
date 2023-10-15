@@ -1,8 +1,8 @@
 import DevForm from '@/app/(developers)/DevForm';
 import { getCompanyData, getDev } from '@/utils/supabase';
-import { Developer, ParamsType } from '@/utils/types';
+import { Developer, PageProps } from '@/utils/types';
 
-export default async function EditDev(params: ParamsType) {
+export default async function EditDev({ params }: PageProps) {
   let dev: Developer | null = await getDev(params.slug); // Provide a type annotation
 
   if (dev) {

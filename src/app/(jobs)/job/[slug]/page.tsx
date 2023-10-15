@@ -1,9 +1,9 @@
-import { Job, Company, ParamsType } from '@/utils/types';
+import { Job, Company, PageProps } from '@/utils/types';
 import { getJob, getCompanyData } from '@/utils/supabase';
 import JobCard from '@/app/(jobs)/JobCard';
 import Apply from '@/app/(jobs)/job/[slug]/Apply';
 
-export default async function JobPage(params: ParamsType) {
+export default async function JobPage({ params }: PageProps) {
   const job: Job | null = await getJob(params.slug);
   const myCompany: Company | null = await getCompanyData();
 

@@ -1,8 +1,8 @@
 import JobForm from '@/app/(jobs)/JobForm';
 import { getCompanyData, getJob } from '@/utils/supabase';
-import { Job, ParamsType } from '@/utils/types';
+import { Job, PageProps } from '@/utils/types';
 
-export default async function EditJob(params: ParamsType) {
+export default async function EditJob({ params }: PageProps) {
   let job: Job | null = await getJob(params.slug); // Provide a type annotation
 
   if (job) {

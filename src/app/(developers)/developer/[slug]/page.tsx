@@ -1,9 +1,9 @@
 import DevCard from '@/app/(developers)/DevCard';
 import CompanyCard from '@/app/(companies)/CompanyCard';
 import { getCompanyById, getCompanyData, getDev } from '@/utils/supabase';
-import { Developer, Company, ParamsType } from '@/utils/types';
+import { Developer, Company, PageProps } from '@/utils/types';
 
-export default async function EditDev(params: ParamsType) {
+export default async function EditDev({ params }: PageProps) {
   const dev: Developer | null = await getDev(params.slug); // Provide a type annotation
   const myCompany: Company | null = await getCompanyData();
 

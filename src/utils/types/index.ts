@@ -74,16 +74,13 @@ type Selecter = {
 }
 
 
-type ParamsType = {
-  slug: string
-};
-type SearchParams = {
-  [key: string]: string | string[] | undefined
-};
-
+interface PageProps {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
 type FormSubmit = React.FormEvent<HTMLFormElement>
 
 type EventChange = React.ChangeEvent<HTMLInputElement>
 
-export type { Company, User, Developer, Job, Selecter, ParamsType, SearchParams, FormSubmit, EventChange };
+export type { Company, User, Developer, Job, Selecter, PageProps, FormSubmit, EventChange };

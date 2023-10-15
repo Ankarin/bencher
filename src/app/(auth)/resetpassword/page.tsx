@@ -3,13 +3,13 @@ import { TextField } from '@/components/landing/Fields';
 import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
-import { SearchParams } from '@/utils/types';
+import { PageProps } from '@/utils/types';
 
 export const metadata = {
   title: 'Reset Password',
 };
 
-export default function Login({ searchParams }: { searchParams: SearchParams }): React.ReactNode {
+export default function Login({ searchParams }: PageProps): React.ReactNode {
   return (
     <div className='-mt-20'>
       <SlimLayout>
