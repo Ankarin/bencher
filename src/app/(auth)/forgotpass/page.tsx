@@ -11,7 +11,7 @@ export const metadata = {
   title: 'Forgot Password',
 };
 
-export default function Forgotpass(searchParams: SearchParams): React.ReactNode {
+export default function Forgotpass({ searchParams }: { searchParams: SearchParams }): React.ReactNode {
   return (
     <div className='-mt-20'>
       <SlimLayout>
