@@ -7,6 +7,8 @@ import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
 import { SearchParams } from '@/utils/types';
 
+
+export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'Forgot Password',
 };
