@@ -5,15 +5,18 @@ import { TextField } from '@/components/landing/Fields';
 import { Logo } from '@/components/landing/Logo';
 import { SlimLayout } from '@/components/landing/SlimLayout';
 import React from 'react';
-import { SearchParams } from '@/utils/types';
 
+interface PageProps {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
 export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'Forgot Password',
 };
 
-export default function Forgotpass({ searchParams }: { searchParams: SearchParams }): React.ReactNode {
+export default function Forgotpass({ searchParams }: PageProps): React.ReactNode {
   return (
     <div className='-mt-20'>
       <SlimLayout>
