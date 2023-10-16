@@ -7,7 +7,10 @@ export default function ApplyList() {
 
   return (
     <div className={'mx-auto -mt-2 px-2 sm:-mt-5'}>
-      <DevList isMine={true} developers={developers}></DevList>
+      <DevList
+        isMine={true}
+        developers={developers.filter((item) => item.public)}
+      ></DevList>
     </div>
   )
 }

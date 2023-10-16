@@ -36,7 +36,7 @@ export default function ApplyModal({
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel className='h-screen w-full max-w-3xl transform overflow-y-auto bg-white  text-left align-middle shadow-xl transition-all '>
+                <Dialog.Panel className='mt-16 h-screen w-full max-w-3xl transform overflow-y-auto  bg-white text-left align-middle shadow-xl transition-all '>
                   <div
                     className={
                       'mt-4 flex justify-between px-4 text-lg font-medium'

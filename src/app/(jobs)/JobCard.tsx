@@ -3,14 +3,13 @@ import { Job } from '@/utils/types'
 import Link from 'next/link'
 import { Tooltip } from 'react-tooltip'
 import { Button } from '@/components/landing/Button'
+import { zust } from '@/store'
 
 export default function JobCard({
   job,
-  isMine = false,
   isApply = true,
 }: {
   job: Job
-  isMine?: boolean
   isApply?: boolean
 }) {
   const features = [
@@ -24,6 +23,10 @@ export default function JobCard({
 
     { title: 'English: ', value: `${job.english}+ ` },
   ]
+
+  const zustMyCompany = zust((state) => state.myCompany)
+
+  const isMine = zustMyCompany?.id === job.company
 
   return (
     <div className='max-w-[100] rounded-lg bg-white p-2 shadow md:p-4'>
@@ -107,7 +110,7 @@ export default function JobCard({
             className='h-10'
             loading={false}
             variant='solid'
-            color='blue'
+            color='slate'
             href={`/edit-job/${job.id}`}
           >
             Edit

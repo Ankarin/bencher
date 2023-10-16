@@ -26,7 +26,7 @@ export default async function MyRequests() {
           </Button>
         </div>
       </div>
-      <JobList jobs={jobs} isMine={true}></JobList>
+      <JobList jobs={jobs}></JobList>
     </main>
   )
 }

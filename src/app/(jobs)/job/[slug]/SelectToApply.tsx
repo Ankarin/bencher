@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState, useContext } from 'react'
 import { Button } from '@/components/landing/Button'
-import { Developer } from '@/utils/types'
+import { Developer, FormSubmit } from '@/utils/types'
 import { SelectDevContext } from '@/app/(jobs)/job/[slug]/Apply'
 
 export default function SelectToApply({ developer }: { developer: Developer }) {
@@ -10,7 +10,8 @@ export default function SelectToApply({ developer }: { developer: Developer }) {
 
   const apply = useContext(SelectDevContext)
 
-  const selectToApply = () => {
+  const selectToApply = (e: FormSubmit) => {
+    e.preventDefault()
     apply(developer, rate)
     setIsOpen(false)
   }
