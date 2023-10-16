@@ -71,12 +71,15 @@ const getDevs = async (): Promise<Developer[]> => {
 }
 
 const getDev = async (devId: string): Promise<Developer | null> => {
+  const myCompany = await getCompanyData()
   const { data, error } = await supa()
     .from('developers')
     .select()
     .eq('id', devId)
   if (error) return null
-  if (data[0]) {
+  if (data[0] && data[0].public) {
+    return data[0]
+  } else if (data[0] && data[0].company === myCompany?.id) {
     return data[0]
   } else {
     return null
@@ -88,21 +91,25 @@ const getDevsByCompany = async (id: string): Promise<Developer[]> => {
     .from('developers')
     .select()
     .eq('company', id)
+    .eq('public', true)
   if (error) throw error.message
   return data
 }
 
 const getJob = async (id: string): Promise<Job | null> => {
+  const myCompany = await getCompanyData()
   const { data, error } = await supa().from('jobs').select().eq('id', id)
   if (error) return null
-  if (data[0]) {
+  if (data[0] && data[0].public) {
+    return data[0]
+  } else if (data[0] && data[0].company === myCompany?.id) {
     return data[0]
   } else {
     return null
   }
 }
 const getJobs = async (): Promise<Job[]> => {
-  const { data, error } = await supa().from('jobs').select()
+  const { data, error } = await supa().from('jobs').select().eq('public', true)
   if (error) throw error.message
   return data
 }
