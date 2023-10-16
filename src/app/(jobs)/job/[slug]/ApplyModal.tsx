@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import ApplyList from './ApplyList'
+import React, { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import ApplyList from './ApplyList';
 
 export default function ApplyModal({
-  open,
-  close,
-}: {
-  open: boolean
+                                     open,
+                                     close,
+                                   }: {
+  open: boolean,
   close: () => void
 }) {
   return (
@@ -36,7 +36,8 @@ export default function ApplyModal({
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel className='mt-16 h-screen w-full max-w-3xl transform overflow-y-auto  bg-white text-left align-middle shadow-xl transition-all '>
+                <Dialog.Panel
+                  className='mt-16 h-screen w-full max-w-3xl transform overflow-y-auto  bg-white text-left align-middle shadow-xl transition-all '>
                   <div
                     className={
                       'mt-4 flex justify-between px-4 text-lg font-medium'
@@ -60,5 +61,5 @@ export default function ApplyModal({
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }

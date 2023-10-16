@@ -31,7 +31,7 @@ export default function JobForm({
   const [title, setTitle] = useState<string>('');
   const [category, setCategory] = useState<string>('');
   const [experience, setExperience] = useState<string>('3');
-  const [asap, setAsap] = useState<boolean>(false);
+  const [asap, setAsap] = useState<boolean>(true);
   const [english, setEnglish] = useState<string>('');
   const [rate, setRate] = useState<string>('');
   const [otherLanguages, setOtherLanguages] = useState<Selecter[]>([]);
@@ -40,7 +40,7 @@ export default function JobForm({
   const [hours, setHours] = useState<string>('');
   const [scope, setScope] = useState<string>('');
   const [disabledSave, setDisabledSave] = useState<boolean>(false);
-  const [isPublic, setPublic] = useState<boolean>(false);
+  const [isPublic, setPublic] = useState<boolean>(true);
   const router = useRouter();
 
   const [openConfirm, setOpenConfirm] = useState<boolean>(false);
