@@ -27,13 +27,14 @@ export default function CompanyCard({
   return (
     <div className='rounded-lg bg-white p-4 shadow md:p-5 '>
       <div className='flex'>
-        <Image
-          className={'h-12 w-12 md:h-16 md:w-16'}
-          src={company.logo_url}
-          alt='image'
-          height={100}
-          width={100}
-        ></Image>
+        {company.logo_url &&
+          <Image
+            className={'h-12 w-12 md:h-16 md:w-16'}
+            src={company.logo_url}
+            alt='image'
+            height={100}
+            width={100}
+          ></Image>}
 
         <div className={'flex w-full items-center justify-between pl-4'}>
           <Link
