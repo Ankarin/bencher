@@ -1,10 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState, useContext } from 'react';
 import { Button } from '@/components/landing/Button';
-import { Developer, FormSubmit } from '@/utils/types';
+import { ExistingDeveloper, FormSubmit } from '@/utils/types';
 import { SelectDevContext } from '@/app/(jobs)/job/[slug]/Apply';
 
-export default function SelectToApply({ developer }: { developer: Developer }) {
+export default function SelectToApply({ developer }: { developer: ExistingDeveloper }) {
   const [isOpen, setIsOpen] = useState(false);
   const [rate, setRate] = useState(developer.hourly_rate);
 
@@ -69,7 +69,7 @@ export default function SelectToApply({ developer }: { developer: Developer }) {
                   >
                     {developer.title}
                   </Dialog.Title>
-              
+
 
                   <form onSubmit={selectToApply}>
                     <div className='mt-2 sm:col-span-3'>

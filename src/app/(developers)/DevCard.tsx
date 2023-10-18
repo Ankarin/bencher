@@ -1,19 +1,19 @@
-'use client'
-import { Developer } from '@/utils/types'
-import { getRegion } from '@/utils/options'
-import { Tooltip } from 'react-tooltip'
-import { Button } from '@/components/landing/Button'
-import { supaDownload } from '@/utils/supabaseClient'
-import Link from 'next/link'
-import { useContext } from 'react'
-import { ApplyContext } from '@/app/(jobs)/job/[slug]/Apply'
-import SelectToApply from '@/app/(jobs)/job/[slug]/SelectToApply'
+'use client';
+import { ExistingDeveloper } from '@/utils/types';
+import { getRegion } from '@/utils/options';
+import { Tooltip } from 'react-tooltip';
+import { Button } from '@/components/landing/Button';
+import { supaDownload } from '@/utils/supabaseClient';
+import Link from 'next/link';
+import { useContext } from 'react';
+import { ApplyContext } from '@/app/(jobs)/job/[slug]/Apply';
+import SelectToApply from '@/app/(jobs)/job/[slug]/SelectToApply';
 
 export default function DevCard({
-  developer,
-  isMine = false,
-}: {
-  developer: Developer
+                                  developer,
+                                  isMine = false,
+                                }: {
+  developer: ExistingDeveloper
   isMine?: boolean
 }) {
   const features = [
@@ -29,9 +29,9 @@ export default function DevCard({
       value: `${developer.country}, ${getRegion(developer.country)}`,
     },
     { title: 'English: ', value: `${developer.english} ` },
-  ]
+  ];
 
-  const isApply = useContext(ApplyContext)
+  const isApply = useContext(ApplyContext);
 
   return (
     <div className='max-w-[100] rounded-lg bg-white p-2 shadow md:p-4'>
@@ -53,7 +53,8 @@ export default function DevCard({
                 data-tooltip-id='my-tooltip'
                 data-tooltip-content='Ready to start within 2 days.'
               >
-                <span className='mr-1 inline-flex items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xxs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
+                <span
+                  className='mr-1 inline-flex items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xxs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
                   ASAP
                 </span>
               </a>
@@ -66,7 +67,8 @@ export default function DevCard({
                 data-tooltip-id='my-tooltip'
                 data-tooltip-content="Hidden and can't be applied for jobs."
               >
-                <span className='inline-flex items-center rounded-full bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20'>
+                <span
+                  className='inline-flex items-center rounded-full bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20'>
                   {' '}
                   Private
                 </span>
@@ -150,5 +152,5 @@ export default function DevCard({
         )}
       </div>
     </div>
-  )
+  );
 }
