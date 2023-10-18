@@ -26,10 +26,14 @@ export async function middleware(req) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
-  if (!userData.company_id && req.nextUrl.pathname === '/my-jobs' ||
-    !userData.company_id && req.nextUrl.pathname === '/my-devs' ||
-    !userData.company_id && req.nextUrl.pathname === '/add-job' ||
-    !userData.company_id && req.nextUrl.pathname === '/add-dev') {
+  if (
+    userData &&
+    (
+      (!userData.company_id && req.nextUrl.pathname === '/my-jobs') ||
+      (!userData.company_id && req.nextUrl.pathname === '/my-devs') ||
+      (!userData.company_id && req.nextUrl.pathname === '/add-job') ||
+      (!userData.company_id && req.nextUrl.pathname === '/add-dev')
+    )) {
     return NextResponse.redirect(new URL('/my-company', req.url));
   }
 }
