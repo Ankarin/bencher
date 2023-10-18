@@ -11,12 +11,12 @@ import { zust } from '@/store';
 import { SmallLogo } from '@/components/SmallLogo';
 import profilePic from '@/images/profile.png';
 
-import { User, Company, Developer } from '@/utils/types';
+import { User, Company, ExistingDeveloper } from '@/utils/types';
 
 interface AppHeaderProps {
   user: User | null;
   company: Company | null;
-  myDevs: Developer[];
+  myDevs: ExistingDeveloper[];
 }
 
 function classNames(...classes: string[]): string {

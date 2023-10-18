@@ -4,14 +4,14 @@ import {
   getDevsByCompany,
   getCompanyData,
 } from '@/utils/supabase';
-import { Company, Developer, PageProps } from '@/utils/types';
+import { Company, ExistingDeveloper, PageProps } from '@/utils/types';
 import CompanyCard from '@/app/(companies)/CompanyCard';
 import DevList from '@/app/(developers)/DevList';
 
 export const dynamic = 'force-dynamic';
 export default async function CompanyPage({ params }: PageProps) {
   const company: Company = await getCompanyById(params.slug);
-  const devs: Developer[] = await getDevsByCompany(company?.id ?? '');
+  const devs: ExistingDeveloper[] = await getDevsByCompany(company?.id ?? '');
   const myCompany: Company | null = await getCompanyData();
   const isMine = (): boolean => company?.id === myCompany?.id;
 

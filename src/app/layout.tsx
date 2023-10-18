@@ -6,7 +6,7 @@ import { type Metadata } from 'next';
 import React from 'react';
 import 'react-tooltip/dist/react-tooltip.css';
 import { getUserData, getCompanyData, getDevsByCompany } from '@/utils/supabase';
-import { Developer, User, Company } from '@/utils/types';
+import { User, Company, ExistingDeveloper } from '@/utils/types';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export default async function RootLayout({
   const userData: User | null = await getUserData();
   const companyData: Company | null = await getCompanyData();
   const id = companyData?.id ?? '';
-  const myDevs: Developer[] = companyData
+  const myDevs: ExistingDeveloper[] = companyData
     ? await getDevsByCompany(id)
     : [];
 

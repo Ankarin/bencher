@@ -1,9 +1,9 @@
-import { Developer } from '@/utils/types';
+import { ExistingDeveloper } from '@/utils/types';
 import DevList from '@/app/(developers)/DevList';
 import { zust } from '@/store';
 
 export default function ApplyList() {
-  const developers: Developer[] = zust((state) => state.myDevelopers);
+  const developers: ExistingDeveloper[] = zust((state) => state.myDevelopers);
 
   return (
     <div className={'mx-auto  px-2 sm:-mt-5'}>

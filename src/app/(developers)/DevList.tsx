@@ -1,11 +1,11 @@
-import { Developer } from '@/utils/types'
-import DevCard from '@/app/(developers)/DevCard'
+import { ExistingDeveloper } from '@/utils/types';
+import DevCard from '@/app/(developers)/DevCard';
 
 export default function DevList({
-  developers,
-  isMine = false,
-}: {
-  developers: Developer[]
+                                  developers,
+                                  isMine = false,
+                                }: {
+  developers: ExistingDeveloper[]
   isMine?: boolean
 }) {
   return (
@@ -14,5 +14,5 @@ export default function DevList({
         <DevCard key={key} isMine={isMine} developer={dev}></DevCard>
       ))}
     </div>
-  )
+  );
 }

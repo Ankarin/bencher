@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/SelectToApply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/SelectToApply.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplyList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplyList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

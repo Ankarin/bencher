@@ -1,7 +1,7 @@
 'use server';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
-import { Company, Developer, User, Job, ExistingJob } from '@/utils/types';
+import { Company, ExistingDeveloper, User, Job, ExistingJob } from '@/utils/types';
 
 const supa = () => {
   const cookieStore = cookies();
@@ -52,7 +52,7 @@ const getCompanies = async (): Promise<Company[]> => {
   return data;
 };
 
-const getMyDevs = async (): Promise<Developer[]> => {
+const getMyDevs = async (): Promise<ExistingDeveloper[]> => {
   const userData = await getUserData();
   const { data, error } = await supa()
     .from('developers')
@@ -61,7 +61,7 @@ const getMyDevs = async (): Promise<Developer[]> => {
   if (error) throw error.message;
   return data;
 };
-const getDevs = async (): Promise<Developer[]> => {
+const getDevs = async (): Promise<ExistingDeveloper[]> => {
   const { data, error } = await supa()
     .from('developers')
     .select()
@@ -70,7 +70,7 @@ const getDevs = async (): Promise<Developer[]> => {
   return data;
 };
 
-const getDev = async (devId: string): Promise<Developer | null> => {
+const getDev = async (devId: string): Promise<ExistingDeveloper | null> => {
   const myCompany = await getCompanyData();
   const { data, error } = await supa()
     .from('developers')
@@ -86,7 +86,7 @@ const getDev = async (devId: string): Promise<Developer | null> => {
   }
 };
 
-const getDevsByCompany = async (id: string): Promise<Developer[]> => {
+const getDevsByCompany = async (id: string): Promise<ExistingDeveloper[]> => {
   const { data, error } = await supa()
     .from('developers')
     .select()

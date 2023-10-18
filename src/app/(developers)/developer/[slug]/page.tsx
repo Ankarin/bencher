@@ -1,10 +1,10 @@
 import DevCard from '@/app/(developers)/DevCard';
 import CompanyCard from '@/app/(companies)/CompanyCard';
 import { getCompanyById, getCompanyData, getDev } from '@/utils/supabase';
-import { Developer, Company, PageProps } from '@/utils/types';
+import { Company, PageProps, ExistingDeveloper } from '@/utils/types';
 
 export default async function EditDev({ params }: PageProps) {
-  const dev: Developer | null = await getDev(params.slug); // Provide a type annotation
+  const dev: ExistingDeveloper | null = await getDev(params.slug); // Provide a type annotation
   const myCompany: Company | null = await getCompanyData();
 
   const devCompany: Company | null = dev ? await getCompanyById(dev?.company ?? '') : null;
