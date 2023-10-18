@@ -19,13 +19,13 @@ export default function CompanyEdit({ company }: {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   //
-  const [name, setName] = useState('test');
-  const [website, setWebsite] = useState('https://website.example');
+  const [name, setName] = useState('');
+  const [website, setWebsite] = useState('');
 
-  const [size, setSize] = useState('25');
-  const [location, setLocation] = useState('test');
+  const [size, setSize] = useState('');
+  const [location, setLocation] = useState('');
   const [logo_url, setLogoUrl] = useState('');
-  const [description, setDescription] = useState('asdasd');
+  const [description, setDescription] = useState('');
 
   useEffect(() => {
     if (company) {

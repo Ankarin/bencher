@@ -116,6 +116,7 @@ const getJobs = async (): Promise<Job[]> => {
 
 const getMyJobs = async (): Promise<Job[]> => {
   const userData = await getUserData();
+  console.log(userData);
   const { data, error } = await supa()
     .from('jobs')
     .select()
