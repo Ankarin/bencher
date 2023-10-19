@@ -1,0 +1,65 @@
+Index: src/app/api/auth/reset/route.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// 'use server';\nimport { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';\nimport { cookies } from 'next/headers';\nimport { NextResponse } from 'next/server';\n\nexport const dynamic = 'force-dynamic';\n\nexport async function POST(request: Request) {\n  const requestUrl = new URL(request.url);\n  const formData = await request.formData();\n  const password = String(formData.get('password'));\n  const supabase = createRouteHandlerClient({ cookies });\n\n  const { error } = await supabase.auth.updateUser({ password: password });\n\n  if (error) {\n    return NextResponse.redirect(\n      `${requestUrl.origin}/login?error=${error}`,\n      301,\n    );\n  }\n\n  return NextResponse.redirect(requestUrl.origin, 301);\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/api/auth/reset/route.ts b/src/app/api/auth/reset/route.ts
+--- a/src/app/api/auth/reset/route.ts	(revision 9abf8f9f11b96c4a75cea7a60a407a244d112aaa)
++++ b/src/app/api/auth/reset/route.ts	(date 1697716348586)
+@@ -1,24 +1,25 @@
+ // 'use server';
+-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+-import { cookies } from 'next/headers';
+-import { NextResponse } from 'next/server';
++'use server'
++import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
++import { cookies } from 'next/headers'
++import { NextResponse } from 'next/server'
+ 
+-export const dynamic = 'force-dynamic';
++export const dynamic = 'force-dynamic'
+ 
+ export async function POST(request: Request) {
+-  const requestUrl = new URL(request.url);
+-  const formData = await request.formData();
+-  const password = String(formData.get('password'));
+-  const supabase = createRouteHandlerClient({ cookies });
++  const requestUrl = new URL(request.url)
++  const formData = await request.formData()
++  const password = String(formData.get('password'))
++  const supabase = createRouteHandlerClient({ cookies })
+ 
+-  const { error } = await supabase.auth.updateUser({ password: password });
++  const { error } = await supabase.auth.updateUser({ password: password })
+ 
+   if (error) {
+     return NextResponse.redirect(
+       `${requestUrl.origin}/login?error=${error}`,
+-      301,
+-    );
++      301
++    )
+   }
+ 
+-  return NextResponse.redirect(requestUrl.origin, 301);
++  return NextResponse.redirect(requestUrl.origin, 301)
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"1c8439cd-fdcb-4aab-a64e-5ac7f9897265\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/src/app/(developers)/edit-dev/[slug]/page.tsx\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/components/Toast.tsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/package-lock.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package-lock.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/app/(developers)/edit-dev/page.tsx\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/app/DevForm.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/app/DevForm.jsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/cards/DevCard.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/cards/DevCard.tsx\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaScript File\" />\n        <option value=\"TypeScript File\" />\n        <option value=\"TypeScript JSX File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"FormatOnSaveOptions\">\n    <option name=\"myRunOnSave\" value=\"true\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"RESET_MODE\" value=\"HARD\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2VEgZLxmUNOulmcCbMk9hINwx7k\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showExcludedFiles\" value=\"false\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"git-widget-placeholder\": \"main\",\n    \"js.linters.configure.manually.selectedeslint\": \"true\",\n    \"last_opened_file_path\": \"C:/Users/ankar/Desktop/bencha/bencher/src/app/(developers)/edit-dev\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.standard\": \"true\",\n    \"node.js.detected.package.stylelint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"C:\\\\Users\\\\ankar\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\eslint\",\n    \"node.js.selected.package.standard\": \"\",\n    \"node.js.selected.package.stylelint\": \"\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"prettierjs.PrettierConfiguration.Package\": \"C:\\\\Users\\\\ankar\\\\Desktop\\\\bencha\\\\bencher\\\\node_modules\\\\prettier\",\n    \"run.code.analysis.last.selected.profile\": \"pProject Default\",\n    \"settings.editor.selected.configurable\": \"Errors\",\n    \"ts.external.directory.path\": \"C:\\\\Users\\\\ankar\\\\Desktop\\\\bencha\\\\bencher\\\\node_modules\\\\typescript\\\\lib\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"ReactDesignerToolWindowState\">\n    <option name=\"myId2Visible\">\n      <map>\n        <entry key=\"com.haulmont.rcb.reactComponents\" value=\"false\" />\n        <entry key=\"com.haulmont.rcb.reactInspector\" value=\"false\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\\(developers)\\edit-dev\" />\n      <recent name=\"$PROJECT_DIR$/src/components/landing\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\\api\\auth\\reset-callback\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\\(developers)\\edit-dev\\[slug]\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"SvnConfiguration\">\n    <configuration />\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"1c8439cd-fdcb-4aab-a64e-5ac7f9897265\" name=\"Changes\" comment=\"\" />\n      <created>1694406714432</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1694406714432</updated>\n      <workItem from=\"1694406716773\" duration=\"917000\" />\n      <workItem from=\"1694511777528\" duration=\"15362000\" />\n      <workItem from=\"1694545662033\" duration=\"655000\" />\n      <workItem from=\"1694619946027\" duration=\"8389000\" />\n      <workItem from=\"1694676269366\" duration=\"3551000\" />\n      <workItem from=\"1694680517448\" duration=\"1031000\" />\n      <workItem from=\"1694681576162\" duration=\"205000\" />\n      <workItem from=\"1694681795174\" duration=\"542000\" />\n      <workItem from=\"1694682353549\" duration=\"221000\" />\n      <workItem from=\"1694682596775\" duration=\"55000\" />\n      <workItem from=\"1694682666218\" duration=\"5490000\" />\n      <workItem from=\"1694688220620\" duration=\"13420000\" />\n      <workItem from=\"1694784404584\" duration=\"643000\" />\n      <workItem from=\"1694866848418\" duration=\"435000\" />\n      <workItem from=\"1694867308011\" duration=\"256000\" />\n      <workItem from=\"1694867588360\" duration=\"164000\" />\n      <workItem from=\"1694867756697\" duration=\"405000\" />\n      <workItem from=\"1694868573493\" duration=\"4934000\" />\n      <workItem from=\"1695041604288\" duration=\"10663000\" />\n      <workItem from=\"1695566949954\" duration=\"1151000\" />\n      <workItem from=\"1695570740782\" duration=\"160000\" />\n      <workItem from=\"1695570921321\" duration=\"1013000\" />\n      <workItem from=\"1695649843812\" duration=\"2110000\" />\n      <workItem from=\"1695720955653\" duration=\"9763000\" />\n      <workItem from=\"1695808788718\" duration=\"1190000\" />\n      <workItem from=\"1695915468633\" duration=\"1343000\" />\n      <workItem from=\"1695978989070\" duration=\"12000000\" />\n      <workItem from=\"1696157290051\" duration=\"929000\" />\n      <workItem from=\"1696231854296\" duration=\"2579000\" />\n      <workItem from=\"1696237552325\" duration=\"12636000\" />\n      <workItem from=\"1696257169856\" duration=\"772000\" />\n      <workItem from=\"1696335440341\" duration=\"5190000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint enabled=\"true\" type=\"javascript\">\n          <url>file://$PROJECT_DIR$/src/app/(company)/my-company/Company.tsx</url>\n          <line>2</line>\n          <option name=\"timeStamp\" value=\"1\" />\n        </line-breakpoint>\n        <line-breakpoint enabled=\"true\" type=\"javascript\">\n          <url>file://$PROJECT_DIR$/src/app/api/auth/forgot/route.js</url>\n          <line>1</line>\n          <option name=\"timeStamp\" value=\"2\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9abf8f9f11b96c4a75cea7a60a407a244d112aaa)
++++ b/.idea/workspace.xml	(date 1697716353808)
+@@ -179,4 +179,4 @@
+     <expand />
+     <select />
+   </component>
+-</project>
+\ No newline at end of file
++</project>

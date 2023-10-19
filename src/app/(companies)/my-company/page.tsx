@@ -1,14 +1,14 @@
-import NoCompany from '@/app/(companies)/my-company/NoCompany';
-import CompanyCard from '@/app/(companies)/CompanyCard';
-import NotVerified from '@/app/(companies)/my-company/NotVerified';
-import MyCompanyHeader from '@/app/(companies)/my-company/MyCompanyHeader';
-import React from 'react';
-import { getCompanyData } from '@/utils/supabase';
-import { Company } from '@/utils/types';
+import NoCompany from '@/app/(companies)/NoCompany'
+import CompanyCard from '@/app/(companies)/CompanyCard'
+import NotVerified from '@/app/(companies)/NotVerified'
+import MyCompanyHeader from '@/app/(companies)/MyCompanyHeader'
+import React from 'react'
+import { getCompanyData } from '@/utils/supabase'
+import { Company } from '@/utils/types'
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'
 export default async function MyCompany() {
-  const company: Company | null = await getCompanyData();
+  const company: Company | null = await getCompanyData()
 
   return (
     <div>
@@ -18,11 +18,13 @@ export default async function MyCompany() {
           <NoCompany></NoCompany>
         ) : (
           <div>
-            {company && <MyCompanyHeader verified={company.verified}></MyCompanyHeader>}
+            {company && (
+              <MyCompanyHeader verified={company.verified}></MyCompanyHeader>
+            )}
             <CompanyCard company={company} myCompany={true}></CompanyCard>
           </div>
         )}
       </div>
     </div>
-  );
+  )
 }

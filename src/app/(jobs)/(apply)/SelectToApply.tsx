@@ -1,27 +1,31 @@
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState, useContext } from 'react';
-import { Button } from '@/components/landing/Button';
-import { ExistingDeveloper, FormSubmit } from '@/utils/types';
-import { SelectDevContext } from '@/app/(jobs)/job/[slug]/Apply';
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState, useContext } from 'react'
+import { Button } from '@/components/landing/Button'
+import { ExistingDeveloper, FormSubmit } from '@/utils/types'
+import { SelectDevContext } from '@/app/(jobs)/(apply)/Apply'
 
-export default function SelectToApply({ developer }: { developer: ExistingDeveloper }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [rate, setRate] = useState(developer.hourly_rate);
+export default function SelectToApply({
+  developer,
+}: {
+  developer: ExistingDeveloper
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [rate, setRate] = useState(developer.hourly_rate)
 
-  const apply = useContext(SelectDevContext);
+  const apply = useContext(SelectDevContext)
 
   const selectToApply = (e: FormSubmit) => {
-    e.preventDefault();
-    apply(developer, rate);
-    setIsOpen(false);
-  };
+    e.preventDefault()
+    apply(developer, rate)
+    setIsOpen(false)
+  }
 
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen(false)
   }
 
   function openModal() {
-    setIsOpen(true);
+    setIsOpen(true)
   }
 
   return (
@@ -61,15 +65,13 @@ export default function SelectToApply({ developer }: { developer: ExistingDevelo
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel
-                  className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+                <Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
                   <Dialog.Title
                     as='h3'
                     className='text-lg font-medium leading-6 text-gray-900'
                   >
                     {developer.title}
                   </Dialog.Title>
-
 
                   <form onSubmit={selectToApply}>
                     <div className='mt-2 sm:col-span-3'>
@@ -123,5 +125,5 @@ export default function SelectToApply({ developer }: { developer: ExistingDevelo
         </Dialog>
       </Transition>
     </>
-  );
+  )
 }

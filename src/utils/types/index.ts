@@ -85,14 +85,28 @@ type Selecter = {
 }
 
 interface PageProps {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
+  params: {
+    slug: string
+  }
+  searchParams: {
+    [key: string]: string | string[] | undefined
+  }
 }
 
 interface ApplyType {
   id?: number
   created_at?: Date
   developer: string
+  provider: string
+  rate: string
+  job: string
+  poster: string
+}
+
+interface ApplyTypeWithDev {
+  id: number
+  created_at?: Date
+  developer: ExistingDeveloper
   provider: string
   rate: string
   job: string
@@ -115,4 +129,5 @@ export type {
   EventChange,
   ApplyType,
   ExistingDeveloper,
+  ApplyTypeWithDev,
 }

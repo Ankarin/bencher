@@ -134,7 +134,7 @@ export default function DevForm({
     router.refresh()
     if (data) {
       router.push(`/edit-dev/${data[0].id}`)
-      toast.success('Added new developer!')
+      toast.success('New developer added!')
     }
   }
 
@@ -148,7 +148,7 @@ export default function DevForm({
       toast.error('Error updating developer!')
       return
     } else {
-      toast.success('Updated developer!')
+      toast.success('Developer updated!')
     }
     router.refresh()
   }

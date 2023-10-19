@@ -1,0 +1,47 @@
+Index: src/app/api/auth/reset/route.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';\nimport { cookies } from 'next/headers';\nimport { NextResponse } from 'next/server';\n\nexport const dynamic = 'force-dynamic';\n\nexport async function POST(request: Request) {\n  const requestUrl = new URL(request.url);\n  const formData = await request.formData();\n  const password = String(formData.get('password'));\n  const supabase = createRouteHandlerClient({ cookies });\n\n  const { error } = await supabase.auth.updateUser({ password: password });\n\n  if (error) {\n    return NextResponse.redirect(\n      `${requestUrl.origin}/login?error=${error}`,\n      301,\n    );\n  }\n\n  return NextResponse.redirect(requestUrl.origin, 301);\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/api/auth/reset/route.ts b/src/app/api/auth/reset/route.ts
+--- a/src/app/api/auth/reset/route.ts	
++++ b/src/app/api/auth/reset/route.ts	
+@@ -1,23 +1,24 @@
+-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+-import { cookies } from 'next/headers';
+-import { NextResponse } from 'next/server';
++'use server'
++import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
++import { cookies } from 'next/headers'
++import { NextResponse } from 'next/server'
+ 
+-export const dynamic = 'force-dynamic';
++export const dynamic = 'force-dynamic'
+ 
+ export async function POST(request: Request) {
+-  const requestUrl = new URL(request.url);
+-  const formData = await request.formData();
+-  const password = String(formData.get('password'));
+-  const supabase = createRouteHandlerClient({ cookies });
++  const requestUrl = new URL(request.url)
++  const formData = await request.formData()
++  const password = String(formData.get('password'))
++  const supabase = createRouteHandlerClient({ cookies })
+ 
+-  const { error } = await supabase.auth.updateUser({ password: password });
++  const { error } = await supabase.auth.updateUser({ password: password })
+ 
+   if (error) {
+     return NextResponse.redirect(
+       `${requestUrl.origin}/login?error=${error}`,
+-      301,
+-    );
++      301
++    )
+   }
+ 
+-  return NextResponse.redirect(requestUrl.origin, 301);
++  return NextResponse.redirect(requestUrl.origin, 301)
+ }

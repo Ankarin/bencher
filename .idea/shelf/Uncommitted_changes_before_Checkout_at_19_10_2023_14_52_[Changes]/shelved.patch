@@ -1,0 +1,329 @@
+Index: src/utils/supabase.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use server';\nimport { createServerComponentClient } from '@supabase/auth-helpers-nextjs';\nimport { cookies } from 'next/headers';\nimport { Company, ExistingDeveloper, User, Job, ExistingJob } from '@/utils/types';\n\nconst supa = () => {\n  const cookieStore = cookies();\n  return createServerComponentClient({ cookies: () => cookieStore });\n};\n\nconst getUser = async () => {\n  const { data } = await supa().auth.getUser();\n  if (data.user) {\n    return data.user;\n  }\n};\n\nconst getUserData = async (): Promise<User | null> => {\n  const user = await getUser();\n  if (user) {\n    const { data, error } = await supa()\n      .from('users')\n      .select()\n      .eq('id', user.id);\n    if (error) throw error.message;\n    return data[0];\n  } else return null;\n};\nconst getCompanyData = async (): Promise<Company | null> => {\n  const userData = await getUserData();\n  if (userData && userData.company_id) {\n    const { data, error } = await supa()\n      .from('companies')\n      .select()\n      .eq('id', userData.company_id);\n    if (error) throw error.message;\n    return data[0];\n  } else {\n    return null;\n  }\n};\n\nconst getCompanyById = async (id: string): Promise<Company> => {\n  const { data, error } = await supa().from('companies').select().eq('id', id);\n  if (error) throw error.message;\n  return data[0];\n};\n\nconst getCompanies = async (): Promise<Company[]> => {\n  const { data, error } = await supa().from('companies').select();\n  if (error) throw error.message;\n  return data;\n};\n\nconst getMyDevs = async (): Promise<ExistingDeveloper[]> => {\n  const userData = await getUserData();\n  const { data, error } = await supa()\n    .from('developers')\n    .select()\n    .eq('company', userData?.company_id);\n  if (error) throw error.message;\n  return data;\n};\nconst getDevs = async (): Promise<ExistingDeveloper[]> => {\n  const { data, error } = await supa()\n    .from('developers')\n    .select()\n    .eq('public', true);\n  if (error) throw error.message;\n  return data;\n};\n\nconst getDev = async (devId: string): Promise<ExistingDeveloper | null> => {\n  const myCompany = await getCompanyData();\n  const { data, error } = await supa()\n    .from('developers')\n    .select()\n    .eq('id', devId);\n  if (error) return null;\n  if (data[0] && data[0].public) {\n    return data[0];\n  } else if (data[0] && data[0].company === myCompany?.id) {\n    return data[0];\n  } else {\n    return null;\n  }\n};\n\nconst getDevsByCompany = async (id: string): Promise<ExistingDeveloper[]> => {\n  const { data, error } = await supa()\n    .from('developers')\n    .select()\n    .eq('company', id)\n    .eq('public', true);\n  if (error) throw error.message;\n  return data;\n};\n\nconst getJob = async (id: string): Promise<ExistingJob | null> => {\n  const myCompany = await getCompanyData();\n  const { data, error } = await supa().from('jobs').select().eq('id', id);\n  if (error) return null;\n  if (data[0] && data[0].public) {\n    return data[0];\n  } else if (data[0] && data[0].company === myCompany?.id) {\n    return data[0];\n  } else {\n    return null;\n  }\n};\nconst getJobs = async (): Promise<Job[]> => {\n  const { data, error } = await supa().from('jobs').select().eq('public', true);\n  if (error) throw error.message;\n  return data;\n};\n\nconst getMyJobs = async (): Promise<Job[]> => {\n  const userData = await getUserData();\n  console.log(userData);\n  const { data, error } = await supa()\n    .from('jobs')\n    .select()\n    .eq('company', userData?.company_id);\n  if (error) throw error.message;\n  return data;\n};\n\nexport {\n  getUser,\n  getUserData,\n  getCompanyData,\n  getCompanies,\n  getMyDevs,\n  getDevs,\n  getDev,\n  getCompanyById,\n  getDevsByCompany,\n  getJob,\n  getJobs,\n  getMyJobs,\n};\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/utils/supabase.ts b/src/utils/supabase.ts
+--- a/src/utils/supabase.ts	
++++ b/src/utils/supabase.ts	
+@@ -1,129 +1,136 @@
+-'use server';
+-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+-import { cookies } from 'next/headers';
+-import { Company, ExistingDeveloper, User, Job, ExistingJob } from '@/utils/types';
++'use server'
++import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
++import { cookies } from 'next/headers'
++import {
++  Company,
++  ExistingDeveloper,
++  User,
++  Job,
++  ExistingJob,
++} from '@/utils/types'
+ 
+-const supa = () => {
+-  const cookieStore = cookies();
+-  return createServerComponentClient({ cookies: () => cookieStore });
+-};
++const supa = async () => {
++  'use server'
++  const cookieStore = cookies()
++  return createServerComponentClient({ cookies: () => cookieStore })
++}
+ 
+ const getUser = async () => {
+-  const { data } = await supa().auth.getUser();
++  const { data } = await supa().auth.getUser()
+   if (data.user) {
+-    return data.user;
++    return data.user
+   }
+-};
++}
+ 
+ const getUserData = async (): Promise<User | null> => {
+-  const user = await getUser();
++  const user = await getUser()
+   if (user) {
+     const { data, error } = await supa()
+       .from('users')
+       .select()
+-      .eq('id', user.id);
+-    if (error) throw error.message;
+-    return data[0];
+-  } else return null;
+-};
++      .eq('id', user.id)
++    if (error) throw error.message
++    return data[0]
++  } else return null
++}
+ const getCompanyData = async (): Promise<Company | null> => {
+-  const userData = await getUserData();
++  const userData = await getUserData()
+   if (userData && userData.company_id) {
+     const { data, error } = await supa()
+       .from('companies')
+       .select()
+-      .eq('id', userData.company_id);
+-    if (error) throw error.message;
+-    return data[0];
++      .eq('id', userData.company_id)
++    if (error) throw error.message
++    return data[0]
+   } else {
+-    return null;
++    return null
+   }
+-};
++}
+ 
+ const getCompanyById = async (id: string): Promise<Company> => {
+-  const { data, error } = await supa().from('companies').select().eq('id', id);
+-  if (error) throw error.message;
+-  return data[0];
+-};
++  const { data, error } = await supa().from('companies').select().eq('id', id)
++  if (error) throw error.message
++  return data[0]
++}
+ 
+ const getCompanies = async (): Promise<Company[]> => {
+-  const { data, error } = await supa().from('companies').select();
+-  if (error) throw error.message;
+-  return data;
+-};
++  const { data, error } = await supa().from('companies').select()
++  if (error) throw error.message
++  return data
++}
+ 
+ const getMyDevs = async (): Promise<ExistingDeveloper[]> => {
+-  const userData = await getUserData();
++  const userData = await getUserData()
+   const { data, error } = await supa()
+     .from('developers')
+     .select()
+-    .eq('company', userData?.company_id);
+-  if (error) throw error.message;
+-  return data;
+-};
++    .eq('company', userData?.company_id)
++  if (error) throw error.message
++  return data
++}
+ const getDevs = async (): Promise<ExistingDeveloper[]> => {
+   const { data, error } = await supa()
+     .from('developers')
+     .select()
+-    .eq('public', true);
+-  if (error) throw error.message;
+-  return data;
+-};
++    .eq('public', true)
++  if (error) throw error.message
++  return data
++}
+ 
+ const getDev = async (devId: string): Promise<ExistingDeveloper | null> => {
+-  const myCompany = await getCompanyData();
++  const myCompany = await getCompanyData()
+   const { data, error } = await supa()
+     .from('developers')
+     .select()
+-    .eq('id', devId);
+-  if (error) return null;
++    .eq('id', devId)
++  if (error) return null
+   if (data[0] && data[0].public) {
+-    return data[0];
++    return data[0]
+   } else if (data[0] && data[0].company === myCompany?.id) {
+-    return data[0];
++    return data[0]
+   } else {
+-    return null;
++    return null
+   }
+-};
++}
+ 
+ const getDevsByCompany = async (id: string): Promise<ExistingDeveloper[]> => {
+   const { data, error } = await supa()
+     .from('developers')
+     .select()
+     .eq('company', id)
+-    .eq('public', true);
+-  if (error) throw error.message;
+-  return data;
+-};
++    .eq('public', true)
++  if (error) throw error.message
++  return data
++}
+ 
+ const getJob = async (id: string): Promise<ExistingJob | null> => {
+-  const myCompany = await getCompanyData();
+-  const { data, error } = await supa().from('jobs').select().eq('id', id);
+-  if (error) return null;
++  const myCompany = await getCompanyData()
++  const { data, error } = await supa().from('jobs').select().eq('id', id)
++  if (error) return null
+   if (data[0] && data[0].public) {
+-    return data[0];
++    return data[0]
+   } else if (data[0] && data[0].company === myCompany?.id) {
+-    return data[0];
++    return data[0]
+   } else {
+-    return null;
++    return null
+   }
+-};
++}
+ const getJobs = async (): Promise<Job[]> => {
+-  const { data, error } = await supa().from('jobs').select().eq('public', true);
+-  if (error) throw error.message;
+-  return data;
+-};
++  const { data, error } = await supa().from('jobs').select().eq('public', true)
++  if (error) throw error.message
++  return data
++}
+ 
+ const getMyJobs = async (): Promise<Job[]> => {
+-  const userData = await getUserData();
+-  console.log(userData);
++  const userData = await getUserData()
++  console.log(userData)
+   const { data, error } = await supa()
+     .from('jobs')
+     .select()
+-    .eq('company', userData?.company_id);
+-  if (error) throw error.message;
+-  return data;
+-};
++    .eq('company', userData?.company_id)
++  if (error) throw error.message
++  return data
++}
+ 
+ export {
+   getUser,
+@@ -138,4 +145,4 @@
+   getJob,
+   getJobs,
+   getMyJobs,
+-};
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"1c8439cd-fdcb-4aab-a64e-5ac7f9897265\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/middleware.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/middleware.jsx\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaScript File\" />\n        <option value=\"TypeScript JSX File\" />\n        <option value=\"TypeScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"FormatOnSaveOptions\">\n    <option name=\"myRunOnSave\" value=\"true\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"RESET_MODE\" value=\"HARD\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"ProjectErrors\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2VEgZLxmUNOulmcCbMk9hINwx7k\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showExcludedFiles\" value=\"false\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/ankar/Desktop/bencha/bencher/src/images&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;/Users/ankarin/bencher/node_modules/eslint&quot;,\n    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,\n    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\\\Users\\\\ankar\\\\Desktop\\\\bencha\\\\bencher\\\\node_modules\\\\prettier&quot;,\n    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,\n    &quot;ts.external.directory.path&quot;: &quot;/Users/ankarin/bencher/node_modules/typescript/lib&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"ReactDesignerToolWindowState\">\n    <option name=\"myId2Visible\">\n      <map>\n        <entry key=\"com.haulmont.rcb.reactComponents\" value=\"false\" />\n        <entry key=\"com.haulmont.rcb.reactInspector\" value=\"false\" />\n        <entry key=\"com.haulmont.rcb.storybook\" value=\"false\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\images\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\" />\n      <recent name=\"$PROJECT_DIR$/src/components/landing\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\\(developers)\\edit-dev\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\\(jobs)\\job\\[slug]\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\public\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\\(requests)\" />\n      <recent name=\"C:\\Users\\ankar\\Desktop\\bencha\\bencher\\src\\app\\(companies)\\company\\[slug]\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"SvnConfiguration\">\n    <configuration />\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"1c8439cd-fdcb-4aab-a64e-5ac7f9897265\" name=\"Changes\" comment=\"\" />\n      <created>1694406714432</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1694406714432</updated>\n      <workItem from=\"1694406716773\" duration=\"917000\" />\n      <workItem from=\"1694511777528\" duration=\"15362000\" />\n      <workItem from=\"1694545662033\" duration=\"655000\" />\n      <workItem from=\"1694619946027\" duration=\"8389000\" />\n      <workItem from=\"1694676269366\" duration=\"3551000\" />\n      <workItem from=\"1694680517448\" duration=\"1031000\" />\n      <workItem from=\"1694681576162\" duration=\"205000\" />\n      <workItem from=\"1694681795174\" duration=\"542000\" />\n      <workItem from=\"1694682353549\" duration=\"221000\" />\n      <workItem from=\"1694682596775\" duration=\"55000\" />\n      <workItem from=\"1694682666218\" duration=\"5490000\" />\n      <workItem from=\"1694688220620\" duration=\"13420000\" />\n      <workItem from=\"1694784404584\" duration=\"643000\" />\n      <workItem from=\"1694866848418\" duration=\"435000\" />\n      <workItem from=\"1694867308011\" duration=\"256000\" />\n      <workItem from=\"1694867588360\" duration=\"164000\" />\n      <workItem from=\"1694867756697\" duration=\"405000\" />\n      <workItem from=\"1694868573493\" duration=\"4934000\" />\n      <workItem from=\"1695041604288\" duration=\"10663000\" />\n      <workItem from=\"1695566949954\" duration=\"1151000\" />\n      <workItem from=\"1695570740782\" duration=\"160000\" />\n      <workItem from=\"1695570921321\" duration=\"1013000\" />\n      <workItem from=\"1695649843812\" duration=\"2110000\" />\n      <workItem from=\"1695720955653\" duration=\"9763000\" />\n      <workItem from=\"1695808788718\" duration=\"1190000\" />\n      <workItem from=\"1695915468633\" duration=\"1343000\" />\n      <workItem from=\"1695978989070\" duration=\"12000000\" />\n      <workItem from=\"1696157290051\" duration=\"929000\" />\n      <workItem from=\"1696231854296\" duration=\"2579000\" />\n      <workItem from=\"1696237552325\" duration=\"12636000\" />\n      <workItem from=\"1696257169856\" duration=\"772000\" />\n      <workItem from=\"1696335440341\" duration=\"5190000\" />\n      <workItem from=\"1696409405800\" duration=\"34000\" />\n      <workItem from=\"1696409484302\" duration=\"158000\" />\n      <workItem from=\"1696409647895\" duration=\"301000\" />\n      <workItem from=\"1696449287659\" duration=\"1461000\" />\n      <workItem from=\"1696492601340\" duration=\"6628000\" />\n      <workItem from=\"1696504431342\" duration=\"2058000\" />\n      <workItem from=\"1696529859024\" duration=\"4930000\" />\n      <workItem from=\"1696539922446\" duration=\"4000\" />\n      <workItem from=\"1696584817741\" duration=\"87000\" />\n      <workItem from=\"1696585154214\" duration=\"4377000\" />\n      <workItem from=\"1696851752922\" duration=\"6806000\" />\n      <workItem from=\"1696924685624\" duration=\"3365000\" />\n      <workItem from=\"1696934896139\" duration=\"70000\" />\n      <workItem from=\"1696934989406\" duration=\"99000\" />\n      <workItem from=\"1696935102247\" duration=\"4378000\" />\n      <workItem from=\"1696943349380\" duration=\"740000\" />\n      <workItem from=\"1697014851788\" duration=\"522000\" />\n      <workItem from=\"1697040657299\" duration=\"8179000\" />\n      <workItem from=\"1697100828043\" duration=\"133000\" />\n      <workItem from=\"1697101603553\" duration=\"7489000\" />\n      <workItem from=\"1697110803354\" duration=\"11691000\" />\n      <workItem from=\"1697187312276\" duration=\"6273000\" />\n      <workItem from=\"1697199514224\" duration=\"496000\" />\n      <workItem from=\"1697200508571\" duration=\"4800000\" />\n      <workItem from=\"1697250923543\" duration=\"138000\" />\n      <workItem from=\"1697251081053\" duration=\"1989000\" />\n      <workItem from=\"1697255199777\" duration=\"635000\" />\n      <workItem from=\"1697257099042\" duration=\"818000\" />\n      <workItem from=\"1697258548407\" duration=\"3449000\" />\n      <workItem from=\"1697269002780\" duration=\"1996000\" />\n      <workItem from=\"1697355083847\" duration=\"114000\" />\n      <workItem from=\"1697355258507\" duration=\"122000\" />\n      <workItem from=\"1697355399249\" duration=\"493000\" />\n      <workItem from=\"1697355897027\" duration=\"1498000\" />\n      <workItem from=\"1697357545335\" duration=\"25000\" />\n      <workItem from=\"1697357663938\" duration=\"247000\" />\n      <workItem from=\"1697357919489\" duration=\"2806000\" />\n      <workItem from=\"1697462123870\" duration=\"356000\" />\n      <workItem from=\"1697462563486\" duration=\"3547000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint enabled=\"true\" type=\"javascript\">\n          <url>file://$PROJECT_DIR$/src/app/(company)/my-company/Company.tsx</url>\n          <line>2</line>\n          <option name=\"timeStamp\" value=\"1\" />\n        </line-breakpoint>\n        <line-breakpoint enabled=\"true\" type=\"javascript\">\n          <url>file://$PROJECT_DIR$/src/app/(auth)/signup/page.tsx</url>\n          <line>32</line>\n          <option name=\"timeStamp\" value=\"3\" />\n        </line-breakpoint>\n        <line-breakpoint enabled=\"true\" type=\"javascript\">\n          <url>file://$PROJECT_DIR$/src/app/(developers)/DevForm.tsx</url>\n          <line>492</line>\n          <option name=\"timeStamp\" value=\"5\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -6,7 +6,9 @@
+   <component name="ChangeListManager">
+     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/middleware.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.jsx" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/app/api/apply/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/apply/route.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/app/api/auth/reset/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/reset/route.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -50,30 +52,30 @@
+     <option name="showExcludedFiles" value="false" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ankar/Desktop/bencha/bencher/src/images&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;/Users/ankarin/bencher/node_modules/eslint&quot;,
+-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier&quot;,
+-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+-    &quot;ts.external.directory.path&quot;: &quot;/Users/ankarin/bencher/node_modules/typescript/lib&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "git-widget-placeholder": "main",
++    "js.linters.configure.manually.selectedeslint": "true",
++    "last_opened_file_path": "C:/Users/ankar/Desktop/bencha/bencher/src/images",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.standard": "true",
++    "node.js.detected.package.stylelint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "/Users/ankarin/bencher/node_modules/eslint",
++    "node.js.selected.package.standard": "",
++    "node.js.selected.package.stylelint": "",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
++    "run.code.analysis.last.selected.profile": "pProject Default",
++    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
++    "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="ReactDesignerToolWindowState">
+     <option name="myId2Visible">
+       <map>
+Index: src/app/api/apply/route.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { NextResponse } from 'next/server';\nimport { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';\nimport { cookies } from 'next/headers';\n\nexport const dynamic = 'force-dynamic';\nconst supabase = createRouteHandlerClient({ cookies });\n\nexport async function POST(request: Request) {\n  const req = await request.json();\n  const { error } = await supabase.from('applies').insert(req);\n  if (error) return NextResponse.json({ error }, { status: 500 });\n  else {\n    return NextResponse.json({ message: 'success' }, { status: 200 });\n  }\n}\n
+===================================================================
+diff --git a/src/app/api/apply/route.ts b/src/app/api/apply/route.ts
+--- a/src/app/api/apply/route.ts	
++++ b/src/app/api/apply/route.ts	
+@@ -1,15 +1,15 @@
+-import { NextResponse } from 'next/server';
+-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+-import { cookies } from 'next/headers';
++import { NextResponse } from 'next/server'
++import { cookies } from 'next/headers'
++import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
+ 
+-export const dynamic = 'force-dynamic';
+-const supabase = createRouteHandlerClient({ cookies });
++export const dynamic = 'force-dynamic'
+ 
+ export async function POST(request: Request) {
+-  const req = await request.json();
+-  const { error } = await supabase.from('applies').insert(req);
+-  if (error) return NextResponse.json({ error }, { status: 500 });
++  const supabase = createRouteHandlerClient({ cookies })
++  const req = await request.json()
++  const { error } = await supabase.from('applies').insert(req)
++  if (error) return NextResponse.json({ error }, { status: 500 })
+   else {
+-    return NextResponse.json({ message: 'success' }, { status: 200 });
++    return NextResponse.json({ message: 'success' }, { status: 200 })
+   }
+ }
