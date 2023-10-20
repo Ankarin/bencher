@@ -1,9 +1,11 @@
-import { getCompanies } from '@/utils/supabase'
+import { getCompanies, getCompanyData } from '@/utils/supabase'
 import CompanyCard from '@/app/(companies)/CompanyCard'
+import { Company } from '@/utils/types'
 
 export const dynamic = 'force-dynamic'
 export default async function Companies() {
   const companies = await getCompanies()
+  const myCompany = await getCompanyData()
 
   return (
     <div className={'mx-auto max-w-3xl px-2 md:px-5'}>
@@ -16,11 +18,11 @@ export default async function Companies() {
         <div className='mt-4 flex flex-shrink-0 md:ml-4 md:mt-0'></div>
       </div>
       <div className={'mx-auto my-5 grid  max-w-3xl gap-3 md:my-10  '}>
-        {companies.map((item) => (
+        {companies.map((company: Company) => (
           <CompanyCard
-            key={item.id}
-            company={item}
-            myCompany={false}
+            key={company.id}
+            company={company}
+            isMine={company.id === myCompany?.id}
           ></CompanyCard>
         ))}
       </div>

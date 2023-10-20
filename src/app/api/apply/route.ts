@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic'
 export async function POST(request: Request) {
   const supabase = createRouteHandlerClient({ cookies })
   const req = await request.json()
-  console.log(req)
+
   const { error } = await supabase.from('applies').insert(req)
   if (error) return NextResponse.json({ error: error }, { status: 500 })
   else {

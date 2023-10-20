@@ -28,9 +28,8 @@ export default async function JobPage({ params }: PageProps) {
             <>
               <div className={'flex items-center justify-between pt-4'}>
                 <p className={'flex text-3xl'}>Your applies:</p>{' '}
-                <Apply job={job} />
+                <Apply job={job} applies={myApplies ?? []} />
               </div>
-
               {myApplies ? <ApplyList applies={myApplies} /> : ''}
             </>
           ) : (

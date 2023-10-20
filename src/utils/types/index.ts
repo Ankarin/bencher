@@ -98,7 +98,6 @@ interface ApplyType {
   created_at?: Date
   developer: string
   provider: string
-  rate: string
   job: string
   poster: string
 }
@@ -108,7 +107,6 @@ interface ApplyTypeWithDev {
   created_at?: Date
   developer: ExistingDeveloper
   provider: string
-  rate: string
   job: string
   poster: string
 }

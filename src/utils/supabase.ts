@@ -141,7 +141,7 @@ const getMyAppliesForJob = async (
     .eq('job', jobId)
     .eq('provider', userData?.company_id)
   if (error) throw error.message
-  return data
+  return data.filter((apply) => apply.developer.public)
 }
 
 export {

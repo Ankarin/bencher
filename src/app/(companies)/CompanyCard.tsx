@@ -1,17 +1,17 @@
-'use client';
-import { Button } from '@/components/landing/Button';
-import Image from 'next/image';
-import React from 'react';
-import { UserGroupIcon, MapPinIcon } from '@heroicons/react/24/solid';
-import Link from 'next/link';
-import { Company } from '@/utils/types';
+'use client'
+import { Button } from '@/components/landing/Button'
+import Image from 'next/image'
+import React from 'react'
+import { UserGroupIcon, MapPinIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
+import { Company } from '@/utils/types'
 
 export default function CompanyCard({
-                                      company,
-                                      myCompany,
-                                    }: {
+  company,
+  isMine,
+}: {
   company: Company
-  myCompany: boolean
+  isMine: boolean
 }): React.ReactNode {
   const features = [
     {
@@ -22,19 +22,20 @@ export default function CompanyCard({
       data: company.country + `, ${company.region}`,
       icon: MapPinIcon,
     },
-  ];
+  ]
 
   return (
     <div className='rounded-lg bg-white p-4 shadow md:p-5 '>
       <div className='flex'>
-        {company.logo_url &&
+        {company.logo_url && (
           <Image
             className={'h-12 w-12 md:h-16 md:w-16'}
             src={company.logo_url}
             alt='image'
             height={100}
             width={100}
-          ></Image>}
+          ></Image>
+        )}
 
         <div className={'flex w-full items-center justify-between pl-4'}>
           <Link
@@ -86,7 +87,7 @@ export default function CompanyCard({
 
       <div className={'mt-1 flex items-center justify-between'}>
         <div></div>
-        {myCompany ? (
+        {isMine ? (
           ''
         ) : (
           <Button variant='solid' className='' loading={false} color='blue'>
@@ -95,5 +96,5 @@ export default function CompanyCard({
         )}
       </div>
     </div>
-  );
+  )
 }

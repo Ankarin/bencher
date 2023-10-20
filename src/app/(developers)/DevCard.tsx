@@ -5,16 +5,19 @@ import { Tooltip } from 'react-tooltip'
 import { Button } from '@/components/landing/Button'
 import { supaDownload } from '@/utils/supabaseClient'
 import Link from 'next/link'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { ApplyContext } from '@/app/(jobs)/(apply)/Apply'
-import SelectToApply from '@/app/(jobs)/(apply)/SelectToApply'
+import SelectDev from '@/app/(jobs)/(apply)/SelectDev'
+import { TrashIcon } from '@heroicons/react/24/solid'
 
 export default function DevCard({
   developer,
   isMine = false,
+  cancelApply,
 }: {
   developer: ExistingDeveloper
   isMine?: boolean
+  cancelApply?: () => Promise<void>
 }) {
   const features = [
     { title: '', value: developer.category },
@@ -32,6 +35,37 @@ export default function DevCard({
   ]
 
   const isApply = useContext(ApplyContext)
+
+  const devCardActions = () => {
+    if (cancelApply) {
+      return (
+        <button
+          onClick={cancelApply}
+          type='button'
+          className='inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+        >
+          <TrashIcon className=' h-5 w-5' aria-hidden='true' />
+          Delete Apply
+        </button>
+      )
+    }
+
+    if (isMine && !isApply) {
+      return (
+        <Button
+          className='h-10'
+          loading={false}
+          variant='solid'
+          color='slate'
+          href={`/edit-dev/${developer.id}`}
+        >
+          Edit
+        </Button>
+      )
+    } else if (isApply && isMine) {
+      return <SelectDev developer={developer}></SelectDev>
+    }
+  }
 
   return (
     <div className='max-w-[100] rounded-lg bg-white p-2 shadow md:p-4'>
@@ -132,22 +166,7 @@ export default function DevCard({
             </span>
           )}
         </div>
-
-        {isMine && !isApply ? (
-          <Button
-            className='h-10'
-            loading={false}
-            variant='solid'
-            color='blue'
-            href={`/edit-dev/${developer.id}`}
-          >
-            Edit
-          </Button>
-        ) : isMine && isApply ? (
-          <SelectToApply developer={developer}></SelectToApply>
-        ) : (
-          ''
-        )}
+        {devCardActions()}
       </div>
     </div>
   )

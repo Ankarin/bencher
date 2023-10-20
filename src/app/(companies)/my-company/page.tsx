@@ -21,7 +21,7 @@ export default async function MyCompany() {
             {company && (
               <MyCompanyHeader verified={company.verified}></MyCompanyHeader>
             )}
-            <CompanyCard company={company} myCompany={true}></CompanyCard>
+            <CompanyCard company={company} isMine={true}></CompanyCard>
           </div>
         )}
       </div>

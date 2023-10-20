@@ -57,7 +57,7 @@ export default function CompanyEdit({
     }
     if (!company) {
       await createCompany(newCompany)
-      toast.success('Company added !')
+      toast.success('Company added!')
       router.push('/my-company')
     } else {
       if (!company) {
@@ -69,7 +69,7 @@ export default function CompanyEdit({
         ...newCompany,
       }
       await updateCompany(updatedCompany)
-      toast.success('Your company updated !')
+      toast.success('Your company updated!')
     }
     setLoading(false)
   }

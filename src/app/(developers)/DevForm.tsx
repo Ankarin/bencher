@@ -95,7 +95,6 @@ export default function DevForm({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const handleSelectOtherLanguages = (val) => {
-    console.log(val)
     if (val.length > 5) {
       return
     }
@@ -191,7 +190,7 @@ export default function DevForm({
         .from('bitbencher/')
         .upload(cv.url, file)
       if (uploadError) {
-        toast.error('Error uploading CV !')
+        toast.error('Error uploading CV!')
       }
     } catch (error) {
       console.log(error)

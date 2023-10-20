@@ -5,27 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/Apply.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/ApplyItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/ApplyList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/SelectDev.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/edit-company/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/EditCompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/edit-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/edit-company/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/MyCompanyHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/MyCompanyHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/NoCompany.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/NoCompany.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/NotVerified.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/NotVerified.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/EditCompanyForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/Apply.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplyList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/DevsToApply.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/ApplyModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/ApplyModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/SelectToApply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/SelectToApply.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developer/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/(apply)/Apply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/Apply.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/(apply)/ApplyItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/ApplyItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/(apply)/DevsToApply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/DevsToApply.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/(apply)/SelectToApply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/(apply)/SelectToApply.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/apply/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/apply/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
     </list>
@@ -38,8 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -59,7 +55,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -71,30 +67,30 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "C:/Users/ankar/Desktop/bencha/bencher/src/images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ankar/Desktop/bencha/bencher/src/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -113,11 +109,11 @@
       <recent name="C:\Users\ankar\Desktop\bencha\bencher" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\api\(apply)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(jobs)\(apply)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(jobs)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(companies)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(jobs)\job\[slug]" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -202,6 +198,7 @@
       <workItem from="1697357919489" duration="2806000" />
       <workItem from="1697462123870" duration="356000" />
       <workItem from="1697462563486" duration="3547000" />
+      <workItem from="1697787495589" duration="8525000" />
     </task>
     <servers />
   </component>
@@ -234,8 +231,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/(developers)/DevForm.tsx</url>
-          <line>492</line>
+          <line>491</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/(developers)/DevCard.tsx</url>
+          <line>156</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
