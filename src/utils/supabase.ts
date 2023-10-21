@@ -116,7 +116,13 @@ const getJob = async (id: string): Promise<ExistingJob | null> => {
   }
 }
 const getJobs = async (): Promise<Job[]> => {
-  const { data, error } = await supa().from('jobs').select().eq('public', true)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { data, error } = await supa()
+    .from('jobs')
+    .select('*, applies(count)')
+    .eq('public', true)
+  console.log(123, data)
   if (error) throw error.message
   return data
 }
@@ -125,8 +131,9 @@ const getMyJobs = async (): Promise<Job[]> => {
   const userData = await getUserData()
   const { data, error } = await supa()
     .from('jobs')
-    .select()
+    .select('*, applies(id)')
     .eq('company', userData?.company_id)
+  console.log(12312, data)
   if (error) throw error.message
   return data
 }
@@ -144,6 +151,27 @@ const getMyAppliesForJob = async (
   return data.filter((apply) => apply.developer.public)
 }
 
+const getJobsIApplied = async (): Promise<Job[]> => {
+  const company: Company | null = await getCompanyData()
+  const { data, error } = await supa()
+    .from('applies')
+    .select('job')
+    .eq('provider', company?.id)
+
+  if (error) throw error.message
+  else {
+    const jobIds = data.map((row) => row.job)
+
+    const { data: jobs, error: secondError } = await supa()
+      .from('jobs')
+      .select('*')
+      .in('id', jobIds)
+
+    if (secondError) throw secondError.message
+    else return jobs
+  }
+}
+
 export {
   getUser,
   getUserData,
@@ -158,4 +186,5 @@ export {
   getJobs,
   getMyJobs,
   getMyAppliesForJob,
+  getJobsIApplied,
 }

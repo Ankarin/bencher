@@ -6,8 +6,8 @@ import { Button } from '@/components/landing/Button'
 import { supaDownload } from '@/utils/supabaseClient'
 import Link from 'next/link'
 import React, { useContext } from 'react'
-import { ApplyContext } from '@/app/(jobs)/(apply)/Apply'
-import SelectDev from '@/app/(jobs)/(apply)/SelectDev'
+import { ApplyContext } from '@/app/(apply)/Apply'
+import SelectDev from '@/app/(apply)/SelectDev'
 import { TrashIcon } from '@heroicons/react/24/solid'
 
 export default function DevCard({

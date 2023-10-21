@@ -6,8 +6,8 @@ import {
 } from '@/utils/types'
 import { getJob, getCompanyData, getMyAppliesForJob } from '@/utils/supabase'
 import JobCard from '@/app/(jobs)/JobCard'
-import Apply from '@/app/(jobs)/(apply)/Apply'
-import ApplyList from '@/app/(jobs)/(apply)/ApplyList'
+import Apply from '@/app/(apply)/Apply'
+import ApplyList from '@/app/(apply)/ApplyList'
 
 export default async function JobPage({ params }: PageProps) {
   const job: ExistingJob | null = await getJob(params.slug)

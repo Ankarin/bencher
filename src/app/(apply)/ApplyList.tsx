@@ -1,5 +1,5 @@
 import { ApplyTypeWithDev } from '@/utils/types'
-import ApplyItem from '@/app/(jobs)/(apply)/ApplyItem'
+import ApplyItem from '@/app/(apply)/ApplyItem'
 
 export default function ApplyList({
   applies,

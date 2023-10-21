@@ -74,7 +74,12 @@ interface Job {
   experience: string
 }
 
+interface applyCount {
+  count: number
+}
+
 interface ExistingJob extends Job {
+  applies: applyCount[]
   id: string
   created_at: Date
 }

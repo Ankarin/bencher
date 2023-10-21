@@ -1,5 +1,5 @@
 'use client'
-import { Job } from '@/utils/types'
+import { ExistingJob } from '@/utils/types'
 import Link from 'next/link'
 import { Tooltip } from 'react-tooltip'
 import { Button } from '@/components/landing/Button'
@@ -9,7 +9,7 @@ export default function JobCard({
   job,
   isApply = true,
 }: {
-  job: Job
+  job: ExistingJob
   isApply?: boolean
 }) {
   const features = [
@@ -23,7 +23,7 @@ export default function JobCard({
 
     { title: 'English: ', value: `${job.english}+ ` },
   ]
-
+  console.log(job)
   const zustMyCompany = zust((state) => state.myCompany)
 
   const isMine = zustMyCompany?.id === job.company
@@ -102,7 +102,7 @@ export default function JobCard({
           </span>
         ))}
       </p>
-
+      {job.applies[0].count}
       <p className='text-sm'>{job.description}</p>
       <div className={'mt-3 flex items-center justify-end'}>
         {isMine ? (

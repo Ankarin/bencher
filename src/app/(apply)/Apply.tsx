@@ -1,5 +1,5 @@
 'use client'
-import ApplyModal from '@/app/(jobs)/(apply)/ApplyModal'
+import ApplyModal from '@/app/(apply)/ApplyModal'
 import { ApplyTypeWithDev } from '@/utils/types'
 import { useState, createContext } from 'react'
 import { Button } from '@/components/landing/Button'
