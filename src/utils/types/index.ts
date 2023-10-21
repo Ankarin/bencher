@@ -80,6 +80,7 @@ interface applyCount {
 
 interface ExistingJob extends Job {
   applies: applyCount[]
+  my_applies?: applyCount[]
   id: string
   created_at: Date
 }

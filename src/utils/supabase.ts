@@ -106,7 +106,8 @@ const getJob = async (id: string): Promise<ExistingJob | null> => {
   const myCompany = await getCompanyData()
   const { data, error } = await supa()
     .from('jobs')
-    .select('*, applies(count)')
+    .select('*, my_applies:applies(count), applies(count)')
+    .filter('my_applies.provider', 'eq', myCompany?.id)
     .eq('id', id)
   if (error) return null
   if (data[0] && data[0].public) {
@@ -118,19 +119,33 @@ const getJob = async (id: string): Promise<ExistingJob | null> => {
   }
 }
 const getJobs = async (): Promise<ExistingJob[]> => {
-  const { data, error } = await supa()
-    .from('jobs')
-    .select('*, applies(count)')
-    .eq('public', true)
-  if (error) throw error.message
-  return data
+  const userData = await getUserData()
+  if (userData?.company_id) {
+    const myCompany = await getCompanyData()
+    const { data, error } = await supa()
+      .from('jobs')
+      .select('*, my_applies:applies(count), applies(count)')
+      .filter('my_applies.provider', 'eq', myCompany?.id)
+      .eq('public', true)
+    console.log(data)
+    if (error) throw error.message
+    return data
+  } else {
+    const { data, error } = await supa()
+      .from('jobs')
+      .select('*,  applies(count)')
+      .eq('public', true)
+    console.log(data)
+    if (error) throw error.message
+    return data
+  }
 }
 
 const getMyJobs = async (): Promise<ExistingJob[]> => {
   const userData = await getUserData()
   const { data, error } = await supa()
     .from('jobs')
-    .select('*, applies(count)')
+    .select('*,  applies(count)')
     .eq('company', userData?.company_id)
   if (error) throw error.message
   return data
@@ -171,7 +186,8 @@ const getJobsIApplied = async (): Promise<ExistingJob[]> => {
 
     const { data: jobs, error: secondError } = await supa()
       .from('jobs')
-      .select('*, applies(count)')
+      .select('*, my_applies:applies(count), applies(count)')
+      .filter('my_applies.provider', 'eq', company?.id)
       .in('id', jobIds)
       .eq('public', true)
 
