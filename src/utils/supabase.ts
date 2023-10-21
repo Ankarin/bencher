@@ -5,7 +5,6 @@ import {
   Company,
   ExistingDeveloper,
   User,
-  Job,
   ExistingJob,
   ApplyTypeWithDev,
 } from '@/utils/types'
@@ -105,7 +104,10 @@ const getDevsByCompany = async (id: string): Promise<ExistingDeveloper[]> => {
 
 const getJob = async (id: string): Promise<ExistingJob | null> => {
   const myCompany = await getCompanyData()
-  const { data, error } = await supa().from('jobs').select().eq('id', id)
+  const { data, error } = await supa()
+    .from('jobs')
+    .select('*, applies(count)')
+    .eq('id', id)
   if (error) return null
   if (data[0] && data[0].public) {
     return data[0]
@@ -115,25 +117,21 @@ const getJob = async (id: string): Promise<ExistingJob | null> => {
     return null
   }
 }
-const getJobs = async (): Promise<Job[]> => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+const getJobs = async (): Promise<ExistingJob[]> => {
   const { data, error } = await supa()
     .from('jobs')
     .select('*, applies(count)')
     .eq('public', true)
-  console.log(123, data)
   if (error) throw error.message
   return data
 }
 
-const getMyJobs = async (): Promise<Job[]> => {
+const getMyJobs = async (): Promise<ExistingJob[]> => {
   const userData = await getUserData()
   const { data, error } = await supa()
     .from('jobs')
-    .select('*, applies(id)')
+    .select('*, applies(count)')
     .eq('company', userData?.company_id)
-  console.log(12312, data)
   if (error) throw error.message
   return data
 }
@@ -151,7 +149,16 @@ const getMyAppliesForJob = async (
   return data.filter((apply) => apply.developer.public)
 }
 
-const getJobsIApplied = async (): Promise<Job[]> => {
+const getAppliesForJob = async (jobId: string): Promise<ApplyTypeWithDev[]> => {
+  const { data, error } = await supa()
+    .from('applies')
+    .select('*,  developer(*)')
+    .eq('job', jobId)
+  if (error) throw error.message
+  return data.filter((apply) => apply.developer.public)
+}
+
+const getJobsIApplied = async (): Promise<ExistingJob[]> => {
   const company: Company | null = await getCompanyData()
   const { data, error } = await supa()
     .from('applies')
@@ -164,8 +171,9 @@ const getJobsIApplied = async (): Promise<Job[]> => {
 
     const { data: jobs, error: secondError } = await supa()
       .from('jobs')
-      .select('*')
+      .select('*, applies(count)')
       .in('id', jobIds)
+      .eq('public', true)
 
     if (secondError) throw secondError.message
     else return jobs
@@ -185,6 +193,7 @@ export {
   getJob,
   getJobs,
   getMyJobs,
+  getAppliesForJob,
   getMyAppliesForJob,
   getJobsIApplied,
 }

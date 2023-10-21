@@ -1,9 +1,9 @@
 import JobList from '@/app/(jobs)/JobList'
 import { getJobsIApplied } from '@/utils/supabase'
-import { Job } from '@/utils/types'
+import { ExistingJob } from '@/utils/types'
 
 export default async function MyRequests() {
-  const jobs: Job[] | null = await getJobsIApplied()
+  const jobs: ExistingJob[] | null = await getJobsIApplied()
 
   return (
     <main className={'mx-auto max-w-3xl px-5'}>

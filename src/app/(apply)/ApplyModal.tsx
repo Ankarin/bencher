@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import DevsToApply from './DevsToApply'
+import { Button } from '@/components/landing/Button'
 
 export default function ApplyModal({
   open,
@@ -42,7 +43,17 @@ export default function ApplyModal({
                       'mt-4 flex justify-between px-4 text-lg font-medium'
                     }
                   >
-                    <span>Select to apply.</span>
+                    <Button
+                      color='blue'
+                      loading={false}
+                      className=''
+                      variant='solid'
+                      href='/add-dev'
+                      target='_blank'
+                    >
+                      Add Developer
+                    </Button>
+
                     <button
                       onClick={() => close()}
                       type='button'

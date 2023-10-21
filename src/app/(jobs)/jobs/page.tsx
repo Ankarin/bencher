@@ -13,9 +13,8 @@ export default async function Developers() {
           </h2>
         </div>
       </div>
-      {/*<Suspense fallback={<div>Loading...</div>}>*/}
+
       <JobList jobs={jobs}></JobList>
-      {/*</Suspense>*/}
     </div>
   )
 }

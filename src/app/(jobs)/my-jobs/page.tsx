@@ -1,10 +1,10 @@
 import { Button } from '@/components/landing/Button'
 import JobList from '@/app/(jobs)/JobList'
 import { getMyJobs } from '@/utils/supabase'
-import { Job } from '@/utils/types'
+import { ExistingJob } from '@/utils/types'
 
 export default async function MyRequests() {
-  const jobs: Job[] | null = await getMyJobs()
+  const jobs: ExistingJob[] | null = await getMyJobs()
 
   return (
     <main className={'mx-auto max-w-3xl px-5'}>

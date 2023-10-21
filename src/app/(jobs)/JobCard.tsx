@@ -102,9 +102,13 @@ export default function JobCard({
           </span>
         ))}
       </p>
-      {job.applies[0].count}
+
       <p className='text-sm'>{job.description}</p>
-      <div className={'mt-3 flex items-center justify-end'}>
+      <div className={'mt-3 flex items-center justify-between'}>
+        <div className={'text-base font-semibold'}>
+          <p>{`Applies: ${job.applies[0]?.count}`} </p>
+          {!isMine ? `Your applies: ${job.applies[0]?.count}` : ''}
+        </div>
         {isMine ? (
           <Button
             className='h-10'

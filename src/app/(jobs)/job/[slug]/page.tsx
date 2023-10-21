@@ -1,22 +1,32 @@
 import {
-  Company,
-  PageProps,
-  ExistingJob,
   ApplyTypeWithDev,
+  Company,
+  ExistingJob,
+  PageProps,
 } from '@/utils/types'
-import { getJob, getCompanyData, getMyAppliesForJob } from '@/utils/supabase'
+import {
+  getCompanyData,
+  getJob,
+  getAppliesForJob,
+  getMyAppliesForJob,
+} from '@/utils/supabase'
 import JobCard from '@/app/(jobs)/JobCard'
 import Apply from '@/app/(apply)/Apply'
 import ApplyList from '@/app/(apply)/ApplyList'
+import Candidates from '@/app/(jobs)/Candidates'
 
 export default async function JobPage({ params }: PageProps) {
   const job: ExistingJob | null = await getJob(params.slug)
   const myCompany: Company | null = await getCompanyData()
-  const myApplies: ApplyTypeWithDev[] | null = job
-    ? await getMyAppliesForJob(job?.id)
-    : null
-
   const isMine = (): boolean => job?.company === myCompany?.id
+
+  let applies: ApplyTypeWithDev[] | null
+
+  if (!isMine() && job) {
+    applies = await getMyAppliesForJob(job?.id)
+  } else if (isMine() && job) {
+    applies = await getAppliesForJob(job?.id)
+  } else applies = null
 
   return (
     <div className={'mx-auto max-w-3xl p-5'}>
@@ -28,12 +38,13 @@ export default async function JobPage({ params }: PageProps) {
             <>
               <div className={'flex items-center justify-between pt-4'}>
                 <p className={'flex text-3xl'}>Your applies:</p>{' '}
-                <Apply job={job} applies={myApplies ?? []} />
+                <Apply job={job} applies={applies ?? []} />
               </div>
-              {myApplies ? <ApplyList applies={myApplies} /> : ''}
+
+              <ApplyList applies={applies ?? []} />
             </>
           ) : (
-            ''
+            <Candidates applies={applies ?? []} />
           )}
         </div>
       ) : (
