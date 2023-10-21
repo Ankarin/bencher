@@ -39,7 +39,9 @@ export async function middleware(req: NextRequest) {
     (!userData?.company_id && req.nextUrl.pathname === '/my-jobs') ||
     (!userData?.company_id && req.nextUrl.pathname === '/my-devs') ||
     (!userData?.company_id && req.nextUrl.pathname === '/add-job') ||
-    (!userData?.company_id && req.nextUrl.pathname === '/add-dev')
+    (!userData?.company_id && req.nextUrl.pathname === '/add-dev') ||
+    (!userData?.company_id && req.nextUrl.pathname === '/my-applies') ||
+    (!userData?.company_id && req.nextUrl.pathname === '/job/:id*')
   ) {
     return NextResponse.redirect(new URL('/my-company', req.url))
   }
@@ -50,11 +52,13 @@ export const config = {
     '/',
     '/my-company',
     '/edit-company',
+    '/edit-company',
     '/my-devs',
     '/add-dev',
     '/my-jobs',
     '/add-job',
     '/job/:id*',
     '/edit-dev/:id*',
+    '/my-applies',
   ],
 }

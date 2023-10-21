@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(apply)/ApplyModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/ApplyModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/EditCompanyForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/NoCompany.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/NoCompany.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
     </list>
@@ -40,7 +44,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -185,7 +189,7 @@
       <workItem from="1697462563486" duration="3547000" />
       <workItem from="1697787495589" duration="8525000" />
       <workItem from="1697905928517" duration="3299000" />
-      <workItem from="1697915008312" duration="2378000" />
+      <workItem from="1697915008312" duration="4692000" />
     </task>
     <servers />
   </component>
@@ -220,6 +224,12 @@
           <url>file://$PROJECT_DIR$/src/app/(developers)/DevForm.tsx</url>
           <line>491</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/utils/supabase.ts</url>
+          <line>123</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

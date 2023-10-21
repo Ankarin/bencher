@@ -49,7 +49,6 @@ export default function ApplyModal({
                       className=''
                       variant='solid'
                       href='/add-dev'
-                      target='_blank'
                     >
                       Add Developer
                     </Button>

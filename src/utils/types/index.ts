@@ -6,9 +6,8 @@ interface User {
   first_name: string
   last_name: string
   email: string
-  company_name: string
-  company_id: string
-  verified: boolean
+  company_name: string | null
+  company_id: string | null
   email_confirmed: boolean
   type: string
 }

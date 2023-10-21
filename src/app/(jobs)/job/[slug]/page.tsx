@@ -18,11 +18,13 @@ import Candidates from '@/app/(jobs)/Candidates'
 export default async function JobPage({ params }: PageProps) {
   const job: ExistingJob | null = await getJob(params.slug)
   const myCompany: Company | null = await getCompanyData()
-  const isMine = (): boolean => job?.company === myCompany?.id
+  const isMine = (): boolean => job?.company === myCompany?.id ?? ''
 
   let applies: ApplyTypeWithDev[] | null
 
-  if (!isMine() && job) {
+  if (!myCompany?.id && job) {
+    applies = await getAppliesForJob(job?.id)
+  } else if (!isMine() && job) {
     applies = await getMyAppliesForJob(job?.id)
   } else if (isMine() && job) {
     applies = await getAppliesForJob(job?.id)

@@ -34,6 +34,7 @@ const getUserData = async (): Promise<User | null> => {
 }
 const getCompanyData = async (): Promise<Company | null> => {
   const userData = await getUserData()
+  console.log(userData)
   if (userData && userData.company_id) {
     const { data, error } = await supa()
       .from('companies')
@@ -103,16 +104,23 @@ const getDevsByCompany = async (id: string): Promise<ExistingDeveloper[]> => {
 }
 
 const getJob = async (id: string): Promise<ExistingJob | null> => {
-  const myCompany = await getCompanyData()
-  const { data, error } = await supa()
-    .from('jobs')
-    .select('*, my_applies:applies(count), applies(count)')
-    .filter('my_applies.provider', 'eq', myCompany?.id)
-    .eq('id', id)
+  const myCompany: Company | null = await getCompanyData()
+
+  const { data, error } = myCompany?.id
+    ? await supa()
+        .from('jobs')
+        .select('*, my_applies:applies(count), applies(count)')
+        .eq('id', id)
+        .filter('my_applies.provider', 'eq', myCompany?.id ?? '')
+    : await supa()
+        .from('jobs')
+        .select('*, my_applies:applies(count), applies(count)')
+        .eq('id', id)
+
   if (error) return null
   if (data[0] && data[0].public) {
     return data[0]
-  } else if (data[0] && data[0].company === myCompany?.id) {
+  } else if ((data[0] && data[0].company === myCompany?.id) ?? '') {
     return data[0]
   } else {
     return null
@@ -127,7 +135,6 @@ const getJobs = async (): Promise<ExistingJob[]> => {
       .select('*, my_applies:applies(count), applies(count)')
       .filter('my_applies.provider', 'eq', myCompany?.id)
       .eq('public', true)
-    console.log(data)
     if (error) throw error.message
     return data
   } else {
@@ -135,7 +142,6 @@ const getJobs = async (): Promise<ExistingJob[]> => {
       .from('jobs')
       .select('*,  applies(count)')
       .eq('public', true)
-    console.log(data)
     if (error) throw error.message
     return data
   }
