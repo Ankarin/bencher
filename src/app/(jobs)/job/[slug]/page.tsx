@@ -34,7 +34,7 @@ export default async function JobPage({ params }: PageProps) {
     <div className={'mx-auto max-w-3xl p-5'}>
       {job ? (
         <div>
-          <JobCard job={job} isApply={false}></JobCard>
+          <JobCard job={job} isApply={false} isMine={isMine()}></JobCard>
 
           {!isMine() && job ? (
             <>

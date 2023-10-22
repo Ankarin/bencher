@@ -52,6 +52,7 @@ interface ExistingDeveloper extends Developer {
   id: string
   created_at: Date
   company: string
+  updated?: Date | null
 }
 
 interface Job {
@@ -82,6 +83,7 @@ interface ExistingJob extends Job {
   my_applies?: applyCount[]
   id: string
   created_at: Date
+  updated?: Date | null
 }
 
 type Selecter = {

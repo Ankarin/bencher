@@ -1,10 +1,8 @@
 import { Button } from '@/components/landing/Button'
-import { getMyDevs } from '@/utils/supabase'
-import DevList from '@/app/(developers)/DevList'
+import { Suspense } from 'react'
+import MyDevelopers from '@/app/(developers)/my-devs/MyDevelopers'
 
 export default async function MyDevs() {
-  const developers = await getMyDevs()
-
   return (
     <div className={'mx-auto max-w-3xl px-2 md:px-5'}>
       <div className='mt-2 flex items-center justify-between'>
@@ -25,7 +23,10 @@ export default async function MyDevs() {
           </Button>
         </div>
       </div>
-      <DevList isMine={true} developers={developers}></DevList>
+
+      <Suspense fallback={<div></div>}>
+        <MyDevelopers></MyDevelopers>
+      </Suspense>
     </div>
   )
 }

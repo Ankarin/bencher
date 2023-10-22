@@ -1,9 +1,7 @@
-import { getJobs } from '@/utils/supabase'
-import JobList from '@/app/(jobs)/JobList'
+import { Suspense } from 'react'
+import JobsWrapper from '@/app/(jobs)/jobs/JobsWrapper'
 
-export default async function Developers() {
-  const jobs = await getJobs()
-
+export default async function Jobs() {
   return (
     <div className={'mx-auto max-w-3xl px-2 md:px-5'}>
       <div className='mt-2 flex items-center justify-between'>
@@ -13,8 +11,9 @@ export default async function Developers() {
           </h2>
         </div>
       </div>
-
-      <JobList jobs={jobs}></JobList>
+      <Suspense fallback={<div></div>}>
+        <JobsWrapper></JobsWrapper>
+      </Suspense>
     </div>
   )
 }

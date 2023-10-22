@@ -8,8 +8,7 @@ export default function Candidates({
   applies: ApplyTypeWithDev[]
 }) {
   return (
-    <div className='mx-auto my-5 grid max-w-3xl gap-3 '>
-      asd
+    <div className='mx-auto my-5 grid max-w-3xl gap-3'>
       {applies?.map((apply, key) => (
         <DevCard key={key} developer={apply.developer}></DevCard>
       ))}

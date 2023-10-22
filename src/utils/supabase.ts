@@ -34,7 +34,6 @@ const getUserData = async (): Promise<User | null> => {
 }
 const getCompanyData = async (): Promise<Company | null> => {
   const userData = await getUserData()
-  console.log(userData)
   if (userData && userData.company_id) {
     const { data, error } = await supa()
       .from('companies')
@@ -54,7 +53,10 @@ const getCompanyById = async (id: string): Promise<Company> => {
 }
 
 const getCompanies = async (): Promise<Company[]> => {
-  const { data, error } = await supa().from('companies').select()
+  const { data, error } = await supa()
+    .from('companies')
+    .select()
+    .order('created_at', { ascending: true })
   if (error) throw error.message
   return data
 }
@@ -65,6 +67,7 @@ const getMyDevs = async (): Promise<ExistingDeveloper[]> => {
     .from('developers')
     .select()
     .eq('company', userData?.company_id)
+    .order('created_at', { ascending: false })
   if (error) throw error.message
   return data
 }
@@ -73,6 +76,7 @@ const getDevs = async (): Promise<ExistingDeveloper[]> => {
     .from('developers')
     .select()
     .eq('public', true)
+    .order('created_at', { ascending: false })
   if (error) throw error.message
   return data
 }
@@ -99,6 +103,7 @@ const getDevsByCompany = async (id: string): Promise<ExistingDeveloper[]> => {
     .select()
     .eq('company', id)
     .eq('public', true)
+    .order('created_at', { ascending: false })
   if (error) throw error.message
   return data
 }
@@ -135,6 +140,7 @@ const getJobs = async (): Promise<ExistingJob[]> => {
       .select('*, my_applies:applies(count), applies(count)')
       .filter('my_applies.provider', 'eq', myCompany?.id)
       .eq('public', true)
+      .order('created_at', { ascending: false })
     if (error) throw error.message
     return data
   } else {
@@ -142,6 +148,7 @@ const getJobs = async (): Promise<ExistingJob[]> => {
       .from('jobs')
       .select('*,  applies(count)')
       .eq('public', true)
+      .order('created_at', { ascending: false })
     if (error) throw error.message
     return data
   }
@@ -153,6 +160,7 @@ const getMyJobs = async (): Promise<ExistingJob[]> => {
     .from('jobs')
     .select('*,  applies(count)')
     .eq('company', userData?.company_id)
+    .order('created_at', { ascending: false })
   if (error) throw error.message
   return data
 }
@@ -166,6 +174,7 @@ const getMyAppliesForJob = async (
     .select('*,  developer(*)')
     .eq('job', jobId)
     .eq('provider', userData?.company_id)
+    .order('created_at', { ascending: true })
   if (error) throw error.message
   return data.filter((apply) => apply.developer.public)
 }
@@ -175,6 +184,7 @@ const getAppliesForJob = async (jobId: string): Promise<ApplyTypeWithDev[]> => {
     .from('applies')
     .select('*,  developer(*)')
     .eq('job', jobId)
+    .order('created_at', { ascending: true })
   if (error) throw error.message
   return data.filter((apply) => apply.developer.public)
 }
@@ -185,6 +195,7 @@ const getJobsIApplied = async (): Promise<ExistingJob[]> => {
     .from('applies')
     .select('job')
     .eq('provider', company?.id)
+    .order('created_at', { ascending: false })
 
   if (error) throw error.message
   else {
@@ -196,6 +207,7 @@ const getJobsIApplied = async (): Promise<ExistingJob[]> => {
       .filter('my_applies.provider', 'eq', company?.id)
       .in('id', jobIds)
       .eq('public', true)
+      .order('created_at', { ascending: false })
 
     if (secondError) throw secondError.message
     else return jobs

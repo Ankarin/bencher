@@ -1,10 +1,7 @@
-import JobList from '@/app/(jobs)/JobList'
-import { getJobsIApplied } from '@/utils/supabase'
-import { ExistingJob } from '@/utils/types'
+import MineApplies from '@/app/(apply)/my-applies/MineApplies'
+import { Suspense } from 'react'
 
-export default async function MyRequests() {
-  const jobs: ExistingJob[] | null = await getJobsIApplied()
-
+export default async function MyApplies() {
   return (
     <main className={'mx-auto max-w-3xl px-5'}>
       <div className='mt-2 md:flex md:items-center md:justify-between'>
@@ -14,7 +11,9 @@ export default async function MyRequests() {
           </h2>
         </div>
       </div>
-      <JobList jobs={jobs}></JobList>
+      <Suspense fallback={<div></div>}>
+        <MineApplies></MineApplies>
+      </Suspense>
     </main>
   )
 }

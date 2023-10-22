@@ -304,15 +304,10 @@ export default function CompanyEdit({
                   onChange={(e) => {
                     setDescription(e.target.value)
                   }}
-                  minLength={50}
                   maxLength={300}
                 />
                 <span className={'text-sm'}>
-                  {description.length < 50 ? (
-                    <span>{description.length} / 50 (min) </span>
-                  ) : (
-                    <span> {description.length} / 300 (Max)</span>
-                  )}
+                  <span> {description.length} / 300 (Max)</span>
                 </span>
               </div>
               <p className='mt-3 text-sm leading-6 text-gray-600'>

@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/(apply)/my-applies/MineApplies.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(companies)/companies/CompaniesList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(developers)/developers/Devs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(developers)/my-devs/MyDevelopers.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/jobs/JobsWrapper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(jobs)/my-jobs/MyJobsWrapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/ApplyModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/ApplyModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(apply)/my-applies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/my-applies/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(companies)/EditCompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/EditCompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/NoCompany.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/NoCompany.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developers/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/Candidates.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/Candidates.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/jobs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/jobs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/my-jobs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/my-jobs/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
@@ -44,7 +57,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -56,30 +69,30 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ankar/Desktop/bencha/bencher/src/images&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "C:/Users/ankar/Desktop/bencha/bencher/src/app/(jobs)/my-jobs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "C:\\Users\\ankar\\AppData\\Roaming\\npm\\node_modules\\eslint",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\prettier",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "ts.external.directory.path": "C:\\Users\\ankar\\Desktop\\bencha\\bencher\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -91,11 +104,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(jobs)\my-jobs" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\images" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app" />
       <recent name="$PROJECT_DIR$/src/components/landing" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(developers)\edit-dev" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app" />
@@ -189,7 +202,8 @@
       <workItem from="1697462563486" duration="3547000" />
       <workItem from="1697787495589" duration="8525000" />
       <workItem from="1697905928517" duration="3299000" />
-      <workItem from="1697915008312" duration="4692000" />
+      <workItem from="1697915008312" duration="5263000" />
+      <workItem from="1697964340948" duration="8789000" />
     </task>
     <servers />
   </component>
@@ -227,8 +241,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/utils/supabase.ts</url>
-          <line>123</line>
-          <properties lambdaOrdinal="-1" />
+          <line>128</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

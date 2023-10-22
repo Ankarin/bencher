@@ -1,11 +1,8 @@
 import { Button } from '@/components/landing/Button'
-import JobList from '@/app/(jobs)/JobList'
-import { getMyJobs } from '@/utils/supabase'
-import { ExistingJob } from '@/utils/types'
+import { Suspense } from 'react'
+import MyJobsWrapper from '@/app/(jobs)/my-jobs/MyJobsWrapper'
 
-export default async function MyRequests() {
-  const jobs: ExistingJob[] | null = await getMyJobs()
-
+export default async function MyJobs() {
   return (
     <main className={'mx-auto max-w-3xl px-5'}>
       <div className='mt-2 md:flex md:items-center md:justify-between'>
@@ -26,7 +23,9 @@ export default async function MyRequests() {
           </Button>
         </div>
       </div>
-      <JobList jobs={jobs}></JobList>
+      <Suspense fallback={<div></div>}>
+        <MyJobsWrapper></MyJobsWrapper>
+      </Suspense>
     </main>
   )
 }

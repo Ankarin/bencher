@@ -3,14 +3,15 @@ import { ExistingJob } from '@/utils/types'
 import Link from 'next/link'
 import { Tooltip } from 'react-tooltip'
 import { Button } from '@/components/landing/Button'
-import { zust } from '@/store'
 
 export default function JobCard({
   job,
   isApply = true,
+  isMine,
 }: {
   job: ExistingJob
   isApply?: boolean
+  isMine: boolean
 }) {
   const features = [
     { title: '', value: job.category },
@@ -23,10 +24,6 @@ export default function JobCard({
 
     { title: 'English: ', value: `${job.english}+ ` },
   ]
-  console.log(job)
-  const zustMyCompany = zust((state) => state.myCompany)
-
-  const isMine = zustMyCompany?.id === job.company
 
   return (
     <div className='max-w-[100] rounded-lg bg-white p-2 shadow md:p-4'>
