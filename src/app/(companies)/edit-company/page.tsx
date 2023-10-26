@@ -3,7 +3,6 @@ import { getCompanyData } from '@/utils/supabase'
 import React from 'react'
 import { Company } from '@/utils/types'
 
-export const dynamic = 'force-dynamic'
 export default async function MyCompany() {
   const company: Company | null = await getCompanyData()
   return (

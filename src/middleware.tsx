@@ -2,7 +2,7 @@
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse, NextRequest } from 'next/server'
 
-// import { User } from 'src/utils/types'
+import { User } from 'src/utils/types'
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next()
@@ -12,18 +12,18 @@ export async function middleware(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // const getUserData = async (): Promise<User | null> => {
-  //   if (user) {
-  //     const { data, error } = await supabase
-  //       .from('users')
-  //       .select()
-  //       .eq('id', user.id)
-  //     if (error) throw error.message
-  //     return data[0]
-  //   } else return null
-  // }
+  const getUserData = async (): Promise<User | null> => {
+    if (user) {
+      const { data, error } = await supabase
+        .from('users')
+        .select()
+        .eq('id', user.id)
+      if (error) throw error.message
+      return data[0]
+    } else return null
+  }
 
-  // const userData = await getUserData()
+  const userData = await getUserData()
   if (
     (user && req.nextUrl.pathname === '/login') ||
     (user && req.nextUrl.pathname === '/register')
@@ -35,16 +35,16 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/login', req.url))
   }
 
-  // if (
-  //   (!userData?.company_id && req.nextUrl.pathname === '/my-jobs') ||
-  //   (!userData?.company_id && req.nextUrl.pathname === '/my-devs') ||
-  //   (!userData?.company_id && req.nextUrl.pathname === '/add-job') ||
-  //   (!userData?.company_id && req.nextUrl.pathname === '/add-dev') ||
-  //   (!userData?.company_id && req.nextUrl.pathname === '/my-applies') ||
-  //   (!userData?.company_id && req.nextUrl.pathname === '/job/:id*')
-  // ) {
-  //   return NextResponse.redirect(new URL('/my-company', req.url))
-  // }
+  if (
+    (!userData?.company_id && req.nextUrl.pathname === '/my-jobs') ||
+    (!userData?.company_id && req.nextUrl.pathname === '/my-devs') ||
+    (!userData?.company_id && req.nextUrl.pathname === '/add-job') ||
+    (!userData?.company_id && req.nextUrl.pathname === '/add-dev') ||
+    (!userData?.company_id && req.nextUrl.pathname === '/my-applies') ||
+    (!userData?.company_id && req.nextUrl.pathname === '/job/:id*')
+  ) {
+    return NextResponse.redirect(new URL('/my-company', req.url))
+  }
 }
 
 export const config = {

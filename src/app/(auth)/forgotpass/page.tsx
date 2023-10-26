@@ -1,19 +1,20 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import { Button } from '@/components/landing/Button';
-import { TextField } from '@/components/landing/Fields';
-import { Logo } from '@/components/landing/Logo';
-import { SlimLayout } from '@/components/landing/SlimLayout';
-import React from 'react';
+import { Button } from '@/components/landing/Button'
+import { TextField } from '@/components/landing/Fields'
+import { Logo } from '@/components/landing/Logo'
+import { SlimLayout } from '@/components/landing/SlimLayout'
+import React from 'react'
 
-import { PageProps } from '@/utils/types';
+import { PageProps } from '@/utils/types'
 
-export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'Forgot Password',
-};
+}
 
-export default function Forgotpass({ searchParams }: PageProps): React.ReactNode {
+export default function Forgotpass({
+  searchParams,
+}: PageProps): React.ReactNode {
   return (
     <div className='-mt-20'>
       <SlimLayout>
@@ -63,5 +64,5 @@ export default function Forgotpass({ searchParams }: PageProps): React.ReactNode
         </form>
       </SlimLayout>
     </div>
-  );
+  )
 }

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Button } from '@/components/landing/Button'
 import { ExistingDeveloper, FormSubmit } from '@/utils/types'
-import { SelectDevContext } from '@/app/(apply)/Apply'
+import { SelectDevContext } from '@/app/(apply)/(select-dev-and-apply)/Apply'
 
 export default function SelectToApply({
   developer,

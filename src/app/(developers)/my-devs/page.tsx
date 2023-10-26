@@ -1,8 +1,8 @@
+'use client'
 import { Button } from '@/components/landing/Button'
-import { Suspense } from 'react'
 import MyDevelopers from '@/app/(developers)/my-devs/MyDevelopers'
 
-export default async function MyDevs() {
+export default function MyDevs() {
   return (
     <div className={'mx-auto max-w-3xl px-2 md:px-5'}>
       <div className='mt-2 flex items-center justify-between'>
@@ -24,9 +24,7 @@ export default async function MyDevs() {
         </div>
       </div>
 
-      <Suspense fallback={<div></div>}>
-        <MyDevelopers></MyDevelopers>
-      </Suspense>
+      <MyDevelopers></MyDevelopers>
     </div>
   )
 }

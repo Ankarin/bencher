@@ -8,7 +8,6 @@ import { Company, ExistingDeveloper, PageProps } from '@/utils/types'
 import CompanyCard from '@/app/(companies)/CompanyCard'
 import DevList from '@/app/(developers)/DevList'
 
-export const dynamic = 'force-dynamic'
 export default async function CompanyPage({ params }: PageProps) {
   const company: Company = await getCompanyById(params.slug)
   const devs: ExistingDeveloper[] = await getDevsByCompany(company?.id ?? '')

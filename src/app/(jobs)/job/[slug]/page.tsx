@@ -11,10 +11,11 @@ import {
   getMyAppliesForJob,
 } from '@/utils/supabase'
 import JobCard from '@/app/(jobs)/JobCard'
-import Apply from '@/app/(apply)/Apply'
-import ApplyList from '@/app/(apply)/ApplyList'
-import Candidates from '@/app/(jobs)/Candidates'
+import Apply from '@/app/(apply)/(select-dev-and-apply)/Apply'
+import MyCandidates from '@/app/(apply)/MyCandidates'
+import Candidates from '@/app/(apply)/Candidates'
 
+// export const revalidate = 60
 export default async function JobPage({ params }: PageProps) {
   const job: ExistingJob | null = await getJob(params.slug)
   const myCompany: Company | null = await getCompanyData()
@@ -43,7 +44,7 @@ export default async function JobPage({ params }: PageProps) {
                 <Apply job={job} applies={applies ?? []} />
               </div>
 
-              <ApplyList applies={applies ?? []} />
+              <MyCandidates applies={applies ?? []} />
             </>
           ) : (
             <Candidates applies={applies ?? []} />

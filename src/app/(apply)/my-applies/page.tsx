@@ -1,5 +1,4 @@
 import MineApplies from '@/app/(apply)/my-applies/MineApplies'
-import { Suspense } from 'react'
 
 export default async function MyApplies() {
   return (
@@ -11,9 +10,7 @@ export default async function MyApplies() {
           </h2>
         </div>
       </div>
-      <Suspense fallback={<div></div>}>
-        <MineApplies></MineApplies>
-      </Suspense>
+      <MineApplies></MineApplies>
     </main>
   )
 }

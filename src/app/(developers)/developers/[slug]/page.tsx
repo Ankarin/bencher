@@ -1,8 +1,15 @@
 import { Button } from '@/components/landing/Button'
-import { Suspense } from 'react'
-import Devs from './Devs'
 
-export default async function Developers() {
+import Devs from '../Devs'
+import Pagination from '@/components/Pagination'
+import { countPages } from '@/utils/supabase'
+import { PageProps } from '@/utils/types'
+
+// export const revalidate = 60
+export default async function Developers({ params }: PageProps) {
+  const count: number = await countPages('developers')
+  const page: number = Number(params.slug)
+
   return (
     <div className={'mx-auto max-w-3xl px-2 md:px-5'}>
       <div className='mt-2 flex items-center justify-between'>
@@ -23,9 +30,9 @@ export default async function Developers() {
           </Button>
         </div>
       </div>
-      <Suspense fallback={<div></div>}>
-        <Devs></Devs>
-      </Suspense>
+
+      <Devs page={page}></Devs>
+      <Pagination totalPages={count} page={page}></Pagination>
     </div>
   )
 }

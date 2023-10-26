@@ -14,6 +14,21 @@ const supa = () => {
   return createServerComponentClient({ cookies: () => cookieStore })
 }
 
+const countPages = async (table: string): Promise<number> => {
+  const { count, error } = await supa()
+    .from(table)
+    .select('*', { count: 'exact', head: true })
+    .eq('public', true)
+  if (error) return 0
+  return Math.ceil(!count ? 1 : count / 20)
+}
+
+const returnRange = (page: number): [number, number] => {
+  const lastPage = page * 20 - 1
+  const firstPage = lastPage - 19
+  return [firstPage, lastPage]
+}
+
 const getUser = async () => {
   const { data } = await supa().auth.getUser()
   if (data.user) {
@@ -52,11 +67,12 @@ const getCompanyById = async (id: string): Promise<Company> => {
   return data[0]
 }
 
-const getCompanies = async (): Promise<Company[]> => {
+const getCompanies = async (page: number): Promise<Company[]> => {
   const { data, error } = await supa()
     .from('companies')
     .select()
     .order('created_at', { ascending: true })
+    .range(...returnRange(page))
   if (error) throw error.message
   return data
 }
@@ -71,12 +87,13 @@ const getMyDevs = async (): Promise<ExistingDeveloper[]> => {
   if (error) throw error.message
   return data
 }
-const getDevs = async (): Promise<ExistingDeveloper[]> => {
+const getDevs = async (page: number): Promise<ExistingDeveloper[]> => {
   const { data, error } = await supa()
     .from('developers')
-    .select()
+    .select('*', { count: 'exact' })
     .eq('public', true)
     .order('created_at', { ascending: false })
+    .range(...returnRange(page))
   if (error) throw error.message
   return data
 }
@@ -131,7 +148,7 @@ const getJob = async (id: string): Promise<ExistingJob | null> => {
     return null
   }
 }
-const getJobs = async (): Promise<ExistingJob[]> => {
+const getJobs = async (page: number): Promise<ExistingJob[]> => {
   const userData = await getUserData()
   if (userData?.company_id) {
     const myCompany = await getCompanyData()
@@ -141,6 +158,7 @@ const getJobs = async (): Promise<ExistingJob[]> => {
       .filter('my_applies.provider', 'eq', myCompany?.id)
       .eq('public', true)
       .order('created_at', { ascending: false })
+      .range(...returnRange(page))
     if (error) throw error.message
     return data
   } else {
@@ -149,6 +167,7 @@ const getJobs = async (): Promise<ExistingJob[]> => {
       .select('*,  applies(count)')
       .eq('public', true)
       .order('created_at', { ascending: false })
+      .range(...returnRange(page))
     if (error) throw error.message
     return data
   }
@@ -230,4 +249,5 @@ export {
   getAppliesForJob,
   getMyAppliesForJob,
   getJobsIApplied,
+  countPages,
 }

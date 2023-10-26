@@ -9,7 +9,7 @@ import Toast from '@/components/app/Toast'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
-export default function ApplyItem({ apply }: { apply: ApplyTypeWithDev }) {
+export default function MyCandidate({ apply }: { apply: ApplyTypeWithDev }) {
   const router = useRouter()
   const supabase = createClientComponentClient()
 

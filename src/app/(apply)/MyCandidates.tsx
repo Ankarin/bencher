@@ -1,7 +1,7 @@
 import { ApplyTypeWithDev } from '@/utils/types'
-import ApplyItem from '@/app/(apply)/ApplyItem'
+import MyCandidate from '@/app/(apply)/MyCandidate'
 
-export default function ApplyList({
+export default function MyCandidates({
   applies,
 }: {
   applies: ApplyTypeWithDev[]
@@ -9,7 +9,7 @@ export default function ApplyList({
   return (
     <div className='mx-auto my-5 grid max-w-3xl gap-3 '>
       {applies?.map((apply, key) => (
-        <ApplyItem key={key} apply={apply}></ApplyItem>
+        <MyCandidate key={key} apply={apply}></MyCandidate>
       ))}
     </div>
   )

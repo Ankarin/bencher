@@ -1,5 +1,4 @@
 import { Button } from '@/components/landing/Button'
-import { Suspense } from 'react'
 import MyJobsWrapper from '@/app/(jobs)/my-jobs/MyJobsWrapper'
 
 export default async function MyJobs() {
@@ -23,9 +22,7 @@ export default async function MyJobs() {
           </Button>
         </div>
       </div>
-      <Suspense fallback={<div></div>}>
-        <MyJobsWrapper></MyJobsWrapper>
-      </Suspense>
+      <MyJobsWrapper></MyJobsWrapper>
     </main>
   )
 }

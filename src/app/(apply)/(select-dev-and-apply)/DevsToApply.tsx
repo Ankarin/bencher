@@ -2,7 +2,7 @@ import { ExistingDeveloper } from '@/utils/types'
 
 import { useContext } from 'react'
 import { zust } from '@/store'
-import { AppliedDevsContext } from '@/app/(apply)/Apply'
+import { AppliedDevsContext } from '@/app/(apply)/(select-dev-and-apply)/Apply'
 import DevCard from '@/app/(developers)/DevCard'
 
 export default function DevsToApply() {
