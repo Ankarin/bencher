@@ -548,7 +548,7 @@ export default function DevForm({
                   className='block text-sm leading-6 text-gray-900'
                 >
                   <span className={'font-semibold'}>ASAP - </span> Ready to
-                  start within 2 days.
+                  start ASAP.
                 </label>
               </div>
 

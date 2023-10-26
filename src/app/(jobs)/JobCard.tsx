@@ -3,6 +3,7 @@ import { ExistingJob } from '@/utils/types'
 import Link from 'next/link'
 import { Tooltip } from 'react-tooltip'
 import { Button } from '@/components/landing/Button'
+import { formatDate } from '@/utils/utils'
 
 export default function JobCard({
   job,
@@ -43,7 +44,7 @@ export default function JobCard({
             <>
               <a
                 data-tooltip-id='my-tooltip'
-                data-tooltip-content='Looking to hire within 2 days.'
+                data-tooltip-content='Looking to hire ASAP.'
               >
                 <span className='mr-2 inline-flex items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xxs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
                   ASAP
@@ -68,9 +69,20 @@ export default function JobCard({
           ) : (
             ''
           )}
+          <>
+            <a
+              data-tooltip-id='my-tooltip'
+              data-tooltip-content='Job posting date'
+            >
+              <span className='mr-2 inline-flex items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xxs font-medium text-green-700 ring-1 ring-inset ring-green-600/10'>
+                {formatDate(String(job.created_at))}
+              </span>
+            </a>
+            <Tooltip id='my-tooltip' />
+          </>
         </p>
         <p className='text-base font-bold text-green-700 sm:text-xl'>
-          {job.rate ? `Up to $${job.rate}/hr` : ''}{' '}
+          {job.rate ? `Up to $${job.rate}/hr` : ''}
         </p>
       </div>
 

@@ -426,7 +426,7 @@ export default function JobForm({
                   className='block text-sm leading-6 text-gray-900'
                 >
                   <span className={'font-semibold'}>ASAP - </span> Need to start
-                  within 2 days.
+                  ASAP.
                 </label>
               </div>
               <div className='flex  items-center gap-x-3'>
