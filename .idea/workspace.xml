@@ -5,37 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Pagination.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/settings/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_10_2023_14_52_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_10_2023_14_52__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_10_2023_14_53_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_10_2023_14_53__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/Apply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/(select-dev-and-apply)/Apply.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/ApplyItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/MyCandidate.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/ApplyList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/MyCandidates.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/ApplyModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/(select-dev-and-apply)/ApplyModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/DevsToApply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/(select-dev-and-apply)/DevsToApply.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/SelectDev.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/(select-dev-and-apply)/SelectDevBtn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/SelectToApply.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(apply)/my-applies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/my-applies/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/forgotpass/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/companies/CompaniesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/companies/CompaniesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/companies/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/company/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/edit-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/edit-company/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/my-company/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developers/Devs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developers/Devs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developers/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/my-devs/MyDevelopers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/my-devs/MyDevelopers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/my-devs/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/Candidates.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/Candidates.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/job/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/jobs/JobsWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/jobs/JobsWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/jobs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/jobs/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/my-jobs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/my-jobs/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/CallToAction.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/CallToAction.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landing/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/Hero.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +207,9 @@
       <workItem from="1698315052717" duration="231000" />
       <workItem from="1698315293425" duration="302000" />
       <workItem from="1698315609412" duration="76000" />
-      <workItem from="1698315696256" duration="4412000" />
+      <workItem from="1698315696256" duration="5888000" />
+      <workItem from="1698332150660" duration="738000" />
+      <workItem from="1698332906805" duration="4486000" />
     </task>
     <servers />
   </component>

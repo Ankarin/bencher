@@ -29,6 +29,7 @@
     "next": "^13.5.4",
     "react": "^18.2.0",
     "react-create": "^1.0.2",
+    "react-detect-click-outside": "^1.1.7",
     "react-dom": "^18.2.0",
     "react-select": "^5.7.5",
     "react-toastify": "^9.1.3",

@@ -1,6 +1,7 @@
 'use client'
 import { Fragment, useEffect } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure, Menu, Transition, Popover } from '@headlessui/react'
+import { useDetectClickOutside } from 'react-detect-click-outside'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image, { ImageLoaderProps } from 'next/image'
 import { Button } from '@/components/landing/Button'
@@ -10,7 +11,14 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { zust } from '@/store'
 import { SmallLogo } from '@/components/SmallLogo'
 import profilePic from '@/images/profile.png'
-
+import {
+  DocumentTextIcon,
+  UserIcon,
+  ClipboardDocumentListIcon,
+  SquaresPlusIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from '@heroicons/react/24/outline'
 import { User, Company, ExistingDeveloper } from '@/utils/types'
 
 interface AppHeaderProps {
@@ -41,6 +49,33 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
     await supabase.auth.signOut()
     router.refresh()
   }
+
+  const MyCompanyLinks = [
+    {
+      name: 'My Company',
+      description: 'Edit information about your organisation.',
+      href: '/my-company',
+      icon: DocumentTextIcon,
+    },
+    {
+      name: 'My Developers',
+      description: 'Add and edit profiles of developers from your company.',
+      href: '/my-devs',
+      icon: UserIcon,
+    },
+    {
+      name: 'My Jobs',
+      description: 'Post and edit jobs, see who applied.',
+      href: '/my-jobs',
+      icon: ClipboardDocumentListIcon,
+    },
+    {
+      name: 'My applies',
+      description: 'Check and edit your applies.',
+      href: '/my-applies',
+      icon: SquaresPlusIcon,
+    },
+  ]
 
   if (
     pathname !== '/login' &&
@@ -80,35 +115,83 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                       >
                         Companies
                       </Link>
-                      {user ? (
-                        <div className='just flex w-full space-x-4'>
-                          <Link
-                            href='/my-devs'
-                            className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
-                          >
-                            My Developers
-                          </Link>
-                          <Link
-                            href='/my-jobs'
-                            className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
-                          >
-                            My Jobs
-                          </Link>
-                          <Link
-                            href='/my-company'
-                            className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
-                          >
-                            My Company
-                          </Link>
-                          <Link
-                            href='/my-applies'
-                            className='rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
-                          >
-                            My Applies
-                          </Link>
-                        </div>
-                      ) : (
-                        ''
+                      {user && (
+                        ///// pc view menu for users who are loged in
+                        <Popover.Group className='hidden lg:flex lg:gap-x-12'>
+                          <Popover className='relative flex items-center'>
+                            {({ open, close }) => {
+                              // eslint-disable-next-line react-hooks/rules-of-hooks
+                              const ref = useDetectClickOutside({
+                                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                // @ts-ignore
+                                onTriggered: close,
+                              })
+                              return (
+                                <>
+                                  <Popover.Button className='flex items-center gap-x-1 text-sm font-medium leading-6 text-gray-900 focus:outline-none'>
+                                    My Company
+                                    {!open ? (
+                                      <ChevronDownIcon
+                                        className='h-5 w-5 flex-none text-gray-400'
+                                        aria-hidden='true'
+                                      />
+                                    ) : (
+                                      <ChevronUpIcon
+                                        className='h-5 w-5 flex-none text-gray-400'
+                                        aria-hidden='true'
+                                      />
+                                    )}
+                                  </Popover.Button>
+
+                                  <Transition
+                                    as={Fragment}
+                                    enter='transition ease-out duration-200'
+                                    enterFrom='opacity-0 translate-y-1'
+                                    enterTo='opacity-100 translate-y-0'
+                                    leave='transition ease-in duration-150'
+                                    leaveFrom='opacity-100 translate-y-0'
+                                    leaveTo='opacity-0 translate-y-1'
+                                  >
+                                    <Popover.Panel
+                                      ref={ref}
+                                      className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5'
+                                    >
+                                      <div className='p-4'>
+                                        {MyCompanyLinks.map((item) => (
+                                          <div
+                                            key={item.name}
+                                            className='group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50'
+                                          >
+                                            <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
+                                              <item.icon
+                                                className='h-6 w-6 text-gray-600 group-hover:text-indigo-600'
+                                                aria-hidden='true'
+                                              />
+                                            </div>
+                                            <div className='flex-auto'>
+                                              <Link
+                                                onClick={close}
+                                                href={item.href}
+                                                className='block font-semibold text-gray-900'
+                                              >
+                                                {item.name}
+                                                <span className='absolute inset-0' />
+                                              </Link>
+                                              <p className='mt-1 text-gray-600'>
+                                                {item.description}
+                                              </p>
+                                            </div>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </Popover.Panel>
+                                  </Transition>
+                                </>
+                              )
+                            }}
+                          </Popover>
+                        </Popover.Group>
+                        //end
                       )}
                     </div>
                   </div>
@@ -188,13 +271,26 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                           <Menu.Item>
                             {({ active }) => (
                               <p
+                                onClick={() => router.push('/settings')}
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block cursor-pointer px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                Settings
+                              </p>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <p
                                 onClick={signOut}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
                                   'block cursor-pointer px-4 py-2 text-sm text-gray-700'
                                 )}
                               >
-                                Sign out
+                                Sign Out
                               </p>
                             )}
                           </Menu.Item>
@@ -230,6 +326,7 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                   Companies
                 </Disclosure.Button>
               </div>
+
               <div className='border-t border-gray-700 pb-3 pt-4'>
                 {!user ? (
                   <div className='mt-3 space-y-1 px-2'>
@@ -286,6 +383,13 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                     </Disclosure.Button>
 
                     <div className={'pt-5'}>
+                      <Disclosure.Button
+                        as='a'
+                        href='/settings'
+                        className='text-base block rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white'
+                      >
+                        Settings
+                      </Disclosure.Button>
                       <Disclosure.Button
                         onClick={signOut}
                         className='text-base block rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white'

@@ -1,9 +1,9 @@
-'use client';
-import Image from 'next/image';
+'use client'
+import Image from 'next/image'
 
-import { Button } from '@/components/landing/Button';
-import { Container } from '@/components/landing/Container';
-import backgroundImage from '@/images/background-call-to-action.jpg';
+import { Button } from '@/components/landing/Button'
+import { Container } from '@/components/landing/Container'
+import backgroundImage from '@/images/background-call-to-action.jpg'
 
 export function CallToAction() {
   return (
@@ -28,11 +28,17 @@ export function CallToAction() {
             Looking for assistance with your project or want to find new
             opportunities for your team?
           </p>
-          <Button href='/register' variant='solid' loading={false} color='white' className='mt-10'>
+          <Button
+            href='/developers'
+            variant='solid'
+            loading={false}
+            color='white'
+            className='mt-10'
+          >
             Get started
           </Button>
         </div>
       </Container>
     </section>
-  );
+  )
 }
