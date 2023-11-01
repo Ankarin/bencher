@@ -45,8 +45,27 @@ const getCompanyData = async (company_id: string) => {
 
 const supaDownload = async (url: string) => {
   const { data } = supabase.storage.from('bitbencher').getPublicUrl(url)
-
   window.open(data.publicUrl)
+}
+
+const updatePassword = async (pass: string) => {
+  const { error } = await supabase.auth.updateUser({
+    password: pass,
+  })
+  return !error
+}
+
+const changeName = async (name: string) => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  if (!user) return
+
+  const { error } = await supabase
+    .from('users')
+    .update({ first_name: name })
+    .eq('id', user.id)
+  return !error
 }
 
 export {
@@ -55,4 +74,6 @@ export {
   createCompany,
   getCompanyData,
   supaDownload,
+  updatePassword,
+  changeName,
 }

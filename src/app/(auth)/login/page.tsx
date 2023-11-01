@@ -1,15 +1,15 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import { Button } from '@/components/landing/Button';
-import { TextField } from '@/components/landing/Fields';
-import { Logo } from '@/components/landing/Logo';
-import { SlimLayout } from '@/components/landing/SlimLayout';
-import React from 'react';
-import { PageProps } from '@/utils/types';
+import { Button } from '@/components/landing/Button'
+import { TextField } from '@/components/landing/Fields'
+import { Logo } from '@/components/landing/Logo'
+import { SlimLayout } from '@/components/landing/SlimLayout'
+import React from 'react'
+import { PageProps } from '@/utils/types'
 
 export const metadata = {
   title: 'Sign In',
-};
+}
 
 export default function Login({ searchParams }: PageProps): React.ReactNode {
   return (
@@ -76,5 +76,5 @@ export default function Login({ searchParams }: PageProps): React.ReactNode {
         </form>
       </SlimLayout>
     </div>
-  );
+  )
 }

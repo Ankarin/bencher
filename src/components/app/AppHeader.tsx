@@ -2,7 +2,11 @@
 import { Fragment, useEffect } from 'react'
 import { Disclosure, Menu, Transition, Popover } from '@headlessui/react'
 import { useDetectClickOutside } from 'react-detect-click-outside'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ChatBubbleLeftIcon,
+} from '@heroicons/react/24/outline'
 import Image, { ImageLoaderProps } from 'next/image'
 import { Button } from '@/components/landing/Button'
 import { usePathname, useRouter } from 'next/navigation'
@@ -20,6 +24,7 @@ import {
   ChevronUpIcon,
 } from '@heroicons/react/24/outline'
 import { User, Company, ExistingDeveloper } from '@/utils/types'
+import Notifications from '@/components/app/Notifications'
 
 interface AppHeaderProps {
   user: User | null
@@ -127,7 +132,7 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                                 onTriggered: close,
                               })
                               return (
-                                <>
+                                <div className={'flex justify-between'}>
                                   <Popover.Button className='flex items-center gap-x-1 text-sm font-medium leading-6 text-gray-900 focus:outline-none'>
                                     My Company
                                     {!open ? (
@@ -186,7 +191,16 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                                       </div>
                                     </Popover.Panel>
                                   </Transition>
-                                </>
+                                  <Link
+                                    href='/messages'
+                                    className='ml-3 rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
+                                  >
+                                    <span className={'teims-center flex'}>
+                                      <ChatBubbleLeftIcon className='mr-1 mt-1 h-5 w-5 flex-none ' />
+                                      Messages
+                                    </span>
+                                  </Link>
+                                </div>
                               )
                             }}
                           </Popover>
@@ -216,24 +230,27 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                     >
                       <div>
                         {user ? (
-                          <Menu.Button className='relative flex rounded-full border-none  text-sm  font-medium outline-none focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
-                            <span className='absolute -inset-1.5 outline-none' />
-                            <span className='sr-only'>Open user menu</span>
-                            <span className={'pr-3 pt-1 outline-none'}>
-                              {' '}
-                              {user.first_name}{' '}
-                              {company ? `@${company.name}` : ''}
-                            </span>
+                          <div className={'flex items-center'}>
+                            <Notifications />
+                            <Menu.Button className='relative flex rounded-full border-none  text-sm  font-medium outline-none focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                              <span className='absolute -inset-1.5 outline-none' />
+                              <span className='sr-only'>Open user menu</span>
+                              <span className={'pr-3 pt-1 outline-none'}>
+                                {' '}
+                                {user.first_name}{' '}
+                                {company ? `@${company.name}` : ''}
+                              </span>
 
-                            <Image
-                              loader={({ src }: ImageLoaderProps) => src}
-                              className='h-8 w-8 rounded-full'
-                              src={profilePic}
-                              alt=''
-                              width='30'
-                              height='30'
-                            />
-                          </Menu.Button>
+                              <Image
+                                loader={({ src }: ImageLoaderProps) => src}
+                                className='h-8 w-8 rounded-full'
+                                src={profilePic}
+                                alt=''
+                                width='30'
+                                height='30'
+                              />
+                            </Menu.Button>
+                          </div>
                         ) : (
                           <div className='flex'>
                             <Button
@@ -267,7 +284,7 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                         leaveFrom='transform opacity-100 scale-100'
                         leaveTo='transform opacity-0 scale-95'
                       >
-                        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                        <Menu.Items className='absolute right-0 z-10 mt-5 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                           <Menu.Item>
                             {({ active }) => (
                               <p
@@ -381,22 +398,36 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                     >
                       My Applies
                     </Disclosure.Button>
+                    <br />
+                    <Disclosure.Button
+                      as='a'
+                      href='/messages'
+                      className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
+                    >
+                      Messages
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      as='a'
+                      href='/notifications'
+                      className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
+                    >
+                      Notifications
+                    </Disclosure.Button>
 
-                    <div className={'pt-5'}>
-                      <Disclosure.Button
-                        as='a'
-                        href='/settings'
-                        className='text-base block rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white'
-                      >
-                        Settings
-                      </Disclosure.Button>
-                      <Disclosure.Button
-                        onClick={signOut}
-                        className='text-base block rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white'
-                      >
-                        Sign Out
-                      </Disclosure.Button>
-                    </div>
+                    <br />
+                    <Disclosure.Button
+                      as='a'
+                      href='/settings'
+                      className='text-base block rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white'
+                    >
+                      Settings
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      onClick={signOut}
+                      className='text-base block rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white'
+                    >
+                      Sign Out
+                    </Disclosure.Button>
                   </div>
                 )}
               </div>

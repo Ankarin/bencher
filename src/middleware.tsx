@@ -60,5 +60,6 @@ export const config = {
     '/job/:id*',
     '/edit-dev/:id*',
     '/my-applies',
+    '/settings',
   ],
 }
