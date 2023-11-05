@@ -7,6 +7,10 @@ import {
   User,
   ExistingJob,
   ApplyTypeWithDev,
+  Message,
+  ChatUser,
+  ChatType,
+  ExtendedChatType,
 } from '@/utils/types'
 
 const supa = () => {
@@ -233,6 +237,74 @@ const getJobsIApplied = async (): Promise<ExistingJob[]> => {
   }
 }
 
+const getMessages = async (chatId: string): Promise<Message[] | []> => {
+  const { data, error } = await supa()
+    .from('messages')
+    .select()
+    .eq('chat', chatId)
+  if (error) {
+    return []
+  } else {
+    return data
+  }
+}
+
+const getChatUser = async (id: string): Promise<ChatUser | null> => {
+  const { data, error } = await supa()
+    .from('users')
+    .select('id, first_name, last_name, company_id(id, logo_url, name)')
+    .eq('company_id', id)
+
+  if (error) return null
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return data[0]
+}
+
+const getChat = async (
+  sender_id: string,
+  receiver_id: string
+): Promise<ChatType | null> => {
+  const { data, error } = await supa()
+    .from('chats')
+    .select()
+    .or(`user_1.eq.${sender_id}, user_2.eq.${sender_id}`)
+  if (error) return null
+  if (data && data.length > 0) {
+    const filtered = data.filter((chat) => {
+      if (chat.user_1 === receiver_id) {
+        return chat.user_2 === sender_id
+      } else if (chat.user_2 === receiver_id) {
+        return chat.user_1 === sender_id
+      }
+    })
+    return filtered[0]
+  } else {
+    return null
+  }
+}
+
+const getMyChats = async (my_id: string): Promise<ExtendedChatType[] | []> => {
+  const { data, error } = await supa()
+    .from('chats')
+    .select(
+      '*, user_1(id, first_name, last_name, company_id(id, logo_url, name)), user_2(id, first_name, last_name, company_id(id, logo_url, name))'
+    )
+    .or(`user_1.eq.${my_id}, user_2.eq.${my_id}`)
+
+  if (error) {
+    return []
+  } else {
+    return data?.map((chat) => {
+      if (chat.user_1.id === my_id) {
+        return { ...chat, me: chat.user_1, friend: chat.user_2 }
+      } else {
+        return { ...chat, me: chat.user_2, friend: chat.user_1 }
+      }
+    })
+  }
+}
+
 export {
   getUser,
   getUserData,
@@ -250,4 +322,8 @@ export {
   getMyAppliesForJob,
   getJobsIApplied,
   countPages,
+  getMessages,
+  getChatUser,
+  getChat,
+  getMyChats,
 }

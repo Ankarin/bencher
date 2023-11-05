@@ -9,8 +9,6 @@ import Toast from '@/components/app/Toast'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
-// import sendMessage from '@/utils/sendMessage'
-
 function NewMessage({
   receiver,
   sender,

@@ -1,45 +1,25 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import Chat from '@/app/(messages)/messages/(chat)/Chat'
 import NewMessage from '@/app/(messages)/messages/(chat)/NewMessage'
-import { PageProps, ChatUser } from '@/utils/types'
+import { PageProps, ChatUser, User } from '@/utils/types'
 import ChatHeader from '@/app/(messages)/messages/(chat)/ChatHeader'
-import { getChatUser, getMessages, getChat } from '@/utils/supabaseClient'
+import { getChatUser, getMessages, getChat } from '@/utils/supabase'
 
-import { zust } from '@/store'
 import { ChatType } from '@/utils/types'
 import { Message } from '@/utils/types'
+import { getUserData } from '@/utils/supabase'
 
-function Messages({ params }: PageProps) {
-  const userData = zust((state) => state.user)
-  const [receiver, setReceiver] = useState<ChatUser | null>(null)
+async function Messages({ params }: PageProps) {
+  const userData: User | null = await getUserData()
+  const receiver: ChatUser | null = await getChatUser(params?.slug as string)
 
-  const [chatId, setChatId] = useState<string | null>(null)
-  const [messages, setMessages] = useState<Message[] | []>([])
-  const fetchReceiver = async () => {
-    const receiver: ChatUser | null = await getChatUser(params?.slug as string)
-    setReceiver(receiver)
-  }
-  const fetchChat = async () => {
-    const chat: ChatType | null =
-      receiver?.id && userData?.id
-        ? await getChat(receiver.id, userData.id)
-        : null
-    const messages: Message[] | [] = chat?.id ? await getMessages(chat.id) : []
-
-    setChatId(chat?.id || null)
-    setMessages(messages)
-  }
-
-  const fetchAll = async () => {
-    await fetchReceiver()
-    await fetchChat()
-  }
-
-  useEffect(() => {
-    fetchAll()
-  }, [userData])
+  const chat: ChatType | null =
+    receiver?.id && userData?.id
+      ? await getChat(receiver.id, userData.id)
+      : null
+  const messages: Message[] | [] = chat?.id ? await getMessages(chat.id) : []
+  const chatId: string | null = chat?.id || null
 
   return (
     <>

@@ -1,12 +1,20 @@
-'use client'
-import React from 'react'
+import React, { Suspense } from 'react'
 import Chats from '@/app/(messages)/messages/(chats)/Chats'
+import { ExtendedChatType } from '@/utils/types'
+import { getMyChats } from '@/utils/supabase'
+import { getUserData } from '@/utils/supabase'
+import { User } from '@/utils/types'
 
-export default function ChatLayout({
+export default async function ChatLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const userData: User | null = await getUserData()
+  const initialChats: ExtendedChatType[] | [] = userData?.id
+    ? await getMyChats(userData?.id)
+    : []
+
   return (
     <div
       className={
@@ -14,13 +22,13 @@ export default function ChatLayout({
       }
     >
       <div className={'h-full pt-16 md:grid  md:grid-cols-7'}>
-        <Chats />
+        <Chats initialChats={initialChats} />
         <div
           className={
             'col-span-5 flex flex-col items-center justify-between bg-blue-50/50 pb-12'
           }
         >
-          {children}
+          <Suspense>{children}</Suspense>
         </div>
       </div>
     </div>
