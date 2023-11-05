@@ -90,7 +90,13 @@ export default function CompanyCard({
         {isMine ? (
           ''
         ) : (
-          <Button variant='solid' className='' loading={false} color='blue'>
+          <Button
+            href={`/messages/${company.id}`}
+            variant='solid'
+            className=''
+            loading={false}
+            color='blue'
+          >
             Message
           </Button>
         )}

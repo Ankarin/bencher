@@ -31,7 +31,7 @@ export default function MyCandidate({ apply }: { apply: ApplyTypeWithDev }) {
   }
   return (
     <>
-      <Toast></Toast>
+      <Toast />
       <ConfirmDelete
         open={openConfirm}
         setOpen={setOpenConfirm}

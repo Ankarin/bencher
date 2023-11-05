@@ -61,5 +61,7 @@ export const config = {
     '/edit-dev/:id*',
     '/my-applies',
     '/settings',
+    '/messages/:id*',
+    '/notifications',
   ],
 }

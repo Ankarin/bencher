@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
   async redirects() {
     return [
@@ -19,9 +19,7 @@ const nextConfig = {
       },
     ]
   },
-  experimental: {
-    serverActions: true,
-  },
+
   images: {
     loader: 'custom',
     loaderFile: './loader.js',

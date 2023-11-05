@@ -51,8 +51,8 @@ export default function Apply({
     <ApplyContext.Provider value={true}>
       <SelectDevContext.Provider value={selectDev}>
         <AppliedDevsContext.Provider value={applies ?? []}>
+          <Toast />
           <>
-            <Toast></Toast>
             <Button
               color='blue'
               loading={false}
