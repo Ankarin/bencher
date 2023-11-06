@@ -91,7 +91,7 @@ export default function CompanyCard({
           ''
         ) : (
           <Button
-            href={`/messages/${company.id}`}
+            href={`/messages/${company.admin}`}
             variant='solid'
             className=''
             loading={false}

@@ -1,3 +1,9 @@
+@import '~stream-chat-react/dist/css/v2/index.css';
+
+.str-chat__file-input-container {
+  display: none !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

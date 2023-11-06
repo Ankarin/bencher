@@ -5,13 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/(messages)/messages/(components)/ChannelPreviewMessenger.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/stream.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chat)/NewMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(messages)/messages/(chat)/NewMessage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chats)/Chats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(messages)/messages/(chats)/Chats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chat)/Chat.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chat)/ChatHeader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chat)/NewMessage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chats)/ChatItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chats)/Chats.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/[[...slug]]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(messages)/messages/[[...slug]]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(messages)/messages/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/tailwind.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,11 +107,11 @@
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages\[[...slug]]" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages" />
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages\(chat)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages\(chats)" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages\(messages)" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(apply)" />
     </key>
   </component>
   <component name="RunManager">
@@ -255,7 +265,9 @@
       <workItem from="1699169696162" duration="95000" />
       <workItem from="1699169802189" duration="11924000" />
       <workItem from="1699189843896" duration="4347000" />
-      <workItem from="1699196522787" duration="3324000" />
+      <workItem from="1699196522787" duration="9184000" />
+      <workItem from="1699253296867" duration="1976000" />
+      <workItem from="1699256308807" duration="3611000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 'use client'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { Company, ExtendedChatType, Message, User } from '@/utils/types'
+import { Company, Message, User } from '@/utils/types'
 
 const supabase = createClientComponentClient()
 

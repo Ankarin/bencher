@@ -34,6 +34,8 @@
     "react-select": "^5.7.5",
     "react-toastify": "^9.1.3",
     "react-tooltip": "^5.21.3",
+    "stream-chat": "^8.14.1",
+    "stream-chat-react": "^10.16.2",
     "uuid": "^9.0.0",
     "zustand": "^4.4.1"
   },

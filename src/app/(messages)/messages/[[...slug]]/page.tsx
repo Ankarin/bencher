@@ -1,53 +1,100 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
+import { Channel as StreamChannel, StreamChat } from 'stream-chat'
+import {
+  Chat,
+  Channel,
+  Window,
+  ChannelHeader,
+  MessageList,
+  MessageInput,
+  Thread,
+  ChannelList,
+} from 'stream-chat-react'
+import { ChannelPreviewMessenger } from '../(components)/ChannelPreviewMessenger'
 
-import Chat from '@/app/(messages)/messages/(chat)/Chat'
-import NewMessage from '@/app/(messages)/messages/(chat)/NewMessage'
-import { PageProps, ChatUser, User } from '@/utils/types'
-import ChatHeader from '@/app/(messages)/messages/(chat)/ChatHeader'
-import { getChatUser, getMessages, getChat } from '@/utils/supabase'
+import { useParams, useRouter } from 'next/navigation'
 
-import { ChatType } from '@/utils/types'
-import { Message } from '@/utils/types'
-import { getUserData } from '@/utils/supabase'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { zust } from '@/store'
+import { createUserToken } from '@/utils/stream'
+import { uuid } from '@supabase/supabase-js/dist/main/lib/helpers'
 
-async function Messages({ params }: PageProps) {
-  const userData: User | null = await getUserData()
-  const receiver: ChatUser | null = await getChatUser(params?.slug as string)
+// import { zust } from '@/store'
 
-  const chat: ChatType | null =
-    receiver?.id && userData?.id
-      ? await getChat(receiver.id, userData.id)
-      : null
-  const messages: Message[] | [] = chat?.id ? await getMessages(chat.id) : []
-  const chatId: string | null = chat?.id || null
+function Messages() {
+  const [client, setClient] = useState<StreamChat | null>(null)
+  const [channel, setChannel] = useState<StreamChannel | null>(null)
+  const [friend, setFriend] = useState(null)
+  const userData = zust((state) => state.user)
+
+  const params = useParams()
+  const router = useRouter()
+
+  const supabase = createClientComponentClient()
+
+  useEffect(() => {
+    const init = async () => {
+      if (!userData?.id) {
+        return
+      }
+
+      const token = await createUserToken(userData.id)
+
+      const client = StreamChat.getInstance('gasc55sqc9yx')
+      await client.connectUser(
+        {
+          id: userData.id,
+          name: `Mitry 2`,
+        },
+        token
+      )
+      setClient(client)
+
+      if (params.slug && params?.slug[0]) {
+        const { data, error } = await supabase
+          .from('users')
+          .select()
+          .eq('id', params.slug[0])
+        if (error) {
+          router.push('/messages')
+        } else {
+          setFriend(data[0])
+
+          const channel = client.channel('messaging', uuid(), {
+            members: [userData.id, data[0].id],
+          })
+          await channel.create()
+        }
+      }
+    }
+    init()
+  }, [userData])
 
   return (
-    <>
-      {receiver && userData && (
-        <div className={'flex h-[calc(100vh-100px)] w-full flex-col'}>
-          <ChatHeader receiver={receiver}></ChatHeader>
-          <div className={'flex-grow overflow-hidden'}>
-            <div
-              className={
-                'h-full overflow-x-hidden overflow-y-scroll px-10 pt-5'
-              }
-            >
-              {chatId && messages.length > 0 && (
-                <Chat
-                  receiver={receiver}
-                  me={userData}
-                  chatId={chatId}
-                  startingMessages={messages}
-                ></Chat>
-              )}
+    <div className={'mx-auto h-[calc(100vh-100px)] max-w-7xl'}>
+      {client && (
+        <Chat client={client}>
+          <div className={' h-[calc(100vh-100px)]  '}>
+            <div className={'w-96 max-w-full'}>
+              <ChannelList Preview={ChannelPreviewMessenger} />
+            </div>
+            <div className={'w-full '}>
+              <Channel>
+                <Window>
+                  <ChannelHeader />
+                  <div className={' h-[calc(100vh-220px)] overflow-hidden'}>
+                    <MessageList />
+                  </div>
+                  <MessageInput noFiles={true} />
+                </Window>
+                <Thread />
+              </Channel>
             </div>
           </div>
-          <div className={'mt-5 flex-none'}>
-            <NewMessage receiver={receiver} sender={userData} chatId={chatId} />
-          </div>
-        </div>
+        </Chat>
       )}
-    </>
+    </div>
   )
 }
 
