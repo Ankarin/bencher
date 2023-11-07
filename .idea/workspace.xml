@@ -5,23 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(messages)/messages/(components)/ChannelPreviewMessenger.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/stream.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(developers)/developers/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/app/Filter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(companies)/CompanyCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chat)/Chat.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chat)/ChatHeader.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chat)/NewMessage.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chats)/ChatItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(chats)/Chats.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/[[...slug]]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(messages)/messages/[[...slug]]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/tailwind.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developers/Devs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developers/Devs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(developers)/developers/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/developers/[...slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/(components)/ChannelPreviewMessenger.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(messages)/messages/[[...slug]]/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/stream.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabaseClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +51,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -107,11 +105,11 @@
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(developers)\developers" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages\[[...slug]]" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)" />
       <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages\(chat)" />
-      <recent name="C:\Users\ankar\Desktop\bencha\bencher\src\app\(messages)\messages\(chats)" />
     </key>
   </component>
   <component name="RunManager">
@@ -267,7 +265,8 @@
       <workItem from="1699189843896" duration="4347000" />
       <workItem from="1699196522787" duration="9184000" />
       <workItem from="1699253296867" duration="1976000" />
-      <workItem from="1699256308807" duration="3611000" />
+      <workItem from="1699256308807" duration="10350000" />
+      <workItem from="1699270868177" duration="2301000" />
     </task>
     <servers />
   </component>
@@ -302,11 +301,6 @@
           <url>file://$PROJECT_DIR$/src/app/(developers)/DevForm.tsx</url>
           <line>490</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/utils/supabase.ts</url>
-          <line>149</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

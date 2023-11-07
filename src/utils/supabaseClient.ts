@@ -1,6 +1,6 @@
 'use client'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { Company, Message, User } from '@/utils/types'
+import { Company, User } from '@/utils/types'
 
 const supabase = createClientComponentClient()
 
@@ -68,20 +68,6 @@ const changeName = async (name: string) => {
   return !error
 }
 
-const getLastMessage = async (chatId: string): Promise<Message | null> => {
-  const { data, error } = await supabase
-    .from('messages')
-    .select()
-    .eq('chat', chatId)
-    .order('created_at', { ascending: false })
-    .limit(1)
-  if (error) {
-    return null
-  } else {
-    return data[0]
-  }
-}
-
 export {
   updateUserData,
   updateCompany,
@@ -90,5 +76,4 @@ export {
   supaDownload,
   updatePassword,
   changeName,
-  getLastMessage,
 }

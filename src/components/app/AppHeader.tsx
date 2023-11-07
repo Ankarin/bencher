@@ -2,11 +2,7 @@
 import { Fragment, useEffect } from 'react'
 import { Disclosure, Menu, Transition, Popover } from '@headlessui/react'
 import { useDetectClickOutside } from 'react-detect-click-outside'
-import {
-  Bars3Icon,
-  XMarkIcon,
-  ChatBubbleLeftIcon,
-} from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image, { ImageLoaderProps } from 'next/image'
 import { Button } from '@/components/landing/Button'
 import { usePathname, useRouter } from 'next/navigation'
@@ -191,15 +187,6 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                                       </div>
                                     </Popover.Panel>
                                   </Transition>
-                                  <Link
-                                    href='/messages'
-                                    className='ml-3 rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900'
-                                  >
-                                    <span className={'teims-center flex'}>
-                                      <ChatBubbleLeftIcon className='mr-1 mt-1 h-5 w-5 flex-none ' />
-                                      Messages
-                                    </span>
-                                  </Link>
                                 </div>
                               )
                             }}
@@ -399,13 +386,6 @@ export default function AppHeader({ user, company, myDevs }: AppHeaderProps) {
                       My Applies
                     </Disclosure.Button>
                     <br />
-                    <Disclosure.Button
-                      as='a'
-                      href='/messages'
-                      className='text-base block rounded-md px-3 py-2 font-medium  hover:bg-gray-700 hover:text-white'
-                    >
-                      Messages
-                    </Disclosure.Button>
                     <Disclosure.Button
                       as='a'
                       href='/notifications'

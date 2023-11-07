@@ -7,10 +7,7 @@ import {
   User,
   ExistingJob,
   ApplyTypeWithDev,
-  Message,
-  ChatUser,
-  ChatType,
-  ExtendedChatType,
+  DevSearchParams,
 } from '@/utils/types'
 
 const supa = () => {
@@ -91,13 +88,39 @@ const getMyDevs = async (): Promise<ExistingDeveloper[]> => {
   if (error) throw error.message
   return data
 }
-const getDevs = async (page: number): Promise<ExistingDeveloper[]> => {
-  const { data, error } = await supa()
+const getDevs = async (
+  page: number,
+  searchParams: DevSearchParams | null
+): Promise<ExistingDeveloper[]> => {
+  console.log(searchParams)
+
+  // category?: string
+  // english?: string
+  // rate?: string
+  // experience?: string
+  // mainSkills?: string
+
+  let query = supa()
     .from('developers')
     .select('*', { count: 'exact' })
     .eq('public', true)
     .order('created_at', { ascending: false })
     .range(...returnRange(page))
+
+  if (searchParams?.category) {
+    query = query.eq('category', searchParams.category)
+  }
+  if (searchParams?.experience) {
+    query = query.gte('experience', searchParams.experience)
+  }
+  if (searchParams?.mainSkills) {
+    query = query.contains('skills', searchParams.mainSkills.split(','))
+  }
+  if (searchParams?.rate) {
+    query = query.lte('hourly_rate', searchParams.rate)
+  }
+
+  const { data, error } = await query
   if (error) throw error.message
   return data
 }
@@ -116,17 +139,6 @@ const getDev = async (devId: string): Promise<ExistingDeveloper | null> => {
   } else {
     return null
   }
-}
-
-const getDevsByCompany = async (id: string): Promise<ExistingDeveloper[]> => {
-  const { data, error } = await supa()
-    .from('developers')
-    .select()
-    .eq('company', id)
-    .eq('public', true)
-    .order('created_at', { ascending: false })
-  if (error) throw error.message
-  return data
 }
 
 const getJob = async (id: string): Promise<ExistingJob | null> => {
@@ -151,6 +163,18 @@ const getJob = async (id: string): Promise<ExistingJob | null> => {
   } else {
     return null
   }
+}
+
+const getDevsByCompany = async (id: string): Promise<ExistingDeveloper[]> => {
+  const { data, error } = await supa()
+    .from('developers')
+    .select()
+    .eq('company', id)
+    .eq('public', true)
+    .order('created_at', { ascending: false })
+
+  if (error) throw error.message
+  return data
 }
 const getJobs = async (page: number): Promise<ExistingJob[]> => {
   const userData = await getUserData()
@@ -237,74 +261,6 @@ const getJobsIApplied = async (): Promise<ExistingJob[]> => {
   }
 }
 
-const getMessages = async (chatId: string): Promise<Message[] | []> => {
-  const { data, error } = await supa()
-    .from('messages')
-    .select()
-    .eq('chat', chatId)
-  if (error) {
-    return []
-  } else {
-    return data
-  }
-}
-
-const getChatUser = async (id: string): Promise<ChatUser | null> => {
-  const { data, error } = await supa()
-    .from('users')
-    .select('id, first_name, last_name, company_id(id, logo_url, name)')
-    .eq('company_id', id)
-
-  if (error) return null
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return data[0]
-}
-
-const getChat = async (
-  sender_id: string,
-  receiver_id: string
-): Promise<ChatType | null> => {
-  const { data, error } = await supa()
-    .from('chats')
-    .select()
-    .or(`user_1.eq.${sender_id}, user_2.eq.${sender_id}`)
-  if (error) return null
-  if (data && data.length > 0) {
-    const filtered = data.filter((chat) => {
-      if (chat.user_1 === receiver_id) {
-        return chat.user_2 === sender_id
-      } else if (chat.user_2 === receiver_id) {
-        return chat.user_1 === sender_id
-      }
-    })
-    return filtered[0]
-  } else {
-    return null
-  }
-}
-
-const getMyChats = async (my_id: string): Promise<ExtendedChatType[] | []> => {
-  const { data, error } = await supa()
-    .from('chats')
-    .select(
-      '*, user_1(id, first_name, last_name, company_id(id, logo_url, name)), user_2(id, first_name, last_name, company_id(id, logo_url, name))'
-    )
-    .or(`user_1.eq.${my_id}, user_2.eq.${my_id}`)
-
-  if (error) {
-    return []
-  } else {
-    return data?.map((chat) => {
-      if (chat.user_1.id === my_id) {
-        return { ...chat, me: chat.user_1, friend: chat.user_2 }
-      } else {
-        return { ...chat, me: chat.user_2, friend: chat.user_1 }
-      }
-    })
-  }
-}
-
 export {
   getUser,
   getUserData,
@@ -322,8 +278,4 @@ export {
   getMyAppliesForJob,
   getJobsIApplied,
   countPages,
-  getMessages,
-  getChatUser,
-  getChat,
-  getMyChats,
 }

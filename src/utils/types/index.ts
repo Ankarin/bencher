@@ -33,8 +33,8 @@ interface Developer {
   company?: string
   title: string
   description: string
-  hourly_rate: string
-  experience: string
+  hourly_rate: number
+  experience: number
   skills: string[]
   other_languages: string[]
   english: string
@@ -118,46 +118,17 @@ interface ApplyTypeWithDev {
   poster: string
 }
 
-interface ShortCompanyData {
-  id: string
-  logo_url: string
-  name: string
-}
-
-interface ChatUser {
-  created_at?: Date
-  id: string
-  first_name: string
-  last_name: string
-  company_id: ShortCompanyData
-}
-
-interface ChatType {
-  id: string
-  created_at?: Date
-  user_1: string
-  user_2: string
-}
-
-interface ExtendedChatType extends ChatType {
-  me: ChatUser
-  friend: ChatUser
-  last_message: string
-}
-
-interface Message {
-  chat: string | null
-  created_at: Date
-  id: string
-  is_read: boolean | null
-  message: string | null
-  receiver: string | null
-  sender: string | null
-}
-
 type FormSubmit = React.FormEvent<HTMLFormElement>
 
 type EventChange = React.ChangeEvent<HTMLInputElement>
+
+interface DevSearchParams {
+  category?: string
+  english?: string
+  rate?: string
+  experience?: string
+  mainSkills?: string
+}
 
 export type {
   Company,
@@ -172,8 +143,5 @@ export type {
   ApplyType,
   ExistingDeveloper,
   ApplyTypeWithDev,
-  ChatUser,
-  ChatType,
-  Message,
-  ExtendedChatType,
+  DevSearchParams,
 }

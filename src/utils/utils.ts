@@ -1,3 +1,5 @@
+import { englishLevels } from '@/utils/options'
+
 export const selectStyleObject = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -46,4 +48,13 @@ export function formatDate(dateString: string): string {
   } catch (error) {
     return 'Invalid date format'
   }
+}
+
+export const getEnglishNumber = (title: string): number => {
+  englishLevels().map((level: string, index: number) => {
+    if (level === title) {
+      return index
+    }
+  })
+  return 0
 }

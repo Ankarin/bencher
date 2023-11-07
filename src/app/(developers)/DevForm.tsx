@@ -62,11 +62,11 @@ export default function DevForm({
     if (dev) {
       setTitle(dev.title)
       setCategory(dev.category)
-      setExperience(dev.experience)
+      setExperience(dev.experience.toString())
       setLocation(dev.country)
       setAsap(dev.asap)
       setEnglish(dev.english)
-      setRate(dev.hourly_rate)
+      setRate(dev.hourly_rate.toString())
       setOtherLanguages(
         dev.other_languages.map((item) => {
           return { value: item, label: item }
@@ -157,14 +157,14 @@ export default function DevForm({
       company: zustMyCompany ? zustMyCompany.id : '',
       title,
       category,
-      experience: experience,
+      experience: parseInt(experience),
       country: location,
       region: getRegion(location),
       asap,
       english,
       skills: mainSkills.map((item) => item.value),
       other_languages: otherLanguages.map((item) => item.value),
-      hourly_rate: rate,
+      hourly_rate: parseInt(rate),
       description,
       cv: { url: cv.url, name: cv.filename },
       public: isPublic,
