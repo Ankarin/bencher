@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1c8439cd-fdcb-4aab-a64e-5ac7f9897265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(apply)/(select-dev-and-apply)/SelectDevBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(apply)/(select-dev-and-apply)/SelectDevBtn.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(developers)/DevForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(jobs)/JobForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(jobs)/JobForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/Filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/Filter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/landing/PrimaryFeatures.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/options.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/supabase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/AppHeader.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +265,7 @@
       <workItem from="1699473685995" duration="629000" />
       <workItem from="1699523127154" duration="925000" />
       <workItem from="1699524487974" duration="489000" />
-      <workItem from="1699525004619" duration="2060000" />
+      <workItem from="1699525004619" duration="3350000" />
     </task>
     <servers />
   </component>
@@ -305,7 +298,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/(developers)/DevForm.tsx</url>
-          <line>492</line>
+          <line>495</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

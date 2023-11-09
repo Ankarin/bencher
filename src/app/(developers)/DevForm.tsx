@@ -132,7 +132,7 @@ export default function DevForm({
     if (error) {
       toast.error('Error adding developer!')
     }
-    router.refresh()
+
     if (data) {
       router.push(`/edit-dev/${data[0].id}`)
       toast.success('New developer added!')
@@ -173,8 +173,10 @@ export default function DevForm({
     }
     if (isNew) {
       await supaAddDev(developer)
+      return true
     } else {
       await supaEditDev(developer)
+      return true
     }
   }
 
@@ -203,11 +205,12 @@ export default function DevForm({
   }
 
   const save = async (e: React.FormEvent<HTMLFormElement>) => {
+    if (disabledSave) return
     setDisabledSave(true)
+
     e.preventDefault()
     await uploadCv()
     await saveDeveloper()
-    setDisabledSave(false)
   }
 
   const handlePublic = (state: boolean) => {
