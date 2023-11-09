@@ -119,6 +119,9 @@ const getDevs = async (
   if (searchParams?.rate) {
     query = query.lte('hourly_rate', searchParams.rate)
   }
+  if (searchParams?.english) {
+    query = query.gte('english', searchParams.english)
+  }
 
   const { data, error } = await query
   if (error) throw error.message

@@ -68,7 +68,7 @@ export default function JobForm({
       setScope(job.scope)
       setHours(job.hours)
     }
-  }, [])
+  }, [job])
 
   const zustMyCompany = zust((state) => state.myCompany)
 

@@ -41,10 +41,7 @@ export function formatDate(dateString: string): string {
     const month = monthNames[date.getMonth()]
     const day = String(date.getDate()).padStart(2, '0')
 
-    // Create a human-readable date string
-    const readable = `${month} ${day}, ${year}`
-
-    return readable
+    return `${month} ${day}, ${year}`
   } catch (error) {
     return 'Invalid date format'
   }

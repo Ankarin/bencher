@@ -13,6 +13,8 @@ import {
   categorys,
   getRegion,
   skillList,
+  getEngTextFromLevel,
+  getEngLevelFromText,
 } from '@/utils/options'
 
 import { selectStyleObject } from '@/utils/utils'
@@ -65,7 +67,7 @@ export default function DevForm({
       setExperience(dev.experience.toString())
       setLocation(dev.country)
       setAsap(dev.asap)
-      setEnglish(dev.english)
+      setEnglish(getEngTextFromLevel(dev.english))
       setRate(dev.hourly_rate.toString())
       setOtherLanguages(
         dev.other_languages.map((item) => {
@@ -161,7 +163,7 @@ export default function DevForm({
       country: location,
       region: getRegion(location),
       asap,
-      english,
+      english: getEngLevelFromText(english),
       skills: mainSkills.map((item) => item.value),
       other_languages: otherLanguages.map((item) => item.value),
       hourly_rate: parseInt(rate),

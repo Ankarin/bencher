@@ -7,6 +7,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { getUserData, getCompanyData, getDevsByCompany } from '@/utils/supabase'
 import { User, Company, ExistingDeveloper } from '@/utils/types'
 import { Analytics } from '@vercel/analytics/react'
+import React from 'react'
 
 export const metadata: Metadata = {
   title: {

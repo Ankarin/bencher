@@ -37,7 +37,7 @@ interface Developer {
   experience: number
   skills: string[]
   other_languages: string[]
-  english: string
+  english: number
   country: string
   region: string
   asap: boolean

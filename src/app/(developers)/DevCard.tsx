@@ -1,6 +1,6 @@
 'use client'
 import { ExistingDeveloper } from '@/utils/types'
-import { getRegion } from '@/utils/options'
+import { getEngTextFromLevel, getRegion } from '@/utils/options'
 import { Tooltip } from 'react-tooltip'
 import { Button } from '@/components/landing/Button'
 import { supaDownload } from '@/utils/supabaseClient'
@@ -31,7 +31,7 @@ export default function DevCard({
       title: '',
       value: `${developer.country}, ${getRegion(developer.country)}`,
     },
-    { title: 'English: ', value: `${developer.english} ` },
+    { title: 'English: ', value: `${getEngTextFromLevel(developer.english)} ` },
   ]
 
   const isApply = useContext(ApplyContext)

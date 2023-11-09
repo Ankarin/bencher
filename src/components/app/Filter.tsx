@@ -1,6 +1,11 @@
 'use client'
 import React, { useState } from 'react'
-import { categorys, englishLevels, skillList } from '@/utils/options'
+import {
+  categorys,
+  englishLevels,
+  getEngLevelFromText,
+  skillList,
+} from '@/utils/options'
 import CreatableSelect from 'react-select/creatable'
 import { selectStyleObject } from '@/utils/utils'
 import { FormSubmit, Selecter } from '@/utils/types'
@@ -31,7 +36,7 @@ function Filter() {
     setIsDisabled(true)
     const queryParams = new URLSearchParams()
     queryParams.set('category', category)
-    queryParams.set('english', english)
+    queryParams.set('english', String(getEngLevelFromText(english)))
     queryParams.set('rate', rate)
     queryParams.set('experience', experience)
     if (mainSkills.length > 0) {
